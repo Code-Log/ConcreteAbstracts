@@ -1,6 +1,6 @@
 #include <iostream>
-#include "include/Country.h"
-#include "include/AbstractCountry.h"
+#include <Country.h>
+#include <AbstractCountry.h>
 using namespace std;
 
 int main() {

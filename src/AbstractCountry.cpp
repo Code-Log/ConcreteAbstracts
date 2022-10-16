@@ -1,4 +1,4 @@
-#include "include/AbstractCountry.h"
+#include <AbstractCountry.h>
 
 AbstractCountry::AbstractCountry(std::string countryName) : countryName(countryName) 
 {}
