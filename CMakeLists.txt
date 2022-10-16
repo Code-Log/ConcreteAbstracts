@@ -9,7 +9,8 @@ add_executable(simulator
                 src/Country.cpp 
                 src/AbstractCountry.cpp
                 include/AbstractCountry.h
-                include/Country.h)
+                include/Country.h
+                include/Registry.h include/AllyRegistry.h src/AllyRegistry.cpp include/BattleRegistry.h src/BattleRegistry.cpp)
 
 file(GLOB CPP_FILES src/*.cpp)
 list(FILTER CPP_FILES EXCLUDE REGEX src/main.cpp)
