@@ -7,14 +7,14 @@
 
 class AbstractCountry 
 {
-    public:
-        AbstractCountry(std::string countryName);
-        std::string getName();
-        virtual ~AbstractCountry() = default;
+public:
+    explicit AbstractCountry(std::string countryName);
+    std::string getName();
+    virtual ~AbstractCountry() = default;
 
-        virtual AbstractCountry* cloneCountry() = 0;    
-    private:
-        std::string countryName;
+    virtual AbstractCountry* cloneCountry() = 0;
+private:
+    std::string countryName;
 };
 
 #endif

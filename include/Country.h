@@ -5,11 +5,11 @@
 
 class Country : public AbstractCountry
 {
-    public:
-        explicit Country(std::string countryName);
-        virtual AbstractCountry* cloneCountry();
-        ~Country() override = default;
-    private:
+public:
+    explicit Country(std::string countryName);
+    virtual AbstractCountry* cloneCountry();
+    ~Country() override = default;
+private:
 };
 
 #endif
