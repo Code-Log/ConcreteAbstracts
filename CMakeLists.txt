@@ -34,7 +34,9 @@ add_executable(simulator
                 include/AttackVessel.h
                 src/AttackVessel.cpp
                 include/SuppliesTransport.h
-                src/SuppliesTransport.cpp)
+                src/SuppliesTransport.cpp
+                include/ArmoryFacade.h
+                src/ArmoryFacade.cpp)
 
 file(GLOB CPP_FILES src/*.cpp)
 list(FILTER CPP_FILES EXCLUDE REGEX src/main.cpp)
