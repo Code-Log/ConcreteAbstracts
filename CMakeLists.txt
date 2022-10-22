@@ -58,7 +58,7 @@ add_executable(simulator
                 include/Trenches.h
                 src/Trenches.cpp
                 include/SpaceMagnets.h
-                src/SpaceMagnets.cpp)
+                src/SpaceMagnets.cpp include/CountryHistory.h include/CountryMemento.h src/CountryHistory.cpp src/CountryMemento.cpp)
 
 file(GLOB CPP_FILES src/*.cpp)
 list(FILTER CPP_FILES EXCLUDE REGEX src/main.cpp)
