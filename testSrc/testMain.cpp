@@ -1,4 +1,3 @@
-#include <AbstractCountry.h>
 #include <cstring>
 #include <Country.h>
 #include <RecuiterContext.h>

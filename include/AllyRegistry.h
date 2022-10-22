@@ -9,14 +9,14 @@
 class AllyRegistry : public Registry
 {
 private:
-    std::vector<UnorderedPair<AbstractCountry*>> allies;
+    std::vector<UnorderedPair<Country*>> allies;
 
 public:
     AllyRegistry();
     ~AllyRegistry() override = default;
 
-    void addRecord(AbstractCountry* country1, AbstractCountry* country2) override;
-    std::vector<UnorderedPair<AbstractCountry*>> getRecords(AbstractCountry* country) override;
+    void addRecord(Country* country1, Country* country2) override;
+    std::vector<UnorderedPair<Country*>> getRecords(Country* country) override;
 };
 
 #endif //CONCRETEABSTRACTS_ALLYREGISTRY_H

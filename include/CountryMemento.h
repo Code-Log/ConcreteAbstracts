@@ -1,15 +1,15 @@
 #ifndef CONCRETEABSTRACTS_COUNTRYMEMENTO_H
 #define CONCRETEABSTRACTS_COUNTRYMEMENTO_H
 
-#include <AbstractCountry.h>
+#include <Country.h>
 
 class Country;
 
 class CountryMemento
 {
 private:
-    AbstractCountry* state;
-    CountryMemento(AbstractCountry* state);
+    Country* state;
+    CountryMemento(Country* state);
 public:
     ~CountryMemento();
     friend class AbstractCountry;

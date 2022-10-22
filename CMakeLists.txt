@@ -6,10 +6,8 @@ enable_testing()
 # ADD CPP EXECUTABLES HERE
 add_executable(simulator 
                 src/main.cpp 
-                src/Country.cpp 
-                src/AbstractCountry.cpp
-                include/AbstractCountry.h
-                include/Country.h
+                src/Country.cpp
+        include/Country.h
                 include/Registry.h
                 include/AllyRegistry.h
                 src/AllyRegistry.cpp
