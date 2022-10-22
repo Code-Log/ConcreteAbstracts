@@ -7,7 +7,7 @@ AllyRegistry::AllyRegistry()
 
 void AllyRegistry::addRecord(AbstractCountry* country1, AbstractCountry* country2)
 {
-    auto newEntry = UnorderedPair(country1, country2);
+    auto newEntry = UnorderedPair<AbstractCountry*>(country1, country2);
     for (auto entry : allies)
     {
         if (entry == newEntry)
