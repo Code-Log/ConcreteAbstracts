@@ -1,15 +1,17 @@
 #ifndef COUNTRY_H
 #define COUNTRY_H
 
-#include "AbstractCountry.h"
+#include <string>
 
-class Country : public AbstractCountry
+class Country
 {
 public:
     explicit Country(std::string countryName);
-    virtual AbstractCountry* cloneCountry();
-    ~Country() override = default;
+    Country* cloneCountry();
+    const std::string& getName() const;
+    ~Country() = default;
 private:
+    std::string countryName;
 };
 
 #endif

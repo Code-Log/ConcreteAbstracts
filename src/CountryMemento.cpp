@@ -1,6 +1,6 @@
 #include <CountryMemento.h>
 
-CountryMemento::CountryMemento(AbstractCountry* state)
+CountryMemento::CountryMemento(Country* state)
     : state(state)
 {
 }

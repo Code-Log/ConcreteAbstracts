@@ -4,16 +4,16 @@
 #pragma once
 
 #include <vector>
-#include <AbstractCountry.h>
+#include <Country.h>
 #include <util/UnorderedPair.hpp>
 
 class Registry
 {
 protected:
-    std::vector<AbstractCountry*> countries;
+    std::vector<Country*> countries;
 public:
-    virtual void addRecord(AbstractCountry* country1, AbstractCountry* country2) = 0;
-    virtual std::vector<UnorderedPair<AbstractCountry*>> getRecords(AbstractCountry* country) = 0;
+    virtual void addRecord(Country* country1, Country* country2) = 0;
+    virtual std::vector<UnorderedPair<Country*>> getRecords(Country* country) = 0;
     virtual ~Registry() = default;
 };
 

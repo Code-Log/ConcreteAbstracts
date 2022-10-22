@@ -5,9 +5,9 @@ AllyRegistry::AllyRegistry()
 {
 }
 
-void AllyRegistry::addRecord(AbstractCountry* country1, AbstractCountry* country2)
+void AllyRegistry::addRecord(Country* country1, Country* country2)
 {
-    auto newEntry = UnorderedPair<AbstractCountry*>(country1, country2);
+    auto newEntry = UnorderedPair<Country*>(country1, country2);
     for (auto entry : allies)
     {
         if (entry == newEntry)
@@ -16,9 +16,9 @@ void AllyRegistry::addRecord(AbstractCountry* country1, AbstractCountry* country
     allies.push_back(newEntry);
 }
 
-std::vector<UnorderedPair<AbstractCountry*>> AllyRegistry::getRecords(AbstractCountry* country)
+std::vector<UnorderedPair<Country*>> AllyRegistry::getRecords(Country* country)
 {
-    std::vector<UnorderedPair<AbstractCountry*>> result;
+    std::vector<UnorderedPair<Country*>> result;
 
     for (auto record : allies)
     {

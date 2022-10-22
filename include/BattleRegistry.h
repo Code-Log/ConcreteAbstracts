@@ -9,14 +9,14 @@
 class BattleRegistry : public Registry
 {
 private:
-    std::vector<UnorderedPair<AbstractCountry*>> battles;
+    std::vector<UnorderedPair<Country*>> battles;
 
 public:
     BattleRegistry();
     ~BattleRegistry() override = default;
 
-    void addRecord(AbstractCountry* country1, AbstractCountry* country2) override;
-    std::vector<UnorderedPair<AbstractCountry*>> getRecords(AbstractCountry* country) override;
+    void addRecord(Country* country1, Country* country2) override;
+    std::vector<UnorderedPair<Country*>> getRecords(Country* country) override;
 };
 
 #endif //CONCRETEABSTRACTS_BATTLEREGISTRY_H
