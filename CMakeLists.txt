@@ -56,7 +56,7 @@ add_executable(simulator
                 include/Barricades.h
                 src/Barricades.cpp
                 include/Trenches.h
-                src/Trences.cpp
+                src/Trenches.cpp
                 include/SpaceMagnets.h
                 src/SpaceMagnets.cpp)
 
