@@ -200,9 +200,9 @@ int testTransport()
 
 int testWarTheatre()
 {
-    int result = 0;
-    //cout<<"Laat ons begin"<<endl;
-    //cout<<"******************** Basic Test**********************"<<endl;
+    int result =0;
+    cout<<"Laat ons begin"<<endl;
+    cout<<"******************** Basic Test**********************"<<endl;
 
     WarTheatre* theatre;
     theatre = new Mines();
@@ -210,11 +210,9 @@ int testWarTheatre()
     theatre->add(new SpaceMagnets());
     theatre->add(new Trenches());
     theatre->add(new Land());
-    //cout << "Damage = " << 
-    theatre->damageTotal();//<< endl;
+    cout << "Damage = " << theatre->damageTotal()<< endl;
     delete theatre;
-
-    //cout<<"***********************More Intensive******************************"<<endl;
+    cout<<"***********************More Intensive******************************"<<endl;
 
     struct 
     {
@@ -228,47 +226,45 @@ int testWarTheatre()
         int hp=10000;
     }mockEnemy;
 
-   /* cout<<"MockCountry Recruits: "<<*mockCountry.recruits<<endl;
+    cout<<"MockCountry Recruits: "<<*mockCountry.recruits<<endl;
     cout<<"MockCountry Cash: "<<mockCountry.cash<<endl;
 
     cout<<"MockEnemy Recruits: "<<*mockEnemy.recruits<<endl;
     cout<<"MockCountry hp: "<<mockEnemy.hp<<endl;
 
     cout<<"MockCountry creates wartheatres-- The engine or which ever class is responsible should checks if country is eligible for the theatres (has a guardians, marines etc)-- Our mock country has all"<<endl;
-    cout<<endl;*/
+    cout<<endl;
     
     WarTheatre* L = new Land();
     WarTheatre* S = new Sea();
     WarTheatre* A = new Air();
     WarTheatre* SP = new Space();
 
-   // cout<<endl;
-   // cout<<"Pretend battle at sea. Both sides first suffer from the penalty "<<endl;
+    cout<<endl;
+    cout<<"Pretend battle at sea. Both sides first suffer from the penalty "<<endl;
 
     S->penalty(mockCountry.recruits);
-   // cout<<"MockCountry Recruits: "<<*(mockCountry.recruits)<<endl;
+    cout<<"MockCountry Recruits: "<<*(mockCountry.recruits)<<endl;
     S->penalty(mockEnemy.recruits);
-   // cout<<"MockEnemy Recruits: "<<*(mockEnemy.recruits)<<endl;
+    cout<<"MockEnemy Recruits: "<<*(mockEnemy.recruits)<<endl;
 
     if(*(mockCountry.recruits)==100)
     {
         result = -1;
     }
 
-   // cout<<endl;
-   // cout<<"Only enemy suffers from traps"<<endl;
-   // cout<<endl;
+    cout<<endl;
+    cout<<"Only enemy suffers from traps"<<endl;
+    cout<<endl;
 
-    //cout<<"MockEnemy HP: " <<(
-    mockEnemy.hp -S->damageTotal();
-    //)<<endl;
-    //cout<<"HP should stay the same as no traps were set. (Also if HP(or whatever it's called in our system) is refernce structure the function can manipulate it if desired"<<endl;
+    cout<<"MockEnemy HP: " <<(mockEnemy.hp -S->damageTotal())<<endl;
+    cout<<"HP should stay the same as no traps were set. (Also if HP(or whatever it's called in our system) is refernce structure the function can manipulate it if desired"<<endl;
 
     if(mockEnemy.hp != 10000)
     {
         result =-1;
     }
-   // cout<<"Now adding traps. Subtracting from Economy..."<<endl;
+    cout<<"Now adding traps. Subtracting from Economy..."<<endl;
     mockCountry.cash = mockCountry.cash- 30;
 
     WarTheatre* Temp;
@@ -278,26 +274,24 @@ int testWarTheatre()
     Temp->add(S);
     S=Temp;
 
-   // cout<<"Again, Engine (or responsible class will need to handle the finance). And also make sure traps are added to appropriate threates."<<endl;
-    //cout<<"Next battle:"<<endl<<endl;;
-    //cout<<"Penalties:"<<endl;
+    cout<<"Again, Engine (or responsible class will need to handle the finance). And also make sure traps are added to appropriate threates."<<endl;
+    cout<<"Next battle:"<<endl<<endl;;
+    cout<<"Penalties:"<<endl;
 
     S->penalty(mockCountry.recruits);
-   // cout<<"MockCountry Recruits: "<<*(mockCountry.recruits)<<endl;
+    cout<<"MockCountry Recruits: "<<*(mockCountry.recruits)<<endl;
     S->penalty(mockEnemy.recruits);
-    //cout<<"MockEnemy Recruits: "<<*(mockEnemy.recruits)<<endl<<endl;
+    cout<<"MockEnemy Recruits: "<<*(mockEnemy.recruits)<<endl<<endl;
 
-    //cout<<"Damage to Enemy:"<<endl;
-    //cout<<"MockEnemy HP: " <<()
-    mockEnemy.hp -S->damageTotal();//<<endl<<endl;
+    cout<<"Damage to Enemy:"<<endl;
+    cout<<"MockEnemy HP: " <<(mockEnemy.hp = mockEnemy.hp -S->damageTotal())<<endl<<endl;
+    cout<<mockEnemy.hp<<endl;
     if(mockEnemy.hp == 10000)
     {
         result = -1;
     }
-
-   // cout<<"Perfect!!"<<endl<<endl;
-
-    //cout<<"Now to loop Enemy stepping over traps until the traps are all dismatled. Basically testing if bool Active does switch to false as traps are triggered"<<endl<<endl;
+    cout<<"Perfect!!"<<endl<<endl;
+    cout<<"Now to loop Enemy stepping over traps until the traps are all dismatled. Basically testing if bool Active does switch to false as traps are triggered"<<endl<<endl;
 
     int thenHP;
     int nowHP;
@@ -310,9 +304,9 @@ int testWarTheatre()
     }
     while(thenHP != nowHP);
 
-    //cout<<"If you seeing this the loop was not infinite and the traps were deactivated. But one more check to be sure...\n Damage: "<<S->damageTotal()<<endl;
-    //cout<<"Is it 0? Perfect."<<endl;
-    //cout<<"Swap out Sea for the other threatres and other traps but they function identical.\n Also should there be a reactivate() function that awakens traps that are weaker but at a discount XD!!"<<endl;
+    cout<<"If you seeing this the loop was not infinite and the traps were deactivated. But one more check to be sure...\n Damage: "<<S->damageTotal()<<endl;
+    cout<<"Is it 0? Perfect."<<endl;
+    cout<<"Swap out Sea for the other threatres and other traps but they function identical.\n Also should there be a reactivate() function that awakens traps that are weaker but at a discount XD!!"<<endl;
 
     delete S;
     delete L;
@@ -321,25 +315,10 @@ int testWarTheatre()
     delete mockCountry.recruits;
     delete mockEnemy.recruits;
 
-    //cout<<"****************************END***************************************"<<endl;
-
+    cout<<"****************************END***************************************"<<endl;
+    
     return result;
     
-}
-
-int testArmoryFacade()
-{
-    int result = 0;
-        ArmoryFacade* armoryFacade = new ArmoryFacade();
-        Recruits* recruits = new Recruits();
-
-        armoryFacade->purchaseAttackVessel(recruits);
-        armoryFacade->purchaseSupplies(recruits);
-        armoryFacade->purchaseWeapon(recruits);
-
-        delete armoryFacade;
-        delete recruits;
-    return result;
 }
 
 // Write your testing functions like this
