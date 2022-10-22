@@ -7,7 +7,7 @@ enable_testing()
 add_executable(simulator 
                 src/main.cpp 
                 src/Country.cpp
-        include/Country.h
+                include/Country.h
                 include/Registry.h
                 include/AllyRegistry.h
                 src/AllyRegistry.cpp
@@ -56,7 +56,50 @@ add_executable(simulator
                 include/Trenches.h
                 src/Trenches.cpp
                 include/SpaceMagnets.h
-                src/SpaceMagnets.cpp include/CountryHistory.h include/CountryMemento.h src/CountryHistory.cpp src/CountryMemento.cpp)
+                src/SpaceMagnets.cpp
+                include/CountryHistory.h
+                include/CountryMemento.h
+                src/CountryHistory.cpp
+                src/CountryMemento.cpp
+                include/AttackWeapon.h
+                include/AttackWeaponCreator.h
+                include/ExplosiveWeaponCreator.h
+                include/ExplosiveWeapons.h
+                include/JetCreator.h
+                include/Jets.h
+                include/MeleeWeaponCreator.h
+                include/MeleeWeapons.h
+                include/NuclearWeaponCreator.h
+                include/NuclearWeapons.h
+                include/RangedWeaponCreator.h
+                include/RangedWeapons.h
+                include/ShipCreator.h
+                include/Ships.h
+                include/Spacecraft.h
+                include/SpacecraftCreator.h
+                include/TankCreator.h
+                include/Tanks.h
+                include/VesselWeapon.h
+                include/VesselWeaponCreator.h
+                src/AttackWeaponCreator.cpp
+                src/ExplosiveWeaponCreator.cpp
+                src/ExplosiveWeapons.cpp
+                src/JetCreator.cpp
+                src/Jets.cpp
+                src/MeleeWeaponCreator.cpp
+                src/MeleeWeapons.cpp
+                src/NuclearWeaponCreator.cpp
+                src/NuclearWeapons.cpp
+                src/RangedWeaponCreator.cpp
+                src/RangedWeapons.cpp
+                src/ShipCreator.cpp
+                src/Ships.cpp
+                src/Spacecraft.cpp
+                src/SpacecraftCreator.cpp
+                src/TankCreator.cpp
+                src/Tanks.cpp
+                src/VesselWeaponCreator.cpp
+        )
 
 file(GLOB CPP_FILES src/*.cpp)
 list(FILTER CPP_FILES EXCLUDE REGEX src/main.cpp)

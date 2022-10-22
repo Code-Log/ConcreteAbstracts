@@ -1,13 +1,19 @@
-#ifndef __ATTACKWEAPON_H__
-#define __ATTACKWEAPON_H__
+#ifndef ATTACKWEAPON_H
+#define ATTACKWEAPON_H
 
-class AttackWeapon
-{
+#include <string>
+#include <iostream>
+
+class AttackWeapon {
+
 private:
-    /* data */
+	std::string name;
+	int damage;
+
 public:
-    AttackWeapon(/* args */);
-    // ~AttackWeapon();
+	virtual int getDamage() = 0;
+
+	virtual std::string getName() = 0;
 };
 
-#endif // __ATTACKWEAPON_H__
+#endif
