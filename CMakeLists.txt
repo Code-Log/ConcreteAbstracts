@@ -6,10 +6,8 @@ enable_testing()
 # ADD CPP EXECUTABLES HERE
 add_executable(simulator 
                 src/main.cpp 
-                src/Country.cpp 
-                src/AbstractCountry.cpp
-                include/AbstractCountry.h
-                include/Country.h
+                src/Country.cpp
+        include/Country.h
                 include/Registry.h
                 include/AllyRegistry.h
                 src/AllyRegistry.cpp
@@ -35,28 +33,30 @@ add_executable(simulator
                 src/AttackVessel.cpp
                 include/SuppliesTransport.h
                 src/SuppliesTransport.cpp
-                src/Air.cpp
-                include/Air.h
-                src/Land.cpp
-                include/Land.h
-                src/Sea.cpp
-                include/Sea.h
-                src/Space.cpp
-                include/Space.h
-                src/Mines.cpp
-                include/Mines.h
-                src/SpaceMagnets.cpp
-                include/SpaceMagnets.h
-                src/Trenches.cpp
-                include/Trenches.h
-                src/Barricades.cpp
-                include/Barricades.h
-                src/Traps.cpp
-                include/Traps.h
-                src/BattleGround.cpp
-                include/BattleGround.h
+                include/ArmoryFacade.h
+                src/ArmoryFacade.cpp
+                include/WarTheatre.h
                 src/WarTheatre.cpp
-                include/WarTheatre.h)
+                include/Trap.h
+                src/Trap.cpp
+                include/BattleGround.h
+                src/BattleGround.cpp
+                include/Air.h
+                src/Air.cpp
+                include/Land.h
+                src/Land.cpp
+                include/Sea.h
+                src/Sea.cpp
+                include/Space.h
+                src/Space.cpp
+                include/Mines.h
+                src/Mines.cpp
+                include/Barricades.h
+                src/Barricades.cpp
+                include/Trenches.h
+                src/Trenches.cpp
+                include/SpaceMagnets.h
+                src/SpaceMagnets.cpp include/CountryHistory.h include/CountryMemento.h src/CountryHistory.cpp src/CountryMemento.cpp)
 
 file(GLOB CPP_FILES src/*.cpp)
 list(FILTER CPP_FILES EXCLUDE REGEX src/main.cpp)
@@ -68,7 +68,7 @@ add_test(testCountry testExec testCountry)
 add_test(testRecruits testExec testRecruits)
 add_test(testRegistry testExec testRegistry)
 add_test(testTransport testExec testTransport)
-add_test(testWarTheatre testExec warTheatreTest)
+#add_test(testWarTheatre testExec testWarTheatre)
 
 target_include_directories(simulator PUBLIC include)
 target_include_directories(testExec PUBLIC include)

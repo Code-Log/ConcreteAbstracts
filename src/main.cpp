@@ -1,25 +1,19 @@
 #include <iostream>
-#include "ExplosiveWeaponCreator.h"
-#include "AttackWeapon.h"
 
-/*
-#include "Jaguar.h"
-#include "Gorilla.h"
-#include "Cannibal.h"
-#include "forceMember.h"
-#include "SnakeFactory.h"
-#include "JaguarFactory.h"
-#include "GorillaFactory.h"
-#include "CannibalFactory.h"
-#include "Squad.h"
-#include "Store.h"
-//#include <random>*/
+#include <Country.h>
+//#include "WarTheatre.h"
+#include <string>
 
-int main()
-{
-    ExplosiveWeaponCreator ExplosiveWeaponFactory;
-    AttackWeapon *myAttackWeapon = ExplosiveWeaponFactory.produce();
+using namespace std;
 
+int main() {
+    Country* x = new Country("jack");
+
+    Country* y = x->cloneCountry();
+
+    cout << x->getName() << endl;   
+    delete y;
+    cout << "hello world" << endl;
 
     return 0;
 }

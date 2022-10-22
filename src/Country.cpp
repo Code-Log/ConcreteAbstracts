@@ -1,10 +1,17 @@
 #include <Country.h>
 
-Country::Country(std::string countryName) : AbstractCountry(countryName)  
-{}
+Country::Country(std::string countryName)
+    : countryName(std::move(countryName))
+{
+}
 
-AbstractCountry* Country::cloneCountry() 
+Country* Country::cloneCountry()
 {
     // TODO - Implement Country::cloneCountry()
-    return NULL;
+    return nullptr;
+}
+
+const std::string& Country::getName() const
+{
+    return countryName;
 }
