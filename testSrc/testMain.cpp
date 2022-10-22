@@ -26,6 +26,7 @@
 #include <Barricades.h>
 #include <SpaceMagnets.h>
 #include <Space.h>
+#include <ArmoryFacade.h>
 
 int testCountry()
 {
@@ -200,7 +201,7 @@ int testTransport()
 
 int testWarTheatre()
 {
-    int result =0;
+    int result = 0;
     //cout<<"Laat ons begin"<<endl;
     //cout<<"******************** Basic Test**********************"<<endl;
 
@@ -325,6 +326,21 @@ int testWarTheatre()
 
     return result;
     
+}
+
+int testArmoryFacade()
+{
+    int result = 0;
+        ArmoryFacade* armoryFacade = new ArmoryFacade();
+        Recruits* recruits = new Recruits();
+
+        armoryFacade->purchaseAttackVessel(recruits);
+        armoryFacade->purchaseSupplies(recruits);
+        armoryFacade->purchaseWeapon(recruits);
+
+        delete armoryFacade;
+        delete recruits;
+    return result;
 }
 
 // Write your testing functions like this
