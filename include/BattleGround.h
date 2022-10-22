@@ -2,19 +2,18 @@
 #ifndef BATTLEGROUNDS_H
 #define BATTLEGROUNDS_H
 
-#include "WarTheatre.h"
+#include <WarTheatre.h>
 
 class BattleGround: public WarTheatre
 {
+public:
+    BattleGround(std::string location);
+    ~BattleGround();
 
-    public:
-        BattleGround(std::string location);
-        ~BattleGround();
+    void add(WarTheatre* trap) override;
+    int damageTotal() override;
 
-        virtual void add(WarTheatre* trap){};
-        int damageTotal();
-
-        virtual int penalty(int* recruitNumber)=0; //added
+    virtual int penalty(int* recruitNumber) = 0; //added
 };
 
 

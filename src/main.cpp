@@ -1,6 +1,9 @@
 #include <iostream>
 #include <Country.h>
 #include <AbstractCountry.h>
+#include "WarTheatre.h"
+#include <string>
+
 using namespace std;
 
 int main() {
@@ -11,5 +14,6 @@ int main() {
     cout << x->getName() << endl;   
     delete y;
     cout << "hello world" << endl;
+
     return 0;
 }

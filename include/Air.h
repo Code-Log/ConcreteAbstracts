@@ -1,18 +1,18 @@
 #ifndef AIR_H
 #define AIR_H
 
-#include "BattleGround.h"
+#include <BattleGround.h>
 
 class Air : public BattleGround
 {
-    private:
-        /* data */
-    public:
-        Air(/* args */);
-        ~Air();
+private:
+    /* data */
+public:
+    Air(/* args */);
+    ~Air();
 
-        virtual int penalty(int* recruitNumber);
-        int gForce();
+    int penalty(int* recruitNumber) override;
+    int gForce();
 };
 
 

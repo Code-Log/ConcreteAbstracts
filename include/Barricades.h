@@ -2,15 +2,15 @@
 #ifndef BARRICADES_H
 #define BARRICADES_H
 
-#include "Trap.h"
+#include <Trap.h>
 
 class Barricades : public Trap
 {
-    private:
-        /* data */
-    public:
-        Barricades(/* args */);
-        ~Barricades();
+private:
+    /* data */
+public:
+    Barricades(/* args */);
+    ~Barricades();
 };
 
 

@@ -2,18 +2,15 @@
 
 #include <iostream>
 
-Sea :: Sea() : BattleGround("Sea")
+Sea::Sea() : BattleGround("Sea")
 {
     std::cout<<"Do The Tides Command This Ship?"<<std::endl;
     setDamage(0);
 }
 
-Sea :: ~Sea()
-{
+Sea::~Sea() = default;
 
-}
-
-int Sea :: penalty(int* recruitNumber)
+int Sea::penalty(int* recruitNumber)
 {
     int sickness = (*recruitNumber * seaSickness())/100;
 
@@ -21,7 +18,7 @@ int Sea :: penalty(int* recruitNumber)
     return sickness;
 }
 
-int Sea :: seaSickness()
+int Sea::seaSickness()
 {
     return 9; //Navy loses 9 percent of pilots from the nature of the environment
 }

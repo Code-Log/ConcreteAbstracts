@@ -6,14 +6,12 @@
 
 class Space : public BattleGround
 {
-    private:
-        /* data */
-    public:
-        Space(/* args */);
-        ~Space();
+public:
+    Space(/* args */);
+    ~Space();
 
-       virtual int penalty(int* recruitNumber);
-       int SpaceAdaptationSyndrome();
+    int penalty(int* recruitNumber) override;
+    int SpaceAdaptationSyndrome();
 };
 
 #endif

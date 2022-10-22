@@ -1,4 +1,3 @@
-/*{Decorator Design Pattern: ConcreteDecorator}*/
 #ifndef TRENCHES_H
 #define TRENCHES_H
 
@@ -6,14 +5,9 @@
 
 class Trenches : public Trap
 {
-    private:
-        /* data */
-    public:
-        Trenches(/* args */);
-        ~Trenches();
+public:
+    Trenches();
+    ~Trenches();
 };
-
-
-
 
 #endif

@@ -6,11 +6,9 @@
 
 class Mines: public Trap
 {
-    private:
-        /* data */
-    public:
-        Mines(/* args */);
-        ~Mines();
+public:
+    Mines(/* args */);
+    ~Mines();
 };
 
 
