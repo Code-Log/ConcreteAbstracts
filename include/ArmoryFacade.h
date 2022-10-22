@@ -1,7 +1,3 @@
-//
-// Created by andreas on 2022/10/21.
-//
-
 #ifndef CONCRETEABSTRACTS_ARMORYFACADE_H
 #define CONCRETEABSTRACTS_ARMORYFACADE_H
 
@@ -24,12 +20,11 @@ public:
     bool purchaseSupplies(Recruits* recruits);
 private:
     TransportContext* transportContext;
-    RecuiterContext* recuiterContext;
+    RecuiterContext* recruiterContext;
 
     AttackVessel* attackVessel;
     SuppliesTransport* suppliesTransport;
     WeaponTransport* weaponTransport;
-
 };
 
 #endif //CONCRETEABSTRACTS_ARMORYFACADE_H

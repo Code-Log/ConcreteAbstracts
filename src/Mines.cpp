@@ -2,13 +2,10 @@
 
 #include "Mines.h"
 
-Mines :: Mines() : Trap()
+Mines::Mines() : Trap()
 {
     std::cout<<"Planting Mines"<<std::endl;
     setDamage(400);
 }
 
-Mines :: ~Mines()
-{
-
-}
+Mines::~Mines() = default;

@@ -2,18 +2,15 @@
 
 #include <iostream>
 
-Land :: Land() : BattleGround("Land")
+Land::Land() : BattleGround("Land")
 {
     std::cout<<"Battle Fields Ready For Blood"<<std::endl;
     setDamage(0);
 }
 
-Land :: ~Land()
-{
+Land::~Land() = default;
 
-}
-
-int Land :: penalty(int* recruitNumber)
+int Land::penalty(int* recruitNumber)
 {
     return 0;
 }

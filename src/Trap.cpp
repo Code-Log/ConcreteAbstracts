@@ -2,19 +2,19 @@
 
 #include "Trap.h"
 
-Trap :: Trap(): WarTheatre("trap")
+Trap::Trap(): WarTheatre("trap")
 {
     trap = nullptr;
     Active = true;
     lifespan = 400;
 }
 
-Trap :: ~Trap()
+Trap::~Trap()
 {
     delete trap;
 }
 
-void Trap :: add(WarTheatre* trap)
+void Trap::add(WarTheatre* trap)
 {
     std::cout<<"Setting trap"<<std::endl;
     if(this->trap == nullptr)
@@ -28,17 +28,17 @@ void Trap :: add(WarTheatre* trap)
 
 }
 
-bool Trap :: getActive()
+bool Trap::getActive()
 {
     return Active;
 }
 
-void Trap :: setActive(bool active)
+void Trap::setActive(bool active)
 {
     this->Active = active;
 }
 
-int Trap :: damageTotal()
+int Trap::damageTotal()
 {
     if(trap == nullptr)
     {
@@ -57,7 +57,7 @@ int Trap :: damageTotal()
     }
 }
 
-void Trap :: alterLifespan(int decrease)
+void Trap::alterLifespan(int decrease)
 {
     this->lifespan = lifespan- decrease;
 
@@ -67,7 +67,7 @@ void Trap :: alterLifespan(int decrease)
     }
 }
 
-int Trap :: penalty(int* recruitNumber)
+int Trap::penalty(int* recruitNumber)
 {
     if(trap == nullptr)
     {

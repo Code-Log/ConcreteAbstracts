@@ -1,10 +1,11 @@
 #include <ArmoryFacade.h>
 
-ArmoryFacade::ArmoryFacade() {
+ArmoryFacade::ArmoryFacade()
+{
     weaponTransport = new WeaponTransport();
     suppliesTransport = new SuppliesTransport();
     attackVessel = new AttackVessel();
-
+    recruiterContext = new RecuiterContext;
     transportContext = new TransportContext(weaponTransport);
 }
 
@@ -34,4 +35,5 @@ ArmoryFacade::~ArmoryFacade() {
     delete weaponTransport;
     delete suppliesTransport;
     delete attackVessel;
+    delete recruiterContext;
 }

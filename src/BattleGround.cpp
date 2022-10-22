@@ -1,18 +1,19 @@
-#include "BattleGround.h"
+#include <BattleGround.h>
 
-#include <iostream>
-
-BattleGround :: BattleGround(std::string location) : WarTheatre(location)
+BattleGround::BattleGround(std::string location)
+    : WarTheatre(std::move(location))
 {
     
 }
 
-BattleGround :: ~BattleGround()
-{
+BattleGround::~BattleGround() = default;
 
-}
-
-int BattleGround :: damageTotal()
+int BattleGround::damageTotal()
 {
     return getDamage();
+}
+
+void BattleGround::add(WarTheatre* trap)
+{
+    // TODO: Implement BattleGround::add()
 }

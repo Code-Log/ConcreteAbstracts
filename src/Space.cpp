@@ -2,18 +2,15 @@
 
 #include <iostream>
 
-Space :: Space() : BattleGround("Space")
+Space::Space() : BattleGround("Space")
 {
     std::cout<<"The Battle Has Left The Atmosphere"<<std::endl;
     setDamage(0);
 }
 
-Space :: ~Space()
-{
+Space::~Space() = default;
 
-}
-
-int Space :: penalty(int* recruitNumber)
+int Space::penalty(int* recruitNumber)
 {
     int syndrome = (*recruitNumber * SpaceAdaptationSyndrome())/100;
 
@@ -21,7 +18,7 @@ int Space :: penalty(int* recruitNumber)
     return syndrome;
 }
 
-int Space :: SpaceAdaptationSyndrome()
+int Space::SpaceAdaptationSyndrome()
 {
     return 27; //Space force loses 27 percent of pilots from the nature of the environment
 }

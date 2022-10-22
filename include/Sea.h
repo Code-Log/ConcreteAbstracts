@@ -6,14 +6,13 @@
 
 class Sea : public BattleGround
 {
-    private:
-        /* data */
-    public:
-        Sea(/* args */);
-        ~Sea();
-
-       virtual int penalty(int* recruitNumber);
-       int seaSickness();
+private:
+    /* data */
+public:
+    Sea(/* args */);
+    ~Sea();
+    int penalty(int* recruitNumber) override;
+    int seaSickness();
 };
 
 

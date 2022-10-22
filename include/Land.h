@@ -6,13 +6,13 @@
 
 class Land : public BattleGround
 {
-    private:
-        /* data */
-    public:
-        Land(/* args */);
-        ~Land();
+private:
+    /* data */
+public:
+    Land(/* args */);
+    ~Land();
 
-        virtual int penalty(int* recruitNumber);
+    int penalty(int* recruitNumber) override;
 };
 
 

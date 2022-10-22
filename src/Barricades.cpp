@@ -2,13 +2,10 @@
 
 #include "Barricades.h"
 
-Barricades :: Barricades() : Trap()
+Barricades::Barricades() : Trap()
 {
     std::cout<<"Setting Up Barricades"<<std::endl;
     setDamage(100);
 }
 
-Barricades :: ~Barricades()
-{
-
-}
+Barricades::~Barricades() = default;

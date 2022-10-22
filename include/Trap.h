@@ -6,24 +6,24 @@
 
 class Trap : public WarTheatre
 {
-    private:
-        WarTheatre* trap;
-        bool Active; //isActive to Active
-        int lifespan; //added. when reaches 0 set Active to false. decreases whenever getDamage is called
-    
-    public:
-        Trap(/* args */);
-        ~Trap();
+private:
+    WarTheatre* trap;
+    bool Active;
+    int lifespan;
 
-        void add(WarTheatre* trap);
+public:
+    Trap();
+    ~Trap();
 
-        bool getActive();
-        void setActive(bool activation);
+    void add(WarTheatre* trap) override;
 
-        int damageTotal();
-        void alterLifespan(int decrease); //added
+    bool getActive();
+    void setActive(bool activation);
 
-        virtual int penalty(int* recruitNumber); //added
+    int damageTotal() override;
+    void alterLifespan(int decrease);
+
+    int penalty(int* recruitNumber) override;
 };
 
 

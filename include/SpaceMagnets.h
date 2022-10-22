@@ -6,11 +6,11 @@
 
 class SpaceMagnets : public Trap
 {
-    private:
-        /* data */
-    public:
-        SpaceMagnets(/* args */);
-        ~SpaceMagnets();
+private:
+    /* data */
+public:
+    SpaceMagnets(/* args */);
+    ~SpaceMagnets();
 };
 
 #endif
