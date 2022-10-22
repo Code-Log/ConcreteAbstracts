@@ -1,6 +1,7 @@
 #ifndef RANGEDWEAPONS_H
 #define RANGEDWEAPONS_H
-#include "AttackWeapon.h"
+
+#include <AttackWeapon.h>
 
 class RangedWeapons : public AttackWeapon {
 
@@ -8,7 +9,7 @@ class RangedWeapons : public AttackWeapon {
 public:
 	int getDamage();
 
-	string getName();
+	std::string getName();
 };
 
 #endif

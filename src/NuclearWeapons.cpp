@@ -1,9 +1,13 @@
-#include "NuclearWeapons.h"
+#include <NuclearWeapons.h>
 
-int NuclearWeapons::getDamage() {
+int NuclearWeapons::getDamage()
+{
+    //TODO: Implement NuclearWeapons::getDamage
 	return 0;
 }
 
-string NuclearWeapons::getName() {
+std::string NuclearWeapons::getName()
+{
+    //TODO: Implement NuclearWeapons::getName
 	return "";
 }

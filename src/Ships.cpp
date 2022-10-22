@@ -1,13 +1,19 @@
-#include "Ships.h"
+#include <Ships.h>
 
-int Ships::getDamage() {
+int Ships::getDamage()
+{
+    //TODO: Implement Ships::getDamage
 	return 0;
 }
 
-int Ships::getDefense() {
+int Ships::getDefense()
+{
+    //TODO: Implement Ships::getDefense
 	return 0;
 }
 
-string Ships::getName() {
+std::string Ships::getName()
+{
+    //TODO: Implement Ships::getName
 	return "";
 }

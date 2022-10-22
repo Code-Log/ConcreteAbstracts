@@ -1,13 +1,18 @@
-#include "SpacecraftCreator.h"
+#include <SpacecraftCreator.h>
 
-SpacecraftCreator::SpacecraftCreator() {
-
+SpacecraftCreator::SpacecraftCreator()
+{
+    //TODO: Implement SpacecraftCreator::SpacecraftCreator
 }
 
-VesselWeapon* SpacecraftCreator::produceVesselWeapon() {
+VesselWeapon* SpacecraftCreator::produceVesselWeapon()
+{
+    //TODO: Implement SpacecraftCreator::produceVesselWeapon
 	return NULL;
 }
 
-int SpacecraftCreator::getTotal() {
+int SpacecraftCreator::getTotal()
+{
+    //TODO: Implement SpacecraftCreator::getTotal
 	return 0;
 }

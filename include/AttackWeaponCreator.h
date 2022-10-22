@@ -1,6 +1,6 @@
 #ifndef ATTACKWEAPONCREATOR_H
 #define ATTACKWEAPONCREATOR_H
-#include "AttackWeapon.h"
+#include <AttackWeapon.h>
 
 class AttackWeaponCreator {
 

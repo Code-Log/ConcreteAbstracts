@@ -1,6 +1,7 @@
 #ifndef MELEEWEAPONCREATOR_H
 #define MELEEWEAPONCREATOR_H
-#include "AttackWeaponCreator.h"
+
+#include <AttackWeaponCreator.h>
 
 class MeleeWeaponCreator : public AttackWeaponCreator {
 

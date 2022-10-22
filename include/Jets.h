@@ -1,6 +1,7 @@
 #ifndef JETS_H
 #define JETS_H
-#include "VesselWeaponCreator.h"
+
+#include <VesselWeaponCreator.h>
 
 class Jets : public VesselWeapon {
 
@@ -10,7 +11,7 @@ public:
 
 	int getDefense();
 
-	string getName();
+	std::string getName();
 };
 
 #endif

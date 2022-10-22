@@ -1,13 +1,18 @@
-#include "RangedWeaponCreator.h"
+#include <RangedWeaponCreator.h>
 
-RangedWeaponCreator::RangedWeaponCreator() {
-
+RangedWeaponCreator::RangedWeaponCreator()
+{
+    //TODO: Implement RangedWeaponCreator::RangedWeaponCreator
 }
 
-AttackWeapon* RangedWeaponCreator::produceAttackWeapon() {
+AttackWeapon* RangedWeaponCreator::produceAttackWeapon()
+{
+    //TODO: Implement RangedWeaponCreator::produceAttackWeapon
 	return NULL;
 }
 
-int RangedWeaponCreator::getTotal() {
+int RangedWeaponCreator::getTotal()
+{
+    //TODO: Implement RangedWeaponCreator::getTotal
 	return 0;
 }

@@ -1,9 +1,13 @@
-#include "ExplosiveWeapons.h"
+#include <ExplosiveWeapons.h>
 
-int ExplosiveWeapons::getDamage() {
+int ExplosiveWeapons::getDamage()
+{
+    //TODO: Implement ExplosiveWeapons::getDamage
 	return 0;
 }
 
-string ExplosiveWeapons::getName() {
+std::string ExplosiveWeapons::getName()
+{
+    //TODO: Implement ExplosiveWeapons::getName
 	return "";
 }

@@ -1,13 +1,18 @@
-#include "ExplosiveWeaponCreator.h"
+#include <ExplosiveWeaponCreator.h>
 
-ExplosiveWeaponCreator::ExplosiveWeaponCreator() {
-	cout << "Create Explosive Weapon" << endl;
+ExplosiveWeaponCreator::ExplosiveWeaponCreator()
+{
+	std::cout << "Create Explosive Weapon" << std::endl;
 }
 
-AttackWeapon* ExplosiveWeaponCreator::produceAttackWeapon() {
+AttackWeapon* ExplosiveWeaponCreator::produceAttackWeapon()
+{
+    //TODO: Implement ExplosiveWeaponCreator::produceAttackWeapon
 	return NULL;
 }
 
-int ExplosiveWeaponCreator::getTotal() {
+int ExplosiveWeaponCreator::getTotal()
+{
+    //TODO: Implement ExplosiveWeaponCreator::getTotal
 	return 0;
 }

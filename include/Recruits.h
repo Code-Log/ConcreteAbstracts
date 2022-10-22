@@ -4,9 +4,9 @@
 #include <string>
 #include <vector>
 
-#include "People.h"
-#include "AttackWeapon.h"
-#include "VesselWeapons.h"
+#include <People.h>
+#include <AttackWeapon.h>
+#include <VesselWeapon.h>
 
 class Recruits: public People{
 private:
@@ -14,7 +14,7 @@ private:
     std::string militaryType;
     int weaponDamage;
     // std::vector<AttackWeapon*> armory;
-    // std::vector<VesselWeapons*> vehicles; 
+    // std::vector<VesselWeapon*> vehicles;
 
 public:
     Recruits(/* args */);

@@ -1,9 +1,13 @@
-#include "RangedWeapons.h"
+#include <RangedWeapons.h>
 
-int RangedWeapons::getDamage() {
+int RangedWeapons::getDamage()
+{
+    //TODO: Implement RangedWeapons::getDamage
 	return 0;
 }
 
-string RangedWeapons::getName() {
+std::string RangedWeapons::getName()
+{
+    //TODO: Implement RangedWeapons::getName
 	return "";
 }

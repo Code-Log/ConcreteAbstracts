@@ -1,6 +1,7 @@
 #ifndef TANKS_H
 #define TANKS_H
-#include "VesselWeaponCreator.h"
+
+#include <VesselWeaponCreator.h>
 
 class Tanks : public VesselWeapon {
 
@@ -10,7 +11,7 @@ public:
 
 	int getDefense();
 
-	string getName();
+	std::string getName();
 };
 
 #endif

@@ -1,6 +1,7 @@
 #ifndef SPACECRAFTCREATOR_H
 #define SPACECRAFTCREATOR_H
-#include "VesselWeaponCreator.h"
+
+#include <VesselWeaponCreator.h>
 
 class SpacecraftCreator : public VesselWeaponCreator {
 

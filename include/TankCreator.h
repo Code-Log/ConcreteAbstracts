@@ -1,6 +1,7 @@
 #ifndef TANKCREATOR_H
 #define TANKCREATOR_H
-#include "VesselWeaponCreator.h"
+
+#include <VesselWeaponCreator.h>
 
 class TankCreator : public VesselWeaponCreator {
 

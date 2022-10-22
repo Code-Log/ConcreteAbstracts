@@ -1,13 +1,18 @@
-#include "MeleeWeaponCreator.h"
+#include <MeleeWeaponCreator.h>
 
-MeleeWeaponCreator::MeleeWeaponCreator() {
-	
+MeleeWeaponCreator::MeleeWeaponCreator()
+{
+    //TODO: Implement MeleeWeaponCreator::MeleeWeaponCreator
 }
 
-AttackWeapon* MeleeWeaponCreator::produceAttackWeapon() {
+AttackWeapon* MeleeWeaponCreator::produceAttackWeapon()
+{
+    //TODO: Implement MeleeWeaponCreator::produceAttackWeapon
 	return NULL;
 }
 
-int MeleeWeaponCreator::getTotal() {
+int MeleeWeaponCreator::getTotal()
+{
+    //TODO: Implement MeleeWeaponCreator::getTotal
 	return 0;
 }

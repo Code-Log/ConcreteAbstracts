@@ -1,6 +1,7 @@
 #ifndef MELEEWEAPONS_H
 #define MELEEWEAPONS_H
-#include "AttackWeapon.h"
+
+#include <AttackWeapon.h>
 
 class MeleeWeapons : public AttackWeapon {
 
@@ -8,7 +9,7 @@ class MeleeWeapons : public AttackWeapon {
 public:
 	int getDamage();
 
-	string getName();
+	std::string getName();
 };
 
 #endif

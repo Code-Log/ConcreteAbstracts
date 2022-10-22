@@ -1,13 +1,19 @@
-#include "Tanks.h"
+#include <Tanks.h>
 
-int Tanks::getDamage() {
+int Tanks::getDamage()
+{
+    //TODO: Implement Tanks::getDamage
 	return 0;
 }
 
-int Tanks::getDefense() {
+int Tanks::getDefense()
+{
+    //TODO: Implement Tanks::getDefense
 	return 0;
 }
 
-string Tanks::getName() {
+std::string Tanks::getName()
+{
+    //TODO: Implement Tanks::getName
 	return "";
 }

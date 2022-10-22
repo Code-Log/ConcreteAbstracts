@@ -1,6 +1,7 @@
 #ifndef JETCREATOR_H
 #define JETCREATOR_H
-#include "VesselWeaponCreator.h"
+
+#include <VesselWeaponCreator.h>
 
 class JetCreator : public VesselWeaponCreator {
 
@@ -8,7 +9,7 @@ class JetCreator : public VesselWeaponCreator {
 public:
 	JetCreator();
 
-	VesselWeapon* produceVesselWeapon();
+	VesselWeapon* produceVesselWeapon(); // VESSEL WEAPON ASK AMBER ?
 
 	int getTotal();
 };

@@ -1,6 +1,7 @@
 #ifndef VESSELWEAPONCREATOR_H
 #define VESSELWEAPONCREATOR_H
-#include "VesselWeapon.h"
+
+#include <VesselWeapon.h>
 
 class VesselWeaponCreator {
 

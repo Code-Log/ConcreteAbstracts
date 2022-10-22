@@ -1,6 +1,7 @@
 #ifndef RANGEDWEAPONCREATOR_H
 #define RANGEDWEAPONCREATOR_H
-#include "AttackWeaponCreator.h"
+
+#include <AttackWeaponCreator.h>
 
 class RangedWeaponCreator : public AttackWeaponCreator {
 

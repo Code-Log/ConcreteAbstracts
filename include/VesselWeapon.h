@@ -2,17 +2,16 @@
 #define VESSELWEAPONS_H
 #include <string>
 #include <iostream>
-using namespace std;
 
 class VesselWeapon {
 
 private:
-	string name;
+	std::string name;
 	int damage;
 	int defense;
 
 public:
-	virtual string getName() = 0;
+	virtual std::string getName() = 0;
 
 	virtual int getDamage() = 0;
 

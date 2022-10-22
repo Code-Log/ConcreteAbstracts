@@ -1,9 +1,13 @@
-#include "MeleeWeapons.h"
+#include <MeleeWeapons.h>
 
-int MeleeWeapons::getDamage() {
+int MeleeWeapons::getDamage()
+{
+    //TODO: Implement MeleeWeapons::getDamage
 	return 0;
 }
 
-string MeleeWeapons::getName() {
-	return "";
+std::string MeleeWeapons::getName()
+{
+	//TODO: Implement MeleeWeapons::getName
+    return "";
 }

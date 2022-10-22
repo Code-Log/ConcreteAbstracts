@@ -1,13 +1,18 @@
-#include "VesselWeaponCreator.h"
+#include <VesselWeaponCreator.h>
 
-VesselWeaponCreator::VesselWeaponCreator() {
-
+VesselWeaponCreator::VesselWeaponCreator()
+{
+    //TODO: Implement VesselWeaponCreator::VesselWeaponCreator
 }
 
-VesselWeapon* VesselWeaponCreator::produce() {
+VesselWeapon* VesselWeaponCreator::produce()
+{
+    //TODO: Implement VesselWeaponCreator::produc
 	return NULL;
 }
 
-int VesselWeaponCreator::getTotal() {
+int VesselWeaponCreator::getTotal()
+{
+     //TODO: Implement VesselWeaponCreator::getTotal
 	return 0;
 }

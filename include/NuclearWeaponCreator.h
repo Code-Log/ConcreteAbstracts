@@ -1,6 +1,7 @@
 #ifndef NUCLEARWEAPONCREATOR_H
 #define NUCLEARWEAPONCREATOR_H
-#include "AttackWeaponCreator.h"
+
+#include <AttackWeaponCreator.h>
 
 class NuclearWeaponCreator : public AttackWeaponCreator {
 

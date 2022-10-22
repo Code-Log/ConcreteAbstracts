@@ -1,13 +1,19 @@
-#include "Jets.h"
+#include <Jets.h>
 
-int Jets::getDamage() {
+int Jets::getDamage()
+{
+    //TODO: Implement Jets::getDamage
 	return 0;
 }
 
-int Jets::getDefense() {
+int Jets::getDefense()
+{
+    //TODO: Implement Jets::getDefense
 	return 0;
 }
 
-string Jets::getName() {
+std::string Jets::getName()
+{
+    //TODO: Implement Jets::getName
 	return "";
 }

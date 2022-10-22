@@ -1,6 +1,7 @@
 #ifndef SPACECRAFT_H
 #define SPACECRAFT_H
-#include "VesselWeapon.h"
+
+#include <VesselWeapon.h>
 
 class Spacecraft : public VesselWeapon {
 
@@ -10,7 +11,7 @@ public:
 
 	int getDefense();
 
-	string getName();
+	std::string getName();
 };
 
 #endif

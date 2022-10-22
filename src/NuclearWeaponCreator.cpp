@@ -1,13 +1,18 @@
-#include "NuclearWeaponCreator.h"
+#include <NuclearWeaponCreator.h>
 
-NuclearWeaponCreator::NuclearWeaponCreator() {
-
+NuclearWeaponCreator::NuclearWeaponCreator()
+{
+    //TODO: Implement NuclearWeaponCreator::NuclearWeaponCreator
 }
 
-AttackWeapon* NuclearWeaponCreator::produceAttackWeapon() {
+AttackWeapon* NuclearWeaponCreator::produceAttackWeapon()
+{
+    //TODO: Implement NuclearWeaponCreator::produceAttackWeapon
 	return NULL;
 }
 
-int NuclearWeaponCreator::getTotal() {
+int NuclearWeaponCreator::getTotal()
+{
+    //TODO: Implement NuclearWeaponCreator::getTotal
 	return 0;
 }

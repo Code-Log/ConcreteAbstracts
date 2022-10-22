@@ -1,13 +1,18 @@
-#include "JetCreator.h"
+#include <JetCreator.h>
 
-JetCreator::JetCreator() {
-	
+JetCreator::JetCreator()
+{
+	//TODO: Implement JetCreator::JetCreator
 }
 
-VesselWeapon* JetCreator::produceVesselWeapon() {
+VesselWeapon* JetCreator::produceVesselWeapon()
+{
+    //TODO: Implement JetCreator::produceVesselWeapon
 	return NULL;
 }
 
-int JetCreator::getTotal() {
+int JetCreator::getTotal()
+{
+    //TODO: Implement JetCreator::getTotal
 	return 0;
 }
