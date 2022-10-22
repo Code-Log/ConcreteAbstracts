@@ -1,15 +1,25 @@
 #include <iostream>
-#include <Country.h>
-#include <AbstractCountry.h>
-using namespace std;
+#include "ExplosiveWeaponCreator.h"
+#include "AttackWeapon.h"
 
-int main() {
-    AbstractCountry* x = new Country("jack");
+/*
+#include "Jaguar.h"
+#include "Gorilla.h"
+#include "Cannibal.h"
+#include "forceMember.h"
+#include "SnakeFactory.h"
+#include "JaguarFactory.h"
+#include "GorillaFactory.h"
+#include "CannibalFactory.h"
+#include "Squad.h"
+#include "Store.h"
+//#include <random>*/
 
-    AbstractCountry* y = x->cloneCountry(); 
+int main()
+{
+    ExplosiveWeaponCreator ExplosiveWeaponFactory;
+    AttackWeapon *myAttackWeapon = ExplosiveWeaponFactory.produce();
 
-    cout << x->getName() << endl;   
-    delete y;
-    cout << "hello world" << endl;
+
     return 0;
 }

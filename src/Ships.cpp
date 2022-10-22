@@ -1,16 +1,13 @@
 #include "Ships.h"
 
 int Ships::getDamage() {
-	// TODO - implement Ships::getDamage
-	throw "Not yet implemented";
+	return 0;
 }
 
 int Ships::getDefense() {
-	// TODO - implement Ships::getDefense
-	throw "Not yet implemented";
+	return 0;
 }
 
 string Ships::getName() {
-	// TODO - implement Ships::getName
-	throw "Not yet implemented";
+	return "";
 }

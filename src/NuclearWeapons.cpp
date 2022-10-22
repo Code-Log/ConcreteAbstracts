@@ -1,11 +1,9 @@
 #include "NuclearWeapons.h"
 
 int NuclearWeapons::getDamage() {
-	// TODO - implement NuclearWeapons::getDamage
-	throw "Not yet implemented";
+	return 0;
 }
 
 string NuclearWeapons::getName() {
-	// TODO - implement NuclearWeapons::getName
-	throw "Not yet implemented";
+	return "";
 }

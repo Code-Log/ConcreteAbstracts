@@ -1,15 +1,13 @@
 #include "VesselWeaponCreator.h"
 
 VesselWeaponCreator::VesselWeaponCreator() {
-	// TODO - implement VesselWeaponCreator::VesselWeaponCreator
-	throw "Not yet implemented";
+
 }
 
 VesselWeapon* VesselWeaponCreator::produce() {
-	// TODO - implement VesselWeaponCreator::produce
-	throw "Not yet implemented";
+	return NULL;
 }
 
 int VesselWeaponCreator::getTotal() {
-	return this->total;
+	return 0;
 }

@@ -1,16 +1,13 @@
 #include "Spacecraft.h"
 
 int Spacecraft::getDamage() {
-	// TODO - implement Spacecraft::getDamage
-	throw "Not yet implemented";
+	return 0;
 }
 
 int Spacecraft::getDefense() {
-	// TODO - implement Spacecraft::getDefense
-	throw "Not yet implemented";
+	return 0;
 }
 
 string Spacecraft::getName() {
-	// TODO - implement Spacecraft::getName
-	throw "Not yet implemented";
+	return "";
 }

@@ -1,16 +1,13 @@
 #include "Tanks.h"
 
 int Tanks::getDamage() {
-	// TODO - implement Tanks::getDamage
-	throw "Not yet implemented";
+	return 0;
 }
 
 int Tanks::getDefense() {
-	// TODO - implement Tanks::getDefense
-	throw "Not yet implemented";
+	return 0;
 }
 
 string Tanks::getName() {
-	// TODO - implement Tanks::getName
-	throw "Not yet implemented";
+	return "";
 }

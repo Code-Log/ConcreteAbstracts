@@ -5,11 +5,9 @@ ExplosiveWeaponCreator::ExplosiveWeaponCreator() {
 }
 
 AttackWeapon* ExplosiveWeaponCreator::produceAttackWeapon() {
-	// TODO - implement ExplosiveWeaponCreator::produceAttackWeapon
-	throw "Not yet implemented";
+	return NULL;
 }
 
 int ExplosiveWeaponCreator::getTotal() {
-	// TODO - implement ExplosiveWeaponCreator::getTotal
-	throw "Not yet implemented";
+	return 0;
 }
