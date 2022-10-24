@@ -260,7 +260,7 @@ int testWarTheatre()
    // cout<<endl;
 
     //cout<<"MockEnemy HP: " <<(
-    mockEnemy.hp -S->damageTotal();
+    mockEnemy.hp = mockEnemy.hp - S->damageTotal();
     //)<<endl;
     //cout<<"HP should stay the same as no traps were set. (Also if HP(or whatever it's called in our system) is refernce structure the function can manipulate it if desired"<<endl;
 
