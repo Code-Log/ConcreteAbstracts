@@ -1,3 +1,13 @@
+/**
+ * @file Marine.h
+ * @author ConcreteAbstracts 
+ * @brief 
+ * @version 0.1
+ * @date 2022-10-24
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef __MARINE_H__
 #define __MARINE_H__
 
@@ -7,7 +17,11 @@ class Marine : public Recruits
 private:
     /* data */
 public:
-    Marine(/* args */);
+    /**
+     * @brief Construct a new Marine object
+     * 
+     */
+    Marine();
     // ~Marine();
 };
 

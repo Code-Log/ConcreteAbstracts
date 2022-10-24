@@ -1,3 +1,13 @@
+/**
+ * @file Medic.h
+ * @author ConcreteAbstracts 
+ * @brief 
+ * @version 0.1
+ * @date 2022-10-24
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef __MEDIC_H__
 #define __MEDIC_H__
 
@@ -7,7 +17,11 @@ class Medic : public Recruits
 private:
     /* data */
 public:
-    Medic(/* args */);
+    /**
+     * @brief Construct a new Medic object
+     * 
+     */
+    Medic();
     // ~Medic();
 };
 

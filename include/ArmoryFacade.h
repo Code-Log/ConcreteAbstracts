@@ -1,3 +1,13 @@
+/**
+ * @file ArmoryFacade.h
+ * @author ConcreteAbstracts 
+ * @brief 
+ * @version 0.1
+ * @date 2022-10-24
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef CONCRETEABSTRACTS_ARMORYFACADE_H
 #define CONCRETEABSTRACTS_ARMORYFACADE_H
 
@@ -10,13 +20,43 @@
 class ArmoryFacade
 {
 public:
+    /**
+     * @brief Construct a new Armory Facade object
+     * 
+     */
     ArmoryFacade();
 
+    /**
+     * @brief Destroy the Armory Facade object
+     * 
+     */
     virtual ~ArmoryFacade();
 
-    // Did purchase succeed
+    /**
+     * @brief Purchase weapons for recruits from Transport
+     * 
+     * @param recruits 
+     * @return true 
+     * @return false 
+     */
     bool purchaseWeapon(Recruits* recruits);
+
+    /**
+     * @brief 
+     * 
+     * @param recruits 
+     * @return true 
+     * @return false 
+     */
     bool purchaseAttackVessel(Recruits* recruits);
+
+    /**
+     * @brief 
+     * 
+     * @param recruits 
+     * @return true 
+     * @return false 
+     */
     bool purchaseSupplies(Recruits* recruits);
 private:
     TransportContext* transportContext;
