@@ -1,0 +1,8 @@
+<map id="BattleGround" name="BattleGround">
+<area shape="rect" id="node1" title=" " alt="" coords="169,233,313,369"/>
+<area shape="rect" id="node3" href="$classAir.html" title=" " alt="" coords="5,417,101,539"/>
+<area shape="rect" id="node4" href="$classLand.html" title=" " alt="" coords="125,425,221,531"/>
+<area shape="rect" id="node5" href="$classSea.html" title=" " alt="" coords="246,417,373,539"/>
+<area shape="rect" id="node6" href="$classSpace.html" title=" " alt="" coords="397,417,619,539"/>
+<area shape="rect" id="node2" href="$classWarTheatre.html" title=" " alt="" coords="175,5,308,185"/>
+</map>

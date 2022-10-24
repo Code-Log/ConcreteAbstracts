@@ -1,0 +1,9 @@
+<map id="Recruits" name="Recruits">
+<area shape="rect" id="node1" title=" " alt="" coords="241,145,351,252"/>
+<area shape="rect" id="node3" href="$classGuardian.html" title=" " alt="" coords="5,300,112,377"/>
+<area shape="rect" id="node4" href="$classMarine.html" title=" " alt="" coords="137,300,229,377"/>
+<area shape="rect" id="node5" href="$classMedic.html" title=" " alt="" coords="253,300,339,377"/>
+<area shape="rect" id="node6" href="$classPilot.html" title=" " alt="" coords="363,300,439,377"/>
+<area shape="rect" id="node7" href="$classSoldier.html" title=" " alt="" coords="463,300,555,377"/>
+<area shape="rect" id="node2" href="$classPeople.html" title=" " alt="" coords="245,5,347,97"/>
+</map>

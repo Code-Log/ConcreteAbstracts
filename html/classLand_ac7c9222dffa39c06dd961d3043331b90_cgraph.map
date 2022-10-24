@@ -1,0 +1,4 @@
+<map id="Land::Land" name="Land::Land">
+<area shape="rect" id="node1" title="Construct a new Land object." alt="" coords="5,5,97,32"/>
+<area shape="rect" id="node2" href="$classWarTheatre.html#a84eb2c0cbc245ade2627615e935443f6" title="Set the Damage object." alt="" coords="145,5,325,32"/>
+</map>
