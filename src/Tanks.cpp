@@ -2,18 +2,18 @@
 
 int Tanks::getDamage()
 {
-    //TODO: Implement Tanks::getDamage
+    /// \todo: Implement Tanks::getDamage
 	return 0;
 }
 
 int Tanks::getDefense()
 {
-    //TODO: Implement Tanks::getDefense
+    /// \todo: Implement Tanks::getDefense
 	return 0;
 }
 
 std::string Tanks::getName()
 {
-    //TODO: Implement Tanks::getName
+    /// \todo: Implement Tanks::getName
 	return "";
 }

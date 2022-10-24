@@ -12,21 +12,21 @@ ArmoryFacade::ArmoryFacade()
 bool ArmoryFacade::purchaseWeapon(Recruits *recruits)
 {
     transportContext->setStrategy(weaponTransport);
-    // TODO: Implement ArmoryFacade::purchaseWeapon
+    /// \todo: Implement ArmoryFacade::purchaseWeapon
     return true;
 }
 
 bool ArmoryFacade::purchaseAttackVessel(Recruits *recruits)
 {
     transportContext->setStrategy(attackVessel);
-    // TODO: Implement ArmoryFacade::purchaseAttackVessel
+    /// \todo: Implement ArmoryFacade::purchaseAttackVessel
     return true;
 }
 
 bool ArmoryFacade::purchaseSupplies(Recruits *recruits)
 {
     transportContext->setStrategy(suppliesTransport);
-    // TODO: Implement ArmoryFacade::purchaseSupplies
+    /// \todo: Implement ArmoryFacade::purchaseSupplies
     return true;
 }
 

@@ -6,5 +6,5 @@ Refugee::Refugee(/* args */)
 
 void Refugee::influenceEconomy()
 {
-    //TODO - Implement Refugee::influenceEconomy()
+    /// \todo - Implement Refugee::influenceEconomy()
 }

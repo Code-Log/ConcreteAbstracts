@@ -2,5 +2,5 @@
 
 void AttackVessel::purchase(Recruits* recruits)
 {
-    // TODO: Implement AttackVessel::purchase
+    /// \todo: Implement AttackVessel::purchase
 }

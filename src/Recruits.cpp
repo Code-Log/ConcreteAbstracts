@@ -6,7 +6,7 @@ Recruits::Recruits(/* args */)
 
 void Recruits::handle()
 {
-    //TODO - Implement Recruits::handle()
+    /// \todo - Implement Recruits::handle()
 }
 
 Recruits::~Recruits()

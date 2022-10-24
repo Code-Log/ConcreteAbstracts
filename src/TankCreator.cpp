@@ -2,17 +2,17 @@
 
 TankCreator::TankCreator()
 {
-    //TODO: Implement TankCreator::TankCreator
+    /// \todo: Implement TankCreator::TankCreator
 }
 
 VesselWeapon* TankCreator::produceVesselWeapon()
 {
-    //TODO: Implement TankCreator::produceVesselWeapon
+    /// \todo: Implement TankCreator::produceVesselWeapon
 	return NULL;
 }
 
 int TankCreator::getTotal()
 {
-    //TODO: Implement TankCreator::getTotal
+    /// \todo: Implement TankCreator::getTotal
 	return 0;
 }

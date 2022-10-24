@@ -7,12 +7,12 @@ ExplosiveWeaponCreator::ExplosiveWeaponCreator()
 
 AttackWeapon* ExplosiveWeaponCreator::produceAttackWeapon()
 {
-    //TODO: Implement ExplosiveWeaponCreator::produceAttackWeapon
+    /// \todo: Implement ExplosiveWeaponCreator::produceAttackWeapon
 	return NULL;
 }
 
 int ExplosiveWeaponCreator::getTotal()
 {
-    //TODO: Implement ExplosiveWeaponCreator::getTotal
+    /// \todo: Implement ExplosiveWeaponCreator::getTotal
 	return 0;
 }

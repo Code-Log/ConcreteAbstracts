@@ -15,5 +15,5 @@ int BattleGround::damageTotal()
 
 void BattleGround::add(WarTheatre* trap)
 {
-    // TODO: Implement BattleGround::add()
+    /// \todo: Implement BattleGround::add()
 }

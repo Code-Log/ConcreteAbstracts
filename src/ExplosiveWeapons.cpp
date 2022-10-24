@@ -2,12 +2,12 @@
 
 int ExplosiveWeapons::getDamage()
 {
-    //TODO: Implement ExplosiveWeapons::getDamage
+    /// \todo: Implement ExplosiveWeapons::getDamage
 	return 0;
 }
 
 std::string ExplosiveWeapons::getName()
 {
-    //TODO: Implement ExplosiveWeapons::getName
+    /// \todo: Implement ExplosiveWeapons::getName
 	return "";
 }
