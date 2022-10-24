@@ -33,5 +33,5 @@ create an executable in the `build` directory. You can also run it with `make ru
 - sudo apt-get install graphviz -y 
 #### Run Doxygen file
 1. In Root directory run `doxygen`
-2. locate html/index.html
+2. locate [html/index.html](html/index.html)
 

@@ -11,7 +11,9 @@
 #ifndef CITIZENS_H
 #define CITIZENS_H
 
-class Citizens
+#include <People.h>
+
+class Citizens : public People
 {
 private:
     
