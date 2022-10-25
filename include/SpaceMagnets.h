@@ -1,4 +1,13 @@
-/*{Decorator Design Pattern: ConcreteDecorator}*/
+/**
+ * @file SpaceMagnets.h
+ * @author ConcreteAbstracts 
+ * @brief 
+ * @version 0.1
+ * @date 2022-10-24
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef SPACEMAGNETS_H
 #define SPACEMAGNETS_H
 
@@ -9,7 +18,16 @@ class SpaceMagnets : public Trap
 private:
     /* data */
 public:
-    SpaceMagnets(/* args */);
+    /**
+     * @brief Construct a new Space Magnets object
+     * 
+     */
+    SpaceMagnets();
+
+    /**
+     * @brief Destroy the Space Magnets object
+     * 
+     */
     ~SpaceMagnets();
 };
 

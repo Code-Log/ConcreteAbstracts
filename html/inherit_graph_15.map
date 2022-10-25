@@ -1,0 +1,13 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classWarTheatre.html" title=" " alt="" coords="5,183,103,209"/>
+<area shape="rect" id="node2" href="$classBattleGround.html" title=" " alt="" coords="151,107,259,133"/>
+<area shape="rect" id="node7" href="$classTrap.html" title=" " alt="" coords="180,259,229,285"/>
+<area shape="rect" id="node3" href="$classAir.html" title=" " alt="" coords="345,5,385,32"/>
+<area shape="rect" id="node4" href="$classLand.html" title=" " alt="" coords="339,56,392,83"/>
+<area shape="rect" id="node5" href="$classSea.html" title=" " alt="" coords="342,107,389,133"/>
+<area shape="rect" id="node6" href="$classSpace.html" title=" " alt="" coords="335,157,396,184"/>
+<area shape="rect" id="node8" href="$classBarricades.html" title=" " alt="" coords="320,208,411,235"/>
+<area shape="rect" id="node9" href="$classMines.html" title=" " alt="" coords="335,259,396,285"/>
+<area shape="rect" id="node10" href="$classSpaceMagnets.html" title=" " alt="" coords="307,309,424,336"/>
+<area shape="rect" id="node11" href="$classTrenches.html" title=" " alt="" coords="326,360,405,387"/>
+</map>

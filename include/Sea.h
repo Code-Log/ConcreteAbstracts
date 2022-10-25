@@ -1,4 +1,13 @@
-/*{Decorator Design Pattern: ConcreteComponent}*/
+/**
+ * @file Sea.h
+ * @author ConcreteAbstracts 
+ * @brief 
+ * @version 0.1
+ * @date 2022-10-24
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef SEA_H
 #define SEA_H
 
@@ -9,9 +18,31 @@ class Sea : public BattleGround
 private:
     /* data */
 public:
-    Sea(/* args */);
+    /**
+     * @brief Construct a new Sea object
+     * 
+     */
+    Sea();
+
+    /**
+     * @brief Destroy the Sea object
+     * 
+     */
     ~Sea();
+
+    /**
+     * @brief 
+     * 
+     * @param recruitNumber 
+     * @return int 
+     */
     int penalty(int* recruitNumber) override;
+
+    /**
+     * @brief 
+     * 
+     * @return int 
+     */
     int seaSickness();
 };
 

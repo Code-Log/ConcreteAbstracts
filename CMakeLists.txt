@@ -99,7 +99,7 @@ add_executable(simulator
                 src/TankCreator.cpp
                 src/Tanks.cpp
                 src/VesselWeaponCreator.cpp
-        )
+        include/RecruitIterator.h include/Iterator.h src/RecruitIterator.cpp)
 
 file(GLOB CPP_FILES src/*.cpp)
 list(FILTER CPP_FILES EXCLUDE REGEX src/main.cpp)

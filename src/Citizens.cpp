@@ -6,5 +6,5 @@ Citizens::Citizens(/* args */)
 
 void Citizens::procreate()
 {
-    //TODO - Implement Citizens::procreate()
+    /// \todo - Implement Citizens::procreate()
 }

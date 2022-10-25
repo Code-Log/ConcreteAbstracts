@@ -1,0 +1,11 @@
+<map id="WarTheatre::setDamage" name="WarTheatre::setDamage">
+<area shape="rect" id="node1" title="Set the Damage object." alt="" coords="273,183,453,209"/>
+<area shape="rect" id="node2" href="$classAir.html#a16c7be2c26904b5955aab102803a0423" title="Construct a new Air object." alt="" coords="82,5,149,32"/>
+<area shape="rect" id="node3" href="$classBarricades.html#a044cf551d1c1de544b6d12885f2a6c78" title="Create the Barricades object." alt="" coords="31,56,199,83"/>
+<area shape="rect" id="node4" href="$classLand.html#ac7c9222dffa39c06dd961d3043331b90" title="Construct a new Land object." alt="" coords="69,107,161,133"/>
+<area shape="rect" id="node5" href="$classMines.html#a5c81eeb83753ba0f669c3697d5a4f12f" title="Construct a new Mines object." alt="" coords="61,157,169,184"/>
+<area shape="rect" id="node6" href="$classSea.html#ae0d26cc4c0f25b639fb7f3324cef9618" title="Construct a new Sea object." alt="" coords="76,208,155,235"/>
+<area shape="rect" id="node7" href="$classSpace.html#aed2c13f2b9f037080169c584f0580096" title="Construct a new Space object." alt="" coords="61,259,169,285"/>
+<area shape="rect" id="node8" href="$classSpaceMagnets.html#a01c00adbc3123e4e517fcfa72603203a" title="Construct a new Space Magnets object." alt="" coords="5,309,225,336"/>
+<area shape="rect" id="node9" href="$classTrenches.html#aee666d99cbf8d32afd15c797dcc7c5b1" title="Construct a new Trenches object." alt="" coords="43,360,187,387"/>
+</map>

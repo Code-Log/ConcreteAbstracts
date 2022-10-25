@@ -2,17 +2,17 @@
 
 VesselWeaponCreator::VesselWeaponCreator()
 {
-    //TODO: Implement VesselWeaponCreator::VesselWeaponCreator
+    /// \todo: Implement VesselWeaponCreator::VesselWeaponCreator
 }
 
 VesselWeapon* VesselWeaponCreator::produce()
 {
-    //TODO: Implement VesselWeaponCreator::produc
+    /// \todo: Implement VesselWeaponCreator::produc
 	return NULL;
 }
 
 int VesselWeaponCreator::getTotal()
 {
-     //TODO: Implement VesselWeaponCreator::getTotal
+     /// \todo: Implement VesselWeaponCreator::getTotal
 	return 0;
 }

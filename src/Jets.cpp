@@ -2,18 +2,18 @@
 
 int Jets::getDamage()
 {
-    //TODO: Implement Jets::getDamage
+    /// \todo: Implement Jets::getDamage
 	return 0;
 }
 
 int Jets::getDefense()
 {
-    //TODO: Implement Jets::getDefense
+    /// \todo: Implement Jets::getDefense
 	return 0;
 }
 
 std::string Jets::getName()
 {
-    //TODO: Implement Jets::getName
+    /// \todo: Implement Jets::getName
 	return "";
 }

@@ -6,7 +6,7 @@ RecuiterContext::RecuiterContext(/* args */)
 
 void RecuiterContext::request()
 {
-    //TODO - Implement RecuiterContext::request()
+    /// \todo - Implement RecuiterContext::request()
 }
 
 void RecuiterContext::setState(Recruits *state)

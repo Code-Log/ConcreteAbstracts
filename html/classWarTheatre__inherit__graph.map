@@ -1,0 +1,13 @@
+<map id="WarTheatre" name="WarTheatre">
+<area shape="rect" id="node1" title=" " alt="" coords="509,5,643,200"/>
+<area shape="rect" id="node2" href="$classBattleGround.html" title=" " alt="" coords="237,285,381,421"/>
+<area shape="rect" id="node7" href="$classTrap.html" title=" " alt="" coords="777,248,909,457"/>
+<area shape="rect" id="node3" href="$classAir.html" title=" " alt="" coords="5,505,101,627"/>
+<area shape="rect" id="node4" href="$classLand.html" title=" " alt="" coords="125,513,221,619"/>
+<area shape="rect" id="node5" href="$classSea.html" title=" " alt="" coords="246,505,373,627"/>
+<area shape="rect" id="node6" href="$classSpace.html" title=" " alt="" coords="397,505,619,627"/>
+<area shape="rect" id="node8" href="$classBarricades.html" title=" " alt="" coords="643,520,770,612"/>
+<area shape="rect" id="node9" href="$classMines.html" title=" " alt="" coords="794,520,891,612"/>
+<area shape="rect" id="node10" href="$classSpaceMagnets.html" title=" " alt="" coords="915,520,1069,612"/>
+<area shape="rect" id="node11" href="$classTrenches.html" title=" " alt="" coords="1093,520,1208,612"/>
+</map>

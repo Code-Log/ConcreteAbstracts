@@ -2,17 +2,17 @@
 
 SpacecraftCreator::SpacecraftCreator()
 {
-    //TODO: Implement SpacecraftCreator::SpacecraftCreator
+    /// \todo: Implement SpacecraftCreator::SpacecraftCreator
 }
 
 VesselWeapon* SpacecraftCreator::produceVesselWeapon()
 {
-    //TODO: Implement SpacecraftCreator::produceVesselWeapon
+    /// \todo: Implement SpacecraftCreator::produceVesselWeapon
 	return NULL;
 }
 
 int SpacecraftCreator::getTotal()
 {
-    //TODO: Implement SpacecraftCreator::getTotal
+    /// \todo: Implement SpacecraftCreator::getTotal
 	return 0;
 }

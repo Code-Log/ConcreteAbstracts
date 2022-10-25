@@ -24,3 +24,14 @@ create an executable in the `build` directory. You can also run it with `make ru
 ## Testing
 
  1. To run all the tests, open a terminal in the build directory and run `make test`
+
+## Doxygen 
+
+### (DEBIAN BASED)
+#### Pre-requisites
+- sudo apt-get install doxygen
+- sudo apt-get install graphviz -y 
+#### Run Doxygen file
+1. In Root directory run `doxygen`
+2. locate [html/index.html](html/index.html)
+

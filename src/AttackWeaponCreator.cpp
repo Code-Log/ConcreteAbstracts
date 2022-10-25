@@ -2,11 +2,11 @@
 
 AttackWeaponCreator::AttackWeaponCreator()
 {
-    //TODO: Implement  AttackWeaponCreator::AttackWeaponCreator
+    /// \todo: Implement  AttackWeaponCreator::AttackWeaponCreator
 }
 
 AttackWeapon* AttackWeaponCreator::produce()
 {
   	return NULL;
-      //TODO: Implement AttackWeaponCreator::produce
+      /// \todo: Implement AttackWeaponCreator::produce
 }

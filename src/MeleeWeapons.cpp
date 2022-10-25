@@ -2,12 +2,12 @@
 
 int MeleeWeapons::getDamage()
 {
-    //TODO: Implement MeleeWeapons::getDamage
+    /// \todo: Implement MeleeWeapons::getDamage
 	return 0;
 }
 
 std::string MeleeWeapons::getName()
 {
-	//TODO: Implement MeleeWeapons::getName
+	/// \todo: Implement MeleeWeapons::getName
     return "";
 }

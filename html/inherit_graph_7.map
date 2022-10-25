@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classPeople.html" title=" " alt="" coords="5,107,72,133"/>
+<area shape="rect" id="node2" href="$classCitizens.html" title=" " alt="" coords="121,56,195,83"/>
+<area shape="rect" id="node3" href="$classRecruits.html" title=" " alt="" coords="121,107,195,133"/>
+<area shape="rect" id="node9" href="$classRefugee.html" title=" " alt="" coords="120,157,196,184"/>
+<area shape="rect" id="node4" href="$classGuardian.html" title=" " alt="" coords="244,5,325,32"/>
+<area shape="rect" id="node5" href="$classMarine.html" title=" " alt="" coords="251,56,318,83"/>
+<area shape="rect" id="node6" href="$classMedic.html" title=" " alt="" coords="254,107,315,133"/>
+<area shape="rect" id="node7" href="$classPilot.html" title=" " alt="" coords="259,157,310,184"/>
+<area shape="rect" id="node8" href="$classSoldier.html" title=" " alt="" coords="251,208,318,235"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="ArmoryFacade::purchaseWeapon" name="ArmoryFacade::purchaseWeapon">
+<area shape="rect" id="node1" title="Purchase weapons for recruits from Transport." alt="" coords="5,5,240,32"/>
+<area shape="rect" id="node2" href="$classTransportContext.html#a7b056f93965a46cadfccaf1b29f54512" title="Set the Strategy object." alt="" coords="288,5,504,32"/>
+</map>

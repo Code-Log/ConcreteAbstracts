@@ -2,17 +2,17 @@
 
 JetCreator::JetCreator()
 {
-	//TODO: Implement JetCreator::JetCreator
+	/// \todo: Implement JetCreator::JetCreator
 }
 
 VesselWeapon* JetCreator::produceVesselWeapon()
 {
-    //TODO: Implement JetCreator::produceVesselWeapon
+    /// \todo: Implement JetCreator::produceVesselWeapon
 	return NULL;
 }
 
 int JetCreator::getTotal()
 {
-    //TODO: Implement JetCreator::getTotal
+    /// \todo: Implement JetCreator::getTotal
 	return 0;
 }

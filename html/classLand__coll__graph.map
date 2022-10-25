@@ -1,0 +1,7 @@
+<map id="Land" name="Land">
+<area shape="rect" id="node1" title=" " alt="" coords="29,560,125,667"/>
+<area shape="rect" id="node2" href="$classBattleGround.html" title=" " alt="" coords="5,375,149,511"/>
+<area shape="rect" id="node3" href="$classWarTheatre.html" title=" " alt="" coords="11,145,144,325"/>
+<area shape="rect" id="node4" title=" " alt="" coords="11,5,50,83"/>
+<area shape="rect" id="node5" title=" " alt="" coords="95,5,153,83"/>
+</map>
