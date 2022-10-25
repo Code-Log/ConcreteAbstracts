@@ -18,6 +18,20 @@ private:
     int groupSize;
 public:
     /**
+     * @brief To get the current size of a given population
+     *
+     * @return int
+     */
+    int getGroupSize() const;
+
+    /**
+     * @brief to update
+     *
+     * @param groupSize
+     */
+    void setGroupSize(int groupSize);
+
+    /**
      * @brief Construct a new People object
      * 
      */
