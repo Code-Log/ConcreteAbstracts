@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['first_642',['first',['../structUnorderedPair.html#a0ab9d4dc5411482b8dd987a8f271c893',1,'UnorderedPair']]]
+  ['battles_691',['battles',['../classBattleRegistry.html#a32522dd8b9f1c7ddf58f408a72f05631',1,'BattleRegistry']]]
 ];

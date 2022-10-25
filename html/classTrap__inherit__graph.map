@@ -1,8 +1,8 @@
 <map id="Trap" name="Trap">
-<area shape="rect" id="node1" title=" " alt="" coords="213,233,345,413"/>
-<area shape="rect" id="node3" href="$classBarricades.html" title=" " alt="" coords="5,461,132,553"/>
-<area shape="rect" id="node4" href="$classMines.html" title=" " alt="" coords="156,461,253,553"/>
-<area shape="rect" id="node5" href="$classSpaceMagnets.html" title=" " alt="" coords="277,461,431,553"/>
-<area shape="rect" id="node6" href="$classTrenches.html" title=" " alt="" coords="455,461,570,553"/>
-<area shape="rect" id="node2" href="$classWarTheatre.html" title=" " alt="" coords="213,5,346,185"/>
+<area shape="rect" id="node1" title=" " alt="" coords="213,248,345,457"/>
+<area shape="rect" id="node3" href="$classBarricades.html" title=" " alt="" coords="5,505,132,597"/>
+<area shape="rect" id="node4" href="$classMines.html" title=" " alt="" coords="156,505,253,597"/>
+<area shape="rect" id="node5" href="$classSpaceMagnets.html" title=" " alt="" coords="277,505,431,597"/>
+<area shape="rect" id="node6" href="$classTrenches.html" title=" " alt="" coords="455,505,570,597"/>
+<area shape="rect" id="node2" href="$classWarTheatre.html" title=" " alt="" coords="213,5,346,200"/>
 </map>

@@ -64,6 +64,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classVesselWeapon-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">VesselWeapon Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -76,19 +77,11 @@ Inheritance diagram for VesselWeapon:</div>
 <div class="dyncontent">
 <div class="center"><img src="classVesselWeapon__inherit__graph.png" border="0" usemap="#aVesselWeapon_inherit__map" alt="Inheritance graph"/></div>
 <map name="aVesselWeapon_inherit__map" id="aVesselWeapon_inherit__map">
-<area shape="rect" title=" " alt="" coords="225,5,348,112"/>
-<area shape="rect" href="classJets.html" title=" " alt="" coords="5,160,128,267"/>
-<area shape="rect" href="classShips.html" title=" " alt="" coords="152,160,275,267"/>
-<area shape="rect" href="classSpacecraft.html" title=" " alt="" coords="299,160,421,267"/>
-<area shape="rect" href="classTanks.html" title=" " alt="" coords="445,160,568,267"/>
-</map>
-</div>
-<div class="dynheader">
-Collaboration diagram for VesselWeapon:</div>
-<div class="dyncontent">
-<div class="center"><img src="classVesselWeapon__coll__graph.png" border="0" usemap="#aVesselWeapon_coll__map" alt="Collaboration graph"/></div>
-<map name="aVesselWeapon_coll__map" id="aVesselWeapon_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,128,112"/>
+<area shape="rect" title=" " alt="" coords="225,5,348,141"/>
+<area shape="rect" href="classJets.html" title=" " alt="" coords="5,189,128,296"/>
+<area shape="rect" href="classShips.html" title=" " alt="" coords="152,189,275,296"/>
+<area shape="rect" href="classSpacecraft.html" title=" " alt="" coords="299,189,421,296"/>
+<area shape="rect" href="classTanks.html" title=" " alt="" coords="445,189,568,296"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -103,6 +96,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1d2f89eb0fed86df51c6cf4d2b31f2dc"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVesselWeapon.html#a1d2f89eb0fed86df51c6cf4d2b31f2dc">getDefense</a> ()=0</td></tr>
 <tr class="memdesc:a1d2f89eb0fed86df51c6cf4d2b31f2dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Defense object.  <a href="classVesselWeapon.html#a1d2f89eb0fed86df51c6cf4d2b31f2dc">More...</a><br /></td></tr>
 <tr class="separator:a1d2f89eb0fed86df51c6cf4d2b31f2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a7a90800e729241a68220ecc6eda147c8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVesselWeapon.html#a7a90800e729241a68220ecc6eda147c8">name</a></td></tr>
+<tr class="separator:a7a90800e729241a68220ecc6eda147c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9bbd8993c03fa9b16bb429a32e9fcf2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVesselWeapon.html#af9bbd8993c03fa9b16bb429a32e9fcf2">damage</a></td></tr>
+<tr class="separator:af9bbd8993c03fa9b16bb429a32e9fcf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95de69e679581d33dab80219d14db0f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVesselWeapon.html#a95de69e679581d33dab80219d14db0f0">defense</a></td></tr>
+<tr class="separator:a95de69e679581d33dab80219d14db0f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="abf1c64c1d951ceb88925f8c69c716b1f"></a>
@@ -192,6 +194,73 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>std::string </dd></dl>
 
 <p>Implemented in <a class="el" href="classTanks.html#a2fccd88868c1a325925b59f449d99e06">Tanks</a>, <a class="el" href="classSpacecraft.html#a800d4b045946ca3c46a70eabc1a66b92">Spacecraft</a>, <a class="el" href="classShips.html#a2900b5cc36feb604f4f005dbb5d4f799">Ships</a>, and <a class="el" href="classJets.html#aad10df5df234855b937602e1930501e2">Jets</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="af9bbd8993c03fa9b16bb429a32e9fcf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9bbd8993c03fa9b16bb429a32e9fcf2">&#9670;&nbsp;</a></span>damage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int VesselWeapon::damage</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a95de69e679581d33dab80219d14db0f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95de69e679581d33dab80219d14db0f0">&#9670;&nbsp;</a></span>defense</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int VesselWeapon::defense</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7a90800e729241a68220ecc6eda147c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a90800e729241a68220ecc6eda147c8">&#9670;&nbsp;</a></span>name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string VesselWeapon::name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -1,4 +1,4 @@
 <map id="MeleeWeapons" name="MeleeWeapons">
-<area shape="rect" id="node1" title=" " alt="" coords="5,145,128,237"/>
-<area shape="rect" id="node2" href="$classAttackWeapon.html" title=" " alt="" coords="5,5,128,97"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,160,128,252"/>
+<area shape="rect" id="node2" href="$classAttackWeapon.html" title=" " alt="" coords="5,5,128,112"/>
 </map>

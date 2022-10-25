@@ -1,5 +1,7 @@
 <map id="Space" name="Space">
-<area shape="rect" id="node1" title=" " alt="" coords="5,417,228,539"/>
-<area shape="rect" id="node2" href="$classBattleGround.html" title=" " alt="" coords="45,233,189,369"/>
-<area shape="rect" id="node3" href="$classWarTheatre.html" title=" " alt="" coords="50,5,183,185"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,560,228,681"/>
+<area shape="rect" id="node2" href="$classBattleGround.html" title=" " alt="" coords="45,375,189,511"/>
+<area shape="rect" id="node3" href="$classWarTheatre.html" title=" " alt="" coords="50,145,183,325"/>
+<area shape="rect" id="node4" title=" " alt="" coords="51,5,89,83"/>
+<area shape="rect" id="node5" title=" " alt="" coords="134,5,193,83"/>
 </map>

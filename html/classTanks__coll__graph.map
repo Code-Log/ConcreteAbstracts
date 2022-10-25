@@ -1,4 +1,6 @@
 <map id="Tanks" name="Tanks">
-<area shape="rect" id="node1" title=" " alt="" coords="5,160,128,267"/>
-<area shape="rect" id="node2" href="$classVesselWeapon.html" title=" " alt="" coords="5,5,128,112"/>
+<area shape="rect" id="node1" title=" " alt="" coords="10,316,133,423"/>
+<area shape="rect" id="node2" href="$classVesselWeapon.html" title=" " alt="" coords="10,160,133,267"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,5,44,83"/>
+<area shape="rect" id="node4" title=" " alt="" coords="89,5,147,83"/>
 </map>
