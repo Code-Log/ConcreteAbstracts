@@ -2,17 +2,15 @@
 
 NuclearWeaponCreator::NuclearWeaponCreator()
 {
-    /// \todo: Implement NuclearWeaponCreator::NuclearWeaponCreator
+	this.total++;
 }
 
 AttackWeapon* NuclearWeaponCreator::produceAttackWeapon()
 {
-    /// \todo: Implement NuclearWeaponCreator::produceAttackWeapon
-	return NULL;
+	return NuclearWeapons();
 }
 
 int NuclearWeaponCreator::getTotal()
 {
-    /// \todo: Implement NuclearWeaponCreator::getTotal
-	return 0;
+	return this.total;
 }

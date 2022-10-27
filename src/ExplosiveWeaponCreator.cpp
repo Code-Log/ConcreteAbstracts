@@ -2,17 +2,15 @@
 
 ExplosiveWeaponCreator::ExplosiveWeaponCreator()
 {
-	std::cout << "Create Explosive Weapon" << std::endl;
+	this.total++;
 }
 
 AttackWeapon* ExplosiveWeaponCreator::produceAttackWeapon()
 {
-    /// \todo: Implement ExplosiveWeaponCreator::produceAttackWeapon
-	return NULL;
+	return ExplosiveWeapons();
 }
 
 int ExplosiveWeaponCreator::getTotal()
 {
-    /// \todo: Implement ExplosiveWeaponCreator::getTotal
-	return 0;
+	return this.total;
 }

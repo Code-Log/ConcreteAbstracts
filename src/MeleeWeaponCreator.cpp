@@ -2,17 +2,15 @@
 
 MeleeWeaponCreator::MeleeWeaponCreator()
 {
-    /// \todo: Implement MeleeWeaponCreator::MeleeWeaponCreator
+	this.total++;
 }
 
 AttackWeapon* MeleeWeaponCreator::produceAttackWeapon()
 {
-    /// \todo: Implement MeleeWeaponCreator::produceAttackWeapon
-	return NULL;
+	return MeleeWeapons();
 }
 
 int MeleeWeaponCreator::getTotal()
 {
-    /// \todo: Implement MeleeWeaponCreator::getTotal
-	return 0;
+	return this.total;
 }

@@ -12,6 +12,7 @@
 #define RANGEDWEAPONCREATOR_H
 
 #include <AttackWeaponCreator.h>
+#include <RangedWeapons.h>
 
 class RangedWeaponCreator : public AttackWeaponCreator {
 

@@ -12,6 +12,7 @@
 #define EXPLOSIVEWEAPONCREATOR_H
 
 #include <AttackWeaponCreator.h>
+#include <ExplosiveWeapons.h>
 
 class ExplosiveWeaponCreator : public AttackWeaponCreator {
 public:

@@ -2,17 +2,15 @@
 
 RangedWeaponCreator::RangedWeaponCreator()
 {
-    /// \todo: Implement RangedWeaponCreator::RangedWeaponCreator
+	this.total++;
 }
 
 AttackWeapon* RangedWeaponCreator::produceAttackWeapon()
 {
-    /// \todo: Implement RangedWeaponCreator::produceAttackWeapon
-	return NULL;
+	return RangedWeapons();
 }
 
 int RangedWeaponCreator::getTotal()
 {
-    /// \todo: Implement RangedWeaponCreator::getTotal
-	return 0;
+	return this.total;
 }

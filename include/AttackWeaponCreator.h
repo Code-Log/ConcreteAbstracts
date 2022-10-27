@@ -15,7 +15,7 @@
 class AttackWeaponCreator {
 
 private:
-	int total;
+	int total = 0;
 
 public:
 	/**
