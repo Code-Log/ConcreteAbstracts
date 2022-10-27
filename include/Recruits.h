@@ -36,9 +36,20 @@ public:
     /**
      * @brief If armory is not empty, then fire the weapon currently at the start of the vector.
      * @brief Fire weapon and use up weapon's durability.
+     * @brief When a weapon runs out of durability remove it and go the next weapon if a weapon exists.
      * 
      */
-    void fireWeapon();
+    void fireWeapon(Recruits* enemyRecruits);
+
+
+    /**
+     * @brief Add an attack weapon to the armory for the recruits.
+     *
+     * @param attackWeapon
+     * @return true
+     * @return false
+     */
+    void addWeapon(AttackWeapon* attackWeapon);
 
     /**
      * @brief Destroy the Recruits object
