@@ -278,7 +278,7 @@ int testWarTheatre()
     Temp->add(S);
     S=Temp;
 
-   // cout<<"Again, Engine (or responsible class will need to handle the finance). And also make sure traps are added to appropriate threates."<<endl;
+   // cout<<"Again, Engine (or responsible class will need to fireWeapon the finance). And also make sure traps are added to appropriate threates."<<endl;
     //cout<<"Next battle:"<<endl<<endl;;
     //cout<<"Penalties:"<<endl;
 

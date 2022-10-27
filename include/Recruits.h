@@ -34,10 +34,11 @@ public:
     Recruits();
 
     /**
-     * @brief 
+     * @brief If armory is not empty, then fire the weapon currently at the start of the vector.
+     * @brief Fire weapon and use up weapon's durability.
      * 
      */
-    void handle();
+    void fireWeapon();
 
     /**
      * @brief Destroy the Recruits object

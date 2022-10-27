@@ -4,9 +4,12 @@ Recruits::Recruits(/* args */)
     
 }
 
-void Recruits::handle()
+void Recruits::fireWeapon()
 {
-    /// \todo - Implement Recruits::handle()
+    if(armory.empty())
+    {
+        return;
+    }
 }
 
 Recruits::~Recruits()
