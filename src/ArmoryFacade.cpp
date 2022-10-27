@@ -7,7 +7,6 @@ ArmoryFacade::ArmoryFacade(std::string countryName) : countryName(countryName)
     attackVessel = new AttackVessel();
     recruiterContext = new RecuiterContext;
     transportContext = new TransportContext(weaponTransport);
-
 }
 
 bool ArmoryFacade::purchaseWeapon(Recruits *recruits)
