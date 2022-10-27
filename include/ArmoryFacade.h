@@ -22,9 +22,11 @@ class ArmoryFacade
 public:
     /**
      * @brief Construct a new Armory Facade object
-     * 
+     *
+     * @param countryName
+     *
      */
-    ArmoryFacade();
+    ArmoryFacade(std::string countryName);
 
     /**
      * @brief Destroy the Armory Facade object
@@ -61,7 +63,7 @@ public:
 private:
     TransportContext* transportContext;
     RecuiterContext* recruiterContext;
-
+    std::string countryName;
     AttackVessel* attackVessel;
     SuppliesTransport* suppliesTransport;
     WeaponTransport* weaponTransport;
