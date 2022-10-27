@@ -2,12 +2,10 @@
 
 int RangedWeapons::getDamage()
 {
-    /// \todo: Implement RangedWeapons::getDamage
-	return 0;
+	return this.damage;
 }
 
 std::string RangedWeapons::getName()
 {
-    /// \todo: Implement RangedWeapons::getName
-	return "";
+	return "Ranged Weapon(s)";
 }

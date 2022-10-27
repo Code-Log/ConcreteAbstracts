@@ -2,12 +2,10 @@
 
 int NuclearWeapons::getDamage()
 {
-    /// \todo: Implement NuclearWeapons::getDamage
-	return 0;
+	return this.damage;
 }
 
 std::string NuclearWeapons::getName()
 {
-    /// \todo: Implement NuclearWeapons::getName
-	return "";
+	return "Nuclear Weapon(s)";
 }
