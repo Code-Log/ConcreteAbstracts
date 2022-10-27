@@ -43,7 +43,7 @@ public:
 	 * 
 	 * @return void 
 	 */
-	void setDurability() override;
+	void setDurability(int durability) override;
 };
 
 #endif

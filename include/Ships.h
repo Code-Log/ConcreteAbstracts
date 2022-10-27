@@ -37,6 +37,20 @@ public:
 	 * @return std::string 
 	 */
 	std::string getName();
+
+	/**
+	 * @brief Get the Durability object
+	 * 
+	 * @return int 
+	 */
+	int getDurability() override;
+
+	/**
+	 * @brief Set the Durability object
+	 * 
+	 * @return void 
+	 */
+	void setDurability(int durability) override;
 };
 
 #endif
