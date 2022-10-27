@@ -1,9 +1,0 @@
-<map id="Recruits" name="Recruits">
-<area shape="rect" id="node1" title=" " alt="" coords="227,175,365,340"/>
-<area shape="rect" id="node3" href="$classGuardian.html" title=" " alt="" coords="5,388,112,465"/>
-<area shape="rect" id="node4" href="$classMarine.html" title=" " alt="" coords="137,388,229,465"/>
-<area shape="rect" id="node5" href="$classMedic.html" title=" " alt="" coords="253,388,339,465"/>
-<area shape="rect" id="node6" href="$classPilot.html" title=" " alt="" coords="363,388,439,465"/>
-<area shape="rect" id="node7" href="$classSoldier.html" title=" " alt="" coords="463,388,555,465"/>
-<area shape="rect" id="node2" href="$classPeople.html" title=" " alt="" coords="229,5,363,127"/>
-</map>

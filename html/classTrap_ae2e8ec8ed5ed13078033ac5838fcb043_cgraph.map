@@ -1,7 +1,0 @@
-<map id="Trap::damageTotal" name="Trap::damageTotal">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,147,83"/>
-<area shape="rect" id="node2" href="$classTrap.html#a3d9b2e136bb47a6a028feb21c7f75be5" title=" " alt="" coords="218,5,361,32"/>
-<area shape="rect" id="node4" href="$classWarTheatre.html#aea8f3fdd43050a1d97f11c227970a609" title=" " alt="" coords="195,56,384,83"/>
-<area shape="rect" id="node5" href="$classWarTheatre.html#aa15f5e24976fbe0fce0130e6c6f6166f" title="Get the Damage object." alt="" coords="199,107,380,133"/>
-<area shape="rect" id="node3" href="$classTrap.html#a7d67e4000f09850926708495f7680e46" title="Set the Active object." alt="" coords="432,5,551,32"/>
-</map>

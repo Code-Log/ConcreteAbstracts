@@ -1,7 +1,0 @@
-<map id="AttackWeaponCreator" name="AttackWeaponCreator">
-<area shape="rect" id="node1" title=" " alt="" coords="350,5,543,127"/>
-<area shape="rect" id="node2" href="$classExplosiveWeaponCreator.html" title=" " alt="" coords="5,175,216,281"/>
-<area shape="rect" id="node3" href="$classMeleeWeaponCreator.html" title=" " alt="" coords="241,175,434,281"/>
-<area shape="rect" id="node4" href="$classNuclearWeaponCreator.html" title=" " alt="" coords="459,175,656,281"/>
-<area shape="rect" id="node5" href="$classRangedWeaponCreator.html" title=" " alt="" coords="681,175,877,281"/>
-</map>

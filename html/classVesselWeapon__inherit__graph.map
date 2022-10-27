@@ -1,7 +1,0 @@
-<map id="VesselWeapon" name="VesselWeapon">
-<area shape="rect" id="node1" title=" " alt="" coords="225,5,348,141"/>
-<area shape="rect" id="node2" href="$classJets.html" title=" " alt="" coords="5,189,128,296"/>
-<area shape="rect" id="node3" href="$classShips.html" title=" " alt="" coords="152,189,275,296"/>
-<area shape="rect" id="node4" href="$classSpacecraft.html" title=" " alt="" coords="299,189,421,296"/>
-<area shape="rect" id="node5" href="$classTanks.html" title=" " alt="" coords="445,189,568,296"/>
-</map>
