@@ -12,6 +12,5 @@ int Ships::getDefense()
 
 std::string Ships::getName()
 {
-    /// \todo: Implement Ships::getName
 	return "Ship(s)";
 }

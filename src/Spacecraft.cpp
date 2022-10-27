@@ -12,6 +12,5 @@ int Spacecraft::getDefense()
 
 std::string Spacecraft::getName()
 {
-    /// \todo: Implement Spacecraft::getName
 	return "Spacecraft(s)";
 }

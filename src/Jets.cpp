@@ -12,6 +12,5 @@ int Jets::getDefense()
 
 std::string Jets::getName()
 {
-    /// \todo: Implement Jets::getName
 	return "Jet(s)";
 }
