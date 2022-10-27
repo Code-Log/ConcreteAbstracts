@@ -18,7 +18,8 @@ class AttackWeapon {
 
 private:
 	std::string name;
-	int damage;
+	int damage = 100;
+	int durability = 100;
 
 public:
 	/**
@@ -34,6 +35,20 @@ public:
 	 * @return std::string 
 	 */
 	virtual std::string getName() = 0;
+
+	/**
+	 * @brief Get the Durability object
+	 * 
+	 * @return int 
+	 */
+	virtual int getDurability() = 0;
+
+	/**
+	 * @brief Set the Durability object
+	 * 
+	 * @return void 
+	 */
+	virtual void setDurability(int durability) = 0;
 };
 
 #endif
