@@ -20,7 +20,7 @@
 
 class Recruits: public People{
 private:
-    bool isEnlisted;
+    bool isEnlisted; //removed as no longer working with individiuals?
     std::string militaryType;
     int weaponDamage;
     std::vector<AttackWeapon*> armory;
@@ -44,6 +44,21 @@ public:
      * 
      */
     virtual ~Recruits();
+
+    /**
+     * @brief Returns militaryType
+     * @return string
+     * 
+     */
+    std::string getMilitaryType();
+
+     /**
+     * @brief sets militaryType
+     * 
+     */
+    void setMilitaryType(std::string type);
+
+    
 };
 
 

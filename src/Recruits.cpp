@@ -13,3 +13,13 @@ Recruits::~Recruits()
 {
     
 }
+
+std::string Recruits::getMilitaryType()
+{
+    return militaryType;
+}
+
+void Recruits::setMilitaryType(std::string type)
+{
+    this->militaryType = type;
+}
