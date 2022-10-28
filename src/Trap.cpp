@@ -67,7 +67,7 @@ void Trap::alterLifespan(int decrease)
     }
 }
 
-int Trap::penalty(int* recruitNumber)
+int Trap::penalty(Recruits* recruits)
 {
     if(trap == nullptr)
     {
@@ -75,6 +75,6 @@ int Trap::penalty(int* recruitNumber)
     }
     else
     {
-        return (0 + trap->penalty(recruitNumber));
+        return (0 + trap->penalty(recruits));
     }
 }

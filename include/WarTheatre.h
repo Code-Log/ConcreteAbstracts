@@ -12,6 +12,7 @@
 #define WARTHEATRES_H
 
 #include <string>
+#include "Recruits.h"
 
 class WarTheatre
 {
@@ -48,7 +49,7 @@ public:
     virtual void add(WarTheatre* trap)=0;
 
     /**
-     * @brief Get the Damage object
+     * @brief Get the Damage using a random value between o and the damage member of the trap
      * 
      * @return int 
      */
@@ -69,12 +70,12 @@ public:
     virtual int damageTotal()=0;
 
     /**
-     * @brief 
+     * @brief The casualties gained from environmental extremities (function could evolve to have other factors)
      * 
-     * @param recruitNumber 
-     * @return int 
+     * @param recruits
+     * @return int
      */
-    virtual int penalty(int* recruitNumber) = 0;
+    virtual int penalty(Recruits* recruits) = 0;
 };
 
 #endif

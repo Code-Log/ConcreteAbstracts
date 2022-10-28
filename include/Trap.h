@@ -56,7 +56,7 @@ public:
     void setActive(bool activation);
 
     /**
-     * @brief 
+     * @brief Returns the combined damage of the traps added to the wartheatre
      * 
      * @return int 
      */
@@ -72,10 +72,10 @@ public:
     /**
      * @brief 
      * 
-     * @param recruitNumber 
+     * @param recruits 
      * @return int 
      */
-    int penalty(int* recruitNumber) override;
+    int penalty(Recruits* recruits) override;
 };
 
 
