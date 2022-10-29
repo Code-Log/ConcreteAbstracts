@@ -22,13 +22,13 @@
 class ArmoryFacade
 {
 public:
-    // /**
-    //  * @brief Construct a new Armory Facade object
-    //  *
-    //  * @param countryName
-    //  *
-    //  */
-    ArmoryFacade(Country* country);
+    /**
+     * @brief Construct a new Armory Facade object
+     *
+     * @param countryName
+     *
+     */
+    ArmoryFacade();
 
     /**
      * @brief Destroy the Armory Facade object
@@ -65,7 +65,6 @@ public:
 private:
     TransportContext* transportContext;
     RecuiterContext* recruiterContext;
-    Country* country;
     AttackVessel* attackVessel;
     SuppliesTransport* suppliesTransport;
     WeaponTransport* weaponTransport;
