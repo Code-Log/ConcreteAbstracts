@@ -16,6 +16,7 @@
 #include <WeaponTransport.h>
 #include <SuppliesTransport.h>
 #include <AttackVessel.h>
+#include <Country.h>
 
 class ArmoryFacade
 {
@@ -26,7 +27,7 @@ public:
      * @param countryName
      *
      */
-    ArmoryFacade(std::string countryName);
+    ArmoryFacade();
 
     /**
      * @brief Destroy the Armory Facade object
@@ -63,7 +64,6 @@ public:
 private:
     TransportContext* transportContext;
     RecuiterContext* recruiterContext;
-    std::string countryName;
     AttackVessel* attackVessel;
     SuppliesTransport* suppliesTransport;
     WeaponTransport* weaponTransport;

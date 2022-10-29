@@ -1,6 +1,6 @@
 #include <ArmoryFacade.h>
 
-ArmoryFacade::ArmoryFacade(std::string countryName) : countryName(countryName)
+ArmoryFacade::ArmoryFacade()
 {
     weaponTransport = new WeaponTransport();
     suppliesTransport = new SuppliesTransport();
