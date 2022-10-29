@@ -16,7 +16,7 @@
 
 class AttackWeapon {
 
-private:
+protected:
 	std::string name;
 	int damage = 100;
 	int durability = 100;
@@ -54,7 +54,7 @@ public:
      * @brief Destroy the AttackWeapon object
      * 
      */
-	virtual ~AttackWeapon();
+	virtual ~AttackWeapon() = default;
 };
 
 #endif

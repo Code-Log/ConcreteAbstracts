@@ -14,7 +14,7 @@
 
 class AttackWeaponCreator {
 
-private:
+protected:
 	int total = 0;
 
 public:
@@ -46,6 +46,8 @@ public:
 	 * @return int 
 	 */
 	virtual int getTotal() = 0;
+
+	virtual ~AttackWeaponCreator() = default;
 };
 
 #endif
