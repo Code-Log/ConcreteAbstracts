@@ -2,7 +2,7 @@
 
 MeleeWeaponCreator::MeleeWeaponCreator()
 {
-	this.total++;
+	this->total++;
 }
 
 AttackWeapon* MeleeWeaponCreator::produceAttackWeapon()
@@ -12,5 +12,5 @@ AttackWeapon* MeleeWeaponCreator::produceAttackWeapon()
 
 int MeleeWeaponCreator::getTotal()
 {
-	return this.total;
+	return this->total;
 }

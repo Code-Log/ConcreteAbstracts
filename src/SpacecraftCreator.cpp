@@ -7,12 +7,10 @@ SpacecraftCreator::SpacecraftCreator()
 
 VesselWeapon* SpacecraftCreator::produceVesselWeapon()
 {
-    /// \todo: Implement SpacecraftCreator::produceVesselWeapon
-	return NULL;
+	return Spacecraft();
 }
 
 int SpacecraftCreator::getTotal()
 {
-    /// \todo: Implement SpacecraftCreator::getTotal
-	return 0;
+    return this->total;
 }

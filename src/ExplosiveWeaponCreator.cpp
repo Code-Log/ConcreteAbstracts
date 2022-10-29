@@ -2,7 +2,7 @@
 
 ExplosiveWeaponCreator::ExplosiveWeaponCreator()
 {
-	this.total++;
+	this->total++;
 }
 
 AttackWeapon* ExplosiveWeaponCreator::produceAttackWeapon()
@@ -12,5 +12,5 @@ AttackWeapon* ExplosiveWeaponCreator::produceAttackWeapon()
 
 int ExplosiveWeaponCreator::getTotal()
 {
-	return this.total;
+	return this->total;
 }

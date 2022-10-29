@@ -7,12 +7,10 @@ JetCreator::JetCreator()
 
 VesselWeapon* JetCreator::produceVesselWeapon()
 {
-    /// \todo: Implement JetCreator::produceVesselWeapon
-	return NULL;
+	return Jets();
 }
 
 int JetCreator::getTotal()
 {
-    /// \todo: Implement JetCreator::getTotal
-	return 0;
+	return this->total;
 }

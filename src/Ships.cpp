@@ -2,12 +2,12 @@
 
 int Ships::getDamage()
 {
-	return this.damage;
+	return this->damage;
 }
 
 int Ships::getDefense()
 {
-	return this.defense;
+	return this->defense;
 }
 
 std::string Ships::getName()
