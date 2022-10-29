@@ -51,6 +51,12 @@ public:
 	 * @return void 
 	 */
 	void setDurability(int durability) override;
+
+	/**
+     * @brief Destroy the Spacecraft object
+     * 
+     */
+	virtual ~Spacecraft();
 };
 
 #endif

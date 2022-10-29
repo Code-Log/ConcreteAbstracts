@@ -49,6 +49,12 @@ public:
 	 * @return void 
 	 */
 	virtual void setDurability(int durability) = 0;
+
+	/**
+     * @brief Destroy the AttackWeapon object
+     * 
+     */
+	virtual ~AttackWeapon();
 };
 
 #endif

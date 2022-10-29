@@ -44,6 +44,12 @@ public:
 	 * @return void 
 	 */
 	void setDurability(int durability) override;
+	
+    /**
+     * @brief Destroy the NuclearWeapons object
+     * 
+     */
+	virtual ~NuclearWeapons();
 };
 
 #endif
