@@ -12,6 +12,7 @@
 #define TANKCREATOR_H
 
 #include <VesselWeaponCreator.h>
+#include <Tanks.h>
 
 class TankCreator : public VesselWeaponCreator {
 
@@ -36,6 +37,8 @@ public:
 	 * @return int 
 	 */
 	int getTotal();
+
+	virtual ~TankCreator() = default;
 };
 
 #endif

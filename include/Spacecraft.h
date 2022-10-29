@@ -12,6 +12,7 @@
 #define SPACECRAFT_H
 
 #include <VesselWeapon.h>
+#include <Spacecraft.h>
 
 class Spacecraft : public VesselWeapon {
 
@@ -56,7 +57,7 @@ public:
      * @brief Destroy the Spacecraft object
      * 
      */
-	virtual ~Spacecraft();
+	virtual ~Spacecraft() = default;
 };
 
 #endif
