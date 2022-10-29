@@ -15,7 +15,7 @@
 
 class VesselWeaponCreator {
 
-private:
+protected:
 	int total;
 
 public:
@@ -47,6 +47,8 @@ public:
 	 * @return int 
 	 */
 	int getTotal();
+
+	virtual ~VesselWeaponCreator() = default;
 };
 
 #endif

@@ -16,7 +16,7 @@
 
 class VesselWeapon {
 
-private:
+protected:
 	std::string name;
 	int damage = 500;
 	int defense = 100;
@@ -62,7 +62,7 @@ public:
      * @brief Destroy the VesselWeapon object
      * 
      */
-	virtual ~VesselWeapon();
+	virtual ~VesselWeapon() = default;
 };
 
 #endif
