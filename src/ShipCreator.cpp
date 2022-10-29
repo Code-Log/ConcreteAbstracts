@@ -7,7 +7,7 @@ ShipCreator::ShipCreator()
 
 VesselWeapon* ShipCreator::produceVesselWeapon()
 {
-	return Ships();
+	return new Ships();
 }
 
 int ShipCreator::getTotal()

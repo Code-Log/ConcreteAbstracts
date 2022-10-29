@@ -2,15 +2,15 @@
 
 NuclearWeaponCreator::NuclearWeaponCreator()
 {
-	this.total++;
+	this->total++;
 }
 
 AttackWeapon* NuclearWeaponCreator::produceAttackWeapon()
 {
-	return NuclearWeapons();
+	return new NuclearWeapons();
 }
 
 int NuclearWeaponCreator::getTotal()
 {
-	return this.total;
+	return this->total;
 }

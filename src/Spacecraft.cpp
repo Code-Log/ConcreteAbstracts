@@ -2,12 +2,12 @@
 
 int Spacecraft::getDamage()
 {
-	return this.damage;
+	return this->damage;
 }
 
 int Spacecraft::getDefense()
 {
-	return this.defense;
+	return this->defense;
 }
 
 std::string Spacecraft::getName()

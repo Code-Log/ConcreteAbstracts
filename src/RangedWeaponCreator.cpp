@@ -7,7 +7,7 @@ RangedWeaponCreator::RangedWeaponCreator()
 
 AttackWeapon* RangedWeaponCreator::produceAttackWeapon()
 {
-	return RangedWeapons();
+	return new RangedWeapons();
 }
 
 int RangedWeaponCreator::getTotal()

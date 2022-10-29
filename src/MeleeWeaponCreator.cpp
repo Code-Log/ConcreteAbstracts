@@ -7,7 +7,7 @@ MeleeWeaponCreator::MeleeWeaponCreator()
 
 AttackWeapon* MeleeWeaponCreator::produceAttackWeapon()
 {
-	return MeleeWeapons();
+	return new MeleeWeapons();
 }
 
 int MeleeWeaponCreator::getTotal()

@@ -7,7 +7,7 @@ TankCreator::TankCreator()
 
 VesselWeapon* TankCreator::produceVesselWeapon()
 {
-	return Tanks();
+	return new Tanks();
 }
 
 int TankCreator::getTotal()

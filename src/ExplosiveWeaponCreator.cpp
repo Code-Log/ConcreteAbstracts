@@ -7,7 +7,7 @@ ExplosiveWeaponCreator::ExplosiveWeaponCreator()
 
 AttackWeapon* ExplosiveWeaponCreator::produceAttackWeapon()
 {
-	return ExplosiveWeapons();
+	return new ExplosiveWeapons();
 }
 
 int ExplosiveWeaponCreator::getTotal()

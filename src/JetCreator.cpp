@@ -7,7 +7,7 @@ JetCreator::JetCreator()
 
 VesselWeapon* JetCreator::produceVesselWeapon()
 {
-	return Jets();
+	return new Jets();
 }
 
 int JetCreator::getTotal()
