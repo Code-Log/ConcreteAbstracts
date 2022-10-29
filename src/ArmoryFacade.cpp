@@ -12,6 +12,7 @@ ArmoryFacade::ArmoryFacade(Country* country) : country(country)
 bool ArmoryFacade::purchaseWeapon(Recruits *recruits)
 {
     transportContext->setStrategy(weaponTransport);
+    transportContext->purchase(recruits);
 
     /// \todo: Implement ArmoryFacade::purchaseWeapon
     return true;

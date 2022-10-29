@@ -17,16 +17,17 @@
 #include <SuppliesTransport.h>
 #include <AttackVessel.h>
 #include <Country.h>
+#include <Recruits.h>
 
 class ArmoryFacade
 {
 public:
-    /**
-     * @brief Construct a new Armory Facade object
-     *
-     * @param countryName
-     *
-     */
+    // /**
+    //  * @brief Construct a new Armory Facade object
+    //  *
+    //  * @param countryName
+    //  *
+    //  */
     ArmoryFacade(Country* country);
 
     /**
