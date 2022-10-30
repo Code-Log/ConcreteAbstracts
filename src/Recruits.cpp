@@ -33,6 +33,10 @@ void Recruits::addWeapon(AttackWeapon *attackWeapon)
     armory.push_back(attackWeapon);
 }
 
+Country* Recruits::getCountry(){
+    return country;
+}
+
 Recruits::~Recruits()
 {
     for (AttackWeapon* weapon : armory)
@@ -40,5 +44,8 @@ Recruits::~Recruits()
         delete weapon;
     }
     armory.clear();
+    delete country;
 
 }
+
+

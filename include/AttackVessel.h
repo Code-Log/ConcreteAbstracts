@@ -12,22 +12,29 @@
 #define CONCRETEABSTRACTS_ATTACKVESSEL_H
 
 #include <Transport.h>
+#include <VesselWeaponCreator.h>
+#include <TankCreator.h>
+#include <ShipCreator.h>
+#include <JetCreator.h>
+#include <SpacecraftCreator.h>
 
 class AttackVessel : public Transport
 {
+private: 
+    VesselWeaponCreator* factory[4];
 public:
     /**
      * @brief Construct a new Attack Vessel object
      * 
      */
-    AttackVessel() = default;
+    AttackVessel();
 
     /**
      * @brief 
      * 
      * @param recruits 
      */
-    void purchase(Recruits* recruits) override;
+    void puqrchase(Recruits* recruits) override;
 };
 
 #endif //CONCRETEABSTRACTS_ATTACKVESSEL_H
