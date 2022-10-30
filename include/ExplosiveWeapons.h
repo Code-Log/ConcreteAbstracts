@@ -47,7 +47,7 @@ public:
      * @brief Destroy the ExplosiveWeapons object
      * 
      */
-	virtual ~ExplosiveWeapons();
+	~ExplosiveWeapons() override = default;
 };
 
 #endif

@@ -12,6 +12,8 @@
 #define SHIPCREATOR_H
 
 #include <VesselWeaponCreator.h>
+#include <Ships.h>
+
 
 class ShipCreator : public VesselWeaponCreator {
 

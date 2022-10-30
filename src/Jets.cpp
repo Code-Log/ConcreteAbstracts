@@ -14,3 +14,8 @@ std::string Jets::getName()
 {
 	return "Jet(s)";
 }
+
+int getDurability()
+{
+    return
+}
