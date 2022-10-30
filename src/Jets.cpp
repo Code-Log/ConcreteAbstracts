@@ -2,15 +2,20 @@
 
 int Jets::getDamage()
 {
-	return this.damage;
+	return this->damage;
 }
 
 int Jets::getDefense()
 {
-	return this.defense;
+	return this->defense;
 }
 
 std::string Jets::getName()
 {
 	return "Jet(s)";
+}
+
+int getDurability()
+{
+    return
 }

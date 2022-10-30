@@ -2,7 +2,7 @@
 
 int RangedWeapons::getDamage()
 {
-	return this.damage;
+	return this->damage;
 }
 
 std::string RangedWeapons::getName()

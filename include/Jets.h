@@ -22,21 +22,21 @@ public:
 	 * 
 	 * @return int 
 	 */
-	int getDamage();
+	int getDamage() override;
 
 	/**
 	 * @brief Get the Defense object
 	 * 
 	 * @return int 
 	 */
-	int getDefense();
+	int getDefense() override;
 
 	/**
 	 * @brief Get the Name object
 	 * 
 	 * @return std::string 
 	 */
-	std::string getName();
+	std::string getName() override;
 
 	/**
 	 * @brief Get the Durability object
@@ -51,6 +51,12 @@ public:
 	 * @return void 
 	 */
 	void setDurability(int durability) override;
+	
+	/**
+     * @brief Destroy the Jets object
+     * 
+     */
+	virtual ~Jets();
 };
 
 #endif

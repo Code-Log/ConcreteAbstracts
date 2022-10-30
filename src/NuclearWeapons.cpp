@@ -2,7 +2,7 @@
 
 int NuclearWeapons::getDamage()
 {
-	return this.damage;
+	return this->damage;
 }
 
 std::string NuclearWeapons::getName()

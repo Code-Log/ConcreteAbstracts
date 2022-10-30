@@ -12,6 +12,7 @@
 #define SPACECRAFT_H
 
 #include <VesselWeapon.h>
+#include <Spacecraft.h>
 
 class Spacecraft : public VesselWeapon {
 
@@ -51,6 +52,12 @@ public:
 	 * @return void 
 	 */
 	void setDurability(int durability) override;
+
+	/**
+     * @brief Destroy the Spacecraft object
+     * 
+     */
+	virtual ~Spacecraft() = default;
 };
 
 #endif

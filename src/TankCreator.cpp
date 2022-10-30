@@ -7,12 +7,10 @@ TankCreator::TankCreator()
 
 VesselWeapon* TankCreator::produceVesselWeapon()
 {
-    /// \todo: Implement TankCreator::produceVesselWeapon
-	return NULL;
+	return new Tanks();
 }
 
 int TankCreator::getTotal()
 {
-    /// \todo: Implement TankCreator::getTotal
-	return 0;
+	return this->total;
 }

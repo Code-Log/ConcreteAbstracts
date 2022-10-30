@@ -42,6 +42,12 @@ public:
 	 * @return void 
 	 */
 	void setDurability(int durability) override;
+
+	/**
+     * @brief Destroy the ExplosiveWeapons object
+     * 
+     */
+	~ExplosiveWeapons() override = default;
 };
 
 #endif

@@ -16,7 +16,7 @@
 
 class AttackWeapon {
 
-private:
+protected:
 	std::string name;
 	int damage = 100;
 	int durability = 100;
@@ -49,6 +49,12 @@ public:
 	 * @return void 
 	 */
 	virtual void setDurability(int durability) = 0;
+
+	/**
+     * @brief Destroy the AttackWeapon object
+     * 
+     */
+	virtual ~AttackWeapon() = default;
 };
 
 #endif

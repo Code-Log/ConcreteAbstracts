@@ -2,15 +2,15 @@
 
 RangedWeaponCreator::RangedWeaponCreator()
 {
-	this.total++;
+	this->total++;
 }
 
 AttackWeapon* RangedWeaponCreator::produceAttackWeapon()
 {
-	return RangedWeapons();
+	return new RangedWeapons();
 }
 
 int RangedWeaponCreator::getTotal()
 {
-	return this.total;
+	return this->total;
 }

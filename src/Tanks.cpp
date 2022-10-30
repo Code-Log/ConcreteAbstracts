@@ -2,12 +2,12 @@
 
 int Tanks::getDamage()
 {
-	return this.damage;
+	return this->damage;
 }
 
 int Tanks::getDefense()
 {
-	return this.defense;
+	return this->defense;
 }
 
 std::string Tanks::getName()

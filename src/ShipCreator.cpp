@@ -7,12 +7,10 @@ ShipCreator::ShipCreator()
 
 VesselWeapon* ShipCreator::produceVesselWeapon()
 {
-    /// \todo: Implement ShipCreator::produceVesselWeapon
-	return NULL;
+	return new Ships();
 }
 
 int ShipCreator::getTotal()
 {
-    /// \todo: Implement ShipCreator::getTotal
-	return 0;
+	return this->total;
 }
