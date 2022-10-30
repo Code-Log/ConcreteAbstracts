@@ -7,12 +7,5 @@ VesselWeaponCreator::VesselWeaponCreator()
 
 VesselWeapon* VesselWeaponCreator::produce()
 {
-    /// \todo: Implement VesselWeaponCreator::produc
-	return NULL;
-}
-
-int VesselWeaponCreator::getTotal()
-{
-     /// \todo: Implement VesselWeaponCreator::getTotal
-	return 0;
+	return produceVesselWeapon();
 }

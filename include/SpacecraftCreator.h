@@ -12,6 +12,7 @@
 #define SPACECRAFTCREATOR_H
 
 #include <VesselWeaponCreator.h>
+#include <Spacecraft.h>
 
 class SpacecraftCreator : public VesselWeaponCreator {
 
@@ -30,12 +31,7 @@ public:
 	 */
 	VesselWeapon* produceVesselWeapon();
 
-	/**
-	 * @brief Get the Total object
-	 * 
-	 * @return int 
-	 */
-	int getTotal();
+	virtual ~SpacecraftCreator() = default;
 };
 
 #endif

@@ -2,18 +2,23 @@
 
 int Spacecraft::getDamage()
 {
-    /// \todo: Implement Spacecraft::getDamage
-	return 0;
+	return this->damage;
 }
 
 int Spacecraft::getDefense()
 {
-    /// \todo: Implement Spacecraft::getDefense
-	return 0;
+	return this->defense;
 }
 
 std::string Spacecraft::getName()
 {
-    /// \todo: Implement Spacecraft::getName
-	return "";
+	return "Spacecraft(s)";
+}
+
+int Spacecraft::getDurability() {
+    return this->durability;
+}
+
+void Spacecraft::setDurability(int durability) {
+    this->durability = durability;
 }

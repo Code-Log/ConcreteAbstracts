@@ -12,6 +12,7 @@
 #define MELEEWEAPONCREATOR_H
 
 #include <AttackWeaponCreator.h>
+#include <MeleeWeapons.h>
 
 class MeleeWeaponCreator : public AttackWeaponCreator {
 

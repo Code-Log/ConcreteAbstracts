@@ -2,18 +2,23 @@
 
 int Tanks::getDamage()
 {
-    /// \todo: Implement Tanks::getDamage
-	return 0;
+	return this->damage;
 }
 
 int Tanks::getDefense()
 {
-    /// \todo: Implement Tanks::getDefense
-	return 0;
+	return this->defense;
 }
 
 std::string Tanks::getName()
 {
-    /// \todo: Implement Tanks::getName
-	return "";
+	return "Tank(s)";
+}
+
+int Tanks::getDurability() {
+    return this->durability;
+}
+
+void Tanks::setDurability(int durability) {
+    this->durability = durability;
 }

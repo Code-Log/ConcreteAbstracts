@@ -16,10 +16,11 @@
 
 class VesselWeapon {
 
-private:
+protected:
 	std::string name;
-	int damage;
-	int defense;
+	int damage = 500;
+	int defense = 100;
+	int durability = 50;
 
 public:
 	/**
@@ -42,6 +43,26 @@ public:
 	 * @return int 
 	 */
 	virtual int getDefense() = 0;
+
+	/**
+	 * @brief Get the Durability object
+	 * 
+	 * @return int 
+	 */
+	virtual int getDurability() = 0;
+
+	/**
+	 * @brief Set the Durability object
+	 * 
+	 * @return void 
+	 */
+	virtual void setDurability(int durability) = 0;
+	
+	/**
+     * @brief Destroy the VesselWeapon object
+     * 
+     */
+	virtual ~VesselWeapon() = default;
 };
 
 #endif

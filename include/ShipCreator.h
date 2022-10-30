@@ -12,6 +12,8 @@
 #define SHIPCREATOR_H
 
 #include <VesselWeaponCreator.h>
+#include <Ships.h>
+
 
 class ShipCreator : public VesselWeaponCreator {
 
@@ -30,12 +32,7 @@ public:
 	 */
 	VesselWeapon* produceVesselWeapon();
 
-	/**
-	 * @brief Get the Total object
-	 * 
-	 * @return int 
-	 */
-	int getTotal();
+	~ShipCreator() = default;
 };
 
 #endif

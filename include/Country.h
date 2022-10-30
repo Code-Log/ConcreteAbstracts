@@ -28,6 +28,8 @@
 #include <Refugee.h>
 #include <ArmoryFacade.h>
 
+class Recruits;
+
 enum EconomicClass
 {
     FIRST_WORLD = 1,
@@ -61,15 +63,15 @@ public:
 
       /**
      * @brief Get the NotEnlisted object
-     * 
+     *
      * @return int
      */
     int getNotEnlisted() const;
 
        /**
      * @brief Get the Population object
-     * 
-     * @return int 
+     *
+     * @return int
      */
     int getPopulation() const;
 
@@ -102,53 +104,53 @@ public:
     void setEconomy(int economy);
      /**
      * @brief Recruits Soldiers
-     * 
-     * @param squadSize 
+     *
+     * @param squadSize
      */
     void recruitSoldiers(int squadSize);
      /**
      * @brief Recruits Guardians
-     * 
-     * @param squadSize 
+     *
+     * @param squadSize
      */
     void recruitGuardians(int squadSize);
      /**
      * @brief Recruits Medics
-     * 
-     * @param squadSize 
+     *
+     * @param squadSize
      */
     void recruitMedics(int squadSize);
      /**
      * @brief Recruits Marines
-     * 
-     * @param squadSize 
+     *
+     * @param squadSize
      */
     void recruitMarines(int squadSize);
      /**
      * @brief Recruits Pilots
      * s
-     * @param squadSize 
+     * @param squadSize
      */
     void recruitPilots(int squadSize);
 
     /**
-     * @brief Updates the population size by counting the survivers. 
-     * 
+     * @brief Updates the population size by counting the survivers.
+     *
      */
     void updatePopulationSize();
 
      /**
-     * @brief Updates the power of a country 
-     * 
+     * @brief Updates the power of a country
+     *
      */
     void updatePower();
 
      /**
-     * @brief Adds warTheatre. If the warTheatre type already exists does nothing. ?Only add if relevent recruits exist? 
+     * @brief Adds warTheatre. If the warTheatre type already exists does nothing. ?Only add if relevent recruits exist?
      * @param location
      */
     void addWarFront(std::string location);
-    
+
 
     /**
      * @brief Destroy the Country object

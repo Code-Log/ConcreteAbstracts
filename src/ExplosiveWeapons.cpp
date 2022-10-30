@@ -2,12 +2,20 @@
 
 int ExplosiveWeapons::getDamage()
 {
-    /// \todo: Implement ExplosiveWeapons::getDamage
-	return 0;
+	return this->damage;
 }
 
 std::string ExplosiveWeapons::getName()
 {
-    /// \todo: Implement ExplosiveWeapons::getName
-	return "";
+	return "Explosive Weapon(s)";
 }
+
+int ExplosiveWeapons::getDurability() {
+    return this->durability;
+}
+
+void ExplosiveWeapons::setDurability(int durability) {
+    this->durability = durability;
+}
+
+

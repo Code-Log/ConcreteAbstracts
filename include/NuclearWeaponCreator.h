@@ -12,6 +12,7 @@
 #define NUCLEARWEAPONCREATOR_H
 
 #include <AttackWeaponCreator.h>
+#include <NuclearWeapons.h>
 
 class NuclearWeaponCreator : public AttackWeaponCreator {
 
@@ -29,13 +30,6 @@ public:
 	 * @return AttackWeapon* 
 	 */
 	AttackWeapon* produceAttackWeapon();
-
-	/**
-	 * @brief Get the Total object
-	 * 
-	 * @return int 
-	 */
-	int getTotal();
 };
 
 #endif

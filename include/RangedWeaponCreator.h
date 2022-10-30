@@ -12,6 +12,7 @@
 #define RANGEDWEAPONCREATOR_H
 
 #include <AttackWeaponCreator.h>
+#include <RangedWeapons.h>
 
 class RangedWeaponCreator : public AttackWeaponCreator {
 
@@ -29,13 +30,6 @@ public:
 	 * @return AttackWeapon* 
 	 */
 	AttackWeapon* produceAttackWeapon();
-
-	/**
-	 * @brief Get the Total object
-	 * 
-	 * @return int 
-	 */
-	int getTotal();
 };
 
 #endif

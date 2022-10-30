@@ -1,17 +1,20 @@
 #include <ArmoryFacade.h>
+#include <RecruiterContext.h>
 
 ArmoryFacade::ArmoryFacade()
 {
     weaponTransport = new WeaponTransport();
     suppliesTransport = new SuppliesTransport();
     attackVessel = new AttackVessel();
-    recruiterContext = new RecuiterContext;
+    recruiterContext = new RecruiterContext;
     transportContext = new TransportContext(weaponTransport);
 }
 
 bool ArmoryFacade::purchaseWeapon(Recruits *recruits)
 {
     transportContext->setStrategy(weaponTransport);
+    transportContext->purchase(recruits);
+
     /// \todo: Implement ArmoryFacade::purchaseWeapon
     return true;
 }

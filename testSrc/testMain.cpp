@@ -1,7 +1,6 @@
 #include <cstring>
 #include <Country.h>
-#include <iostream>
-#include <RecuiterContext.h>
+#include <RecruiterContext.h>
 #include <Recruits.h>
 #include <Soldier.h>
 #include <Pilot.h>
@@ -43,7 +42,7 @@ int testCountry()
 }
 
 //helper function for testRecruits
-int testRecruit(Recruits *recruit,RecuiterContext *myContext)
+int testRecruit(Recruits *recruit, RecruiterContext *myContext)
 {
     int result = 0;
     myContext->setState(recruit);
@@ -55,7 +54,7 @@ int testRecruit(Recruits *recruit,RecuiterContext *myContext)
 int testRecruits()
 {
     int result = 0;
-    RecuiterContext *myContext = new RecuiterContext();
+    RecruiterContext *myContext = new RecruiterContext();
     Recruits *rqts[] = { new Soldier, new Pilot(), new Marine(), new Guardian(), new Medic()};
     for(Recruits *r : rqts){
         if(testRecruit(r,myContext) != 0){
@@ -201,7 +200,6 @@ int testTransport()
     return result;
 }
 
-
 int testArmoryFacade()
 {
     int result = 0;
@@ -232,7 +230,7 @@ int testTheatreCountryPeopleCombo()
     }
 
     int before = Germany->getNotEnlisted();
-    
+
     Germany->recruitSoldiers(105);
     if(Germany->getNotEnlisted() != before - 105)
     {
@@ -274,8 +272,8 @@ int main(int argc, const char** argv)
     if (std::strcmp(argv[1], "testTransport") == 0)
         return testTransport();
     if (std::strcmp(argv[1], "testTheatreCountryPeopleCombo") == 0)
-        return testTransport();
- 
+        return testTheatreCountryPeopleCombo();
+
 
 //    To add a new test
 //    if (std::strcmp(argv[1], "myTest") == 0)

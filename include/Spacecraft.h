@@ -12,6 +12,7 @@
 #define SPACECRAFT_H
 
 #include <VesselWeapon.h>
+#include <Spacecraft.h>
 
 class Spacecraft : public VesselWeapon {
 
@@ -37,6 +38,26 @@ public:
 	 * @return std::string 
 	 */
 	std::string getName();
+
+	/**
+	 * @brief Get the Durability object
+	 * 
+	 * @return int 
+	 */
+	int getDurability() override;
+
+	/**
+	 * @brief Set the Durability object
+	 * 
+	 * @return void 
+	 */
+	void setDurability(int durability) override;
+
+	/**
+     * @brief Destroy the Spacecraft object
+     * 
+     */
+	~Spacecraft() override = default;
 };
 
 #endif

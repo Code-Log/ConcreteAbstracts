@@ -12,6 +12,7 @@
 #define EXPLOSIVEWEAPONCREATOR_H
 
 #include <AttackWeaponCreator.h>
+#include <ExplosiveWeapons.h>
 
 class ExplosiveWeaponCreator : public AttackWeaponCreator {
 public:
@@ -27,13 +28,6 @@ public:
 	 * @return AttackWeapon* 
 	 */
 	AttackWeapon* produceAttackWeapon();
-
-	/**
-	 * @brief Get the Total object
-	 * 
-	 * @return int 
-	 */
-	int getTotal();
 };
 
 #endif

@@ -12,6 +12,7 @@
 #define JETCREATOR_H
 
 #include <VesselWeaponCreator.h>
+#include <Jets.h>
 
 class JetCreator : public VesselWeaponCreator {
 
@@ -30,12 +31,7 @@ public:
 	 */
 	VesselWeapon* produceVesselWeapon(); // VESSEL WEAPON ASK AMBER ?
 
-	/**
-	 * @brief Get the Total object
-	 * 
-	 * @return int 
-	 */
-	int getTotal();
+	~JetCreator() = default;
 };
 
 #endif

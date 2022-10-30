@@ -11,7 +11,7 @@
 #ifndef __MARINE_H__
 #define __MARINE_H__
 
-#include "Recruits.h"
+#include <Recruits.h>
 class Marine : public Recruits
 {
 private:

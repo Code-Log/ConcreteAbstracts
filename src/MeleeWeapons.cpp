@@ -2,12 +2,18 @@
 
 int MeleeWeapons::getDamage()
 {
-    /// \todo: Implement MeleeWeapons::getDamage
-	return 0;
+	return this->damage;
 }
 
 std::string MeleeWeapons::getName()
 {
-	/// \todo: Implement MeleeWeapons::getName
-    return "";
+	return "Melee Weapon(s)";
+}
+
+int MeleeWeapons::getDurability() {
+    return this->durability;
+}
+
+void MeleeWeapons::setDurability(int durability) {
+    this->durability;
 }

@@ -2,18 +2,23 @@
 
 int Ships::getDamage()
 {
-    /// \todo: Implement Ships::getDamage
-	return 0;
+	return this->damage;
 }
 
 int Ships::getDefense()
 {
-    /// \todo: Implement Ships::getDefense
-	return 0;
+	return this->defense;
 }
 
 std::string Ships::getName()
 {
-    /// \todo: Implement Ships::getName
-	return "";
+	return "Ship(s)";
+}
+
+int Ships::getDurability() {
+    return durability;
+}
+
+void Ships::setDurability(int durability) {
+    this->durability = durability;
 }

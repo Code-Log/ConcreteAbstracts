@@ -18,13 +18,17 @@
 #include <AttackWeapon.h>
 #include <VesselWeapon.h>
 
-class Recruits: public People{
+class Country;
+
+class Recruits: public People
+{
 private:
     bool isEnlisted; //removed as no longer working with individiuals?
     std::string militaryType;
     int weaponDamage;
     std::vector<AttackWeapon*> armory;
     std::vector<VesselWeapon*> vehicles;
+    Country* country;
 
 public:
     /**
@@ -34,8 +38,31 @@ public:
     Recruits();
 
     /**
-     * @brief 
+     * @brief If armory is not empty, then fire the weapon currently at the start of the vector.
+     * @brief Fire weapon and use up weapon's durability.
+     * @brief When a weapon runs out of durability remove it and go the next weapon if a weapon exists.
      * 
+     */
+    void fireWeapon(Recruits* enemyRecruits);
+
+
+    /**
+     * @brief Add an attack weapon to the armory for the recruits.
+     *
+     * @param attackWeapon
+     */
+    void addWeapon(AttackWeapon* attackWeapon);
+
+    /**
+     * @brief Add a vessel to the vehicles vector
+     *
+     * @param vesselWeapon
+     */
+    void addVessel(VesselWeapon* vesselWeapon);
+
+    /**
+     * @brief
+     *
      */
     void handle();
 
@@ -46,19 +73,25 @@ public:
     virtual ~Recruits();
 
     /**
+     * @brief Get the Country object
+     *
+     * @return Country*
+     */
+    Country* getCountry();
+
+
+    /**
      * @brief Returns militaryType
      * @return string
-     * 
+     *
      */
     std::string getMilitaryType();
 
      /**
      * @brief sets militaryType
-     * 
+     *
      */
     void setMilitaryType(std::string type);
-
-    
 };
 
 
