@@ -11,7 +11,7 @@
 #ifndef __SOLDIER_H__
 #define __SOLDIER_H__
 
-#include "Recruits.h"
+#include <Recruits.h>
 class Soldier : public Recruits
 {
 private:

@@ -11,7 +11,7 @@
 #ifndef CONCRETEABSTRACTS_TRANSPORTCONTEXT_H
 #define CONCRETEABSTRACTS_TRANSPORTCONTEXT_H
 
-#pragma once
+// #pragma once
 
 #include <Transport.h>
 #include <Recruits.h>

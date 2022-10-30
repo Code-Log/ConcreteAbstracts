@@ -16,6 +16,7 @@
 #include <WeaponTransport.h>
 #include <SuppliesTransport.h>
 #include <AttackVessel.h>
+#include <Recruits.h>
 
 class ArmoryFacade
 {

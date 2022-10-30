@@ -11,7 +11,7 @@
 #ifndef __RECUITERCONTEXT_H__
 #define __RECUITERCONTEXT_H__
 
-#include "Recruits.h"
+#include <Recruits.h>
 class RecuiterContext
 {
 private:

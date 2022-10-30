@@ -11,7 +11,7 @@
 #ifndef __PILOT_H__
 #define __PILOT_H__
 
-#include "Recruits.h"
+#include <Recruits.h>
 class Pilot : public Recruits
 {
 private:

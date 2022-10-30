@@ -17,6 +17,7 @@
 #include <ShipCreator.h>
 #include <JetCreator.h>
 #include <SpacecraftCreator.h>
+#include <Recruits.h>
 
 class AttackVessel : public Transport
 {
@@ -34,7 +35,7 @@ public:
      * 
      * @param recruits 
      */
-    void puqrchase(Recruits* recruits) override;
+    void purchase(Recruits* recruits) ;
 };
 
 #endif //CONCRETEABSTRACTS_ATTACKVESSEL_H

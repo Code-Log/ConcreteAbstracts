@@ -17,14 +17,17 @@
 #include <People.h>
 #include <AttackWeapon.h>
 #include <VesselWeapon.h>
+#include <Country.h>
 
 class Recruits: public People{
+class Country;
 private:
     bool isEnlisted;
     std::string militaryType;
     int weaponDamage;
     std::vector<AttackWeapon*> armory;
     std::vector<VesselWeapon*> vehicles;
+    Country* country;
 
 public:
     /**
@@ -56,6 +59,13 @@ public:
      * 
      */
     virtual ~Recruits();
+
+    /**
+     * @brief Get the Country object
+     * 
+     * @return Country* 
+     */
+    Country* getCountry();
 };
 
 
