@@ -1,20 +1,20 @@
-#include <RecuiterContext.h>
-RecuiterContext::RecuiterContext(/* args */)
+#include <RecruiterContext.h>
+RecruiterContext::RecruiterContext(/* args */)
 {
     
 }
 
-void RecuiterContext::request()
+void RecruiterContext::request()
 {
-    /// \todo - Implement RecuiterContext::request()
+    /// \todo - Implement RecruiterContext::request()
 }
 
-void RecuiterContext::setState(Recruits *state)
+void RecruiterContext::setState(Recruits *state)
 {
     this->state = state;
 }
 
-Recruits* RecuiterContext::getState()
+Recruits* RecruiterContext::getState()
 {
     return state;
 }

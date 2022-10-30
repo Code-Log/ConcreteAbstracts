@@ -12,11 +12,12 @@
 #define CONCRETEABSTRACTS_ARMORYFACADE_H
 
 #include <TransportContext.h>
-#include <RecuiterContext.h>
 #include <WeaponTransport.h>
 #include <SuppliesTransport.h>
 #include <AttackVessel.h>
-#include <Recruits.h>
+
+class Recruits;
+class RecruiterContext;
 
 class ArmoryFacade
 {
@@ -62,7 +63,7 @@ public:
     bool purchaseSupplies(Recruits* recruits);
 private:
     TransportContext* transportContext;
-    RecuiterContext* recruiterContext;
+    RecruiterContext* recruiterContext;
     AttackVessel* attackVessel;
     SuppliesTransport* suppliesTransport;
     WeaponTransport* weaponTransport;

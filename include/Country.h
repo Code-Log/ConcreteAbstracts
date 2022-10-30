@@ -14,10 +14,11 @@
 #include <string>
 #include <vector>
 #include <WarTheatre.h>
-#include <Recruits.h>
 #include <Citizens.h>
 #include <Refugee.h>
 #include <ArmoryFacade.h>
+
+class Recruits;
 
 class Country
 {
@@ -86,8 +87,6 @@ private:
     Citizens citizens;
     Refugee refugees;
     ArmoryFacade armoryFacade;
-
-
 };
 
 #endif

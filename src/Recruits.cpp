@@ -1,4 +1,6 @@
 #include <Recruits.h>
+#include <Country.h>
+
 Recruits::Recruits()
 {
     
@@ -33,9 +35,11 @@ void Recruits::addWeapon(AttackWeapon* attackWeapon)
     armory.push_back(attackWeapon);
 }
 
-Country* Recruits::getCountry(){
+Country* Recruits::getCountry()
+{
     return country;
 }
+
 void Recruits::addVessel(VesselWeapon* vesselWeapon)
 {
     vehicles.push_back(vesselWeapon);

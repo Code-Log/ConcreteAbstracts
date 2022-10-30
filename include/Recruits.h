@@ -17,10 +17,11 @@
 #include <People.h>
 #include <AttackWeapon.h>
 #include <VesselWeapon.h>
-#include <Country.h>
 
-class Recruits: public People{
 class Country;
+
+class Recruits: public People
+{
 private:
     bool isEnlisted{};
     std::string militaryType;

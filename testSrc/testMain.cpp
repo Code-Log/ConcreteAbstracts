@@ -1,6 +1,6 @@
 #include <cstring>
 #include <Country.h>
-#include <RecuiterContext.h>
+#include <RecruiterContext.h>
 #include <Recruits.h>
 #include <Soldier.h>
 #include <Pilot.h>
@@ -42,7 +42,7 @@ int testCountry()
 }
 
 //helper function for testRecruits
-int testRecruit(Recruits *recruit,RecuiterContext *myContext)
+int testRecruit(Recruits *recruit, RecruiterContext *myContext)
 {
     int result = 0;
     myContext->setState(recruit);
@@ -54,7 +54,7 @@ int testRecruit(Recruits *recruit,RecuiterContext *myContext)
 int testRecruits()
 {
     int result = 0;
-    RecuiterContext *myContext = new RecuiterContext();
+    RecruiterContext *myContext = new RecruiterContext();
     Recruits *rqts[] = { new Soldier, new Pilot(), new Marine(), new Guardian(), new Medic()};
     for(Recruits *r : rqts){
         if(testRecruit(r,myContext) != 0){

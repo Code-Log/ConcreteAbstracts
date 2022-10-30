@@ -11,7 +11,7 @@
 #ifndef __MEDIC_H__
 #define __MEDIC_H__
 
-#include <Recruits>
+#include <Recruits.h>
 class Medic : public Recruits
 {
 private:

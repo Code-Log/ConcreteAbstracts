@@ -1,11 +1,12 @@
 #include <ArmoryFacade.h>
+#include <RecruiterContext.h>
 
 ArmoryFacade::ArmoryFacade()
 {
     weaponTransport = new WeaponTransport();
     suppliesTransport = new SuppliesTransport();
     attackVessel = new AttackVessel();
-    recruiterContext = new RecuiterContext;
+    recruiterContext = new RecruiterContext;
     transportContext = new TransportContext(weaponTransport);
 }
 
