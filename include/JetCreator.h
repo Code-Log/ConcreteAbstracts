@@ -31,13 +31,6 @@ public:
 	 */
 	VesselWeapon* produceVesselWeapon(); // VESSEL WEAPON ASK AMBER ?
 
-	/**
-	 * @brief Get the Total object
-	 * 
-	 * @return int 
-	 */
-	int getTotal();
-
 	~JetCreator() = default;
 };
 

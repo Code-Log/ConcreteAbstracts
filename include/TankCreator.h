@@ -31,13 +31,6 @@ public:
 	 */
 	VesselWeapon* produceVesselWeapon();
 
-	/**
-	 * @brief Get the Total object
-	 * 
-	 * @return int 
-	 */
-	int getTotal();
-
 	virtual ~TankCreator() = default;
 };
 

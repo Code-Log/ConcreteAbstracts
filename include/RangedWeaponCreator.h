@@ -30,13 +30,6 @@ public:
 	 * @return AttackWeapon* 
 	 */
 	AttackWeapon* produceAttackWeapon();
-
-	/**
-	 * @brief Get the Total object
-	 * 
-	 * @return int 
-	 */
-	int getTotal();
 };
 
 #endif

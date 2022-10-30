@@ -13,10 +13,6 @@
 #include <AttackWeapon.h>
 
 class AttackWeaponCreator {
-
-protected:
-	int total = 0;
-
 public:
 	/**
 	 * @brief Construct a new Attack Weapon Creator object
@@ -40,13 +36,6 @@ protected:
 	virtual AttackWeapon* produceAttackWeapon() = 0;
 
 public:
-	/**
-	 * @brief Get the Total object
-	 * 
-	 * @return int 
-	 */
-	virtual int getTotal() = 0;
-
 	virtual ~AttackWeaponCreator() = default;
 };
 
