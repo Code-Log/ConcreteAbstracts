@@ -14,3 +14,11 @@ std::string Tanks::getName()
 {
 	return "Tank(s)";
 }
+
+int Tanks::getDurability() {
+    return this->durability;
+}
+
+void Tanks::setDurability(int durability) {
+    this->durability = durability;
+}

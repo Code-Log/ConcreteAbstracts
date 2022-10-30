@@ -49,7 +49,7 @@ public:
      * @brief Destroy the MeleeWeapons object
      * 
      */
-	virtual ~MeleeWeapons();
+	~MeleeWeapons() override = default;
 };
 
 #endif

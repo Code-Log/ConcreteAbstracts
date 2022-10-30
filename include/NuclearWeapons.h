@@ -49,7 +49,7 @@ public:
      * @brief Destroy the NuclearWeapons object
      * 
      */
-	virtual ~NuclearWeapons();
+	~NuclearWeapons() override = default;
 };
 
 #endif

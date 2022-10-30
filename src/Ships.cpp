@@ -14,3 +14,11 @@ std::string Ships::getName()
 {
 	return "Ship(s)";
 }
+
+int Ships::getDurability() {
+    return durability;
+}
+
+void Ships::setDurability(int durability) {
+    this->durability = durability;
+}

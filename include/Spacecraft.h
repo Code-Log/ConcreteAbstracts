@@ -57,7 +57,7 @@ public:
      * @brief Destroy the Spacecraft object
      * 
      */
-	virtual ~Spacecraft() = default;
+	~Spacecraft() override = default;
 };
 
 #endif
