@@ -15,29 +15,31 @@ Country::Country(std::string countryName)
     {
         economy = rand() % (50000-10000 + 1 ) + 10000;
     }
-    else if(Class== 2){ //developing
-
+    else if(Class== 2) //developing
+    {
         economy = rand() % (10000-5000 + 1) + 5000;
-
     }
     else // :(
     {
         economy = rand() % (5000 - 1000 + 1) + 1000;
     }
 
-    this->power = populationSize*economy;
+    this->power = populationSize * economy;
 
     // Marines= false;
     // Guardians= false;
     // Pilots= false;
     // Soldiers = false;
-  
 }
 
 Country* Country::cloneCountry()
 {
-    /// \todo - Implement Country::cloneCountry()
-    return nullptr;
+    auto* result = new Country(countryName);
+    result->economy = economy;
+    result->power = power;
+    result->populationSize = populationSize;
+
+    return result;
 }
 
 const std::string& Country::getName() const
@@ -320,7 +322,6 @@ void Country::addWarFront(std::string location)
 
         warTheatres.push_back(warFront);
     }
-   
 }
 
 Country::~Country()
@@ -338,6 +339,4 @@ Country::~Country()
         recruits.pop_back();
         delete r;
     }
-
-
 }
