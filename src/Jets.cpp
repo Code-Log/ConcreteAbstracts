@@ -15,7 +15,11 @@ std::string Jets::getName()
 	return "Jet(s)";
 }
 
-int getDurability()
+int Jets::getDurability()
 {
-    return
+    return this->durability;
+}
+
+void Jets::setDurability(int durability) {
+    this->durability = durability;
 }

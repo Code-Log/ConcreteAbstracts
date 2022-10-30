@@ -1,5 +1,5 @@
 #include <Recruits.h>
-Recruits::Recruits(/* args */)
+Recruits::Recruits()
 {
     
 }
@@ -28,13 +28,17 @@ void Recruits::fireWeapon(Recruits* enemyRecruits)
     armory[0]->setDurability(armory[0]->getDurability() - 5);
 }
 
-void Recruits::addWeapon(AttackWeapon *attackWeapon)
+void Recruits::addWeapon(AttackWeapon* attackWeapon)
 {
     armory.push_back(attackWeapon);
 }
 
 Country* Recruits::getCountry(){
     return country;
+}
+void Recruits::addVessel(VesselWeapon* vesselWeapon)
+{
+    vehicles.push_back(vesselWeapon);
 }
 
 Recruits::~Recruits()
@@ -46,6 +50,11 @@ Recruits::~Recruits()
     armory.clear();
     delete country;
 
+    for (VesselWeapon* vessel : vehicles)
+    {
+        delete vessel;
+    }
+    vehicles.clear();
 }
 
 

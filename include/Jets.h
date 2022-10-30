@@ -56,7 +56,7 @@ public:
      * @brief Destroy the Jets object
      * 
      */
-	virtual ~Jets();
+	~Jets() override = default;
 };
 
 #endif

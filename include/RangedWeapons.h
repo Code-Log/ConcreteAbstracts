@@ -49,7 +49,7 @@ public:
      * @brief Destroy the RangedWeapons object
      * 
      */
-	virtual ~RangedWeapons();
+	~RangedWeapons() override = default;
 };
 
 #endif

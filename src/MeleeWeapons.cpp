@@ -9,3 +9,11 @@ std::string MeleeWeapons::getName()
 {
 	return "Melee Weapon(s)";
 }
+
+int MeleeWeapons::getDurability() {
+    return this->durability;
+}
+
+void MeleeWeapons::setDurability(int durability) {
+    this->durability;
+}

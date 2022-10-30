@@ -14,3 +14,11 @@ std::string Spacecraft::getName()
 {
 	return "Spacecraft(s)";
 }
+
+int Spacecraft::getDurability() {
+    return this->durability;
+}
+
+void Spacecraft::setDurability(int durability) {
+    this->durability = durability;
+}
