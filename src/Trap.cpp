@@ -5,7 +5,7 @@
 Trap::Trap(): WarTheatre("trap")
 {
     trap = nullptr;
-    Active = true;
+    active = true;
     lifespan = 400;
 }
 
@@ -28,14 +28,14 @@ void Trap::add(WarTheatre* trap)
 
 }
 
-bool Trap::getActive()
+bool Trap::getActive() const
 {
-    return Active;
+    return active;
 }
 
 void Trap::setActive(bool active)
 {
-    this->Active = active;
+    this->active = active;
 }
 
 int Trap::damageTotal()
@@ -44,7 +44,7 @@ int Trap::damageTotal()
     {
         return getDamage();
     }
-    else if(Active==false)
+    else if(!active)
     {
         return 0;
     }

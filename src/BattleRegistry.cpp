@@ -1,5 +1,4 @@
 #include <BattleRegistry.h>
-#include <unordered_map>
 
 BattleRegistry::BattleRegistry()
     : battles()

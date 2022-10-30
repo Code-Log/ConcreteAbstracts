@@ -28,7 +28,7 @@ public:
      * @brief Destroy the Barricades object
      * 
      */
-    ~Barricades();
+    ~Barricades() override;
 };
 
 

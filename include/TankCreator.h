@@ -29,9 +29,9 @@ public:
 	 * 
 	 * @return VesselWeapon* 
 	 */
-	VesselWeapon* produceVesselWeapon();
+	VesselWeapon* produceVesselWeapon() override;
 
-	virtual ~TankCreator() = default;
+	~TankCreator() override = default;
 };
 
 #endif

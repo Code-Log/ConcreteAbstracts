@@ -1,8 +1,10 @@
 #include <WarTheatre.h>
+#include <random>
+#include <utility>
 
 WarTheatre::WarTheatre(std::string location)
 {
-    this->location = location;
+    this->location = std::move(location);
     damage=0;
 }
 
@@ -13,9 +15,13 @@ void WarTheatre::setDamage(int damage)
     this->damage = damage;
 }
 
-int WarTheatre::getDamage()
+int WarTheatre::getDamage() const
 {
-    int damageLevel = rand() % (this->damage-0 + 1) + 0;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dist(0, damage);
+
+    int damageLevel = dist(gen);
     return damageLevel;
 }
 

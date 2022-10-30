@@ -26,7 +26,7 @@ public:
      * @brief Destroy the Mines object
      * 
      */
-    ~Mines();
+    ~Mines() override;
 };
 
 

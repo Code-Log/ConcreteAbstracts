@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2022
  * 
  */
-#ifndef __RECRUITS_H__
-#define __RECRUITS_H__
+#ifndef CONCRETEABSTRACTS_RECRUITS_H
+#define CONCRETEABSTRACTS_RECRUITS_H
 
 #include <string>
 #include <vector>
@@ -70,7 +70,7 @@ public:
      * @brief Destroy the Recruits object
      * 
      */
-    virtual ~Recruits();
+    ~Recruits() override;
 
     /**
      * @brief Get the Country object
@@ -95,4 +95,4 @@ public:
 };
 
 
-#endif // __RECRUITS_H__
+#endif // CONCRETEABSTRACTS_RECRUITS_H

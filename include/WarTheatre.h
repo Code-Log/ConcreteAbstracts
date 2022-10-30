@@ -53,7 +53,7 @@ public:
      * 
      * @return int 
      */
-    int getDamage();
+    int getDamage() const;
 
     /**
      * @brief Set the Damage object

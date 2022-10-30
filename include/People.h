@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2022
  * 
  */
-#ifndef __PEOPLE_H__
-#define __PEOPLE_H__
+#ifndef CONCRETEABSTRACTS_PEOPLE_H
+#define CONCRETEABSTRACTS_PEOPLE_H
 
 
 class People
@@ -46,4 +46,4 @@ public:
 
 
 
-#endif // __PEOPLE_H__
+#endif // CONCRETEABSTRACTS_PEOPLE_H

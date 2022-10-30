@@ -28,7 +28,7 @@ public:
      * @brief Destroy the Space Magnets object
      * 
      */
-    ~SpaceMagnets();
+    ~SpaceMagnets() override;
 };
 
 #endif

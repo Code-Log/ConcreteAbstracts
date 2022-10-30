@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2022
  * 
  */
-#ifndef __PILOT_H__
-#define __PILOT_H__
+#ifndef CONCRETEABSTRACTS_PILOT_H
+#define CONCRETEABSTRACTS_PILOT_H
 
 #include <Recruits.h>
 class Pilot : public Recruits
@@ -25,4 +25,4 @@ public:
     // ~Pilot();
 };
 
-#endif // __PILOT_H__
+#endif // CONCRETEABSTRACTS_PILOT_H

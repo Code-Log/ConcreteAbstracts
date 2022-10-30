@@ -149,7 +149,7 @@ public:
      * @brief Adds warTheatre. If the warTheatre type already exists does nothing. ?Only add if relevent recruits exist?
      * @param location
      */
-    void addWarFront(std::string location);
+    void addWarFront(const std::string& location);
 
 
     /**

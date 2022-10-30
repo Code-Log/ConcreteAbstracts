@@ -15,5 +15,5 @@ int MeleeWeapons::getDurability() {
 }
 
 void MeleeWeapons::setDurability(int durability) {
-    this->durability;
+    this->durability = durability;
 }

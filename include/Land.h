@@ -28,7 +28,7 @@ public:
      * @brief Destroy the Land object
      * 
      */
-    ~Land();
+    ~Land() override;
 
     /**
      * @brief The casualties gained from environmental extremities (function could evolve to have other factors)
