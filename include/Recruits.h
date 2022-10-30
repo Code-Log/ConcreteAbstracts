@@ -20,9 +20,9 @@
 
 class Recruits: public People{
 private:
-    bool isEnlisted;
+    bool isEnlisted{};
     std::string militaryType;
-    int weaponDamage;
+    int weaponDamage{};
     std::vector<AttackWeapon*> armory;
     std::vector<VesselWeapon*> vehicles;
 
@@ -46,16 +46,21 @@ public:
      * @brief Add an attack weapon to the armory for the recruits.
      *
      * @param attackWeapon
-     * @return true
-     * @return false
      */
     void addWeapon(AttackWeapon* attackWeapon);
+
+    /**
+     * @brief Add a vessel to the vehicles vector
+     *
+     * @param vesselWeapon
+     */
+    void addVessel(VesselWeapon* vesselWeapon);
 
     /**
      * @brief Destroy the Recruits object
      * 
      */
-    virtual ~Recruits();
+    ~Recruits() override;
 };
 
 
