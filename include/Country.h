@@ -28,6 +28,13 @@
 #include <Refugee.h>
 #include <ArmoryFacade.h>
 
+enum EconomicClass
+{
+    FIRST_WORLD = 1,
+    SECOND_WORLD = 2,
+    THIRD_WORLD = 3
+};
+
 class Country
 {
 public:
@@ -154,6 +161,7 @@ private:
     int populationSize;
     int economy;
     int notEnlisted;
+    EconomicClass economicClass;
     // bool Marines;
     // bool Guardians;
     // bool Pilots;

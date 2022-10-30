@@ -1,29 +1,37 @@
 #include <Country.h>
+#include <random>
 
 Country::Country(std::string countryName)
     : countryName(std::move(countryName))
 {
-    this->populationSize = rand() % (50000-10000 + 1) + 10000;
+    // Set up PRNG
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dist(1e4, 5e4);
+
+    this->populationSize = dist(gen);
     this->citizens = new Citizens();
-    int cit = (int)populationSize*0.7;
+    int cit = (int)(populationSize*0.7);
     this->citizens->setGroupSize(cit);
     this->notEnlisted = populationSize - cit;
+    
+    dist = std::uniform_int_distribution<>(1, 3);
+    this->economicClass = static_cast<EconomicClass>(dist(gen));
 
-    int Class = rand() % (3-1 + 1) + 1;
-
-    if(Class == 1) //first world
+    std::uniform_int_distribution<> classDist;
+    switch (economicClass)
     {
-        economy = rand() % (50000-10000 + 1 ) + 10000;
+        case FIRST_WORLD:
+            classDist = std::uniform_int_distribution<>(1e4, 5e4);
+            break;
+        case SECOND_WORLD:
+            classDist = std::uniform_int_distribution<>(5e3, 1e4);
+            break;
+        case THIRD_WORLD:
+            classDist = std::uniform_int_distribution<>(1e3, 5e3);
+            break;
     }
-    else if(Class== 2) //developing
-    {
-        economy = rand() % (10000-5000 + 1) + 5000;
-    }
-    else // :(
-    {
-        economy = rand() % (5000 - 1000 + 1) + 1000;
-    }
-
+    economy = classDist(gen);
     this->power = populationSize * economy;
 
     // Marines= false;
