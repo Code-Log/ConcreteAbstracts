@@ -147,7 +147,7 @@ public:
      * @brief Destroy the Country object
      * 
      */
-    ~Country(); // = default; why default
+    ~Country();
 private:
     std::string countryName;
     int power;
@@ -163,8 +163,6 @@ private:
     Citizens* citizens;
     Refugee* refugees;
     ArmoryFacade armoryFacade;
-
-
 };
 
 #endif
