@@ -10,12 +10,13 @@ Space::Space() : BattleGround("Space")
 
 Space::~Space() = default;
 
-int Space::penalty(int* recruitNumber)
+int Space::penalty(Recruits* recruits)
 {
-    int syndrome = (*recruitNumber * SpaceAdaptationSyndrome())/100;
+    int size = recruits->getGroupSize();
+    int casualties = ( size * SpaceAdaptationSyndrome())/100;
 
-   *recruitNumber = *recruitNumber - syndrome; //if function is to alter the value directly. Depends if recruits is pointer
-    return syndrome;
+    recruits->setGroupSize(size - casualties);
+    return casualties;
 }
 
 int Space::SpaceAdaptationSyndrome()

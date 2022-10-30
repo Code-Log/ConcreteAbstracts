@@ -32,7 +32,7 @@ public:
      * 
      */
     ~CountryMemento();
-    friend class AbstractCountry;
+    friend class Country;
 };
 
 #endif //CONCRETEABSTRACTS_COUNTRYMEMENTO_H

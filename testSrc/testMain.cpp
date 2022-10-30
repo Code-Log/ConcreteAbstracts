@@ -25,9 +25,9 @@
 #include <Barricades.h>
 #include <SpaceMagnets.h>
 #include <Space.h>
- #include <ArmoryFacade.h>
+#include <ArmoryFacade.h>
 
-
+using namespace std;
 
 int testCountry()
 {
@@ -344,6 +344,46 @@ int testArmoryFacade()
     return result;
 }
 
+int testTheatreCountryPeopleCombo()
+{
+    int result = 0;
+    Country* Germany = new Country("Germany");
+    if(Germany->getName() != "Germany")
+    {
+        result = -1;
+    }
+
+    if(Germany->getPower() == Germany->getEconomy() != Germany->getPopulation())
+    {
+        result = -1;
+    }
+
+    int before = Germany->getNotEnlisted();
+
+    Germany->recruitSoldiers(105);
+    if(Germany->getNotEnlisted() != before - 105)
+    {
+        result = -1;
+    }
+
+    Germany->recruitGuardians(Germany->getNotEnlisted()+1);
+
+    if(Germany->getNotEnlisted()<0)
+    {
+        result= -1;
+    }
+
+    Germany->recruitPilots(341);
+
+    Germany->addWarFront("Air");
+    Germany->addWarFront("Land");
+
+    delete Germany;
+
+    return result;
+
+}
+
 // Write your testing functions like this
 //int myTest()
 //{
@@ -360,8 +400,8 @@ int main(int argc, const char** argv)
         return testRegistry();
     if (std::strcmp(argv[1], "testTransport") == 0)
         return testTransport();
-      if (std::strcmp(argv[1], "testWarTheatre") == 0)
-        return testWarTheatre();
+    if (std::strcmp(argv[1], "testTheatreCountryPeopleCombo") == 0)
+        return testTheatreCountryPeopleCombo();
 
 
 //    To add a new test

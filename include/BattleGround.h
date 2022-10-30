@@ -44,12 +44,12 @@ public:
     int damageTotal() override;
 
     /**
-     * @brief 
+     * @brief The casualties gained from environmental extremities (function could evolve to have other factors)
      * 
      * @param recruitNumber 
      * @return int 
      */
-    virtual int penalty(int* recruitNumber) = 0; //added
+    virtual int penalty(Recruits* recruits) = 0; //added
 };
 
 

@@ -9,12 +9,13 @@ Air::Air() : BattleGround("Air")
 
 Air::~Air() = default;
 
-int Air::penalty(int* recruitNumber)
+int Air::penalty(Recruits* recruits)
 {
-    int force = (*recruitNumber * gForce())/100;
+    int size = recruits->getGroupSize();
+    int casualties = ( size * gForce())/100;
 
-    *recruitNumber = *recruitNumber - force;
-    return force;
+    recruits->setGroupSize(size - casualties);
+    return casualties;
 }
 
 int Air::gForce()
