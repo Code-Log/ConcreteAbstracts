@@ -35,7 +35,7 @@ public:
      * 
      * @param recruits 
      */
-    void purchase(Recruits* recruits) ;
+    void purchase(Recruits* recruits) override ;
 };
 
 #endif //CONCRETEABSTRACTS_ATTACKVESSEL_H

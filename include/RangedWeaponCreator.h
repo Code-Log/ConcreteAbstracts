@@ -29,7 +29,7 @@ public:
 	 * 
 	 * @return AttackWeapon* 
 	 */
-	AttackWeapon* produceAttackWeapon();
+	AttackWeapon* produceAttackWeapon() override;
 };
 
 #endif

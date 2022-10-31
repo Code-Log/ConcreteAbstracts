@@ -14,17 +14,6 @@
 #include <WeaponTransport.h>
 #include <AttackVessel.h>
 #include <TransportContext.h>
-#include <WarTheatre.h>
-#include <BattleGround.h>
-#include <Trap.h>
-#include <Mines.h>
-#include <Air.h>
-#include <Land.h>
-#include <Sea.h>
-#include <Trenches.h>
-#include <Barricades.h>
-#include <SpaceMagnets.h>
-#include <Space.h>
 #include <ArmoryFacade.h>
 
 using namespace std;
@@ -54,7 +43,7 @@ int testRecruit(Recruits *recruit, RecruiterContext *myContext)
 int testRecruits()
 {
     int result = 0;
-    RecruiterContext *myContext = new RecruiterContext();
+    auto *myContext = new RecruiterContext();
     Recruits *rqts[] = { new Soldier, new Pilot(), new Marine(), new Guardian(), new Medic()};
     for(Recruits *r : rqts){
         if(testRecruit(r,myContext) != 0){
@@ -203,8 +192,8 @@ int testTransport()
 int testArmoryFacade()
 {
     int result = 0;
-        ArmoryFacade* armoryFacade = new ArmoryFacade();
-        Recruits* recruits = new Recruits();
+        auto* armoryFacade = new ArmoryFacade();
+        auto* recruits = new Recruits();
 
         armoryFacade->purchaseAttackVessel(recruits);
         armoryFacade->purchaseSupplies(recruits);
@@ -218,7 +207,7 @@ int testArmoryFacade()
 int testTheatreCountryPeopleCombo()
 {
     int result = 0;
-    Country* Germany = new Country("Germany");
+    auto* Germany = new Country("Germany");
     if(Germany->getName() != "Germany")
     {
         result = -1;

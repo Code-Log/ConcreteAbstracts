@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2022
  * 
  */
-#ifndef __RECRUITERCONTEXT_H__
-#define __RECRUITERCONTEXT_H__
+#ifndef CONCRETEABSTRACTS_RECRUITERCONTEXT_H
+#define CONCRETEABSTRACTS_RECRUITERCONTEXT_H
 
 #include <Recruits.h>
 class RecruiterContext
@@ -48,4 +48,4 @@ public:
 
 
 
-#endif // __RECUITERCONTEXT_H__
+#endif // CONCRETEABSTRACTS_RECRUITERCONTEXT_H

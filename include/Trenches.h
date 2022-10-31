@@ -26,7 +26,7 @@ public:
      * @brief Destroy the Trenches object
      * 
      */
-    ~Trenches();
+    ~Trenches() override;
 };
 
 #endif

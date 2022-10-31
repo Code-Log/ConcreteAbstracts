@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2022
  * 
  */
-#ifndef __GUARDIAN_H__
-#define __GUARDIAN_H__
+#ifndef CONCRETEABSTRACTS_GUARDIAN_H
+#define CONCRETEABSTRACTS_GUARDIAN_H
 
 
 #include <Recruits.h>
@@ -27,4 +27,4 @@ public:
     // ~Guardian();
 };
 
-#endif // __GUARDIAN_H__
+#endif // CONCRETEABSTRACTS_GUARDIAN_H

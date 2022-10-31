@@ -29,9 +29,9 @@ public:
 	 * 
 	 * @return VesselWeapon* 
 	 */
-	VesselWeapon* produceVesselWeapon();
+	VesselWeapon* produceVesselWeapon() override;
 
-	virtual ~SpacecraftCreator() = default;
+	~SpacecraftCreator() override = default;
 };
 
 #endif

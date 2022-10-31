@@ -21,13 +21,13 @@ public:
      * 
      * @param location 
      */
-    BattleGround(std::string location);
+    explicit BattleGround(std::string location);
 
     /**
      * @brief Destroy the Battle Ground object
      * 
      */
-    ~BattleGround();
+    ~BattleGround() override;
 
     /**
      * @brief 
@@ -49,7 +49,7 @@ public:
      * @param recruitNumber 
      * @return int 
      */
-    virtual int penalty(Recruits* recruits) = 0; //added
+    int penalty(Recruits* recruits) override = 0; //added
 };
 
 

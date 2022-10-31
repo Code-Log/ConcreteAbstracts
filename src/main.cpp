@@ -17,7 +17,7 @@ int main() {
     // delete y;
     // cout << "hello world" << endl;
 
-    Country* Germany = new Country("Germany");
+    auto* Germany = new Country("Germany");
     cout<<"Name: "<< Germany->getName()<<endl;
     
     cout<<"Population: "<<Germany->getPopulation()<<endl;

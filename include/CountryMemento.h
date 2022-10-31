@@ -22,10 +22,10 @@ private:
 
     /**
      * @brief Construct a new Country Memento object
-     * 
-     * @param state 
+     *
+     * @param state
      */
-    CountryMemento(Country* state);
+     explicit CountryMemento(Country* state);
 public:
     /**
      * @brief Destroy the Country Memento object

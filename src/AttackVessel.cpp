@@ -3,14 +3,14 @@
 
 AttackVessel::AttackVessel()
 {
-   factory[0] = new TankCreator();
-   factory[1] = new ShipCreator();
-   factory[2] = new JetCreator();
-   factory[3] = new SpacecraftCreator();
+    factory[0] = new TankCreator();
+    factory[1] = new ShipCreator();
+    factory[2] = new JetCreator();
+    factory[3] = new SpacecraftCreator();
 }
 void AttackVessel::purchase(Recruits* recruits)
 {
-   std::string question =  std::string("What kind of Vessel do you wish to produce?\n")
+    std::string question =  std::string("What kind of Vessel do you wish to produce?\n")
                         + "1. Tank\n"
                         + "2. Ship\n"
                         + "3. Jet\n"

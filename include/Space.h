@@ -26,7 +26,7 @@ public:
      * @brief Destroy the Space object
      * 
      */
-    ~Space();
+    ~Space() override;
 
     /**
      * @brief The casualties gained from environmental extremities (function could evolve to have other factors)

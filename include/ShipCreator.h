@@ -30,9 +30,9 @@ public:
 	 * 
 	 * @return VesselWeapon* 
 	 */
-	VesselWeapon* produceVesselWeapon();
+	VesselWeapon* produceVesselWeapon() override;
 
-	~ShipCreator() = default;
+	~ShipCreator() override = default;
 };
 
 #endif

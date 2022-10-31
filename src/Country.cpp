@@ -84,9 +84,9 @@ void Country::recruitMarines(int squadSize)
     }
 
     bool found = false;
-    std::vector<Recruits*>::iterator it = recruits.begin();
+    auto it = recruits.begin();
 
-    for(it; it< recruits.end(); it++)
+    for(;it< recruits.end(); it++)
     {
         if((*it)->getMilitaryType()=="Marine")
         {
@@ -120,9 +120,9 @@ void Country::recruitSoldiers(int squadSize)
     }
 
     bool found = false;
-    std::vector<Recruits*>::iterator it = recruits.begin();
+    auto it = recruits.begin();
 
-    for(it; it< recruits.end(); it++)
+    for(; it< recruits.end(); it++)
     {
         if((*it)->getMilitaryType()=="Soldier")
         {
@@ -156,9 +156,9 @@ void Country::recruitMedics(int squadSize)
     }
 
     bool found = false;
-    std::vector<Recruits*>::iterator it = recruits.begin();
+    auto it = recruits.begin();
 
-    for(it; it< recruits.end(); it++)
+    for(; it< recruits.end(); it++)
     {
         if((*it)->getMilitaryType()=="Medic")
         {
@@ -192,9 +192,9 @@ void Country::recruitGuardians(int squadSize)
     }
 
     bool found = false;
-    std::vector<Recruits*>::iterator it = recruits.begin();
+    auto it = recruits.begin();
 
-    for(it; it< recruits.end(); it++)
+    for(; it< recruits.end(); it++)
     {
         if((*it)->getMilitaryType()=="Guardian")
         {
@@ -228,9 +228,9 @@ void Country::recruitPilots(int squadSize)
     }
 
     bool found = false;
-    std::vector<Recruits*>::iterator it = recruits.begin();
+    auto it = recruits.begin();
 
-    for(it; it< recruits.end(); it++)
+    for(; it< recruits.end(); it++)
     {
         if((*it)->getMilitaryType()=="Pilot")
         {
@@ -268,9 +268,9 @@ void Country::updatePopulationSize()
     
     count += notEnlisted;
 
-    std::vector<Recruits*>::iterator it = recruits.begin();
+    auto it = recruits.begin();
 
-    for(it; it< recruits.end(); it++)
+    for(; it< recruits.end(); it++)
     {
         count += (*it)->getGroupSize();
     }
@@ -294,12 +294,12 @@ int Country::getNotEnlisted() const
     return notEnlisted;
 }
 
-void Country::addWarFront(std::string location)
+void Country::addWarFront(const std::string& location)
 {
     bool found = false;
-    std::vector<WarTheatre*>::iterator it = warTheatres.begin();
+    auto it = warTheatres.begin();
 
-    for(it; it< warTheatres.end(); it++)
+    for(; it< warTheatres.end(); it++)
     {
         if((*it)->getLocation()== location)
         {
@@ -334,14 +334,14 @@ void Country::addWarFront(std::string location)
 
 Country::~Country()
 {
-    while(warTheatres.size() !=0)
+    while(!warTheatres.empty())
     {
         WarTheatre* wt = warTheatres.back();
         warTheatres.pop_back();
         delete wt;
     }
 
-    while(recruits.size() !=0)
+    while(!recruits.empty())
     {
         Recruits* r = recruits.back();
         recruits.pop_back();

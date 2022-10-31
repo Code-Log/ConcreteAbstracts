@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2022
  * 
  */
-#ifndef __MARINE_H__
-#define __MARINE_H__
+#ifndef CONCRETEABSTRACTS_MARINE_H
+#define CONCRETEABSTRACTS_MARINE_H
 
 #include <Recruits.h>
 class Marine : public Recruits
@@ -25,4 +25,4 @@ public:
     // ~Marine();
 };
 
-#endif // __MARINE_H__
+#endif // CONCRETEABSTRACTS_MARINE_H
