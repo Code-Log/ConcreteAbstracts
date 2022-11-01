@@ -4,6 +4,7 @@
 #include <vector>
 // #include <VesselWeapon.h>
 #include <string>
+#include <WarEngine.h>
 
 AttackVessel::AttackVessel()
 {
@@ -21,6 +22,7 @@ void AttackVessel::purchase(Recruits* recruits)
                      + "2. Ship\n"
                      + "3. Jet\n"
                      + "4. Spacecraft\n";
+   std::cout<<question;
    int answer;
    std::cin>>answer;
    int budget = recruits->getCountry()->getEconomy();
@@ -70,7 +72,7 @@ void AttackVessel::purchase(Recruits* recruits)
       std::cout<<"Option not available..."<<std::endl;
       return;
    }
-   std::vector<UnorderedPair<Country*>> countries = WarEngine::getInstanceWarEngine()->getBattleRegistry()->getRecords(recruits->getCountry());
+   std::vector<UnorderedPair<Country*>> countries = WarEngine::getInstanceWarEngine().getBattleRegistry().getRecords(recruits->getCountry());
    int randomCountryIndex = (rand() % countries.size());
    std::cout<<"Transporting "<<vesselName<<" vessel to enemy country: "<<countries[randomCountryIndex].getOther(recruits->getCountry())->getName()<<std::endl;
 
