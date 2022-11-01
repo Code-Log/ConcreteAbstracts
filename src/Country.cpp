@@ -400,6 +400,20 @@ void Country::setTrap(WarTheatre* battleGround, std::string Trap)
 
 }
 
+void Country::removeFront(std::string Location)
+{
+    auto it = warTheatres.begin();
+
+    for(; it< warTheatres.end(); it++)
+    {
+        if((*it)->getLocation()== Location)
+        {
+            warTheatres.erase(it);
+        }
+    }
+
+}
+
 Country::~Country()
 {
     while(!warTheatres.empty())
