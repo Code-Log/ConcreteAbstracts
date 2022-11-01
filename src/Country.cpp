@@ -294,21 +294,28 @@ int Country::getNotEnlisted() const
     return notEnlisted;
 }
 
-void Country::addWarFront(const std::string& location)
+WarTheatre* Country::getWarFront(std::string Type)
 {
     bool found = false;
     auto it = warTheatres.begin();
 
     for(; it< warTheatres.end(); it++)
     {
-        if((*it)->getLocation()== location)
+        if((*it)->getLocation()== Type)
         {
             found=true;
-            break;
+            return (*it);
         }
     }
 
-    if(!found)
+    return nullptr;
+}
+
+void Country::addWarFront(const std::string& location)
+{
+     WarTheatre* check = getWarFront(location);
+
+    if(check == nullptr)
     {
         WarTheatre *warFront;
 
@@ -330,6 +337,81 @@ void Country::addWarFront(const std::string& location)
 
         warTheatres.push_back(warFront);
     }
+}
+
+void Country::setTrap(WarTheatre* battleGround, std::string Trap)
+{
+    if(battleGround == nullptr)
+    {
+        return;
+    }
+
+    if(Trap == "SpaceMagnets")
+    {
+        if(battleGround->getLocation()!= "Space")
+        {
+            return;
+        }
+
+        WarTheatre* Temp;
+        Temp = new SpaceMagnets();
+        Temp->add(battleGround);
+        battleGround=Temp;
+    }
+
+    if(Trap == "Mines")
+    {
+        if(battleGround->getLocation() == "Air")
+        {
+            return;
+        }
+
+        WarTheatre* Temp;
+        Temp = new Mines();
+        Temp->add(battleGround);
+        battleGround=Temp;
+    }
+
+    if(Trap == "Barricades")
+    {
+        if(battleGround->getLocation() == "Air")
+        {
+            return;
+        }
+
+        WarTheatre* Temp;
+        Temp = new Barricades();
+        Temp->add(battleGround);
+        battleGround=Temp;
+    }
+
+    if(Trap == "Trenches")
+    {
+        if(battleGround->getLocation()!= "Land")
+        {
+            return;
+        }
+
+        WarTheatre* Temp;
+        Temp = new Trenches();
+        Temp->add(battleGround);
+        battleGround=Temp;
+    }
+
+}
+
+void Country::removeFront(std::string Location)
+{
+    auto it = warTheatres.begin();
+
+    for(; it< warTheatres.end(); it++)
+    {
+        if((*it)->getLocation()== Location)
+        {
+            warTheatres.erase(it);
+        }
+    }
+
 }
 
 Country::~Country()

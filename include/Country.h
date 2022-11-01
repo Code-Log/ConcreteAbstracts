@@ -23,6 +23,10 @@
 #include <Land.h>
 #include <Air.h>
 #include <Space.h>
+#include <Trenches.h>
+#include <Barricades.h>
+#include <Mines.h>
+#include <SpaceMagnets.h>
 #include <Recruits.h>
 #include <Citizens.h>
 #include <Refugee.h>
@@ -150,7 +154,26 @@ public:
      * @param location
      */
     void addWarFront(const std::string& location);
+      /**
+     * @brief returns specified wartheatre if it exists
+     * @param Type
+     */
+    WarTheatre* getWarFront(std::string Type);
 
+     /**
+     * @brief Adds traps to avalable wartheatres. ? Restricts the what kinds of traps can be added to a wartheatre.
+     * @param battleGround
+     * @param TrapName 
+     * 
+     */
+    void setTrap(WarTheatre* battleGround, std::string TrapName );
+    
+     /**
+     * @brief removes wartheatre
+     * @param Location
+     * 
+     */
+    void removeFront(std::string Location);
 
     /**
      * @brief Destroy the Country object

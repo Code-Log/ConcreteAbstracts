@@ -214,7 +214,7 @@ int testTheatreCountryPeopleCombo()
         result = -1;
     }
 
-    if(Germany->getPower() == Germany->getEconomy() != Germany->getPopulation())
+    if(Germany->getPower() != Germany->getEconomy() * Germany->getPopulation())
     {
         result = -1;
     }
@@ -235,9 +235,9 @@ int testTheatreCountryPeopleCombo()
     }
 
     Germany->recruitPilots(341);
-
-    Germany->addWarFront("Air");
     Germany->addWarFront("Land");
+    Germany->addWarFront("Air");
+    
 
     delete Germany;
 
