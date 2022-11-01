@@ -234,9 +234,9 @@ int testTheatreCountryPeopleCombo()
     }
 
     Germany->recruitPilots(341);
-
-    Germany->addWarFront("Air");
     Germany->addWarFront("Land");
+    Germany->addWarFront("Air");
+    
 
     delete Germany;
 
