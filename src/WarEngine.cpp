@@ -35,6 +35,16 @@ int WarEngine::getTest()
     return test;
 }
 
+void WarEngine::setAllyRegistry(AllyRegistry &ar)
+{
+    this->allyRegistry = ar;
+}
+
+void WarEngine::setBattleRegistry(BattleRegistry &br)
+{
+    this->battleRegistry = br;
+}
+
 WarEngine& WarEngine::getInstanceWarEngine()
 {
     static WarEngine onlyInstance_;
