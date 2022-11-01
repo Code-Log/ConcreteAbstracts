@@ -2,6 +2,7 @@
 #include <BattleRegistry.h>
 #include <vector>
 #include <string>
+#include <WarEngine.h>
 
 
 WeaponTransport::WeaponTransport(){
@@ -17,6 +18,7 @@ void WeaponTransport::purchase(Recruits* recruits)
                      + "2. Explosive\n"
                      + "3. Melee\n"
                      + "4. Ranged\n";
+   std::cout<<question;
    int answer;
    std::cin>>answer;
    int budget = recruits->getCountry()->getEconomy();
@@ -66,7 +68,7 @@ void WeaponTransport::purchase(Recruits* recruits)
       std::cout<<"Option not available..."<<std::endl;
       return;
    }
-   std::vector<UnorderedPair<Country*>> countries = WarEngine::getInstanceWarEngine()->getBattleRegistry()->getRecords(recruits->getCountry());
+   std::vector<UnorderedPair<Country*>> countries = WarEngine::getInstanceWarEngine().getBattleRegistry().getRecords(recruits->getCountry());
    int randomCountryIndex = (rand() % countries.size());
    std::cout<<"Transporting"<<weaponName<<"weapon to enemy country: "<<countries[randomCountryIndex].getOther(recruits->getCountry())->getName()<<std::endl;
 

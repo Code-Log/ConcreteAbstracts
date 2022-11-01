@@ -15,6 +15,7 @@
 #include <AttackVessel.h>
 #include <TransportContext.h>
 #include <ArmoryFacade.h>
+#include <WarEngine.h>
 
 using namespace std;
 
@@ -243,7 +244,15 @@ int testTheatreCountryPeopleCombo()
     return result;
 
 }
-
+int testWarEngine(){
+    WarEngine::getInstanceWarEngine().setTest(50);
+    if(WarEngine::getInstanceWarEngine().getTest() == 50){
+        return 0;
+    }
+    else{
+        return -1;
+    }
+}
 // Write your testing functions like this
 //int myTest()
 //{
@@ -262,6 +271,8 @@ int main(int argc, const char** argv)
         return testTransport();
     if (std::strcmp(argv[1], "testTheatreCountryPeopleCombo") == 0)
         return testTheatreCountryPeopleCombo();
+    if (std::strcmp(argv[1], "testWarEngine") == 0)
+        return testWarEngine();
 
 
 //    To add a new test
