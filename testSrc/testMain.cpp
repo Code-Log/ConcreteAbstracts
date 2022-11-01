@@ -213,7 +213,7 @@ int testTheatreCountryPeopleCombo()
         result = -1;
     }
 
-    if(Germany->getPower() == Germany->getEconomy() != Germany->getPopulation())
+    if(Germany->getPower() != Germany->getEconomy() * Germany->getPopulation())
     {
         result = -1;
     }
