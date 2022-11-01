@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2022
  * 
  */
-#ifndef __RECRUITS_H__
-#define __RECRUITS_H__
+#ifndef CONCRETEABSTRACTS_RECRUITS_H
+#define CONCRETEABSTRACTS_RECRUITS_H
 
 #include <string>
 #include <vector>
@@ -23,9 +23,9 @@ class Country;
 class Recruits: public People
 {
 private:
-    bool isEnlisted{};
+    bool isEnlisted; //removed as no longer working with individiuals?
     std::string militaryType;
-    int weaponDamage{};
+    int weaponDamage;
     std::vector<AttackWeapon*> armory;
     std::vector<VesselWeapon*> vehicles;
     Country* country;
@@ -61,19 +61,38 @@ public:
     void addVessel(VesselWeapon* vesselWeapon);
 
     /**
+     * @brief
+     *
+     */
+    void handle();
+
+    /**
      * @brief Destroy the Recruits object
      * 
      */
-    virtual ~Recruits();
+    ~Recruits() override;
 
     /**
      * @brief Get the Country object
-     * 
-     * @return Country* 
+     *
+     * @return Country*
      */
     Country* getCountry();
 
+
+    /**
+     * @brief Returns militaryType
+     * @return string
+     *
+     */
+    std::string getMilitaryType();
+
+     /**
+     * @brief sets militaryType
+     *
+     */
+    void setMilitaryType(std::string type);
 };
 
 
-#endif // __RECRUITS_H__
+#endif // CONCRETEABSTRACTS_RECRUITS_H

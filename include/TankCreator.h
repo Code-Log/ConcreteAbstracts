@@ -29,16 +29,9 @@ public:
 	 * 
 	 * @return VesselWeapon* 
 	 */
-	VesselWeapon* produceVesselWeapon();
+	VesselWeapon* produceVesselWeapon() override;
 
-	/**
-	 * @brief Get the Total object
-	 * 
-	 * @return int 
-	 */
-	int getTotal();
-
-	virtual ~TankCreator() = default;
+	~TankCreator() override = default;
 };
 
 #endif

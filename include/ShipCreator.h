@@ -30,14 +30,9 @@ public:
 	 * 
 	 * @return VesselWeapon* 
 	 */
-	VesselWeapon* produceVesselWeapon();
+	VesselWeapon* produceVesselWeapon() override;
 
-	/**
-	 * @brief Get the Total object
-	 * 
-	 * @return int 
-	 */
-	int getTotal();
+	~ShipCreator() override = default;
 };
 
 #endif

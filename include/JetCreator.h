@@ -29,16 +29,9 @@ public:
 	 * 
 	 * @return VesselWeapon* 
 	 */
-	VesselWeapon* produceVesselWeapon(); // VESSEL WEAPON ASK AMBER ?
+	VesselWeapon* produceVesselWeapon() override; // VESSEL WEAPON ASK AMBER ?
 
-	/**
-	 * @brief Get the Total object
-	 * 
-	 * @return int 
-	 */
-	int getTotal();
-
-	~JetCreator() = default;
+	~JetCreator() override = default;
 };
 
 #endif

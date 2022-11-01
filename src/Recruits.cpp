@@ -1,6 +1,8 @@
 #include <Recruits.h>
 #include <Country.h>
 
+#include <utility>
+
 Recruits::Recruits()
 {
     
@@ -61,4 +63,17 @@ Recruits::~Recruits()
     vehicles.clear();
 }
 
+std::string Recruits::getMilitaryType()
+{
+    return militaryType;
+}
 
+void Recruits::setMilitaryType(std::string type)
+{
+    this->militaryType = std::move(type);
+}
+
+void Recruits::handle()
+{
+
+}

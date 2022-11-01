@@ -21,13 +21,13 @@ public:
      * 
      * @param location 
      */
-    BattleGround(std::string location);
+    explicit BattleGround(std::string location);
 
     /**
      * @brief Destroy the Battle Ground object
      * 
      */
-    ~BattleGround();
+    ~BattleGround() override;
 
     /**
      * @brief 
@@ -44,12 +44,12 @@ public:
     int damageTotal() override;
 
     /**
-     * @brief 
+     * @brief The casualties gained from environmental extremities (function could evolve to have other factors)
      * 
      * @param recruitNumber 
      * @return int 
      */
-    virtual int penalty(int* recruitNumber) = 0; //added
+    int penalty(Recruits* recruits) override = 0; //added
 };
 
 

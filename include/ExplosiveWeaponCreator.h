@@ -27,14 +27,7 @@ public:
 	 * 
 	 * @return AttackWeapon* 
 	 */
-	AttackWeapon* produceAttackWeapon();
-
-	/**
-	 * @brief Get the Total object
-	 * 
-	 * @return int 
-	 */
-	int getTotal();
+	AttackWeapon* produceAttackWeapon() override;
 };
 
 #endif

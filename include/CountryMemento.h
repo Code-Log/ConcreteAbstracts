@@ -22,17 +22,17 @@ private:
 
     /**
      * @brief Construct a new Country Memento object
-     * 
-     * @param state 
+     *
+     * @param state
      */
-    CountryMemento(Country* state);
+     explicit CountryMemento(Country* state);
 public:
     /**
      * @brief Destroy the Country Memento object
      * 
      */
     ~CountryMemento();
-    friend class AbstractCountry;
+    friend class Country;
 };
 
 #endif //CONCRETEABSTRACTS_COUNTRYMEMENTO_H

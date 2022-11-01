@@ -10,7 +10,7 @@ Land::Land() : BattleGround("Land")
 
 Land::~Land() = default;
 
-int Land::penalty(int* recruitNumber)
+int Land::penalty(Recruits* recruits)
 {
     return 0;
 }

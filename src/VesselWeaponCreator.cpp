@@ -9,11 +9,6 @@ VesselWeapon* VesselWeaponCreator::produce()
 {
 	return produceVesselWeapon();
 }
-
-int VesselWeaponCreator::getTotal()
-{
-	return this->total;
-}
 int VesselWeaponCreator::getPrice()
 {
 	return price;

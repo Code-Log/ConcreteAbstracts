@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2022
  * 
  */
-#ifndef __MEDIC_H__
-#define __MEDIC_H__
+#ifndef CONCRETEABSTRACTS_MEDIC_H
+#define CONCRETEABSTRACTS_MEDIC_H
 
 #include <Recruits.h>
 class Medic : public Recruits
@@ -25,4 +25,4 @@ public:
     // ~Medic();
 };
 
-#endif // __MEDIC_H__
+#endif // CONCRETEABSTRACTS_MEDIC_H

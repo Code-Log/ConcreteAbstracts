@@ -1,4 +1,5 @@
 #include <RecruiterContext.h>
+
 RecruiterContext::RecruiterContext(/* args */)
 {
     

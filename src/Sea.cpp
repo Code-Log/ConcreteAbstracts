@@ -10,12 +10,13 @@ Sea::Sea() : BattleGround("Sea")
 
 Sea::~Sea() = default;
 
-int Sea::penalty(int* recruitNumber)
+int Sea::penalty(Recruits* recruits)
 {
-    int sickness = (*recruitNumber * seaSickness())/100;
+    int size = recruits->getGroupSize();
+    int casualties = ( size * seaSickness())/100;
 
-    *recruitNumber = *recruitNumber - sickness; //if function is to alter the value directly. Depends if recruits is pointer
-    return sickness;
+    recruits->setGroupSize(size - casualties);
+    return casualties;
 }
 
 int Sea::seaSickness()

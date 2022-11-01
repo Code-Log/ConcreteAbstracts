@@ -9,8 +9,3 @@ VesselWeapon* SpacecraftCreator::produceVesselWeapon()
 {
 	return new Spacecraft();
 }
-
-int SpacecraftCreator::getTotal()
-{
-    return this->total;
-}

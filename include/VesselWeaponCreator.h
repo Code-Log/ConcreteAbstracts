@@ -16,7 +16,6 @@
 class VesselWeaponCreator {
 
 protected:
-	int total;
 	int price;
 
 public:
@@ -43,11 +42,10 @@ protected:
 
 public:
 	/**
-	 * @brief Get the Total object
+	 * @brief Get the Price object
 	 * 
 	 * @return int 
 	 */
-	int getTotal();
 	int getPrice();
 
 	virtual ~VesselWeaponCreator() = default;

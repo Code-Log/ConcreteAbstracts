@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2022
  * 
  */
-#ifndef __SOLDIER_H__
-#define __SOLDIER_H__
+#ifndef CONCRETEABSTRACTS_SOLDIER_H
+#define CONCRETEABSTRACTS_SOLDIER_H
 
 #include <Recruits.h>
 class Soldier : public Recruits
@@ -26,4 +26,4 @@ public:
 };
 
 
-#endif // __SOLDIER_H__
+#endif // CONCRETEABSTRACTS_SOLDIER_H

@@ -17,7 +17,7 @@ class Trap : public WarTheatre
 {
 private:
     WarTheatre* trap;
-    bool Active;
+    bool active;
     int lifespan;
 
 public:
@@ -31,7 +31,7 @@ public:
      * @brief Destroy the Trap object
      * 
      */
-    ~Trap();
+    ~Trap() override;
 
     /**
      * @brief 
@@ -41,22 +41,22 @@ public:
     void add(WarTheatre* trap) override;
 
     /**
-     * @brief Get the Active object
+     * @brief Get the active object
      * 
      * @return true 
      * @return false 
      */
-    bool getActive();
+    bool getActive() const;
 
     /**
-     * @brief Set the Active object
+     * @brief Set the active object
      * 
      * @param activation 
      */
-    void setActive(bool activation);
+    void setActive(bool active);
 
     /**
-     * @brief 
+     * @brief Returns the combined damage of the traps added to the wartheatre
      * 
      * @return int 
      */
@@ -72,10 +72,10 @@ public:
     /**
      * @brief 
      * 
-     * @param recruitNumber 
+     * @param recruits 
      * @return int 
      */
-    int penalty(int* recruitNumber) override;
+    int penalty(Recruits* recruits) override;
 };
 
 

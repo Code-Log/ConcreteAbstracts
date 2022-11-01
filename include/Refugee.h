@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2022
  * 
  */
-#ifndef __REFUGEE_H__
-#define __REFUGEE_H__
+#ifndef CONCRETEABSTRACTS_REFUGEE_H
+#define CONCRETEABSTRACTS_REFUGEE_H
 
 #include "People.h"
 class Refugee : public People
@@ -32,4 +32,4 @@ public:
 };
 
 
-#endif // __REFUGEE_H__
+#endif // CONCRETEABSTRACTS_REFUGEE_H

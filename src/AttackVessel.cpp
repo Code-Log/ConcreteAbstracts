@@ -7,10 +7,10 @@
 
 AttackVessel::AttackVessel()
 {
-   factory[0] = new TankCreator();
-   factory[1] = new ShipCreator();
-   factory[2] = new JetCreator();
-   factory[3] = new SpacecraftCreator();
+    factory[0] = new TankCreator();
+    factory[1] = new ShipCreator();
+    factory[2] = new JetCreator();
+    factory[3] = new SpacecraftCreator();
 }
 
 void AttackVessel::purchase(Recruits* recruits)

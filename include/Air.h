@@ -28,15 +28,15 @@ public:
      * @brief Destroy the Air object
      * 
      */
-    ~Air();
+    ~Air() override;
 
     /**
-     * @brief 
+     * @brief The casualties gained from environmental extremities (function could evolve to have other factors)
      * 
-     * @param recruitNumber 
+     * @param recruits
      * @return int 
      */
-    int penalty(int* recruitNumber) override;
+    int penalty(Recruits* recruits) override;
     
     /**
      * @brief 
