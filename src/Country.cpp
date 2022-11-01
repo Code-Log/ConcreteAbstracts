@@ -294,6 +294,23 @@ int Country::getNotEnlisted() const
     return notEnlisted;
 }
 
+WarTheatre* Country::getWarFront(std::string Type)
+{
+    bool found = false;
+    auto it = warTheatres.begin();
+
+    for(; it< warTheatres.end(); it++)
+    {
+        if((*it)->getLocation()== Type)
+        {
+            found=true;
+            return (*it);
+        }
+    }
+
+    return nullptr;
+}
+
 void Country::addWarFront(const std::string& location)
 {
     bool found = false;
