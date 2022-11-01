@@ -9,3 +9,6 @@ AttackWeapon* AttackWeaponCreator::produce()
 {
   	return produceAttackWeapon();
 }
+int AttackWeaponCreator::getPrice(){
+    return price;
+}

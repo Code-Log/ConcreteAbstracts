@@ -13,6 +13,10 @@
 #include <AttackWeapon.h>
 
 class AttackWeaponCreator {
+
+protected:
+	int price;
+
 public:
 	/**
 	 * @brief Construct a new Attack Weapon Creator object
@@ -37,6 +41,12 @@ protected:
 
 public:
 	virtual ~AttackWeaponCreator() = default;
+	/**
+	 * @brief Get the Price object
+	 * 
+	 * @return int 
+	 */
+	int getPrice();
 };
 
 #endif

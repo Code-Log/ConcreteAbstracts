@@ -20,6 +20,16 @@ struct UnorderedPair
     }
 
     /**
+     * @brief Get the Other object of the UnorderedPair
+     * 
+     * @param elem 
+     * @return T 
+     */
+    T getOther(T elem){
+        return elem == first ? second : first;
+    }
+
+    /**
      * Overloaded equality operator which ensures pair equality is evaluated correctly
      * @return True, if pairs are equal. False, otherwise
      */

@@ -14,15 +14,24 @@
 #pragma once
 
 #include <Transport.h>
+#include <AttackWeaponCreator.h>
+#include <NuclearWeaponCreator.h>
+#include <ExplosiveWeaponCreator.h>
+#include <MeleeWeaponCreator.h>
+#include <RangedWeaponCreator.h>
+#include <Recruits.h>
+#include <AttackWeapon.h>
 
 class WeaponTransport : public Transport
 {
+private:
+    AttackWeaponCreator* factory[4];
 public:
     /**
      * @brief Construct a new Weapon Transport object
      * 
      */
-    WeaponTransport() = default;
+    WeaponTransport();
 
     /**
      * @brief 
