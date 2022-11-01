@@ -313,19 +313,9 @@ WarTheatre* Country::getWarFront(std::string Type)
 
 void Country::addWarFront(const std::string& location)
 {
-    bool found = false;
-    auto it = warTheatres.begin();
+     WarTheatre* check = getWarFront(location);
 
-    for(; it< warTheatres.end(); it++)
-    {
-        if((*it)->getLocation()== location)
-        {
-            found=true;
-            break;
-        }
-    }
-
-    if(!found)
+    if(check == nullptr)
     {
         WarTheatre *warFront;
 
