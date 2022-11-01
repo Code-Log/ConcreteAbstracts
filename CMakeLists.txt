@@ -109,7 +109,7 @@ list(FILTER CPP_FILES EXCLUDE REGEX src/main.cpp)
 add_executable(testExec testSrc/testMain.cpp ${CPP_FILES})
 
 # To add a test, follow the following format.
-add_test(<test_name> <test_executable> <program arguments>)
+# add_test(<test_name> <test_executable> <program arguments>)
 add_test(testCountry testExec testCountry)
 add_test(testRecruits testExec testRecruits)
 add_test(testRegistry testExec testRegistry)

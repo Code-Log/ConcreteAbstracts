@@ -79,6 +79,12 @@ public:
      */
     Country* getCountry();
 
+    /**
+     * @brief Set the Country object
+     * 
+     * @param country 
+     */
+    void setCountry(Country* country);
 
     /**
      * @brief Returns militaryType

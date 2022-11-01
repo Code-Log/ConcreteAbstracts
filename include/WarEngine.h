@@ -19,7 +19,9 @@ public:
 
 
     void setTest(int data); //for testing purposes.
-    int getTest();
+    int getTest();//for testing purposes.
+    void setAllyRegistry(AllyRegistry &ar);
+    void setBattleRegistry(BattleRegistry &br);
     static WarEngine& getInstanceWarEngine();
     
 };

@@ -15,7 +15,7 @@ std::vector<UnorderedPair<Country*>> BattleRegistry::getRecords(Country* country
     std::vector<UnorderedPair<Country*>> results;
     for (auto record : battles)
     {
-        if (record.first == country)
+        if (record.has(country))
             results.emplace_back(record);
     }
     return results;

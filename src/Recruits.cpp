@@ -41,6 +41,9 @@ Country* Recruits::getCountry()
 {
     return country;
 }
+void Recruits::setCountry(Country* country){
+    this->country = country;
+}
 
 void Recruits::addVessel(VesselWeapon* vesselWeapon)
 {
