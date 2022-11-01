@@ -150,7 +150,19 @@ public:
      * @param location
      */
     void addWarFront(const std::string& location);
+      /**
+     * @brief returns specified wartheatre if it exists
+     * @param Type
+     */
+    WarTheatre* getWarFront(std::string Type);
 
+     /**
+     * @brief Adds traps to avalable wartheatres. ? Restricts the what kinds of traps can be added to a wartheatre.
+     * @param battleGround
+     * @param TrapName 
+     * 
+     */
+    void setTrap(WarTheatre* battleGround, std::string TrapName );
 
     /**
      * @brief Destroy the Country object
