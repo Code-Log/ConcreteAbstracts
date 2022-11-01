@@ -339,6 +339,67 @@ void Country::addWarFront(const std::string& location)
     }
 }
 
+void Country::setTrap(WarTheatre* battleGround, std::string Trap)
+{
+    if(battleGround == nullptr)
+    {
+        return;
+    }
+
+    if(Trap == "SpaceMagnets")
+    {
+        if(battleGround->getLocation()!= "Space")
+        {
+            return;
+        }
+
+        WarTheatre* Temp;
+        Temp = new SpaceMagnets();
+        Temp->add(battleGround);
+        battleGround=Temp;
+    }
+
+    if(Trap == "Mines")
+    {
+        if(battleGround->getLocation() == "Air")
+        {
+            return;
+        }
+
+        WarTheatre* Temp;
+        Temp = new Mines();
+        Temp->add(battleGround);
+        battleGround=Temp;
+    }
+
+    if(Trap == "Barricades")
+    {
+        if(battleGround->getLocation() == "Air")
+        {
+            return;
+        }
+
+        WarTheatre* Temp;
+        Temp = new Barricades();
+        Temp->add(battleGround);
+        battleGround=Temp;
+    }
+
+    if(Trap == "Trenches")
+    {
+        if(battleGround->getLocation()!= "Land")
+        {
+            return;
+        }
+
+        WarTheatre* Temp;
+        Temp = new Trenches();
+        Temp->add(battleGround);
+        battleGround=Temp;
+    }
+
+}
+
 Country::~Country()
 {
     while(!warTheatres.empty())
