@@ -167,6 +167,13 @@ public:
      * 
      */
     void setTrap(WarTheatre* battleGround, std::string TrapName );
+    
+     /**
+     * @brief removes wartheatre
+     * @param Location
+     * 
+     */
+    void removeFront(std::string Location);
 
     /**
      * @brief Destroy the Country object
