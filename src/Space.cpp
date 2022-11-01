@@ -4,7 +4,7 @@
 
 Space::Space() : BattleGround("Space")
 {
-    std::cout<<"The Battle Has Left The Atmosphere"<<std::endl;
+    std::cout<<"The Battle Has Left The Stratosphere"<<std::endl;
     setDamage(0);
 }
 

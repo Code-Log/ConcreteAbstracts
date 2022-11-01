@@ -70,6 +70,13 @@ public:
     virtual int damageTotal()=0;
 
     /**
+     * @brief 
+     * 
+     * @return WarTheatre*
+     */
+    virtual WarTheatre* getTrap()=0;
+
+    /**
      * @brief The casualties gained from environmental extremities (function could evolve to have other factors)
      * 
      * @param recruits

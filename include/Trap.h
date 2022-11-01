@@ -69,6 +69,8 @@ public:
      */
     void alterLifespan(int decrease);
 
+    WarTheatre* getTrap();
+
     /**
      * @brief 
      * 
