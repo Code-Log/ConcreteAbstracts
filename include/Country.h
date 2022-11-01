@@ -23,6 +23,10 @@
 #include <Land.h>
 #include <Air.h>
 #include <Space.h>
+#include <Trenches.h>
+#include <Barricades.h>
+#include <Mines.h>
+#include <SpaceMagnets.h>
 #include <Recruits.h>
 #include <Citizens.h>
 #include <Refugee.h>
