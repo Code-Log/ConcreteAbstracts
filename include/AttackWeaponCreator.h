@@ -16,6 +16,7 @@ class AttackWeaponCreator {
 
 protected:
 	int total = 0;
+	int price;
 
 public:
 	/**
@@ -48,6 +49,12 @@ public:
 	virtual int getTotal() = 0;
 
 	virtual ~AttackWeaponCreator() = default;
+	/**
+	 * @brief Get the Price object
+	 * 
+	 * @return int 
+	 */
+	int getPrice();
 };
 
 #endif

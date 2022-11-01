@@ -14,3 +14,7 @@ int VesselWeaponCreator::getTotal()
 {
 	return this->total;
 }
+int VesselWeaponCreator::getPrice()
+{
+	return price;
+}
