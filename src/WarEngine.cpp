@@ -64,25 +64,7 @@ WarEngine::~WarEngine()
     
 }
 
-void WarEngine::run()
-{
-    
-}
 
-void WarEngine::stopEngine()
-{
-    
-}
-
-void WarEngine::runEngine()
-{
-    
-}
-
-void WarEngine::runGUIEngine()
-{
-    
-}
 
 void WarEngine::prePhase1()
 {
