@@ -1,4 +1,5 @@
 #include<WarEngine.h>
+#include<ListSelectionPrompt.h>
 
 void WarEngine::run()
 {
@@ -95,7 +96,30 @@ void WarEngine::selectCountry()
 
 void WarEngine::selectPoliticalRegime()
 {
-    
+
+    ListSelectionPrompt regime = { "c", "s"};
+    std::string promt = "";
+    prompt = "Is ";
+    prompt += countries[humanIndex]->getName();
+    prompt += " a capatalist nation or socialist society (c/s): ";
+    auto ans = p.getSelection(prompt);
+   
+    if(ans=="c")
+    {
+        int economy = countries[humanIndex]->getEconomy();
+        economy = economy*1.2;
+        countries[humanIndex]->setEconomy(economy);
+
+        std::cout<<countries[humanIndex]->getName()<<"'s economy has risen by 20%. Cheers to the free market!"<<std::endl<<std::endl;
+    }
+    else
+    {
+        int people = countries[humanIndex]->getNotEnlisted();
+        people = people*1.2;
+        countries[humanIndex]->setNotEnlisted(people);
+
+        std::cout<<countries[humanIndex]->getName()<<"'s man power has risen by 20%. A nation is as powerful as it's people!!!"<<std::endl<<std::endl;
+    }
 }
 
 void WarEngine::setAllies()
