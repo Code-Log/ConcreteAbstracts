@@ -79,7 +79,14 @@ public:
      * @return int
      */
     int getNotEnlisted() const;
-
+    
+     /**
+     * @brief Setter for the NotEnlisted object
+     *
+     * @param Amount
+     */
+    void setNotEnlisted(int Amount);
+    
        /**
      * @brief Get the Population object
      *
