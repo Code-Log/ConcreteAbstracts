@@ -40,3 +40,43 @@ ArmoryFacade::~ArmoryFacade() {
     delete attackVessel;
     delete recruiterContext;
 }
+
+TransportContext *ArmoryFacade::getTransportContext() const {
+    return transportContext;
+}
+
+void ArmoryFacade::setTransportContext(TransportContext *transportContext) {
+    ArmoryFacade::transportContext = transportContext;
+}
+
+RecruiterContext *ArmoryFacade::getRecruiterContext() const {
+    return recruiterContext;
+}
+
+void ArmoryFacade::setRecruiterContext(RecruiterContext *recruiterContext) {
+    ArmoryFacade::recruiterContext = recruiterContext;
+}
+
+AttackVessel *ArmoryFacade::getAttackVessel() const {
+    return attackVessel;
+}
+
+void ArmoryFacade::setAttackVessel(AttackVessel *attackVessel) {
+    ArmoryFacade::attackVessel = attackVessel;
+}
+
+SuppliesTransport *ArmoryFacade::getSuppliesTransport() const {
+    return suppliesTransport;
+}
+
+void ArmoryFacade::setSuppliesTransport(SuppliesTransport *suppliesTransport) {
+    ArmoryFacade::suppliesTransport = suppliesTransport;
+}
+
+WeaponTransport *ArmoryFacade::getWeaponTransport() const {
+    return weaponTransport;
+}
+
+void ArmoryFacade::setWeaponTransport(WeaponTransport *weaponTransport) {
+    ArmoryFacade::weaponTransport = weaponTransport;
+}

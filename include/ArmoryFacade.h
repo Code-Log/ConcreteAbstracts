@@ -64,6 +64,28 @@ public:
 private:
     TransportContext* transportContext;
     RecruiterContext* recruiterContext;
+public:
+    TransportContext *getTransportContext() const;
+
+    void setTransportContext(TransportContext *transportContext);
+
+    RecruiterContext *getRecruiterContext() const;
+
+    void setRecruiterContext(RecruiterContext *recruiterContext);
+
+    AttackVessel *getAttackVessel() const;
+
+    void setAttackVessel(AttackVessel *attackVessel);
+
+    SuppliesTransport *getSuppliesTransport() const;
+
+    void setSuppliesTransport(SuppliesTransport *suppliesTransport);
+
+    WeaponTransport *getWeaponTransport() const;
+
+    void setWeaponTransport(WeaponTransport *weaponTransport);
+
+private:
     AttackVessel* attackVessel;
     SuppliesTransport* suppliesTransport;
     WeaponTransport* weaponTransport;

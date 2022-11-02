@@ -80,3 +80,11 @@ void Recruits::handle()
 {
 
 }
+
+int Recruits::getWeaponDamage() const {
+    return weaponDamage;
+}
+
+void Recruits::setWeaponDamage(int weaponDamage) {
+    Recruits::weaponDamage = weaponDamage;
+}
