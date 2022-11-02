@@ -33,6 +33,9 @@ void WarPedal::Phase1()
 
     std::cout<<"Power Levels Before War:"<<std::endl;
     std::cout<<countryRanks()<<std::endl;
+
+    std::cout<<"************Saving onto MEMENTO! First use********************"<<std::endl;
+    
     
 
 }
