@@ -103,7 +103,7 @@ void WarEngine::selectPoliticalRegime()
     prompt = "Is ";
     prompt += countries[humanIndex]->getName();
     prompt += " a capatalist nation or socialist society (c/s): ";
-    auto ans = p.getSelection(prompt);
+    auto ans = regime.getSelection(prompt);
    
     if(ans=="c")
     {
