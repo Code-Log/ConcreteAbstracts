@@ -15,8 +15,6 @@
 
 class Land : public BattleGround
 {
-private:
-    /* data */
 public:
     /**
      * @brief Construct a new Land object
@@ -37,6 +35,10 @@ public:
      * @return int 
      */
     int penalty(Recruits* recruits) override;
+
+protected:
+
+private:
 };
 
 

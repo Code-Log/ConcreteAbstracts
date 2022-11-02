@@ -24,8 +24,6 @@
 
 class WeaponTransport : public Transport
 {
-private:
-    AttackWeaponCreator* factory[4];
 public:
     /**
      * @brief Construct a new Weapon Transport object
@@ -39,6 +37,11 @@ public:
      * @param recruits 
      */
     void purchase(Recruits* recruits) override;
+
+protected:
+
+private:
+    AttackWeaponCreator* factory[4];
 };
 
 #endif //CONCRETEABSTRACTS_WEAPONTRANSPORT_H

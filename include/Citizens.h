@@ -15,8 +15,7 @@
 
 class Citizens : public People
 {
-private:
-    
+
 public:
     /**
      * @brief Construct a new Citizens object
@@ -29,6 +28,10 @@ public:
      * 
      */
     void procreate();
+
+protected:
+
+private:
 };
 
 #endif

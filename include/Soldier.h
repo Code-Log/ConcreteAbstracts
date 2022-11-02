@@ -14,15 +14,16 @@
 #include <Recruits.h>
 class Soldier : public Recruits
 {
-private:
-    /* data */
 public:
     /**
      * @brief Construct a new Soldier object
      * 
      */
     Soldier();
-    // ~Soldier();
+
+protected:
+
+private:
 };
 
 

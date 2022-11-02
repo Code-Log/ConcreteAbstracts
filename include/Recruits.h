@@ -22,16 +22,6 @@ class Country;
 
 class Recruits: public People
 {
-private:
-    bool isEnlisted; //removed as no longer working with individiuals?
-    std::string militaryType;
-    int weaponDamage;
-    std::vector<AttackWeapon*> armory;
-
-private:
-    std::vector<VesselWeapon*> vehicles;
-    Country* country;
-
 public:
     /**
      *
@@ -112,6 +102,16 @@ public:
      *
      */
     void setMilitaryType(std::string type);
+
+protected:
+
+private:
+    bool isEnlisted; //removed as no longer working with individiuals?
+    std::string militaryType;
+    int weaponDamage;
+    std::vector<AttackWeapon*> armory;
+    std::vector<VesselWeapon*> vehicles;
+    Country* country;
 };
 
 

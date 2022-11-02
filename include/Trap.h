@@ -15,11 +15,6 @@
 
 class Trap : public WarTheatre
 {
-private:
-    WarTheatre* trap;
-    bool active;
-    int lifespan;
-
 public:
     /**!
      *
@@ -102,6 +97,13 @@ public:
      * @return int 
      */
     int penalty(Recruits* recruits) override;
+
+protected:
+
+private:
+    WarTheatre* trap;
+    bool active;
+    int lifespan;
 };
 
 

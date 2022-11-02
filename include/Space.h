@@ -42,6 +42,10 @@ public:
      * @return int 
      */
     int SpaceAdaptationSyndrome();
+
+protected:
+
+private:
 };
 
 #endif
