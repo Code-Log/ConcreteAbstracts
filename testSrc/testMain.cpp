@@ -242,10 +242,38 @@ int testTheatreCountryPeopleCombo()
         result= -1;
     }
 
-    Germany->recruitPilots(341);
+    Germany->recruitPilots(341); 
+    if(!(Germany->getWarFront("Air") == nullptr))
+    {
+        result = -1;
+    }
+    Germany->addWarFront("Land");
+    Germany->addWarFront("Air");
 
     Germany->addWarFront("Air");
-    Germany->addWarFront("Land");
+    Germany->removeFront("Air");
+    if(!(Germany->getWarFront("Air") == nullptr))
+    {
+        result = -1;
+    }
+
+    Germany->setTrap("Land", "Mines");
+    if(Germany->warFrontDanger("Air") != 0)
+    {
+        result = -1;
+    }
+    int testing = Germany->warFrontDanger("Land");
+
+    Germany->setTrap("Land", "Barricades");
+
+    if(testing > Germany->warFrontDanger("Land"))
+    {
+        result = -1;
+    }
+
+    Germany->addWarFront("Space");
+    Germany->setTrap("Space", "Trenches");
+    Germany->setTrap("Space", "SpaceMagnets");
 
     delete Germany;
 

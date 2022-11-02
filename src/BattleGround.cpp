@@ -13,6 +13,11 @@ int BattleGround::damageTotal()
     return getDamage();
 }
 
+WarTheatre* BattleGround:: getTrap()
+{
+    return nullptr;
+}
+
 void BattleGround::add(WarTheatre* trap)
 {
     //nothing to add
