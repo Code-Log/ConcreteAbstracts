@@ -256,11 +256,6 @@ int testTheatreCountryPeopleCombo()
     }
     int testing = Germany->warFrontDanger("Land");
 
-    if(testing==0)
-    {
-       result = -1;
-    }
-
     Germany->setTrap("Land", "Barricades");
 
     if(testing > Germany->warFrontDanger("Land"))
