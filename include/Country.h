@@ -207,6 +207,9 @@ public:
      * 
      */
     ~Country();
+
+protected:
+
 private:
     std::string countryName;
     int power;

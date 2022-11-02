@@ -15,8 +15,6 @@
 #include <Tanks.h>
 
 class TankCreator : public VesselWeaponCreator {
-
-
 public:
 	/**
 	 * @brief Construct a new Tank Creator object
@@ -32,6 +30,10 @@ public:
 	VesselWeapon* produceVesselWeapon() override;
 
 	~TankCreator() override = default;
+
+protected:
+
+private:
 };
 
 #endif

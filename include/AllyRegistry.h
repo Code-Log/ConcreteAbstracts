@@ -18,9 +18,6 @@
 
 class AllyRegistry : public Registry
 {
-private:
-    std::vector<UnorderedPair<Country*>> allies;
-
 public:
     /**
      * @brief Construct a new Ally Registry object
@@ -49,6 +46,12 @@ public:
      * @return std::vector<UnorderedPair<Country*>> 
      */
     std::vector<UnorderedPair<Country*>> getRecords(Country* country) override;
+
+protected:
+
+private:
+    std::vector<UnorderedPair<Country*>> allies;
 };
+
 
 #endif //CONCRETEABSTRACTS_ALLYREGISTRY_H

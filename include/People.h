@@ -14,8 +14,6 @@
 
 class People
 {
-private:
-    int groupSize;
 public:
     /**
      * @brief To get the current size of a given population
@@ -42,6 +40,11 @@ public:
      * 
      */
     virtual ~People();
+
+protected:
+
+private:
+    int groupSize;
 };
 
 

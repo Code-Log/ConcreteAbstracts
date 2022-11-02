@@ -15,8 +15,6 @@
 
 class SpaceMagnets : public Trap
 {
-private:
-    /* data */
 public:
     /**
      * @brief Construct a new Space Magnets object
@@ -29,6 +27,10 @@ public:
      * 
      */
     ~SpaceMagnets() override;
+
+protected:
+
+private:
 };
 
 #endif

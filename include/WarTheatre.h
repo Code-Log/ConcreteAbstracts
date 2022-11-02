@@ -16,10 +16,6 @@
 
 class WarTheatre
 {
-private:
-    int damage;
-    std::string location;
-
 public:
     /**
      * @brief Construct a new War Theatre object
@@ -83,6 +79,12 @@ public:
      * @return int
      */
     virtual int penalty(Recruits* recruits) = 0;
+
+protected:
+
+private:
+    int damage;
+    std::string location;
 };
 
 #endif

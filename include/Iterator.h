@@ -27,6 +27,9 @@ public:
      * @return false 
      */
     virtual bool hasNext() = 0;
+
+protected:
+
 private:
 };
 

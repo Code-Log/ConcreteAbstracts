@@ -19,8 +19,6 @@
 
 class Registry
 {
-protected:
-    std::vector<Country*> countries;
 public:
     /**
      * @brief 
@@ -43,6 +41,11 @@ public:
      * 
      */
     virtual ~Registry() = default;
+
+protected:
+    std::vector<Country*> countries;
+
+private:
 };
 
 #endif //CONCRETEABSTRACTS_REGISTRY_H

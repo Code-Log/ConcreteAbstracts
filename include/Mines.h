@@ -27,6 +27,10 @@ public:
      * 
      */
     ~Mines() override;
+
+protected:
+
+private:
 };
 
 

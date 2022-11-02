@@ -14,8 +14,6 @@
 #include <AttackWeapon.h>
 
 class MeleeWeapons : public AttackWeapon {
-
-
 public:
 	/**
 	 * @brief Get the Damage object
@@ -50,6 +48,10 @@ public:
      * 
      */
 	~MeleeWeapons() override = default;
+
+protected:
+
+private:
 };
 
 #endif

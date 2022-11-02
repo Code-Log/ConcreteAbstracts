@@ -14,8 +14,6 @@
 #include <VesselWeaponCreator.h>
 
 class Jets : public VesselWeapon {
-
-
 public:
 	/**
 	 * @brief Get the Damage object
@@ -57,6 +55,10 @@ public:
      * 
      */
 	~Jets() override = default;
+
+protected:
+
+private:
 };
 
 #endif

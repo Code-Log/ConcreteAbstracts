@@ -15,12 +15,6 @@
 #include <iostream>
 
 class AttackWeapon {
-
-protected:
-	std::string name;
-	int damage = 100;
-	int durability = 100;
-
 public:
 	/**
 	 * @brief Get the Damage object
@@ -55,6 +49,13 @@ public:
      * 
      */
 	virtual ~AttackWeapon() = default;
+
+protected:
+    std::string name;
+    int damage = 100;
+    int durability = 100;
+
+private:
 };
 
 #endif

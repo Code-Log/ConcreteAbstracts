@@ -48,6 +48,10 @@ public:
      * 
      */
 	~ExplosiveWeapons() override = default;
+
+protected:
+
+private:
 };
 
 #endif

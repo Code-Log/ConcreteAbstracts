@@ -15,8 +15,6 @@
 #include <NuclearWeapons.h>
 
 class NuclearWeaponCreator : public AttackWeaponCreator {
-
-
 public:
 	/**
 	 * @brief Construct a new Nuclear Weapon Creator object
@@ -30,6 +28,10 @@ public:
 	 * @return AttackWeapon* 
 	 */
 	AttackWeapon* produceAttackWeapon() override;
+
+protected:
+
+private:
 };
 
 #endif

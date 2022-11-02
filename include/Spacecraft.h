@@ -15,8 +15,6 @@
 #include <Spacecraft.h>
 
 class Spacecraft : public VesselWeapon {
-
-
 public:
 	/**
 	 * @brief Get the Damage object
@@ -58,6 +56,10 @@ public:
      * 
      */
 	~Spacecraft() override = default;
+
+protected:
+
+private:
 };
 
 #endif

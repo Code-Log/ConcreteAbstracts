@@ -14,8 +14,6 @@
 #include <VesselWeaponCreator.h>
 
 class Tanks : public VesselWeapon {
-
-
 public:
 	/**
 	 * @brief Get the Damage object
@@ -57,6 +55,10 @@ public:
      * 
      */
 	~Tanks() override = default;
+
+protected:
+
+private:
 };
 
 #endif

@@ -18,8 +18,6 @@
 
 class TransportContext
 {
-private:
-    Transport* strategy;
 public:
     /**
      * @brief Construct a new Transport Context object
@@ -41,6 +39,11 @@ public:
      * @param newStrategy 
      */
     void setStrategy(Transport* newStrategy);
+
+protected:
+
+private:
+    Transport* strategy;
 };
 
 #endif //CONCRETEABSTRACTS_TRANSPORTCONTEXT_H

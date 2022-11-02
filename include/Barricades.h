@@ -15,8 +15,7 @@
 
 class Barricades : public Trap
 {
-private:
-    /* data */
+
 public:
     /**
      * @brief Create the Barricades object
@@ -29,6 +28,10 @@ public:
      * 
      */
     ~Barricades() override;
+
+protected:
+
+private:
 };
 
 

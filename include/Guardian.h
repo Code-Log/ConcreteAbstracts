@@ -15,8 +15,6 @@
 #include <Recruits.h>
 class Guardian : public Recruits
 {
-private:
-    /* data */
 public:
     /**
      * @brief Construct a new Guardian object
@@ -24,7 +22,9 @@ public:
      */
     Guardian();
     
-    // ~Guardian();
+protected:
+
+private:
 };
 
 #endif // CONCRETEABSTRACTS_GUARDIAN_H

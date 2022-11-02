@@ -14,8 +14,6 @@
 #include "People.h"
 class Refugee : public People
 {
-private:
-    /* data */
 public:
     /**
      * @brief Construct a new Refugee object
@@ -28,7 +26,11 @@ public:
      * 
      */
     void influenceEconomy();
-    // ~Refugee();
+
+
+protected:
+
+private:
 };
 
 

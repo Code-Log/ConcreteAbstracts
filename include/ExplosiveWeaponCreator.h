@@ -28,6 +28,10 @@ public:
 	 * @return AttackWeapon* 
 	 */
 	AttackWeapon* produceAttackWeapon() override;
+
+protected:
+
+private:
 };
 
 #endif

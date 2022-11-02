@@ -14,15 +14,16 @@
 #include <Recruits.h>
 class Marine : public Recruits
 {
-private:
-    /* data */
 public:
     /**
      * @brief Construct a new Marine object
      * 
      */
     Marine();
-    // ~Marine();
+
+protected:
+
+private:
 };
 
 #endif // CONCRETEABSTRACTS_MARINE_H

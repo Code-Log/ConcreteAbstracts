@@ -61,31 +61,72 @@ public:
      * @return false 
      */
     bool purchaseSupplies(Recruits* recruits);
+
+    /**!
+     *
+     * @return
+     */
+    TransportContext *getTransportContext() const;
+
+    /**!
+     *
+     * @param transportContext
+     */
+    void setTransportContext(TransportContext *transportContext);
+
+    /**!
+     *
+     * @return
+     */
+    RecruiterContext *getRecruiterContext() const;
+
+    /**!
+     *
+     * @param recruiterContext
+     */
+    void setRecruiterContext(RecruiterContext *recruiterContext);
+
+    /**!
+     *
+     * @return
+     */
+    AttackVessel *getAttackVessel() const;
+
+    /**!
+     *
+     * @param attackVessel
+     */
+    void setAttackVessel(AttackVessel *attackVessel);
+
+    /**!
+     *
+     * @return
+     */
+    SuppliesTransport *getSuppliesTransport() const;
+
+    /**!
+     *
+     * @param suppliesTransport
+     */
+    void setSuppliesTransport(SuppliesTransport *suppliesTransport);
+
+    /**!
+     *
+     * @return
+     */
+    WeaponTransport *getWeaponTransport() const;
+
+    /**!
+     *
+     * @param weaponTransport
+     */
+    void setWeaponTransport(WeaponTransport *weaponTransport);
+
+protected:
+
 private:
     TransportContext* transportContext;
     RecruiterContext* recruiterContext;
-public:
-    TransportContext *getTransportContext() const;
-
-    void setTransportContext(TransportContext *transportContext);
-
-    RecruiterContext *getRecruiterContext() const;
-
-    void setRecruiterContext(RecruiterContext *recruiterContext);
-
-    AttackVessel *getAttackVessel() const;
-
-    void setAttackVessel(AttackVessel *attackVessel);
-
-    SuppliesTransport *getSuppliesTransport() const;
-
-    void setSuppliesTransport(SuppliesTransport *suppliesTransport);
-
-    WeaponTransport *getWeaponTransport() const;
-
-    void setWeaponTransport(WeaponTransport *weaponTransport);
-
-private:
     AttackVessel* attackVessel;
     SuppliesTransport* suppliesTransport;
     WeaponTransport* weaponTransport;

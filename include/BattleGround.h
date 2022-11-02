@@ -56,6 +56,10 @@ public:
      * @return int 
      */
     int penalty(Recruits* recruits) override = 0; //added
+
+protected:
+
+private:
 };
 
 
