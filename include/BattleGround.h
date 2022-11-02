@@ -44,6 +44,12 @@ public:
     int damageTotal() override;
 
     /**
+     * @brief 
+     * 
+     * @return int 
+     */
+    WarTheatre* getTrap();
+    /**
      * @brief The casualties gained from environmental extremities (function could evolve to have other factors)
      * 
      * @param recruitNumber 

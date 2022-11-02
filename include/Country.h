@@ -23,6 +23,10 @@
 #include <Land.h>
 #include <Air.h>
 #include <Space.h>
+#include <Trenches.h>
+#include <Barricades.h>
+#include <Mines.h>
+#include <SpaceMagnets.h>
 #include <Recruits.h>
 #include <Citizens.h>
 #include <Refugee.h>
@@ -36,6 +40,14 @@ enum EconomicClass
     SECOND_WORLD = 2,
     THIRD_WORLD = 3
 };
+
+// enum LocationTypes
+// {
+//   Land = 0,
+//   Sea = 1,
+//   Air = 2,
+//   Space = 3
+// };
 
 class Country
 {
@@ -132,6 +144,12 @@ public:
      * @param squadSize
      */
     void recruitPilots(int squadSize);
+     /**
+     * @brief gets the index of the wartheatre type. Land =0, Sea=1, Air=2, Space =3
+     * @param Type
+     * @return int
+     */
+    int getIndex(const std::string& Type);
 
     /**
      * @brief Updates the population size by counting the survivers.
@@ -150,7 +168,32 @@ public:
      * @param location
      */
     void addWarFront(const std::string& location);
+      /**
+     * @brief returns specified wartheatre if it exists
+     * @param Type
+     */
+    WarTheatre* getWarFront(const std::string& Type);
 
+     /**
+     * @brief Adds traps to avalable wartheatres. ? Restricts the what kinds of traps can be added to a wartheatre.
+     * @param battleGround
+     * @param TrapName 
+     * 
+     */
+    void setTrap(const std::string& battleGround, const std::string& TrapName );
+     /**
+     * @brief removes wartheatre
+     * @param Location
+     * 
+     */
+    void removeFront(const std::string& Location);
+
+    /**
+     * @brief retrieves total damage from all or individual warfronts. parameter Land, Sea, Air, Space, All. Calls damageTotal so will decrease trap lifespan
+     * @param totalOf
+     * @return int
+     */
+    int warFrontDanger(const std::string& totalOf);
 
     /**
      * @brief Destroy the Country object
@@ -168,7 +211,7 @@ private:
     // bool Guardians;
     // bool Pilots;
     // bool Soldiers;
-    std::vector<WarTheatre*> warTheatres;
+    WarTheatre** warTheatres;
     std::vector<Recruits*> recruits;
     Citizens* citizens;
     Refugee* refugees;

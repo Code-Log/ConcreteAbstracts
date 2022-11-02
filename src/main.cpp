@@ -30,9 +30,34 @@ int main() {
     cout<<"Recruit a lot more!!"<<endl;
     Germany->recruitGuardians(Germany->getNotEnlisted()+1);
 
-    
+    cout<<Germany->getWarFront("Air")<<endl;
     Germany->addWarFront("Air");
+    cout<<Germany->getWarFront("Air")<<endl;
+    Germany->removeFront("Air");
+    cout<<Germany->getWarFront("Air")<<endl;
+
     Germany->addWarFront("Land");
+    Germany->addWarFront("Land");
+
+    Germany->setTrap("Land", "Mines");
+    cout<<Germany->warFrontDanger("Air")<<endl;
+    cout<<Germany->warFrontDanger("Land")<<endl;
+
+    Germany->setTrap("Land", "Barricades");
+
+    cout<<Germany->warFrontDanger("Land")<<endl;
+
+    Germany->addWarFront("Space");
+    Germany->setTrap("Space", "Trenches");
+    cout<<Germany->warFrontDanger("Space")<<endl;
+    Germany->setTrap("Space", "SpaceMagnets");
+    cout<<Germany->warFrontDanger("Space")<<endl;
+
+
+
+
+
+    
 
     delete Germany;
 

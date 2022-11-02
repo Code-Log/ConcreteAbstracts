@@ -2,11 +2,16 @@
 
 #include "Trap.h"
 
-Trap::Trap(): WarTheatre("trap")
+Trap::Trap(): WarTheatre("Trap")
 {
     trap = nullptr;
     active = true;
     lifespan = 400;
+}
+
+WarTheatre* Trap::getTrap()
+{
+    return trap;
 }
 
 Trap::~Trap()
