@@ -102,7 +102,7 @@ add_executable(simulator
                 src/VesselWeaponCreator.cpp
                 src/WarEngine.cpp
         include/RecruitIterator.h include/Iterator.h src/RecruitIterator.cpp
-        include/Recruits.h)
+        include/Recruits.h include/util/ListSelectionPrompt.h src/ListSelectionPrompt.cpp)
         
 file(GLOB CPP_FILES src/*.cpp)
 list(FILTER CPP_FILES EXCLUDE REGEX src/main.cpp)
