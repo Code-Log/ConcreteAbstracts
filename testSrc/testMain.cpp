@@ -168,8 +168,8 @@ int testTransport()
     int result = 0;
 
     auto* recruits = new Recruits();
-    Country* newZealand = new Country("New Zealand");
-    Country* southAfrica = new Country("South Africa");
+    auto* newZealand = new Country("New Zealand");
+    auto* southAfrica = new Country("South Africa");
     southAfrica->setEconomy(1000);
 
     recruits->setCountry(southAfrica); 
@@ -243,7 +243,7 @@ int testTheatreCountryPeopleCombo()
     }
 
     Germany->recruitPilots(341); 
-    if(!(Germany->getWarFront("Air") == nullptr))
+    if(Germany->getWarFront("Air") != nullptr)
     {
         result = -1;
     }
@@ -252,7 +252,7 @@ int testTheatreCountryPeopleCombo()
 
     Germany->addWarFront("Air");
     Germany->removeFront("Air");
-    if(!(Germany->getWarFront("Air") == nullptr))
+    if(Germany->getWarFront("Air") != nullptr)
     {
         result = -1;
     }

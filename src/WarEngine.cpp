@@ -1,5 +1,10 @@
 #include<WarEngine.h>
 
+void WarEngine::run()
+{
+
+}
+
 void WarEngine::runEngine()
 {
     
@@ -30,7 +35,7 @@ void WarEngine::setTest(int data)
     test = data;
 }
 
-int WarEngine::getTest()
+int WarEngine::getTest() const
 {
     return test;
 }
