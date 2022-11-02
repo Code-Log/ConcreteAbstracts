@@ -83,3 +83,19 @@ int Trap::penalty(Recruits* recruits)
         return (0 + trap->penalty(recruits));
     }
 }
+
+void Trap::setTrap(WarTheatre *trap) {
+    Trap::trap = trap;
+}
+
+bool Trap::isActive() const {
+    return active;
+}
+
+int Trap::getLifespan() const {
+    return lifespan;
+}
+
+void Trap::setLifespan(int lifespan) {
+    Trap::lifespan = lifespan;
+}

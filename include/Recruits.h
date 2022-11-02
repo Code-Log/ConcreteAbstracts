@@ -27,10 +27,24 @@ private:
     std::string militaryType;
     int weaponDamage;
     std::vector<AttackWeapon*> armory;
+
+private:
     std::vector<VesselWeapon*> vehicles;
     Country* country;
 
 public:
+    /**
+     *
+     * @return
+     */
+    int getWeaponDamage() const;
+
+    /**!
+     *
+     * @param weaponDamage
+     */
+    void setWeaponDamage(int weaponDamage);\
+
     /**
      * @brief Construct a new Recruits object
      * 
