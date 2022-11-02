@@ -92,7 +92,40 @@ void WarEngine::phase3()
 
 void WarEngine::selectCountry()
 {
+    std::string countryName[] = {"South Africa", "United States", "Germany", "Russia", "China", "Argentina", "North Korea", "Australia"};
     
+    if(humanCountry) // If human present
+    {
+        std::string output = "Please select a country:\n";
+        int index = 0;
+        for (std::string name : countryName)
+        {
+            std::string countrySelect = std::to_string(index++) + ". " + name + "\n";
+            output += countrySelect;
+        }
+        int userCountry = 0;
+        std::cout << output;
+        std::cin >> userCountry;
+
+        countries[userCountry] = new Country(countryName[userCountry]);
+        this->humanIndex = userCountry; // there is a human country at index [userCountry]
+
+        for (int i = 0; i < sizeof(countries); i++)
+        {
+            if (countries[i]->countryName != countryName[userCountry])
+            {
+                countries[i] = new Country(countryName[i]);
+            }
+        }  
+    }
+    else  // All countries are AI
+    {
+        this->humanIndex = -1;
+        for (Country* country : countries)
+        {
+            country = new Country(countryName[i]);
+        }  
+    }    
 }
 
 void WarEngine::selectPoliticalRegime()
