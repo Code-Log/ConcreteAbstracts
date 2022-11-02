@@ -1,5 +1,6 @@
 #include<WarEngine.h>
 #include<ListSelectionPrompt.h>
+#include<random>
 
 void WarEngine::run()
 {
@@ -139,7 +140,28 @@ void WarEngine::buyAndDestributeWeapons()
 
 void WarEngine::setWarTheatres()
 {
-    
+    std::string theatreTypes[] = {"Land", "Sea", "Air", "Space"};
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dist(0, 3);
+
+    int oppotunity=4;
+    int random;
+
+    for(int x=0; x<8; x++)
+    {
+        while(oppotunity>0)
+        {
+            random= dist(gen);
+            countries[x]->addWarFront(theatreTypes[random]);
+            oppotunity--;
+        }
+        oppotunity=4;
+
+        std::cout<<countries[x]->getName()<<" war fronts: "<<std::endl;
+        std::cout<<countries[x]->allWarFronts()<<std::endl<<std::endl;
+    }
 }
 
 void WarEngine::setTraps()

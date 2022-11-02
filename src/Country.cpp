@@ -374,6 +374,29 @@ int Country::getIndex(const std::string& Type)
     return i;
 }
 
+std::string Country:: allWarFronts()
+{
+    std::string out = "";
+
+    if(warTheatres[0]!= nullptr)
+    {
+        out += "Land\n";
+    }
+    if(warTheatres[1]!= nullptr)
+    {
+        out += "Sea\n";
+    }
+    if(warTheatres[2]!= nullptr)
+    {
+        out += "Air\n";
+    }
+    if(warTheatres[3]!= nullptr)
+    {
+        out += "Space\n";
+    }
+    return out;
+}
+
 void Country::setTrap(const std::string& battleGround, const std::string& Trap)
 {
     WarTheatre* check = getWarFront(battleGround);

@@ -202,6 +202,14 @@ public:
      */
     int warFrontDanger(const std::string& totalOf);
 
+     /**
+     * @brief returns a string of all wartheatres
+     * @return string
+     */
+    std::string allWarFronts();
+
+
+
     /**
      * @brief Destroy the Country object
      * 
