@@ -80,7 +80,7 @@ void WeaponTransport::purchase(Recruits* recruits)
 
     std::vector<UnorderedPair<Country*>> countries = WarEngine::getInstanceWarEngine().getBattleRegistry().getRecords(recruits->getCountry());
     // std::cout<<"size"<<countries.size()<<std::endl;
-    std::uniform_int_distribution<> dist(0, countries.size() - 1);
+    std::uniform_int_distribution<> dist(0, (int)countries.size() - 1);
     int randomCountryIndex = dist(gen);
     // std::cout<<countries[randomCountryIndex].first->getName();
     std::cout<<"Transporting"<<weaponName<<"weapon to enemy country: "<<countries[randomCountryIndex].getOther(recruits->getCountry())->getName()<<std::endl;

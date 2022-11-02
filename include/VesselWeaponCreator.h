@@ -33,7 +33,7 @@ public:
      *
      * @return int
      */
-    int getPrice();
+    int getPrice() const;
 
     virtual ~VesselWeaponCreator() = default;
 
