@@ -167,7 +167,15 @@ int testTransport()
 {
     int result = 0;
 
-    auto* recruits = new Recruits;
+    auto* recruits = new Recruits();
+    Country* newZealand = new Country("New Zealand");
+    Country* southAfrica = new Country("South Africa");
+    southAfrica->setEconomy(1000);
+
+    recruits->setCountry(southAfrica); 
+    BattleRegistry ar = BattleRegistry();
+    ar.addRecord(newZealand,southAfrica);
+    WarEngine::getInstanceWarEngine().setBattleRegistry(ar);
 
     auto* suppliesTransport = new SuppliesTransport;
     auto* weaponTransport = new WeaponTransport;
@@ -179,8 +187,8 @@ int testTransport()
     context->setStrategy(weaponTransport);
     context->purchase(recruits);
 
-    context->setStrategy(attackVessel);
-    context->purchase(recruits);
+    // context->setStrategy(attackVessel);
+    // context->purchase(recruits);
 
     delete context;
     delete suppliesTransport;

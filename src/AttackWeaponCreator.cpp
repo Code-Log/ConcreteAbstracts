@@ -12,3 +12,7 @@ AttackWeapon* AttackWeaponCreator::produce()
 int AttackWeaponCreator::getPrice(){
     return price;
 }
+
+void AttackWeaponCreator::setPrice(int price){
+    this->price = price;
+}

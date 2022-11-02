@@ -10,6 +10,11 @@ WeaponTransport::WeaponTransport(){
     factory[1] = new ExplosiveWeaponCreator();
     factory[2] = new MeleeWeaponCreator();
     factory[3] = new RangedWeaponCreator();
+
+    factory[0]->setPrice(100);
+    factory[1]->setPrice(100);
+    factory[2]->setPrice(100);
+    factory[3]->setPrice(100);
 }
 void WeaponTransport::purchase(Recruits* recruits)
 {
@@ -69,7 +74,9 @@ void WeaponTransport::purchase(Recruits* recruits)
       return;
    }
    std::vector<UnorderedPair<Country*>> countries = WarEngine::getInstanceWarEngine().getBattleRegistry().getRecords(recruits->getCountry());
+   // std::cout<<"size"<<countries.size()<<std::endl;
    int randomCountryIndex = (rand() % countries.size());
+   // std::cout<<countries[randomCountryIndex].first->getName();
    std::cout<<"Transporting"<<weaponName<<"weapon to enemy country: "<<countries[randomCountryIndex].getOther(recruits->getCountry())->getName()<<std::endl;
 
    recruits->addWeapon(weapon);

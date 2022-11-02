@@ -47,6 +47,12 @@ public:
 	 * @return int 
 	 */
 	int getPrice();
+	/**
+	 * @brief Set the Price attribute
+	 * 
+	 * @param price 
+	 */
+	void setPrice(int price);
 };
 
 #endif

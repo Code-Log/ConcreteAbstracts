@@ -26,7 +26,11 @@ struct UnorderedPair
      * @return T 
      */
     T getOther(T elem){
-        return elem == first ? second : first;
+        if(elem == first)
+            return second;
+        if(elem == second)
+            return first;
+        return NULL;
     }
 
     /**
