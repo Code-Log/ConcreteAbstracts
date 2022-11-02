@@ -290,6 +290,11 @@ int testWarEngine(){
         return -1;
     }
 }
+
+int testMemento()
+{
+    return 0;
+}
 // Write your testing functions like this
 //int myTest()
 //{
@@ -310,6 +315,9 @@ int main(int argc, const char** argv)
         return testTheatreCountryPeopleCombo();
     if (std::strcmp(argv[1], "testWarEngine") == 0)
         return testWarEngine();
+
+    if(std::strcmp(argv[1], "testMemento")==0)
+        return testMemento();
 
 
 //    To add a new test

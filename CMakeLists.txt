@@ -116,6 +116,7 @@ add_test(testRegistry testExec testRegistry)
 add_test(testTransport testExec testTransport)
 add_test(testTheatreCountryPeopleCombo testExec testTheatreCountryPeopleCombo)
 add_test(testWarEngine testExec testWarEngine)
+add_test(testMemento testExec testMemento)
 
 
 target_include_directories(simulator PUBLIC include)
