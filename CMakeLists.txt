@@ -101,8 +101,12 @@ add_executable(simulator
                 src/Tanks.cpp
                 src/VesselWeaponCreator.cpp
                 src/WarEngine.cpp
-        include/RecruitIterator.h include/Iterator.h src/RecruitIterator.cpp
-        include/Recruits.h)
+                include/RecruitIterator.h 
+                include/Iterator.h 
+                src/RecruitIterator.cpp
+                include/Recruits.h
+                include/WarPedal.h
+                src/WarPedal.cpp)
         
 file(GLOB CPP_FILES src/*.cpp)
 list(FILTER CPP_FILES EXCLUDE REGEX src/main.cpp)
@@ -113,7 +117,7 @@ add_executable(testExec testSrc/testMain.cpp ${CPP_FILES})
 add_test(testCountry testExec testCountry)
 add_test(testRecruits testExec testRecruits)
 add_test(testRegistry testExec testRegistry)
-#add_test(testTransport testExec testTransport)
+add_test(testTransport testExec testTransport)
 add_test(testTheatreCountryPeopleCombo testExec testTheatreCountryPeopleCombo)
 add_test(testWarEngine testExec testWarEngine)
 

@@ -300,6 +300,11 @@ int Country::getNotEnlisted() const
     return notEnlisted;
 }
 
+void Country::setNotEnlisted(int Amount)
+{
+    this->notEnlisted = Amount;
+}
+
 WarTheatre* Country::getWarFront(const std::string& Type)
 { 
     int index = getIndex(Type);
