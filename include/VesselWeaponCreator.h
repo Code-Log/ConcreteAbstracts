@@ -14,10 +14,6 @@
 #include <VesselWeapon.h>
 
 class VesselWeaponCreator {
-
-protected:
-	int price;
-
 public:
 	/**
 	 * @brief Construct a new Vessel Weapon Creator object
@@ -32,7 +28,18 @@ public:
 	 */
 	VesselWeapon* produce();
 
+    /**
+     * @brief Get the Price object
+     *
+     * @return int
+     */
+    int getPrice() const;
+
+    virtual ~VesselWeaponCreator() = default;
+
 protected:
+    int price;
+
 	/**
 	 * @brief 
 	 * 
@@ -40,15 +47,7 @@ protected:
 	 */
 	virtual VesselWeapon* produceVesselWeapon() = 0;
 
-public:
-	/**
-	 * @brief Get the Price object
-	 * 
-	 * @return int 
-	 */
-	int getPrice();
-
-	virtual ~VesselWeaponCreator() = default;
+private:
 };
 
 #endif

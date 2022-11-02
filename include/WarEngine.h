@@ -1,20 +1,167 @@
 #include<BattleRegistry.h>
 #include<AllyRegistry.h>
+#include<Country.h>
 class WarEngine //Meyers Implementation
 {
 private:
     AllyRegistry allyRegistry;
     BattleRegistry battleRegistry;
     int test;//for testing purposes
+    bool disputeActive;
 protected:
     WarEngine();
     ~WarEngine();
 public:
+    /**
+     * @brief calls prePhase1(), phase1(), phase2(),phase3(), printWarReport()
+     * 
+     */
     void run();
-    void runEngine();
+
+    /**
+     * @brief stops the engine
+     * 
+     */
     void stopEngine();
+
+    /**
+     * @brief For real mode. Creates 8 AI countries/users and calls run().
+     * 
+     */
+    void runEngine();
+
+    /**
+     * @brief For design mode. Creates 7 AI countries/users and 1 human user and calls run().
+     * 
+     */
     void runGUIEngine();
+
+    /**
+     * @brief This function calls the following functions: selectCountry() and selectPolicalRegime();
+     * 
+     */
+    void prePhase1();
+
+    /**
+     * @brief 
+     * 
+     */
+    void phase1();
+
+    /**
+     * @brief 
+     * 
+     */
+    void phase2();
+
+    /**
+     * @brief 
+     * 
+     */
+    void phase3();
+
+    /**
+     * @brief Allows a user to select country. Note no 2 users should have the same country
+     * 
+     */
+    void selectCountry();
+
+    /**
+     * @brief 
+     * 
+     */
+    void selectPoliticalRegime();
+
+    /**
+     * @brief Set the Allies object
+     * 
+     */
+    void setAllies();
+
+    /**
+     * @brief 
+     * 
+     */
+    void partitionRecruite();
+
+    /**
+     * @brief 
+     * 
+     */
+    void buyAndDestributeWeapons();
+
+    /**
+     * @brief 
+     * 
+     */
+    void setWarTheatres();
+
+    /**
+     * @brief 
+     * 
+     */
+    void setTraps();
+
+    /**
+     * @brief 
+     * 
+     */
+    void printEngineReport();
+
+    /**
+     * @brief 
+     * 
+     */
+    void makeDecision(Country* c);
+
+    /**
+     * @brief 
+     * 
+     */
+    void increaseAllies();
+
+    /**
+     * @brief 
+     * 
+     */
+    void sendRecruitAndAttack();
+
+    /**
+     * @brief 
+     * 
+     */
+    void sendRecruit();
+
+    /**
+     * @brief 
+     * 
+     */
+    void buyAndSetTraps();
+
+    /**
+     * @brief 
+     * 
+     */
+    void surrender();
+
+    /**
+     * @brief 
+     * 
+     */
+    void PrintWarReport();
+    
+    /**
+     * @brief Get the Ally Registry object
+     * 
+     * @return AllyRegistry 
+     */
     AllyRegistry getAllyRegistry();
+
+    /**
+     * @brief Get the Battle Registry object
+     * 
+     * @return BattleRegistry 
+     */
     BattleRegistry getBattleRegistry();
 
     void setTest(int data); //for testing purposes.

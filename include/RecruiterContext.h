@@ -14,8 +14,6 @@
 #include <Recruits.h>
 class RecruiterContext
 {
-private:
-    Recruits *state;
 public:
     /**
      * @brief Construct a new Recuiter Context object
@@ -42,7 +40,11 @@ public:
      * @return Recruits* 
      */
     Recruits* getState(); //for testing purposes
-    // ~RecruiterContext();
+
+protected:
+
+private:
+    Recruits *state;
 };
 
 

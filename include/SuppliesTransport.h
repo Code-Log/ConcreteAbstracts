@@ -28,6 +28,10 @@ public:
      * @param recruits 
      */
     void purchase(Recruits* recruits) override;
+
+protected:
+
+private:
 };
 
 #endif //CONCRETEABSTRACTS_SUPPLIESTRANSPORT_H

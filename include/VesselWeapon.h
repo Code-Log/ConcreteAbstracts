@@ -15,13 +15,6 @@
 #include <iostream>
 
 class VesselWeapon {
-
-protected:
-	std::string name;
-	int damage = 500;
-	int defense = 100;
-	int durability = 50;
-
 public:
 	/**
 	 * @brief Get the Name object
@@ -63,6 +56,14 @@ public:
      * 
      */
 	virtual ~VesselWeapon() = default;
+
+protected:
+    std::string name;
+    int damage = 500;
+    int defense = 100;
+    int durability = 50;
+
+private:
 };
 
 #endif

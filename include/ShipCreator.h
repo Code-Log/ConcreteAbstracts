@@ -16,8 +16,6 @@
 
 
 class ShipCreator : public VesselWeaponCreator {
-
-
 public:
 	/**
 	 * @brief Construct a new Ship Creator object
@@ -33,6 +31,10 @@ public:
 	VesselWeapon* produceVesselWeapon() override;
 
 	~ShipCreator() override = default;
+
+protected:
+
+private:
 };
 
 #endif

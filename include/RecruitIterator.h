@@ -35,6 +35,9 @@ public:
      * @return false 
      */
     bool hasNext() override;
+
+protected:
+
 private:
 };
 
