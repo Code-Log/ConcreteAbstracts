@@ -68,7 +68,7 @@ public:
      * @brief Allows a user to select country. Note no 2 users should have the same country
      *
      */
-    void selectCountry();
+    void selectCountry(bool humanCountry);
 
     /**
      * @brief

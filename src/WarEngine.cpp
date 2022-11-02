@@ -1,5 +1,5 @@
 #include<WarEngine.h>
-#include<ListSelectionPrompt.h>
+#include<util/ListSelectionPrompt.h>
 #include<random>
 
 void WarEngine::run()
@@ -90,15 +90,15 @@ void WarEngine::phase3()
     
 }
 
-void WarEngine::selectCountry()
+void WarEngine::selectCountry(bool humanCountry)
 {
-    std::string countryName[] = {"South Africa", "United States", "Germany", "Russia", "China", "Argentina", "North Korea", "Australia"};
+    std::string countryNames[] = {"South Africa", "United States", "Germany", "Russia", "China", "Argentina", "North Korea", "Australia"};
     
     if(humanCountry) // If human present
     {
         std::string output = "Please select a country:\n";
         int index = 0;
-        for (std::string name : countryName)
+        for (std::string name : countryNames)
         {
             std::string countrySelect = std::to_string(index++) + ". " + name + "\n";
             output += countrySelect;
@@ -107,23 +107,23 @@ void WarEngine::selectCountry()
         std::cout << output;
         std::cin >> userCountry;
 
-        countries[userCountry] = new Country(countryName[userCountry]);
+        countries[userCountry] = new Country(countryNames[userCountry]);
         this->humanIndex = userCountry; // there is a human country at index [userCountry]
 
         for (int i = 0; i < sizeof(countries); i++)
         {
-            if (countries[i]->countryName != countryName[userCountry])
+            if (countries[i]->getName() != countryNames[userCountry])
             {
-                countries[i] = new Country(countryName[i]);
+                countries[i] = new Country(countryNames[i]);
             }
         }  
     }
     else  // All countries are AI
     {
         this->humanIndex = -1;
-        for (Country* country : countries)
+        for (int i = 0; i < sizeof(countries); i++)
         {
-            country = new Country(countryName[i]);
+            countries[i] = new Country(countryNames[i]);
         }  
     }    
 }
