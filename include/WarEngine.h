@@ -8,6 +8,9 @@ private:
     BattleRegistry battleRegistry;
     int test;//for testing purposes
     bool disputeActive;
+    Country* countries[8];
+    int humanIndex = -1; //-1 means only AI countries. 
+    //Otherwise this is the index of the human operated country in the countries array
 protected:
     WarEngine();
     ~WarEngine();
