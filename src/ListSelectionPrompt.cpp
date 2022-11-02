@@ -8,10 +8,9 @@ ListSelectionPrompt::ListSelectionPrompt(std::initializer_list<std::string> init
 
 std::string ListSelectionPrompt::getSelection(const std::string& prompt) const
 {
-    int maxVal = options.size();
+    unsigned long maxVal = options.size();
     for (int i = 1; i < options.size() + 1; i++)
         std::printf("%d. %s\n", i, options[i - 1].c_str());
-
 
     int selection;
     do {
@@ -21,5 +20,5 @@ std::string ListSelectionPrompt::getSelection(const std::string& prompt) const
             std::cout << "Invalid selection!" << std::endl;
     } while (selection <= 0 || selection > maxVal);
 
-    return std::move(options[selection - 1]);
+    return options[selection - 1];
 }

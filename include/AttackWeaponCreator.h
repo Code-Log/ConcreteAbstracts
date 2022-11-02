@@ -46,7 +46,7 @@ public:
 	 * 
 	 * @return int 
 	 */
-	int getPrice();
+	int getPrice() const;
 	/**
 	 * @brief Set the Price attribute
 	 * 

@@ -1,10 +1,6 @@
-// #include <AttackVessel.h>
-// #include <Country.h>
 #include <BattleRegistry.h>
 #include <vector>
-// #include <VesselWeapon.h>
 #include <string>
-#include <WarEngine.h>
 
 AttackVessel::AttackVessel()
 {

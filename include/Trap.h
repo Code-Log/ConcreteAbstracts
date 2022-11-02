@@ -93,7 +93,7 @@ public:
      */
     void alterLifespan(int decrease);
 
-    WarTheatre* getTrap();
+    WarTheatre* getTrap() override;
 
     /**
      * @brief 
