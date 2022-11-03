@@ -87,7 +87,7 @@ void WarEngine::phase1(bool human)
 
     ListSelectionPrompt dispute = {"1", "2", "3", "4"};
     std::string prompt = "What is the motive for your war?\n1.\tLand\n2.\tVengence\n3.\tVeganism\n4.\tNationalism\n";
-    auto ans = regime.getSelectionIndex(prompt);
+    auto ans = dispute.getSelectionIndex(prompt);
 
 
     switch (ans)
