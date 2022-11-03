@@ -337,16 +337,27 @@ void WarEngine::buyAndDistributeWeapons(bool humanCountry)
     {
         ArmoryFacade armoryFacade = countries[i]->getArmoryFacade();
 
+
+        
         if(humanCountry && i == 0)
         {
-            ListSelectionPrompt selectRecruitsGroup = {"Group 1", "Group 2", "Group 3", "Group 4"};
-            auto userResponse= selectRecruitsGroup.getSelectionIndex("Please select a recruit group to buy weapons for (a/b/c/d): ");
+            bool desireToPurchaseMore = true;
+            while(desireToPurchaseMore){
+                ListSelectionPrompt selectRecruitsGroup = {"Group 1", "Group 2", "Group 3", "Group 4"};
+                auto userResponse= selectRecruitsGroup.getSelectionIndex("Please select a recruit group to buy weapons for (a/b/c/d): ");
 
-            ListSelectionPrompt selectWeapon = {"Nuclear Weapon", "Explosive Weapon", "Melee Weapon", "Ranged Weapon"};
-            auto choice =  selectWeapon.getSelectionIndex("What kind of weapon do you wish to produce?\n") ;// Refactored from WeaponTransport
+                ListSelectionPrompt selectWeapon = {"Nuclear Weapon", "Explosive Weapon", "Melee Weapon", "Ranged Weapon"};
+                auto choice =  selectWeapon.getSelectionIndex("What kind of weapon do you wish to produce?\n") ;// Refactored from WeaponTransport
 
 
-            armoryFacade.purchaseWeapon(countries[i]->getRecruits()[userResponse], choice);
+                armoryFacade.purchaseWeapon(countries[i]->getRecruits()[userResponse], choice);
+
+                ListSelectionPrompt desire = {"yes", "no"};
+                int desireChoice = desire.getSelectionIndex("Do you wish to purchase more weapons?")
+                if(desireChoice == 1)
+                    desireToPurchaseMore = false;
+            }
+            
         } else {
             for(auto recruit : countries[i]->getRecruits())
             {
