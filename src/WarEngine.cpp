@@ -118,13 +118,7 @@ void WarEngine::selectCountry(bool humanCountry)
     
     if(humanCountry) // If human present
     {
-        std::string output = "Please select a country:\n";
-        int index = 0;
-        for (std::string name : countryNames)
-        {
-            std::string countrySelect = std::to_string(index++) + ". " + name + "\n";
-            output += countrySelect;
-        }
+        std::string output = "Please select a country: ";
         int userCountry = countryIndex.getSelectionIndex(output);
         
         countries[userCountry] = new Country(countryNames[userCountry]);
