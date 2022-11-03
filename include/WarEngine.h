@@ -80,7 +80,7 @@ public:
      * @brief Set the Allies object
      *
      */
-    void setAllies();
+    void setAllies(bool human);
 
     /**
      * @brief
