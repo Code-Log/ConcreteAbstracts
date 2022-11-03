@@ -180,7 +180,7 @@ public:
      *
      * @return int
      */
-    int randomNumGenerator(int min, int max)
+    int randomNumGenerator(int min, int max);
 
     void warLoop();
     void EngineSimulation();
