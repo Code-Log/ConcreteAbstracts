@@ -113,8 +113,8 @@ void WarEngine::EngineSimulation(){
 
 void WarEngine::selectCountry(bool humanCountry)
 {
-    ListSelectionPrompt countryIndex = {"1","2","3","4","5","6","7","8"};
-    std::string countryNames[] = {"South Africa", "United States", "Germany", "Russia", "China", "Argentina", "North Korea", "Australia"};
+    std::string countryNames [] = {"South Africa", "United States", "Germany", "Russia", "China", "Asgard", "Westeros", "Australia"};
+    ListSelectionPrompt countryIndex = {"South Africa", "United States", "Germany", "Russia", "China", "Asgard", "Westeros", "Australia"};
     
     if(humanCountry) // If human present
     {
@@ -125,7 +125,7 @@ void WarEngine::selectCountry(bool humanCountry)
             std::string countrySelect = std::to_string(index++) + ". " + name + "\n";
             output += countrySelect;
         }
-        int userCountry = std::stoi(countryIndex.getSelection(output));
+        int userCountry = countryIndex.getSelectionIndex(output);
         
         countries[userCountry] = new Country(countryNames[userCountry]);
         this->humanIndex = userCountry; // there is a human country at index [userCountry]
