@@ -4,35 +4,38 @@
 Country::Country(std::string countryName)
     : countryName(std::move(countryName))
 {
+
+    //The below code will be modified and moved to WarEngine.cpp
+
     // Set up PRNG
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dist(1e4, 5e4);
+    // std::random_device rd;
+    // std::mt19937 gen(rd());
+    // std::uniform_int_distribution<> dist(1e4, 5e4);
 
-    this->populationSize = dist(gen);
-    this->citizens = new Citizens();
-    int cit = (int)(populationSize*0.7);
-    this->citizens->setGroupSize(cit);
-    this->notEnlisted = populationSize - cit;
+    // this->populationSize = dist(gen);
+    // this->citizens = new Citizens();
+    // int cit = (int)(populationSize*0.7);
+    // this->citizens->setGroupSize(cit);
+    // this->notEnlisted = populationSize - cit;
     
-    dist = std::uniform_int_distribution<>(1, 3);
-    this->economicClass = static_cast<EconomicClass>(dist(gen));
+    // dist = std::uniform_int_distribution<>(1, 3);
+    // this->economicClass = static_cast<EconomicClass>(dist(gen));
 
-    std::uniform_int_distribution<> classDist;
-    switch (economicClass)
-    {
-        case FIRST_WORLD:
-            classDist = std::uniform_int_distribution<>(1e4, 5e4);
-            break;
-        case SECOND_WORLD:
-            classDist = std::uniform_int_distribution<>(5e3, 1e4);
-            break;
-        case THIRD_WORLD:
-            classDist = std::uniform_int_distribution<>(1e3, 5e3);
-            break;
-    }
-    economy = classDist(gen);
-    this->power = populationSize * economy;
+    // std::uniform_int_distribution<> classDist;
+    // switch (economicClass)
+    // {
+    //     case FIRST_WORLD:
+    //         classDist = std::uniform_int_distribution<>(1e4, 5e4);
+    //         break;
+    //     case SECOND_WORLD:
+    //         classDist = std::uniform_int_distribution<>(5e3, 1e4);
+    //         break;
+    //     case THIRD_WORLD:
+    //         classDist = std::uniform_int_distribution<>(1e3, 5e3);
+    //         break;
+    // }
+    // economy = classDist(gen);
+    // this->power = populationSize * economy;
 
     // Marines= false;
     // Guardians= false;
