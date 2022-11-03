@@ -254,6 +254,13 @@ public:
      */
     Citizens* getCitizens();
 
+    /**
+     * @brief
+     *
+     * @return Returns the economic class of the Country.
+     */
+    EconomicClass getEconomicClass() const;
+
 protected:
 
 private:

@@ -543,3 +543,8 @@ Refugee* Country::getRefugees(){
 Citizens* Country::getCitizens(){
     return citizens;
 }
+
+EconomicClass Country::getEconomicClass() const
+{
+    return economicClass;
+}

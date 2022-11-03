@@ -1,6 +1,8 @@
-#include<WarEngine.h>
-#include<util/ListSelectionPrompt.h>
-#include<random>
+#include <WarEngine.h>
+#include <util/ListSelectionPrompt.h>
+#include <random>
+#include <algorithm>
+#include <unordered_map>
 
 void WarEngine::run(bool human)
 {
@@ -353,8 +355,8 @@ void WarEngine::buyAndDistributeWeapons(bool humanCountry)
                 armoryFacade.purchaseWeapon(countries[i]->getRecruits()[userResponse], choice);
 
                 ListSelectionPrompt desire = {"yes", "no"};
-                int desireChoice = desire.getSelectionIndex("Do you wish to purchase more weapons?")
-                if(desireChoice == 1)
+                int desireChoice = desire.getSelectionIndex("Do you wish to purchase more weapons?");
+                if (desireChoice == 1)
                     desireToPurchaseMore = false;
             }
             
@@ -439,12 +441,69 @@ void WarEngine::makeDecision(Country* c)
             break;
     }
 }
-void WarEngine::buyWeaponsAndAllocateToRecruits(Country* c){
+
+void WarEngine::buyWeaponsAndAllocateToRecruits(Country* c)
+{
 
 }
+
 void WarEngine::increaseAllies(Country* c)
 {
-    
+    std::vector<Country*> eligible(8);
+    for (auto country : countries)
+        eligible.push_back(country);
+
+    for (auto pair : allyRegistry.getRecords(c))
+    {
+        auto other = pair.getOther(c);
+        auto it = std::find(std::begin(eligible), std::end(eligible), other);
+        if (it != std::end(eligible))
+        {
+            eligible.erase(it);
+        }
+    }
+
+    for (auto pair : battleRegistry.getRecords(c))
+    {
+        auto other = pair.getOther(c);
+        auto it = std::find(std::begin(eligible), std::end(eligible), other);
+        if (it != std::end(eligible))
+        {
+            eligible.erase(it);
+        }
+    }
+
+    for (auto country : eligible)
+    {
+        float powerRatio = (float)c->getPower() / (float)country->getPower();
+        auto it = std::find(std::begin(eligible), std::end(eligible), country);
+        if (powerRatio < 1.5f)
+            eligible.erase(it);
+    }
+
+    int maxNewAllies = 3 - (int)c->getEconomicClass();
+    for (int i = maxNewAllies; i > 0; i++)
+    {
+        ListSelectionPrompt prompt;
+        for (auto & country : eligible)
+            prompt.append(country->getName());
+
+        prompt.append("Done");
+
+        int idx = prompt.getSelectionIndex("Please select a country to add as an ally: ");
+        if (idx == prompt.options.size() - 1)
+            break;
+
+        allyRegistry.addRecord(c, eligible[idx]);
+        for (auto it = eligible.begin(); it != eligible.end(); it++)
+        {
+            if (*it == eligible[idx])
+            {
+                eligible.erase(it);
+                break;
+            }
+        }
+    }
 }
 
 void WarEngine::sendRecruitAndAttack(Country* c)
@@ -497,7 +556,7 @@ void WarEngine::conquers(Country* conqueror,Country* conquered){
 
 void WarEngine::printWarReport()
 {
-    for(auto r : warLog){
+    for(auto r : warLog()){
         std::cout<<r<<std::endl;
     }
 }
@@ -514,4 +573,10 @@ int WarEngine::randomNumGenerator(int min, int max)
   std::mt19937 gen(rd());
   std::uniform_int_distribution<> dist(min, max);
   return dist(gen);
+}
+
+std::vector<std::string> WarEngine::warLog()
+{
+    // TODO: Implement WarEngine::warLog()
+    return {};
 }
