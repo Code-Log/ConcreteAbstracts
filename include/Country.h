@@ -240,6 +240,20 @@ public:
 
     const Recruits* getRecruit(int i) const;
 
+    /**
+     * @brief Get the Refugee object
+     * 
+     * @return Refugee* 
+     */
+    Refugee* getRefugees();
+
+    /**
+     * @brief 
+     * 
+     * @return Citizens* 
+     */
+    Citizens* getCitizens();
+
 protected:
 
 private:

@@ -83,33 +83,30 @@ void WarEngine::prePhase1(bool human)
 
 void WarEngine::phase1(bool human)
 {
-    ListSelectionPrompt cOptions;
-    for(auto c : this->countries){
-        cOptions.append(c->getName());
+    int index;
+    int ans;
+    int warInit; //the country starting the war. 
+    if(human){
+        warInit = humanIndex;
+        ListSelectionPrompt cOptions;
+        for(auto c : this->countries){
+            cOptions.append(c->getName());
+        }
+        index = cOptions.getSelectionIndex("Who do you want to declare war on?");
+        
+
+        ListSelectionPrompt dispute = {"Land", "Vengence", "Veganism", "Nationalism"};
+        ans = dispute.getSelectionIndex("What is the motive for your war?");
+
+        
     }
-    int index = cOptions.getSelectionIndex("Who do you want to declare war to?");
-    //still needs to be completed
-    
-    // switch (index){
-    //     case 0:
-    //     case 0:
-    //     case 0:
-    //     case 0:
-    //     case 0:
-    //     case 0:
-    //     case 0:
-    //     case 0:
-    //     case 0:
+    else{// only AI
+        index = randomNumGenerator(0,8);
+        ans = randomNumGenerator(0,4);
+        warInit = randomNumGenerator(0,4);
+    }
 
-    // }
-    
-    // std::string selection = "What is the motive for your war?\n1.\tLand\n2.\tVengence\n3.\tVeganism\n4.\tNationalism\n";
-    // auto ans = dispute.getSelectionIndex(prompt);
-
-    ListSelectionPrompt dispute = {"Land", "Vengence", "Veganism", "Nationalism"};
-    auto ans = dispute.getSelectionIndex("What is the motive for your war?");
-
-
+    battleRegistry.addRecord(countries[humanIndex],countries[index]);
     switch (ans)
     {
         case 0:
@@ -126,9 +123,7 @@ void WarEngine::phase1(bool human)
             break;
         default:
             break;
-    }
-
-    
+    }  
 }
 
 
@@ -482,11 +477,11 @@ void WarEngine::conquers(Country* conqueror,Country* conquered){
     }
     conquered->getRecruits().clear();
     int populationSize;
-
-    // do the same for:
+    conqueror->getCitizens()->setGroupSize(conqueror->getCitizens()->getGroupSize() + conquered->getCitizens()->getGroupSize());
+    conquered->getCitizens()->setGroupSize(0);
+    conqueror->getRefugees()->setGroupSize(conqueror->getRefugees()->getGroupSize() + conquered->getRefugees()->getGroupSize());
+    conquered->getRefugees()->setGroupSize(0);
     // WarTheatre** warTheatres;
-    // Citizens* citizens;
-    // Refugee* refugees;
 }
 
 void WarEngine::printWarReport()

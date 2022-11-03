@@ -535,3 +535,11 @@ const Recruits* Country::getRecruit(int i) const {
 const std::vector<Recruits *> &Country::getRecruits() const {
     return recruits;
 }
+
+Refugee* Country::getRefugees(){
+    return refugees;
+}
+
+Citizens* Country::getCitizens(){
+    return citizens;
+}
