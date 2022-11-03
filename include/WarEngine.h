@@ -175,6 +175,12 @@ public:
      */
     BattleRegistry getBattleRegistry();
 
+    /**
+     * @brief Generate a random number in range
+     *
+     * @return int
+     */
+    int randomNumGenerator(int min, int max)
 
     void warLoop();
     void EngineSimulation();
