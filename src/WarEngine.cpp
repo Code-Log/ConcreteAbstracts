@@ -486,7 +486,9 @@ void WarEngine::conquers(Country* conqueror,Country* conquered){
 
 void WarEngine::printWarReport()
 {
-    
+    for(auto r : warLog){
+        std::cout<<r<<std::endl;
+    }
 }
 
 
