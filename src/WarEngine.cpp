@@ -83,13 +83,17 @@ void WarEngine::prePhase1(bool human)
 
 void WarEngine::phase1(bool human)
 {
-    ListSelectionPrompt enemy = {"1", "2", "3", "4"};
-    std::string prompt = "What is the motive for your war?\n1.\tLand\n2.\tVengence\n3.\tVeganism\n4.\tNationalism\n";
-    auto ans = dispute.getSelectionIndex(prompt);
+    ListSelectionPrompt cOptions;
+    for(auto c : this->countries){
+        cOptions.append(c->getName());    
+    }
+    int index = cOptions.getSelectionIndex("Who do you want to declare war to?");
+    
+    // std::string selection = "What is the motive for your war?\n1.\tLand\n2.\tVengence\n3.\tVeganism\n4.\tNationalism\n";
+    // auto ans = dispute.getSelectionIndex(prompt);
 
-    ListSelectionPrompt dispute = {"1", "2", "3", "4"};
-    std::string prompt = "What is the motive for your war?\n1.\tLand\n2.\tVengence\n3.\tVeganism\n4.\tNationalism\n";
-    auto ans = dispute.getSelectionIndex(prompt);
+    ListSelectionPrompt dispute = {"Land", "Vengence", "Veganism", "Nationalism"};
+    auto ans = dispute.getSelectionIndex("What is the motive for your war?");
 
 
     switch (ans)
@@ -262,7 +266,7 @@ void WarEngine::makeDecision(Country* c)
         "Send Recruit", "Buy Weapons and allocate to Recruits",
         "Buy and set Traps", "Surrender"
     };
-
+    
     int index = prompt.getSelectionIndex("Please select an action: ");
     switch (index)
     {
