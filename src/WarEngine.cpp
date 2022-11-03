@@ -88,6 +88,20 @@ void WarEngine::phase1(bool human)
         cOptions.append(c->getName());    
     }
     int index = cOptions.getSelectionIndex("Who do you want to declare war to?");
+    //still needs to be completed
+    
+    // switch (index){
+    //     case 0:
+    //     case 0:
+    //     case 0:
+    //     case 0:
+    //     case 0:
+    //     case 0:
+    //     case 0:
+    //     case 0:
+    //     case 0:
+
+    // }
     
     // std::string selection = "What is the motive for your war?\n1.\tLand\n2.\tVengence\n3.\tVeganism\n4.\tNationalism\n";
     // auto ans = dispute.getSelectionIndex(prompt);
@@ -421,7 +435,35 @@ void WarEngine::buyAndSetTraps(Country* c)
 
 void WarEngine::surrender(Country* c)
 {
-    
+    ListSelectionPrompt prompt;
+    std::vector<UnorderedPair<Country*>> records = battleRegistry.getRecords(c);
+    std::vector<Country*> enemies;
+    for(auto r : records){
+        enemies.emplace_back(r.getOther(c));
+        prompt.append(r.getOther(c)->getName());
+    }
+    int index = prompt.getSelectionIndex("Which country do you wish to surrender to?");
+    conquers(enemies[index],c);
+}
+
+void WarEngine::conquers(Country* conqueror,Country* conquered){
+    conqueror->setEconomy(conqueror->getEconomy()+conquered->getEconomy());
+    conquered->setEconomy(0);
+    conqueror->setPower(conqueror->getPower()+conquered->getPower());
+    conquered->setPower(0);
+    conqueror->setPopulation(conqueror->getPopulation()+conquered->getPopulation());
+    conquered->setPopulation(0);
+    conqueror->getRecruits().insert(conqueror->getRecruits().end(), conquered->getRecruits().begin(), conquered->getRecruits().end());
+    for(auto r : conquered->getRecruits()){
+        r->setCountry(conqueror);
+    }
+    conquered->getRecruits().clear();
+    int populationSize;
+
+    // do the same for:
+    // WarTheatre** warTheatres;
+    // Citizens* citizens;
+    // Refugee* refugees;
 }
 
 void WarEngine::printWarReport()

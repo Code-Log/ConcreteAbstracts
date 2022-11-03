@@ -86,8 +86,15 @@ public:
      * @param Amount
      */
     void setNotEnlisted(int Amount);
-    
-       /**
+
+    /**
+     * @brief Set the Population object
+     * 
+     * @param population 
+     */
+    void setPopulation(int population);
+
+    /**
      * @brief Get the Population object
      *
      * @return int
@@ -208,6 +215,12 @@ public:
      */
     std::string allWarFronts();
 
+    /**
+     * @brief Get the Recruits object
+     * 
+     * @return std::vector<Recruits*> 
+     */
+    std::vector<Recruits*> getRecruits();
 
 
     /**

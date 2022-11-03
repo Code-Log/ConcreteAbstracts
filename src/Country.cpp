@@ -293,6 +293,10 @@ void Country::updatePower()
     this->power = this->populationSize*economy;
 }
 
+void Country::setPopulation(int population){
+    this->populationSize = population;
+}
+
 int Country::getPopulation() const
 {
     return populationSize;
@@ -497,6 +501,10 @@ int Country:: warFrontDanger(const std::string& totalOf)
     }
 
     return total;
+}
+
+std::vector<Recruits*> Country::getRecruits(){
+    return recruits;
 }
 
 Country::~Country()

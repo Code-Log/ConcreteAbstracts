@@ -158,6 +158,14 @@ public:
     void surrender(Country* c);
 
     /**
+     * @brief One country conquers the other. All resorces are transfered to the conquering country. 
+     * 
+     * @param conqueror 
+     * @param conquered 
+     */
+    void conquers(Country* conqueror,Country* conquered);
+
+    /**
      * @brief
      *
      */
