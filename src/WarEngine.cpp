@@ -286,7 +286,7 @@ void WarEngine::setAllies(bool human)
         while(userAllyCount <= userAllyLimit)
         {
             randomIndex = randomNumGenerator(1, 8); // randomize ally country index
-            if(AIUserIndex != randomIndex && AIUserIndex != randomIndex  && AIUserIndex != enemyIndex)
+            if(AIUserIndex != randomIndex && AIUserIndex != enemyIndex)
             {
                 this->allyRegistry.addRecord(countries[AIUserIndex],countries[randomIndex]);
                 userAllyCount++;
