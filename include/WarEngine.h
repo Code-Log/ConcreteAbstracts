@@ -20,7 +20,7 @@ public:
      * @brief calls prePhase1(), phase1(), phase2(),phase3(), printWarReport()
      *
      */
-    void run();
+    void run(bool human);
 
     /**
      * @brief stops the engine
@@ -44,25 +44,25 @@ public:
      * @brief This function calls the following functions: selectCountry() and selectPolicalRegime();
      *
      */
-    void prePhase1();
+    void prePhase1(bool human);
 
     /**
      * @brief
      *
      */
-    void phase1();
+    void phase1(bool human);
 
     /**
      * @brief
      *
      */
-    void phase2();
+    void phase2(bool human);
 
     /**
      * @brief
      *
      */
-    void phase3();
+    void phase3(bool human);
 
     /**
      * @brief Allows a user to select country. Note no 2 users should have the same country
@@ -99,6 +99,13 @@ public:
      *
      */
     void setWarTheatres();
+
+
+    /**
+     * @brief 
+     * 
+     */
+    void destributeRecruiteToWarTheatres();
 
     /**
      * @brief
@@ -152,7 +159,7 @@ public:
      * @brief
      *
      */
-    void PrintWarReport();
+    void printWarReport();
 
     /**
      * @brief Get the Ally Registry object
@@ -167,6 +174,9 @@ public:
      * @return BattleRegistry
      */
     BattleRegistry getBattleRegistry();
+
+    void warLoop();
+    void EngineSimulation();
 
     void setTest(int data); //for testing purposes.
     int getTest() const;//for testing purposes.

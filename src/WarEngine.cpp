@@ -2,14 +2,18 @@
 #include<util/ListSelectionPrompt.h>
 #include<random>
 
-void WarEngine::run()
+void WarEngine::run(bool human)
 {
-
+    prePhase1(human);
+    phase1(human);
+    phase2(human);
+    phase3(human);
+    printWarReport();
 }
 
 void WarEngine::runEngine()
 {
-    
+    run(false);
 }
 
 void WarEngine::stopEngine()
@@ -19,7 +23,7 @@ void WarEngine::stopEngine()
 
 void WarEngine::runGUIEngine()
 {
-    
+    run(true);
 }
 
 AllyRegistry WarEngine::getAllyRegistry()
@@ -70,24 +74,41 @@ WarEngine::~WarEngine()
 
 
 
-void WarEngine::prePhase1()
+void WarEngine::prePhase1(bool human)
+{
+    selectCountry(human);
+    selectPoliticalRegime();
+}
+
+void WarEngine::phase1(bool human)
 {
     
 }
 
-void WarEngine::phase1()
+void WarEngine::phase2(bool human)
+{
+    setAllies();
+    partitionRecruite();
+    buyAndDestributeWeapons();
+    setWarTheatres();
+    destributeRecruiteToWarTheatres();
+    setTraps();
+}
+
+void WarEngine::phase3(bool human)
 {
     
 }
-
-void WarEngine::phase2()
-{
-    
+void WarEngine::warLoop () {
+    while (disputeActive) {
+	    EngineSimulation();
+	    printEngineReport();  
+    }
 }
-
-void WarEngine::phase3()
-{
-    
+void WarEngine::EngineSimulation(){
+    for(auto c : countries){
+        makeDecision(c); //engine strategically 
+    }
 }
 
 void WarEngine::selectCountry(bool humanCountry)
@@ -128,11 +149,14 @@ void WarEngine::selectCountry(bool humanCountry)
     }    
 }
 
+void WarEngine::destributeRecruiteToWarTheatres(){
+
+}
 void WarEngine::selectPoliticalRegime()
 {
 
     ListSelectionPrompt regime = { "c", "s"};
-    std::string promt = "";
+    std::string prompt = "";
     prompt = "Is ";
     prompt += countries[humanIndex]->getName();
     prompt += " a capatalist nation or socialist society (c/s): ";
@@ -237,7 +261,7 @@ void WarEngine::surrender()
     
 }
 
-void WarEngine::PrintWarReport()
+void WarEngine::printWarReport()
 {
     
 }
