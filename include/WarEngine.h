@@ -175,6 +175,7 @@ public:
      */
     BattleRegistry getBattleRegistry();
 
+
     void warLoop();
     void EngineSimulation();
 
