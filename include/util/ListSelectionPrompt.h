@@ -11,6 +11,7 @@ struct ListSelectionPrompt
     std::vector<std::string> options;
     ListSelectionPrompt(std::initializer_list<std::string> init);
     std::string getSelection(const std::string& prompt) const;
+    int getSelectionIndex(const std::string& prompt) const;
 };
 
 #endif //CONCRETEABSTRACTS_LISTSELECTIONPROMPT_H
