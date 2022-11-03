@@ -232,7 +232,33 @@ void WarEngine::printEngineReport()
 
 void WarEngine::makeDecision(Country* c)
 {
-    
+    ListSelectionPrompt prompt = {
+        "Increase Allies", "Send Recruit and Attack",
+        "Send Recruit", "Buy Weapons and allocate to Recruits",
+        "Buy and set Traps", "Surrender"
+    };
+
+    int index = prompt.getSelectionIndex("Please select an action: ");
+    switch (index)
+    {
+        case 0:
+            increaseAllies();
+            break;
+        case 2:
+            sendRecruitAndAttack();
+            break;
+        case 3:
+            buyAndDestributeWeapons();
+            break;
+        case 4:
+            buyAndSetTraps();
+            break;
+        case 5:
+            surrender();
+            break;
+        default:
+            break;
+    }
 }
 
 void WarEngine::increaseAllies()
