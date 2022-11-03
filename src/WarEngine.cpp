@@ -85,7 +85,7 @@ void WarEngine::phase1(bool human)
 {
     ListSelectionPrompt cOptions;
     for(auto c : this->countries){
-        cOptions.append(c->getName());    
+        cOptions.append(c->getName());
     }
     int index = cOptions.getSelectionIndex("Who do you want to declare war to?");
     //still needs to be completed
@@ -138,7 +138,7 @@ void WarEngine::phase2(bool human)
 {
     setAllies(human);
     partitionRecruite();
-    buyAndDestributeWeapons();
+    buyAndDistributeWeapons(human);
     setWarTheatres();
     destributeRecruiteToWarTheatres();
     setTraps();
@@ -187,8 +187,8 @@ void WarEngine::selectCountry(bool humanCountry)
         for (int i = 0; i < sizeof(countries); i++)
         {
             countries[i] = new Country(countryNames[i]);
-        }  
-    }    
+        }
+    }
 }
 
 void WarEngine::destributeRecruiteToWarTheatres(){
@@ -198,7 +198,7 @@ void WarEngine::selectPoliticalRegime()
 {
 
     ListSelectionPrompt regime = { "c", "s"};
-    std::string prompt = "";
+    std::string prompt;
     prompt = "Is ";
     prompt += countries[humanIndex]->getName();
     prompt += " a capatalist nation or socialist society (c/s): ";
@@ -336,9 +336,32 @@ void WarEngine::partitionRecruite()
     
 }
 
-void WarEngine::buyAndDestributeWeapons()
+void WarEngine::buyAndDistributeWeapons(bool humanCountry)
 {
-    
+    for(int i = 0; i < 8; i++)
+    {
+        ArmoryFacade armoryFacade = countries[i]->getArmoryFacade();
+
+        if(humanCountry && i == 0)
+        {
+            ListSelectionPrompt selectRecruitsGroup = {"Group 1", "Group 2", "Group 3", "Group 4"};
+            auto userResponse= selectRecruitsGroup.getSelectionIndex("Please select a recruit group to buy weapons for (a/b/c/d): ");
+
+            ListSelectionPrompt selectWeapon = {"Nuclear Weapon", "Explosive Weapon", "Melee Weapon", "Ranged Weapon"};
+            auto choice =  selectWeapon.getSelectionIndex("What kind of weapon do you wish to produce?\n") ;// Refactored from WeaponTransport
+
+
+            armoryFacade.purchaseWeapon(countries[i]->getRecruits()[userResponse], choice);
+        } else {
+            for(auto recruit : countries[i]->getRecruits())
+            {
+                armoryFacade.purchaseWeapon(recruit, randomNumGenerator(0,3));
+            }
+        }
+
+    }
+
+
 }
 
 void WarEngine::setWarTheatres()
@@ -384,7 +407,7 @@ void WarEngine::makeDecision(Country* c)
         "Send Recruit", "Buy Weapons and allocate to Recruits",
         "Buy and set Traps", "Surrender"
     };
-    
+
     int index = prompt.getSelectionIndex("Please select an action: ");
     switch (index)
     {
@@ -425,7 +448,7 @@ void WarEngine::sendRecruitAndAttack(Country* c)
 
 void WarEngine::sendRecruit(Country* c)
 {
-    int cost = 50; //we could change this later on. 
+    int cost = 50; //we could change this later on.
 }
 
 void WarEngine::buyAndSetTraps(Country* c)

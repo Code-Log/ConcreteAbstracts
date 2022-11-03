@@ -10,12 +10,11 @@ ArmoryFacade::ArmoryFacade()
     transportContext = new TransportContext(weaponTransport);
 }
 
-bool ArmoryFacade::purchaseWeapon(Recruits *recruits)
+bool ArmoryFacade::purchaseWeapon(Recruits *recruits, int weaponType)
 {
     transportContext->setStrategy(weaponTransport);
-    transportContext->purchase(recruits);
+    transportContext->purchase(recruits, weaponType);
 
-    /// \todo: Implement ArmoryFacade::purchaseWeapon
     return true;
 }
 

@@ -21,7 +21,7 @@ public:
      * 
      * @param recruits 
      */
-    virtual void purchase(Recruits* recruits) = 0;
+    virtual void purchase(Recruits *recruits, int purchaseType) = 0;
 
 protected:
 

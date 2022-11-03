@@ -16,22 +16,16 @@ WeaponTransport::WeaponTransport(){
     factory[2]->setPrice(100);
     factory[3]->setPrice(100);
 }
-void WeaponTransport::purchase(Recruits* recruits)
+
+void WeaponTransport::purchase(Recruits *recruits, int purchaseType)
 {
-     std::string question =  std::string("What kind of weapon do you wish to produce?\n")
-                     + "1. Nuclear\n"
-                     + "2. Explosive\n"
-                     + "3. Melee\n"
-                     + "4. Ranged\n";
-    std::cout<<question;
-    int answer;
-    std::cin>>answer;
+
     int budget = recruits->getCountry()->getEconomy();
     AttackWeapon* weapon;
     std::string weaponName;
 
-    switch(answer) {
-        case 1:
+    switch(purchaseType) {
+        case 0:
             if(factory[0]->getPrice()>budget){
             std::cout<<"sorry you do not have the funds neccesary to continue with the purchase."<<std::endl;
             return;
@@ -41,7 +35,7 @@ void WeaponTransport::purchase(Recruits* recruits)
             weaponName = "Nuclear";
             }
             break;
-        case 2:
+        case 1:
             if(factory[1]->getPrice()>budget){
             std::cout<<"sorry you do not have the funds neccesary to continue with the purchase."<<std::endl;
             return;
@@ -51,7 +45,7 @@ void WeaponTransport::purchase(Recruits* recruits)
             weaponName = "Explosive";
             }
             break;
-        case 3:
+        case 2:
             if(factory[2]->getPrice()>budget){
             std::cout<<"sorry you do not have the funds neccesary to continue with the purchase."<<std::endl;
             return;
@@ -61,7 +55,7 @@ void WeaponTransport::purchase(Recruits* recruits)
             weaponName = "Melee";
             }
             break;
-        case 4:
+        case 3:
             if(factory[3]->getPrice()>budget){
             std::cout<<"sorry you do not have the funds neccesary to continue with the purchase."<<std::endl;
             return;

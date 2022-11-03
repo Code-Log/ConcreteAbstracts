@@ -523,3 +523,15 @@ Country::~Country()
         delete r;
     }
 }
+
+const ArmoryFacade &Country::getArmoryFacade() const {
+    return armoryFacade;
+}
+
+const Recruits* Country::getRecruit(int i) const {
+    return this->recruits[i];
+}
+
+const std::vector<Recruits *> &Country::getRecruits() const {
+    return recruits;
+}

@@ -229,6 +229,17 @@ public:
      */
     ~Country();
 
+    /**!
+     * @brief Get an instance of the ArmoryFacade for the country being worked on.
+     *
+     * @return
+     */
+    const ArmoryFacade &getArmoryFacade() const;
+
+    const std::vector<Recruits *> &getRecruits() const;
+
+    const Recruits* getRecruit(int i) const;
+
 protected:
 
 private:
@@ -247,6 +258,7 @@ private:
     Citizens* citizens;
     Refugee* refugees;
     ArmoryFacade armoryFacade;
+
 };
 
 #endif
