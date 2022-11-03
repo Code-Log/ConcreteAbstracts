@@ -5,9 +5,9 @@ TransportContext::TransportContext(Transport* defaultStrategy)
 {
 }
 
-void TransportContext::purchase(Recruits* recruits)
+void TransportContext::purchase(Recruits *recruits, int numSelection)
 {
-    strategy->purchase(recruits);
+    strategy->purchase(recruits, numSelection);
 }
 
 void TransportContext::setStrategy(Transport* newStrategy)

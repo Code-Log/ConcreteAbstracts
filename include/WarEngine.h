@@ -92,7 +92,7 @@ public:
      * @brief
      *
      */
-    void buyAndDestributeWeapons();
+    void buyAndDistributeWeapons(bool humanCountry);
 
     /**
      * @brief It was decided that the wartheatres would be decided randomly. The function gives each country 4 opportunities to pick a warfront. Since they pick randomly they could pick an existing warfront and their request denied. At the end of the function each country has a minimum of 1 and max of 4 war theatres

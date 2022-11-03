@@ -42,7 +42,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool purchaseWeapon(Recruits* recruits);
+    bool purchaseWeapon(Recruits *recruits, int weaponType);
 
     /**
      * @brief 

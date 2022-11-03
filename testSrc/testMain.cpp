@@ -182,10 +182,10 @@ int testTransport()
     auto* attackVessel = new AttackVessel;
 
     auto* context = new TransportContext(suppliesTransport);
-    context->purchase(recruits);
+    context->purchase(recruits, 0);
 
     context->setStrategy(weaponTransport);
-    context->purchase(recruits);
+    context->purchase(recruits, 0);
 
     // context->setStrategy(attackVessel);
     // context->purchase(recruits);
@@ -206,7 +206,7 @@ int testArmoryFacade()
 
         armoryFacade->purchaseAttackVessel(recruits);
         armoryFacade->purchaseSupplies(recruits);
-        armoryFacade->purchaseWeapon(recruits);
+    armoryFacade->purchaseWeapon(recruits, 0);
 
         delete armoryFacade;
         delete recruits;
