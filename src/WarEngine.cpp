@@ -83,7 +83,9 @@ void WarEngine::prePhase1(bool human)
 
 void WarEngine::phase1(bool human)
 {
-    
+    ListSelectionPrompt enemy = {"1", "2", "3", "4"};
+    std::string prompt = "What is the motive for your war?\n1.\tLand\n2.\tVengence\n3.\tVeganism\n4.\tNationalism\n";
+    auto ans = dispute.getSelectionIndex(prompt);
 
     ListSelectionPrompt dispute = {"1", "2", "3", "4"};
     std::string prompt = "What is the motive for your war?\n1.\tLand\n2.\tVengence\n3.\tVeganism\n4.\tNationalism\n";
@@ -265,46 +267,51 @@ void WarEngine::makeDecision(Country* c)
     switch (index)
     {
         case 0:
-            increaseAllies();
+            increaseAllies(c);
             break;
         case 2:
-            sendRecruitAndAttack();
+            sendRecruitAndAttack(c);
             break;
         case 3:
-            buyAndDestributeWeapons();
+            sendRecruit(c);
             break;
         case 4:
-            buyAndSetTraps();
+            buyWeaponsAndAllocateToRecruits(c);
             break;
         case 5:
-            surrender();
+            buyAndSetTraps(c);
+            break;
+        case 6:
+            surrender(c);
             break;
         default:
             break;
     }
 }
+void WarEngine::buyWeaponsAndAllocateToRecruits(Country* c){
 
-void WarEngine::increaseAllies()
+}
+void WarEngine::increaseAllies(Country* c)
 {
     
 }
 
-void WarEngine::sendRecruitAndAttack()
+void WarEngine::sendRecruitAndAttack(Country* c)
 {
     
 }
 
-void WarEngine::sendRecruit()
+void WarEngine::sendRecruit(Country* c)
+{
+    int cost = 50; //we could change this later on. 
+}
+
+void WarEngine::buyAndSetTraps(Country* c)
 {
     
 }
 
-void WarEngine::buyAndSetTraps()
-{
-    
-}
-
-void WarEngine::surrender()
+void WarEngine::surrender(Country* c)
 {
     
 }

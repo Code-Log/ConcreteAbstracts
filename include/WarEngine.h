@@ -129,31 +129,33 @@ public:
      * @brief
      *
      */
-    void increaseAllies();
+    void increaseAllies(Country* c);
 
     /**
      * @brief
      *
      */
-    void sendRecruitAndAttack();
+    void sendRecruitAndAttack(Country* c);
 
     /**
      * @brief
      *
      */
-    void sendRecruit();
+    void sendRecruit(Country* c);
+
+    void buyWeaponsAndAllocateToRecruits(Country* c);
 
     /**
      * @brief
      *
      */
-    void buyAndSetTraps();
+    void buyAndSetTraps(Country* c);
 
     /**
      * @brief
      *
      */
-    void surrender();
+    void surrender(Country* c);
 
     /**
      * @brief
@@ -180,7 +182,7 @@ public:
      *
      * @return int
      */
-    int randomNumGenerator(int min, int max)
+    int randomNumGenerator(int min, int max);
 
     void warLoop();
     void EngineSimulation();
