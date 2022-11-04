@@ -134,7 +134,7 @@ void WarEngine::phase1(bool human)
 void WarEngine::phase2(bool human)
 {
     setAllies(human);
-    partitionRecruite();
+    partitionRecruits();
     buyAndDistributeWeapons(human);
     setWarTheatres();
     destributeRecruiteToWarTheatres();
@@ -328,9 +328,26 @@ void WarEngine::setAllies(bool human)
     }    
 }
 
-void WarEngine::partitionRecruite()
+void WarEngine::partitionRecruits()
 {
-    
+    for(Country* country : countries) // Partition population for each country
+    {
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dist(1e4, 5e4);
+
+        // Set total population for passed country
+        country->setPopulation(dist(gen));
+
+        // Citizens
+        country->setCitizens(new Citizens());
+        int cit = (int)(country->getPopulation()*0.7); // Initially 70% of population are citizens
+        country->getCitizens()->setGroupSize(cit);
+
+        // Refugees
+        country->setRefugees(new Refugee());
+        country->getRefugees()->setGroupSize(0); // Initially 0 refugees at start
+    }
 }
 
 void WarEngine::buyAndDistributeWeapons(bool humanCountry)

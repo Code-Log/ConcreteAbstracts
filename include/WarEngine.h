@@ -87,7 +87,7 @@ public:
      * @brief
      *
      */
-    void partitionRecruite();
+    void partitionRecruits();
 
     /**
      * @brief
