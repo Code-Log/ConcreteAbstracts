@@ -1,5 +1,6 @@
 #include <util/ListSelectionPrompt.h>
 #include <iostream>
+#include <limits>
 
 ListSelectionPrompt::ListSelectionPrompt(std::initializer_list<std::string> init)
     : options(init)
@@ -13,12 +14,24 @@ std::string ListSelectionPrompt::getSelection(const std::string& prompt) const
         std::printf("%d. %s\n", i, options[i - 1].c_str());
 
     int selection;
-    do {
+    bool invalidSelection;
+      do {
         std::cout << prompt;
         std::cin >> selection;
-        if (selection <= 0 || selection > maxVal)
+        std::cout<<selection<<std::endl;
+        if (selection <= 0 || selection > maxVal){
             std::cout << "Invalid selection!" << std::endl;
+            std::cin.clear(); // clears cin error flags
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignores any invalid input entered
+        }    
     } while (selection <= 0 || selection > maxVal);
+    // do {
+    //     std::cout << prompt;
+    //     std::cin >> selection;
+    //     std::cout<<selection<<std::endl;
+    //     if (selection <= 0 || selection > maxVal)
+    //         std::cout << "Invalid selection!" << std::endl;
+    // } while (selection <= 0 || selection > maxVal);
 
     return options[selection - 1];
 }

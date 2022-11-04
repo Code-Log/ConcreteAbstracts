@@ -3,7 +3,15 @@
 #include <iostream>
 
 int main() {
-    WarEngine::getInstanceWarEngine().selectCountry(true);
-    // war->prePhase1(true);
+    // WarEngine::getInstanceWarEngine().selectCountry(false);
+    // for(auto c : WarEngine::getInstanceWarEngine().countries){
+    //     if(c == nullptr){
+    //         std::cout<<"mhhh"<<std::endl;
+    //     }
+    //     else
+    //         std::cout<<c->getName()<<std::endl;
+    // }
+    // WarEngine::getInstanceWarEngine().selectPoliticalRegime(false);
+    WarEngine::getInstanceWarEngine().prePhase1(true);
     return 0;
 }
