@@ -220,7 +220,7 @@ void Country::recruitGuardians(int squadSize)
     }
     else
     {
-        Recruits *Guard = new Marine();
+        Recruits *Guard = new Gaurdian();
         Guard->setGroupSize(squadSize);
         Guard->setMilitaryType("Marine");
         this->notEnlisted = this->notEnlisted - squadSize;
@@ -256,11 +256,11 @@ void Country::recruitPilots(int squadSize)
     }
     else
     {
-        Recruits *Pilot = new Marine();
-        Pilot->setGroupSize(squadSize);
-        Pilot->setMilitaryType("Pilot");
+        Recruits *pilot = new Pilot();
+        pilot->setGroupSize(squadSize);
+        pilot->setMilitaryType("Pilot");
         this->notEnlisted = this->notEnlisted - squadSize;
-        recruits.push_back(Pilot);
+        recruits.push_back(pilot);
     }
 }
 
@@ -539,6 +539,10 @@ std::vector<Recruits*> Country::getRecruits(){
     return recruits;
 }
 
+void Country::setRecruits(std::vector<Recruits*> recruits){
+    this->recruits = recruits;
+}
+
 Country::~Country()
 {
     for(auto w : wwarTheatres){
@@ -581,8 +585,18 @@ Refugee* Country::getRefugees(){
     return refugees;
 }
 
+void Country::setRefugees(Refugee* refugees)
+{
+    this->refugees = refugees;
+}
+
 Citizens* Country::getCitizens(){
     return citizens;
+}
+
+void Country::setCitizens(Citizens* citizens)
+{
+    this->citizens = citizens;
 }
 
 EconomicClass Country::getEconomicClass() const

@@ -223,6 +223,12 @@ public:
      */
     std::vector<Recruits*> getRecruits();
 
+    /**
+     * @brief Set the Recruits object
+     * 
+     * @return std::vector<Recruits*> 
+     */
+    void setRecruits(std::vector<Recruits*> recruits);
 
     /**
      * @brief Destroy the Country object
@@ -249,11 +255,25 @@ public:
     Refugee* getRefugees();
 
     /**
-     * @brief 
+     * @brief Set the Refugee object
+     * 
+     * @return Refugee* 
+     */
+    void setRefugees(Refugee* refugees);
+
+    /**
+     * @brief Get the Citizens object
      * 
      * @return Citizens* 
      */
     Citizens* getCitizens();
+
+    /**
+     * @brief Set the Citizens object
+     * 
+     * @return Citizens* 
+     */
+    void setCitizens(Citizens* citizens);
 
     /**
      * @brief
