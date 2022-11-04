@@ -341,12 +341,26 @@ void WarEngine::partitionRecruits()
 
         // Citizens
         country->setCitizens(new Citizens());
-        int cit = (int)(country->getPopulation()*0.7); // Initially 70% of population are citizens
+        int cit = (int)(country->getPopulation() * 0.7); // Initially 70% of population are citizens
         country->getCitizens()->setGroupSize(cit);
 
         // Refugees
         country->setRefugees(new Refugee());
         country->getRefugees()->setGroupSize(0); // Initially 0 refugees at start
+
+        // Recruits
+        country->setRecruits(std::vector<Recruits*> {new Soldier(), new Marine(), new Pilot(), new Guardian(), new Medic()});
+      
+        int totalRecruitsSize = country->getPopulation() - cit; 
+        country->getRecruits().at(0)->setGroupSize(totalRecruitsSize * 0.3); // Soldier group size
+        country->getRecruits().at(1)->setGroupSize(totalRecruitsSize * 0.2); // Marine group size
+        country->getRecruits().at(2)->setGroupSize(totalRecruitsSize * 0.2); // Pilot group size
+        country->getRecruits().at(3)->setGroupSize(totalRecruitsSize * 0.2); // Guardian group size
+        country->getRecruits().at(4)->setGroupSize(totalRecruitsSize * 0.1); // Medic group size
+        // Group sizes add up to 100% of totalRecruitsSize
+
+        country->setNotEnlisted(country->getPopulation() - totalRecruitsSize); // Not enlisted people will be equal to population - recruits
+
     }
 }
 
