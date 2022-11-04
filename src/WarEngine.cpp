@@ -339,28 +339,57 @@ void WarEngine::partitionRecruits()
         // Set total population for passed country
         country->setPopulation(dist(gen));
 
-        // Citizens
-        country->setCitizens(new Citizens());
-        int cit = (int)(country->getPopulation() * 0.7); // Initially 70% of population are citizens
-        country->getCitizens()->setGroupSize(cit);
-
         // Refugees
         country->setRefugees(new Refugee());
         country->getRefugees()->setGroupSize(0); // Initially 0 refugees at start
 
         // Recruits
-        country->setRecruits(std::vector<Recruits*> {new Soldier(), new Marine(), new Pilot(), new Guardian(), new Medic()});
-      
-        int totalRecruitsSize = country->getPopulation() - cit; 
-        country->getRecruits().at(0)->setGroupSize(totalRecruitsSize * 0.3); // Soldier group size
-        country->getRecruits().at(1)->setGroupSize(totalRecruitsSize * 0.2); // Marine group size
-        country->getRecruits().at(2)->setGroupSize(totalRecruitsSize * 0.2); // Pilot group size
-        country->getRecruits().at(3)->setGroupSize(totalRecruitsSize * 0.2); // Guardian group size
-        country->getRecruits().at(4)->setGroupSize(totalRecruitsSize * 0.1); // Medic group size
-        // Group sizes add up to 100% of totalRecruitsSize
+        country->setRecruits(std::vector<Recruits*> {new Soldier(), new Pilot(), new Marine(), new Guardian(), new Medic()});
+        const int s = 100, m=150, p = 200, g=300, med=150; //prices of each recruit type
+        std::vector<int> prices{s, p, m, g, med};
 
+        // Initialize all recruit type sizes to 0
+        for(int i = 0; i < 5; i++)
+        {
+            country->getRecruits()[i]->setGroupSize(0); 
+        }
+
+        ListSelectionPrompt prompt = {"Soldier", "Pilot", "Marine", "Guardian", "Medic"};
+        std::vector<std::string> types = {"Soldiers", "Pilots", "Marines", "Guardians", "Medics"};
+        int totalRecruitsSize = 0;
+
+        std::cout << "Select the type of recruit you wish to have:" << std::endl;
+        std::string choice = "y";
+        while(choice == "y" || choice == "Y" && country->getEconomy() > 0) // At most 4 allies
+        {
+            int typeSelected = prompt.getSelectionIndex("Please select an option from 1 to 5: ");
+            int size = 0;
+            std::cout << "How many " << types[typeSelected] << " do you want? ";
+            std::cin >> size;
+
+            int recruitsPrice = size * prices[typeSelected];
+
+            // Check if country has enough money and bought recruits don't exceed the recruit limit
+            if(recruitsPrice <= country->getEconomy() && totalRecruitsSize < country->getPopulation())
+            {
+                totalRecruitsSize += size;
+                country->getRecruits()[0]->setGroupSize(size);
+                country->setEconomy(country->getEconomy() - recruitsPrice); // setEconomy(currentEconomy - (groupSize * price))
+
+                std::cout << "Do you wish to get More recruits? [y/n] :";
+                std::cin >> choice;
+            }
+            else
+            {
+                std::cout << "Cannot buy any more recruits!";
+            }
+
+        }
+
+        // Citizens
+        country->setCitizens(new Citizens());
+        country->getCitizens()->setGroupSize(country->getPopulation() - totalRecruitsSize);
         country->setNotEnlisted(country->getPopulation() - totalRecruitsSize); // Not enlisted people will be equal to population - recruits
-
     }
 }
 
