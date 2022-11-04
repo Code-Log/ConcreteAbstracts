@@ -220,7 +220,8 @@ void Country::recruitGuardians(int squadSize)
     // }
     // else
     // {
-    auto* Guard = new Gaurdian();
+       
+    auto* Guard = new Guardian();
     Guard->setGroupSize(squadSize);
     Guard->setMilitaryType("Marine");
     this->notEnlisted = this->notEnlisted - squadSize;
@@ -428,54 +429,79 @@ void Country::setTrap(BattleGround *battleGround, /*const std::string& Trap*/ Tr
     // {
     //     return;
     // }
+    
+    // WarTheatre* Temp;
 
-    WarTheatre* Temp;
-
-    if(trap-> == "SpaceMagnets")
-    {
-        if(battleGround->getLocation() == "Space")
-        {
-            return;
-        }
+    // if(Trap == "SpaceMagnets")
+    // {
+    //     if(battleGround->getLocation() == "Space")
+    //     {
+    //         return;
+    //     }
         
-        Temp = new SpaceMagnets();  
-    }
+    //     Temp = new SpaceMagnets();  
+    // }
 
-    if(Trap == "Mines")
-    {
-        if(battleGround->getLocation() == "Air")
-        {
-            return;
-        }
+    // if(Trap == "Mines")
+    // {
+    //     if(battleGround->getLocation() == "Air")
+    //     {
+    //         return;
+    //     }
 
-        Temp = new Mines();
-    }
+    //     Temp = new Mines();
+    // }
 
-    if(Trap == "Barricades")
-    {
-        if(battleGround->getLocation() == "Air")
-        {
-            return;
-        }
+    // if(Trap == "Barricades")
+    // {
+    //     if(battleGround->getLocation() == "Air")
+    //     {
+    //         return;
+    //     }
 
-        Temp = new Barricades();
-    }
+    //     Temp = new Barricades();
+    // }
 
-    if(Trap == "Trenches")
-    {
-        if(battleGround->getLocation() != "Land")
-        {
-            return;
-        }
+    // if(Trap == "Trenches")
+    // {
+    //     if(battleGround->getLocation() != "Land")
+    //     {
+    //         return;
+    //     }
 
-        Temp = new Trenches();
+    //     Temp = new Trenches();
 
-    }
+    // }
     
     // int index = getIndex(battleGround);
-    Temp->add(battleGround);
+    // Temp->add(battleGround);
     // warTheatres[index]= Temp;
 
+    WarTheatre* temp;
+    switch (trap->getType())
+    {
+        case enums::SpaceMagnets:
+            if(battleGround->getLocation() == "Space")
+                temp = new SpaceMagnets();
+            break;      
+        case enums::Mines:
+            if(battleGround->getLocation() != "Air")
+                temp = new Mines();   
+            break;
+        case enums::Barricades:
+            if(battleGround->getLocation() != "Air")
+                temp = new Barricades();
+            break;
+        case enums::Trenches:
+             if(battleGround->getLocation() == "Land")
+                temp = new Trenches();
+            break;
+        default:
+            std::cout<<"you can't add a "<<trap->getType()<<" "<<battleGround->getLocation()<<std::endl;
+            return;
+    }
+    temp->add(battleGround);
+    wwarTheatres.emplace_back(temp);
 }
 
 void Country::removeFront(BattleGround* battleGround)

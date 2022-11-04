@@ -11,11 +11,15 @@
 #ifndef TRAP_H
 #define TRAP_H
 
-#include "WarTheatre.h"
+#include <WarTheatre.h>
+#include <util/enums.h>
+
 
 class Trap : public WarTheatre
 {
 public:
+    
+    
     /**!
      *
      * @param trap
@@ -82,6 +86,13 @@ public:
     int damageTotal() override;
 
     /**
+     * @brief Get the Type object
+     * 
+     * @return enums::TrapType 
+     */
+    enums::TrapType getType();
+
+    /**
      * @brief 
      * 
      * @param decrease 
@@ -99,7 +110,7 @@ public:
     int penalty(Recruits* recruits) override;
 
 protected:
-
+    enums::TrapType type;
 private:
     WarTheatre* trap;
     bool active;
