@@ -220,7 +220,7 @@ void Country::recruitGuardians(int squadSize)
     }
     else
     {
-        Recruits *Guard = new Gaurdian();
+        Recruits *Guard = new Guardian();
         Guard->setGroupSize(squadSize);
         Guard->setMilitaryType("Marine");
         this->notEnlisted = this->notEnlisted - squadSize;
