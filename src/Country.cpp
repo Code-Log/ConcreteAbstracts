@@ -158,11 +158,11 @@ void Country::recruitSoldiers(int squadSize)
 
 void Country::recruitMedics(int squadSize)
 {
-    // if(notEnlisted< squadSize)
-    // {
-    //     std::cout<<"Not enough man power"<<std::endl;
-    //     return;
-    // }
+    if(notEnlisted< squadSize)
+    {
+        std::cout<<"Not enough man power"<<std::endl;
+        return;
+    }
 
     // bool found = false;
     // auto it = recruits.begin();
@@ -231,11 +231,11 @@ void Country::recruitGuardians(int squadSize)
 
 void Country::recruitPilots(int squadSize)
 {
-    // if(notEnlisted< squadSize)
-    // {
-    //     std::cout<<"Not enough man power"<<std::endl;
-    //     return;
-    // }
+    if(notEnlisted< squadSize)
+    {
+        std::cout<<"Not enough man power"<<std::endl;
+        return;
+    }
 
     // bool found = false;
     // auto it = recruits.begin();
@@ -313,29 +313,32 @@ void Country::setNotEnlisted(int Amount)
     this->notEnlisted = Amount;
 }
 
-WarTheatre* Country::getWarFront(const std::string& Type)
-{ 
-    // int index = getIndex(Type);
-    // WarTheatre* front = warTheatres[index];
-
-    WarTheatre* front = nullptr;
-
-    for(auto* w : wwarTheatres){
-        if(w->getLocation() == Type){
-            front = w;
-        }
-    }
-    
-    if(front != nullptr)
-    {
-        while(front->getLocation()== "Trap")
-        {
-            front = front->getTrap();
-        }
-    }
-
-    return front;
+std::vector<WarTheatre*> Country::getWarTheatres(){
+    return wwarTheatres;
 }
+// WarTheatre* Country::getWarFront(const std::string& Type)
+// { 
+//     // int index = getIndex(Type);
+//     // WarTheatre* front = warTheatres[index];
+
+//     WarTheatre* front = nullptr;
+
+//     for(auto* w : wwarTheatres){
+//         if(w->getLocation() == Type){
+//             front = w;
+//         }
+//     }
+    
+//     if(front != nullptr)
+//     {
+//         while(front->getLocation()== "Trap")
+//         {
+//             front = front->getTrap();
+//         }
+//     }
+
+//     return front;
+// }
 
 void Country::addWarFront(/*const std::string& location*/BattleGround* battleGround)
 {
@@ -398,7 +401,7 @@ void Country::addWarFront(/*const std::string& location*/BattleGround* battleGro
 std::string Country:: allWarFronts()
 {
     std::string out = "";
-    for(auto* c : wwarTheatres){
+    for(auto c : wwarTheatres){
         out += c->getLocation() + "\n";
     }
     

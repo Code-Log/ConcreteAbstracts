@@ -177,16 +177,19 @@ public:
      */
     void updatePower();
 
-     /**
-     * @brief Adds warTheatre. If the warTheatre type already exists does nothing. ?Only add if relevent recruits exist?
-     * @param battleGround
+    /**
+     * @brief Get the War Fronts object
+     * 
+     * @return WarTheatre* 
      */
-    void addWarFront(/*const std::string& location*/ BattleGround* battleGround);
-      /**
-     * @brief returns specified wartheatre if it exists
-     * @param Type
+    std::vector<WarTheatre*> getWarTheatres();
+
+    /**
+     * @brief assign warTheatre to this country. 
+     * 
+     * @param battleGround 
      */
-    WarTheatre* getWarFront(const std::string& Type);
+    void addWarFront(BattleGround* battleGround);
 
      /**
      * @brief Adds traps to avalable wartheatres. ? Restricts the what kinds of traps can be added to a wartheatre.

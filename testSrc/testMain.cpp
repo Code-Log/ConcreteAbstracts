@@ -216,79 +216,94 @@ int testArmoryFacade()
 int testTheatreCountryPeopleCombo()
 {
     return 0;
-    // int result = 0;
-    // auto* Germany = new Country("Germany");
-    // if(Germany->getName() != "Germany")
-    //     return -1;
+    int result = 0;
+    auto* Germany = new Country("Germany");
+    if(Germany->getName() != "Germany")
+        return -1;
     
-    // Germany->setCitizens(new Citizens());
-    // Germany->getCitizens()->setGroupSize(10);
-    // if(Germany->getCitizens()->getGroupSize() != 10)
-    //     return -1;
-    
-    // Germany->setRefugees(new Refugee());
-    // Germany->getRefugees()->setGroupSize(15);
-    // if(Germany->getRefugees()->getGroupSize() != 15)
-    //     return -1;
-    
-    // // if(Germany->getPower() != Germany->getEconomy() * Germany->getPopulation())
-    // // {
-    // //     result = -1;
-    // // }
+    Germany->setPopulation(500);
+    if(Germany->getPopulation() != 500)
+        return -1;
 
-    // int before = Germany->getNotEnlisted();
-
-    // Germany->recruitSoldiers(105);
-    // if(Germany->getNotEnlisted() != before - 105)
+    Germany->setCitizens(new Citizens());
+    Germany->getCitizens()->setGroupSize(10);
+    if(Germany->getCitizens()->getGroupSize() != 10)
+        return -1;
+    
+    Germany->setRefugees(new Refugee());
+    Germany->getRefugees()->setGroupSize(15);
+    if(Germany->getRefugees()->getGroupSize() != 15)
+        return -1;
+    
+    // if(Germany->getPower() != Germany->getEconomy() * Germany->getPopulation())
     // {
     //     result = -1;
     // }
 
-    // Germany->recruitGuardians(Germany->getNotEnlisted()+1);
+    int before = Germany->getNotEnlisted();
 
-    // if(Germany->getNotEnlisted()<0)
-    // {
-    //     result= -1;
-    // }
+    Germany->recruitSoldiers(105);
+    if(Germany->getNotEnlisted() != before - 105)
+    {
+        result = -1;
+    }
 
-    // Germany->recruitPilots(341); 
+    Germany->recruitGuardians(Germany->getNotEnlisted()+1);
+    if(Germany->getNotEnlisted()<0)
+    {
+        result= -1;
+    }
+
+    Germany->recruitPilots(341); 
     // if(Germany->getWarFront("Air") != nullptr)
     // {
     //     result = -1;
     // }
-    // Germany->addWarFront(new Land());
-    // auto* air = new Air();
-    // Germany->addWarFront(air);
+    auto* land = new Land();
+    Germany->addWarFront(new Land());
+    auto* air = new Air();
+    Germany->addWarFront(air);
 
-    // // Germany->addWarFront("Air");
-    // Germany->removeFront(air);
+    // Germany->addWarFront("Air");
+    Germany->removeFront(air);
+    for(auto w :  Germany->getWarTheatres()){
+        if(w == air){
+            return -1;
+        }
+    }
+    
     // if(Germany->getWarFront(air) != nullptr)
     // {
     //     result = -1;
     // }
+    auto* mines = new Mines();
+    Germany->setTrap(land, mines);
+    if(Germany->warFrontDanger(air) != 0)
+    {
+        result = -1;
+    }
+    int testing = Germany->warFrontDanger(land);
 
-    // Germany->setTrap("Land", "Mines");
-    // if(Germany->warFrontDanger("Air") != 0)
-    // {
-    //     result = -1;
-    // }
-    // int testing = Germany->warFrontDanger("Land");
-
-    // Germany->setTrap("Land", "Barricades");
+    auto* barricades = new Barricades();
+    Germany->setTrap(land, barricades);
   
 
-    // if(testing == Germany->warFrontDanger("Land"))
-    // {
-    //     result = -1;
-    // }
+    if(testing == Germany->warFrontDanger(land))
+    {
+        result = -1;
+    }
 
-    // Germany->addWarFront(new Space());
-    // Germany->setTrap("Space", "Trenches");
-    // Germany->setTrap("Space", "SpaceMagnets");
+    Germany->addWarFront(new Space());
+    auto* trenches = new Trenches();
+    auto* spaceMagnets = new SpaceMagnets();
+    auto* space = new Space();
+    Germany->addWarFront(space);
+    Germany->setTrap(space, trenches);
+    Germany->setTrap(space, spaceMagnets);
 
-    // delete Germany;
+    delete Germany;
 
-    // return result;
+    return result;
 
 }
 int testWarEngine(){
