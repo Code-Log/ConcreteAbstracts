@@ -12,7 +12,7 @@ private:
     Country* countries[8];
     int humanIndex = -1; //-1 means only AI countries.
     //Otherwise this is the index of the human operated country in the countries array
-    std::vector<std::string> warLog();
+    std::vector<std::string> warLog;
 protected:
     WarEngine();
     ~WarEngine();

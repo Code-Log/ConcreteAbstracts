@@ -556,7 +556,7 @@ void WarEngine::conquers(Country* conqueror,Country* conquered){
 
 void WarEngine::printWarReport()
 {
-    for(auto r : warLog()){
+    for(auto r : warLog){
         std::cout<<r<<std::endl;
     }
 }
@@ -575,8 +575,8 @@ int WarEngine::randomNumGenerator(int min, int max)
   return dist(gen);
 }
 
-std::vector<std::string> WarEngine::warLog()
-{
-    // TODO: Implement WarEngine::warLog()
-    return {};
-}
+// std::vector<std::string> WarEngine::warLog()
+// {
+//     // TODO: Implement WarEngine::warLog()
+//     return {};
+// }
