@@ -449,7 +449,17 @@ void WarEngine::setWarTheatres()
         while(oppotunity>0)
         {
             random= dist(gen);
-            countries[x]->addWarFront(theatreTypes[random]);
+            switch(random){
+                case 0:
+                    countries[x]->addWarFront(new Land());
+                    break;
+                case 1:
+                    countries[x]->addWarFront(new Sea());
+                case 2:
+                    countries[x]->addWarFront(new Air());
+                case 3:
+                    countries[x]->addWarFront(new Space());
+            }
             oppotunity--;
         }
         oppotunity=4;

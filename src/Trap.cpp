@@ -99,3 +99,7 @@ int Trap::getLifespan() const {
 void Trap::setLifespan(int lifespan) {
     Trap::lifespan = lifespan;
 }
+
+enums::TrapType Trap::getType(){
+    return type;
+}
