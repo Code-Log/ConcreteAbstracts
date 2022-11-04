@@ -42,11 +42,11 @@ Country::Country(std::string countryName)
     // Pilots= false;
     // Soldiers = false;
 
-    warTheatres = new WarTheatre*[4];
-    warTheatres[0] = nullptr;
-    warTheatres[1] = nullptr;
-    warTheatres[2] = nullptr;
-    warTheatres[3] = nullptr;
+    // warTheatres = new WarTheatre*[4];
+    // warTheatres[0] = nullptr;
+    // warTheatres[1] = nullptr;
+    // warTheatres[2] = nullptr;
+    // warTheatres[3] = nullptr;
 }
 
 Country* Country::cloneCountry()
@@ -314,8 +314,16 @@ void Country::setNotEnlisted(int Amount)
 
 WarTheatre* Country::getWarFront(const std::string& Type)
 { 
-    int index = getIndex(Type);
-    WarTheatre* front = warTheatres[index];
+    // int index = getIndex(Type);
+    // WarTheatre* front = warTheatres[index];
+
+    WarTheatre* front = nullptr;
+
+    for(auto* w : wwarTheatres){
+        if(w->getLocation() == Type){
+            front = w;
+        }
+    }
     
     if(front != nullptr)
     {
@@ -330,32 +338,36 @@ WarTheatre* Country::getWarFront(const std::string& Type)
 
 void Country::addWarFront(const std::string& location)
 {
-    WarTheatre* check = getWarFront(location);
+    // WarTheatre* check = getWarFront(location);
 
-    if(check == nullptr)
-    {
-        WarTheatre *warFront;
+    // if(check == nullptr)
+    // {
+        // WarTheatre *warFront;
 
         if(location == "Land")
         {
-            warFront = new Land();
-            warTheatres[0] = warFront;
+            wwarTheatres.emplace_back(new Land());
+            // warFront = new Land();
+            // warTheatres[0] = warFront;
         }
         else if(location == "Sea")
         {
-            warFront = new Sea();
-            warTheatres[1] = warFront;
+            wwarTheatres.emplace_back(new Sea());
+            // warFront = new Sea();
+            // warTheatres[1] = warFront;
         }
         else if(location == "Air")
         {
-            warFront = new Air();
-            warTheatres[2] = warFront;
+            wwarTheatres.emplace_back(new Air());
+            // warFront = new Air();
+            // warTheatres[2] = warFront;
         }
         else{
-            warFront = new Space();
-            warTheatres[3] = warFront;
+            wwarTheatres.emplace_back(new Space());
+            // warFront = new Space();
+            // warTheatres[3] = warFront;
         }
-    }
+    // }
 }
 
 int Country::getIndex(const std::string& Type)
@@ -384,39 +396,43 @@ int Country::getIndex(const std::string& Type)
 std::string Country:: allWarFronts()
 {
     std::string out = "";
+    for(auto* c : wwarTheatres){
+        out += c->getLocation() + "\n";
+    }
+    
 
-    if(warTheatres[0]!= nullptr)
-    {
-        out += "Land\n";
-    }
-    if(warTheatres[1]!= nullptr)
-    {
-        out += "Sea\n";
-    }
-    if(warTheatres[2]!= nullptr)
-    {
-        out += "Air\n";
-    }
-    if(warTheatres[3]!= nullptr)
-    {
-        out += "Space\n";
-    }
+    // if(warTheatres[0]!= nullptr)
+    // {
+    //     out += "Land\n";
+    // }
+    // if(warTheatres[1]!= nullptr)
+    // {
+    //     out += "Sea\n";
+    // }
+    // if(warTheatres[2]!= nullptr)
+    // {
+    //     out += "Air\n";
+    // }
+    // if(warTheatres[3]!= nullptr)
+    // {
+    //     out += "Space\n";
+    // }
     return out;
 }
 
-void Country::setTrap(const std::string& battleGround, const std::string& Trap)
+void Country::setTrap(BattleGround *battleGround, const std::string& Trap)
 {
-    WarTheatre* check = getWarFront(battleGround);
-    if(check == nullptr)
-    {
-        return;
-    }
+    // WarTheatre* check = getWarFront(battleGround);
+    // if(check == nullptr)
+    // {
+    //     return;
+    // }
 
     WarTheatre* Temp;
 
     if(Trap == "SpaceMagnets")
     {
-        if(battleGround!= "Space")
+        if(battleGround->getLocation() == "Space")
         {
             return;
         }
@@ -426,7 +442,7 @@ void Country::setTrap(const std::string& battleGround, const std::string& Trap)
 
     if(Trap == "Mines")
     {
-        if(battleGround == "Air")
+        if(battleGround->getLocation() == "Air")
         {
             return;
         }
@@ -436,7 +452,7 @@ void Country::setTrap(const std::string& battleGround, const std::string& Trap)
 
     if(Trap == "Barricades")
     {
-        if(battleGround == "Air")
+        if(battleGround->getLocation() == "Air")
         {
             return;
         }
@@ -446,7 +462,7 @@ void Country::setTrap(const std::string& battleGround, const std::string& Trap)
 
     if(Trap == "Trenches")
     {
-        if(battleGround!= "Land")
+        if(battleGround->getLocation() != "Land")
         {
             return;
         }
@@ -454,50 +470,66 @@ void Country::setTrap(const std::string& battleGround, const std::string& Trap)
         Temp = new Trenches();
 
     }
-
-    int index = getIndex(battleGround);
-    Temp->add(warTheatres[index]);
-    warTheatres[index]= Temp;
+    
+    // int index = getIndex(battleGround);
+    Temp->add(battleGround);
+    // warTheatres[index]= Temp;
 
 }
 
-void Country::removeFront(const std::string& Location)
+void Country::removeFront(BattleGround* battleGround)
 {
-    int index = getIndex(Location);
-
-    if(warTheatres[index]!= nullptr)
-    {
-        delete warTheatres[index];
+    if(battleGround != nullptr)
+        return;
+    std::vector<WarTheatre*>::iterator it = wwarTheatres.begin();
+  
+    for (it; it != wwarTheatres.end(); ++it){
+        if(*it == battleGround)
+            break;
     }
 
-    warTheatres[index]= nullptr;
+    wwarTheatres.erase(it);
+  
+    // Printing the Vector
+   
+    // int index = getIndex(Location);
 
+    // if(warTheatres[index]!= nullptr)
+    // {
+    //     delete warTheatres[index];
+    // }
+
+    // warTheatres[index]= nullptr;
 }
 
-int Country:: warFrontDanger(const std::string& totalOf)
+int Country:: warFrontDanger(BattleGround* battleGround)
 {
     int total =0;
-    if(totalOf=="All")
+    if(battleGround==nullptr)
     {
         
-
-        for(int x=0; x<4; x++)
-        {
-            if(warTheatres[x] != nullptr)
-            {
-                total += warTheatres[x]->damageTotal();
+        for(auto w : wwarTheatres){
+            if(w != nullptr){
+                total += w->damageTotal();
             }
         }
+        // for(int x=0; x<4; x++)
+        // {
+        //     if(warTheatres[x] != nullptr)
+        //     {
+        //         total += warTheatres[x]->damageTotal();
+        //     }
+        // }
     }
     else
     {
-        int index = getIndex(totalOf);
+        return battleGround->damageTotal();
+        // int index = getIndex(totalOf);
 
-        if(warTheatres[index] != nullptr)
-        {
-            total = warTheatres[index]->damageTotal();
-        }
-
+        // if(warTheatres[index] != nullptr)
+        // {
+        //     total = warTheatres[index]->damageTotal();
+        // }
     }
 
     return total;
@@ -509,19 +541,28 @@ std::vector<Recruits*> Country::getRecruits(){
 
 Country::~Country()
 {
-    for(int x=0; x<4; x++)
-    {
-        delete warTheatres[x];
+    for(auto w : wwarTheatres){
+        delete w;
     }
-
-    delete [] warTheatres;
-
-    while(!recruits.empty())
-    {
-        Recruits* r = recruits.back();
-        recruits.pop_back();
+    wwarTheatres.clear();
+    for(auto r : recruits){
         delete r;
     }
+    recruits.clear();
+ 
+    // for(int x=0; x<4; x++)
+    // {
+    //     delete warTheatres[x];
+    // }
+
+    // delete [] warTheatres;
+
+    // while(!recruits.empty())
+    // {
+    //     Recruits* r = recruits.back();
+    //     recruits.pop_back();
+    //     delete r;
+    // }
 }
 
 const ArmoryFacade &Country::getArmoryFacade() const {

@@ -84,7 +84,8 @@ protected:
 
 private:
     int damage;
-    std::string location;
+    std::string location; //the type Land Air, Sea,Space
+    // enum location {Land,Air,Sea,Space}
 };
 
 #endif

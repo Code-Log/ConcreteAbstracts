@@ -5,7 +5,7 @@
  * @version 0.1
  * @date 2022-10-24
  * 
- * @copyright Copyright (c) 2022
+ * @copyright Copyright (c) 2022WarTheatre
  * 
  */
 #ifndef COUNTRY_H
@@ -194,20 +194,21 @@ public:
      * @param TrapName 
      * 
      */
-    void setTrap(const std::string& battleGround, const std::string& TrapName );
+    void setTrap(BattleGround *battleGround, const std::string& TrapName );
      /**
      * @brief removes wartheatre
-     * @param Location
+     * @param battleGround
      * 
      */
-    void removeFront(const std::string& Location);
+    void removeFront(BattleGround* battleGround);
 
     /**
-     * @brief retrieves total damage from all or individual warfronts. parameter Land, Sea, Air, Space, All. Calls damageTotal so will decrease trap lifespan
-     * @param totalOf
-     * @return int
+     * @brief retrieves total damage from all or individual warfronts. parameter battleGround. If null, gives a total of all battleGrounds. Calls damageTotal so will decrease trap lifespan
+     * 
+     * @param battleGround 
+     * @return int 
      */
-    int warFrontDanger(const std::string& totalOf);
+    int warFrontDanger(BattleGround* battleGround);
 
      /**
      * @brief returns a string of all wartheatres
@@ -274,6 +275,7 @@ private:
     // bool Guardians;
     // bool Pilots;
     // bool Soldiers;
+    std::vector<WarTheatre*> wwarTheatres;
     WarTheatre** warTheatres;
     std::vector<Recruits*> recruits;
     Citizens* citizens;
