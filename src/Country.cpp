@@ -507,6 +507,10 @@ std::vector<Recruits*> Country::getRecruits(){
     return recruits;
 }
 
+void Country::setRecruits(std::vector<Recruits*> recruits){
+    this->recruits = recruits;
+}
+
 Country::~Country()
 {
     for(int x=0; x<4; x++)
@@ -540,8 +544,18 @@ Refugee* Country::getRefugees(){
     return refugees;
 }
 
+void Country::setRefugees(Refugee* refugees)
+{
+    this->refugees = refugees;
+}
+
 Citizens* Country::getCitizens(){
     return citizens;
+}
+
+void Country::setCitizens(Citizens* citizens)
+{
+    this->citizens = citizens;
 }
 
 EconomicClass Country::getEconomicClass() const
