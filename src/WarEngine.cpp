@@ -166,17 +166,19 @@ void WarEngine::selectCountry(bool humanCountry)
     {
         std::string output = "Please select a country: ";
         int userCountry = countryIndex.getSelectionIndex(output);
-        
+        std::cout<<userCountry<<std::endl;
         countries[userCountry] = new Country(countryNames[userCountry]);
         this->humanIndex = userCountry; // there is a human country at index [userCountry]
 
-        for (int i = 0; i < sizeof(countries); i++)
+       for (int i = 0; i < 8; i++)
         {
+          if(countries[i] != NULL){
             if (countries[i]->getName() != countryNames[userCountry])
             {
                 countries[i] = new Country(countryNames[i]);
             }
-        }  
+          }      
+        }   
     }
     else  // All countries are AI
     {

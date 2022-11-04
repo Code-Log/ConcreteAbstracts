@@ -3,7 +3,7 @@
 #include <iostream>
 
 int main() {
-    WarEngine* war;
-    war->prePhase1(true);
+    WarEngine::getInstanceWarEngine().selectCountry(true);
+    // war->prePhase1(true);
     return 0;
 }
