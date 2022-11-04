@@ -1,10 +1,9 @@
 #include <util/ListSelectionPrompt.h>
+#include <WarEngine.h>
 #include <iostream>
 
 int main() {
-    ListSelectionPrompt p = { "a", "b", "c", "d" };
-    auto selection = p.getSelection("Please select an option: ");
-    std::cout << selection << std::endl;
-
+    WarEngine* war;
+    war->prePhase1(true);
     return 0;
 }
