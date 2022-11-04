@@ -220,7 +220,7 @@ void Country::recruitGuardians(int squadSize)
     }
     else
     {
-        Recruits *Guard = new Marine();
+        Recruits *Guard = new Gaurdian();
         Guard->setGroupSize(squadSize);
         Guard->setMilitaryType("Marine");
         this->notEnlisted = this->notEnlisted - squadSize;
@@ -256,11 +256,11 @@ void Country::recruitPilots(int squadSize)
     }
     else
     {
-        Recruits *Pilot = new Marine();
-        Pilot->setGroupSize(squadSize);
-        Pilot->setMilitaryType("Pilot");
+        Recruits *pilot = new Pilot();
+        pilot->setGroupSize(squadSize);
+        pilot->setMilitaryType("Pilot");
         this->notEnlisted = this->notEnlisted - squadSize;
-        recruits.push_back(Pilot);
+        recruits.push_back(pilot);
     }
 }
 
