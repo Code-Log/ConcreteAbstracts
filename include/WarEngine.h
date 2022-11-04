@@ -9,7 +9,7 @@ private:
     BattleRegistry battleRegistry;
     int test;//for testing purposes
     bool disputeActive;
-    Country* countries[8];
+    
     int humanIndex = -1; //-1 means only AI countries.
     //Otherwise this is the index of the human operated country in the countries array
     std::vector<std::string> warLog;
@@ -17,6 +17,7 @@ protected:
     WarEngine();
     ~WarEngine();
 public:
+    Country* countries[8];
     /**
      * @brief calls prePhase1(), phase1(), phase2(),phase3(), printWarReport()
      *
@@ -75,7 +76,7 @@ public:
      * @brief
      *
      */
-    void selectPoliticalRegime();
+    void selectPoliticalRegime(bool human);
 
     /**
      * @brief Set the Allies object

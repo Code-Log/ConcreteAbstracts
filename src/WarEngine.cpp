@@ -3,6 +3,7 @@
 #include <random>
 #include <algorithm>
 #include <unordered_map>
+#include <util/enums.h>
 
 void WarEngine::run(bool human)
 {
@@ -79,7 +80,7 @@ WarEngine::~WarEngine()
 void WarEngine::prePhase1(bool human)
 {
     selectCountry(human);
-    selectPoliticalRegime();
+    selectPoliticalRegime(human);
     
 }
 
@@ -172,18 +173,18 @@ void WarEngine::selectCountry(bool humanCountry)
 
        for (int i = 0; i < 8; i++)
         {
-          if(countries[i] != NULL){
-            if (countries[i]->getName() != countryNames[userCountry])
-            {
-                countries[i] = new Country(countryNames[i]);
-            }
-          }      
+            if(countries[i] == NULL){
+                // if (countries[i]->getName() != countryNames[userCountry])
+                // {
+                    countries[i] = new Country(countryNames[i]);
+                // }
+            }      
         }   
     }
     else  // All countries are AI
     {
         this->humanIndex = -1;
-        for (int i = 0; i < sizeof(countries); i++)
+        for (int i = 0; i < 8; i++)
         {
             countries[i] = new Country(countryNames[i]);
         }
@@ -193,8 +194,23 @@ void WarEngine::selectCountry(bool humanCountry)
 void WarEngine::destributeRecruiteToWarTheatres(){
 
 }
-void WarEngine::selectPoliticalRegime()
+void WarEngine::selectPoliticalRegime(bool human)
 {
+    for(auto c : countries){
+        if(c == nullptr){
+            std::cout<<"eish"<<std::endl;
+        }
+        if(c != countries[humanIndex] && c != nullptr){
+            std::cout<<c->getName()<<std::endl;
+            int choice = randomNumGenerator(0,1);
+            if(choice == 0)
+                c->setPoliticalRegime(enums::Capitalism);
+            else 
+                c->setPoliticalRegime(enums::socialism);
+        }
+    }
+    if(!human)
+        return;
 
     ListSelectionPrompt regime = { "c", "s"};
     std::string prompt;
@@ -202,23 +218,26 @@ void WarEngine::selectPoliticalRegime()
     prompt += countries[humanIndex]->getName();
     prompt += " a capatalist nation or socialist society (c/s): ";
     auto ans = regime.getSelection(prompt);
-   
-    if(ans=="c")
-    {
-        int economy = countries[humanIndex]->getEconomy();
-        economy = economy*1.2;
-        countries[humanIndex]->setEconomy(economy);
+    std::cout<<ans<<std::endl;
+    // if(ans=="c")
+    // {
+    //     countries[humanIndex]->setPoliticalRegime(enums::Capitalism); 
+    //     // int economy = countries[humanIndex]->getEconomy();
+    //     // economy = economy*1.2;
+    //     // countries[humanIndex]->setEconomy(economy);
 
-        std::cout<<countries[humanIndex]->getName()<<"'s economy has risen by 20%. Cheers to the free market!"<<std::endl<<std::endl;
-    }
-    else
-    {
-        int people = countries[humanIndex]->getNotEnlisted();
-        people = people*1.2;
-        countries[humanIndex]->setNotEnlisted(people);
+    //     std::cout<<countries[humanIndex]->getName()<<"'s economy has risen by 20%. Cheers to the free market!"<<std::endl<<std::endl;
+    // }
+    // else
+    // {
+    //     countries[humanIndex]->setPoliticalRegime(enums::socialism); //population size is now set in partionRecruits
+    //     // int people = countries[humanIndex]->getNotEnlisted();
+    //     // people = people*1.2;
+    //     // countries[humanIndex]->setNotEnlisted(people);
+        
 
-        std::cout<<countries[humanIndex]->getName()<<"'s man power has risen by 20%. A nation is as powerful as it's people!!!"<<std::endl<<std::endl;
-    }
+    //     std::cout<<countries[humanIndex]->getName()<<"'s man power has risen by 20%. A nation is as powerful as it's people!!!"<<std::endl<<std::endl;
+    // }
 }
 
 void WarEngine::setAllies(bool human)

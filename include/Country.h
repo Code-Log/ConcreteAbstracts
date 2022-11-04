@@ -285,6 +285,9 @@ public:
      */
     EconomicClass getEconomicClass() const;
 
+    enums::PoliticalRegime getPoliticalRegime();
+    void setPoliticalRegime(enums::PoliticalRegime pr);
+
 protected:
 
 private:
@@ -293,6 +296,7 @@ private:
     int populationSize;
     int economy;
     int notEnlisted;
+    enums::PoliticalRegime politicalRegime;
     EconomicClass economicClass;
     // bool Marines;
     // bool Guardians;

@@ -4,6 +4,7 @@
 namespace enums
 {
     enum TrapType{Trenches, Barricades,SpaceMagnets,Mines};
+    enum PoliticalRegime{Capitalism,socialism};
 }
 
 

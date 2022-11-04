@@ -633,3 +633,10 @@ EconomicClass Country::getEconomicClass() const
 {
     return economicClass;
 }
+
+enums::PoliticalRegime Country::getPoliticalRegime(){
+        return politicalRegime;
+}
+void Country::setPoliticalRegime(enums::PoliticalRegime pr){
+    this->politicalRegime = pr;
+}
