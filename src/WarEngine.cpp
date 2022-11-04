@@ -341,9 +341,10 @@ void WarEngine::partitionRecruits()
 
         // Refugees
         country->setRefugees(new Refugee());
-        country->getRefugees()->setGroupSize(0); // Initially 0 refugees at start
+        country->getRefugees()->setGroupSize(country->getPopulation() * 0.1); // Initially 10% refugees at start
 
         // Recruits
+        int totalRecruitsLimit = country->getPopulation() - country->getRefugees()->getGroupSize();
         country->setRecruits(std::vector<Recruits*> {new Soldier(), new Pilot(), new Marine(), new Guardian(), new Medic()});
         const int s = 100, m=150, p = 200, g=300, med=150; //prices of each recruit type
         std::vector<int> prices{s, p, m, g, med};
@@ -370,7 +371,7 @@ void WarEngine::partitionRecruits()
             int recruitsPrice = size * prices[typeSelected];
 
             // Check if country has enough money and bought recruits don't exceed the recruit limit
-            if(recruitsPrice <= country->getEconomy() && totalRecruitsSize < country->getPopulation())
+            if(recruitsPrice <= country->getEconomy() && totalRecruitsSize < totalRecruitsLimit)
             {
                 totalRecruitsSize += size;
                 country->getRecruits()[0]->setGroupSize(size);
@@ -383,12 +384,12 @@ void WarEngine::partitionRecruits()
             {
                 std::cout << "Cannot buy any more recruits!";
             }
-
         }
 
         // Citizens
         country->setCitizens(new Citizens());
-        country->getCitizens()->setGroupSize(country->getPopulation() - totalRecruitsSize);
+        country->getCitizens()->setGroupSize(country->getPopulation() - totalRecruitsSize - country->getRefugees()->getGroupSize());
+       
         country->setNotEnlisted(country->getPopulation() - totalRecruitsSize); // Not enlisted people will be equal to population - recruits
     }
 }
