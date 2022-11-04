@@ -158,12 +158,12 @@ public:
      * @param squadSize
      */
     void recruitPilots(int squadSize);
-     /**
-     * @brief gets the index of the wartheatre type. Land =0, Sea=1, Air=2, Space =3
-     * @param Type
-     * @return int
-     */
-    int getIndex(const std::string& Type);
+    //  /**
+    //  * @brief gets the index of the wartheatre type. Land =0, Sea=1, Air=2, Space =3
+    //  * @param Type
+    //  * @return int
+    //  */
+    // int getIndex(const std::string& Type);
 
     /**
      * @brief Updates the population size by counting the survivers.
@@ -179,9 +179,9 @@ public:
 
      /**
      * @brief Adds warTheatre. If the warTheatre type already exists does nothing. ?Only add if relevent recruits exist?
-     * @param location
+     * @param battleGround
      */
-    void addWarFront(const std::string& location);
+    void addWarFront(/*const std::string& location*/ BattleGround* battleGround);
       /**
      * @brief returns specified wartheatre if it exists
      * @param Type
@@ -194,7 +194,7 @@ public:
      * @param TrapName 
      * 
      */
-    void setTrap(BattleGround *battleGround, const std::string& TrapName );
+    void setTrap(BattleGround *battleGround, /*const std::string& Trap*/ Trap *trap);
      /**
      * @brief removes wartheatre
      * @param battleGround
