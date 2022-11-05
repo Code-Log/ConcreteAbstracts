@@ -116,8 +116,8 @@ void WarEngine::phase1(bool human)
         ans = dispute.getSelectionIndex(std::string("Why do you want to declare war on ")+countries[index]->getName() + "!?");
     }
     else{// only AI
-        index = randomNumGenerator(0,8);
-        ans = randomNumGenerator(0,4);
+        index = randomNumGenerator(0,7);
+        ans = randomNumGenerator(0,3);
         mainAiIndex = warInit;
         // warInit = randomNumGenerator(0,4);
     }
