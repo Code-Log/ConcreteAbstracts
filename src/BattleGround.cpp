@@ -3,10 +3,12 @@
 BattleGround::BattleGround(std::string location)
     : WarTheatre(std::move(location))
 {
-    
+    recruitContext = new RecruiterContext();
 }
 
-BattleGround::~BattleGround() = default;
+BattleGround::~BattleGround(){
+    delete recruitContext;
+}
 
 int BattleGround::damageTotal()
 {
@@ -21,4 +23,13 @@ WarTheatre* BattleGround:: getTrap()
 void BattleGround::add(WarTheatre* trap)
 {
     //nothing to add
+}
+std::string BattleGround::getName(){
+    return name;
+}
+void BattleGround::setName(std::string name){
+    this->name = name;
+}
+RecruiterContext* BattleGround::geRecruitContext(){
+    return recruitContext;
 }

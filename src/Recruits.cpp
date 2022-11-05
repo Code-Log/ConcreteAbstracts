@@ -81,10 +81,19 @@ void Recruits::handle()
 
 }
 
-int Recruits::getWeaponDamage() const {
+int Recruits::getWeaponDamage() const 
+{
     return weaponDamage;
 }
 
-void Recruits::setWeaponDamage(int weaponDamage) {
+void Recruits::setWeaponDamage(int weaponDamage) 
+{
     Recruits::weaponDamage = weaponDamage;
+}
+void Recruits::setName(std::string name)
+{
+    this->name = name;
+}
+std::string Recruits::getName(){
+    return name;
 }
