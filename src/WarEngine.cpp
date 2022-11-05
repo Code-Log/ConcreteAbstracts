@@ -305,12 +305,21 @@ void WarEngine::setAllies(bool human)
                             flag1 = true;
                         }
                     }
-                    for(auto enemyAlly : enemyAllies){ //does enemyAllyies have the country?
-                        if(enemyAlly.has(countries[allyIndex])){
-                            std::cout <<countries[allyIndex]->getName()<< " is an enemy country!" << std::endl;
-                            flag2 = true;
+                    if(allyIndex == enemyIndex)
+                    {
+                        std::cout <<countries[allyIndex]->getName()<< " is an enemy country!" << std::endl;
+                        flag2 = true;
+                    }
+                    else
+                    {
+                        for(auto enemyAlly : enemyAllies){ //does enemyAllyies have the country?
+                            if(enemyAlly.has(countries[allyIndex])){
+                                std::cout <<countries[allyIndex]->getName()<< " is an enemy country!" << std::endl;
+                                flag2 = true;
+                            }
                         }
                     }
+
                     if(!(flag1 || flag2 || flag3))
                     {
                         invalidChoice = false;
