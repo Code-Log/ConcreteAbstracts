@@ -12,6 +12,7 @@ private:
     
     int humanIndex = -1; //-1 means only AI countries.
     //Otherwise this is the index of the human operated country in the countries array
+    int mainAiIndex = -1; // The leading role AI's index. 
     std::vector<std::string> warLog;
 protected:
     WarEngine();
@@ -193,6 +194,12 @@ public:
      * @return int
      */
     int randomNumGenerator(int min, int max);
+
+    /**
+     * @brief initialises countries attributes to their initial values
+     * 
+     */
+    void initCountryAttributes();
 
     void warLoop();
     void EngineSimulation();

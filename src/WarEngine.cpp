@@ -80,10 +80,14 @@ WarEngine::~WarEngine()
 void WarEngine::prePhase1(bool human)
 {
     selectCountry(human);
+    initCountryAttributes();
     selectPoliticalRegime(human);
-    
 }
-
+void WarEngine::initCountryAttributes(){
+    for(auto c : countries){
+        c->setEconomy(1000);
+    }
+}
 void WarEngine::phase1(bool human)
 {
     std::string reasonsForWar[] = {"Land", "Vengence", "Veganism", "Nationalism"};
@@ -107,6 +111,7 @@ void WarEngine::phase1(bool human)
     else{// only AI
         index = randomNumGenerator(0,8);
         ans = randomNumGenerator(0,4);
+        mainAiIndex = warInit;
         // warInit = randomNumGenerator(0,4);
     }
     std::cout<<countries[warInit]->getName()<<" has declared war on "<<countries[index]->getName()<<" over "<<reasonsForWar[ans]<<"!"<<std::endl;
@@ -140,7 +145,7 @@ void WarEngine::phase2(bool human)
     buyAndDistributeWeapons(human);
     setWarTheatres();
     destributeRecruiteToWarTheatres();
-    setTraps();
+    // setTraps();
 }
 
 void WarEngine::phase3(bool human)
@@ -251,69 +256,110 @@ void WarEngine::setAllies(bool human)
         std::cout << "Would you like to make allies? [y/n] :";
         std::cin >> choice;
         int userAllyCount = 0;
+        int enemyAllyCount = 0;
+        int enemyAllyLimit = randomNumGenerator(1, 6 - userAllyCount); // Use 6 to exclude ourCountry and enemyCountry
 
+        //find enemy
         std::vector<UnorderedPair<Country*>> userBattles = this->battleRegistry.getRecords(countries[humanIndex]);
         Country *enemy = userBattles[0].getOther(countries[humanIndex]); // Only one item in battleRegistry so use index 0
         int enemyIndex = 0;
-        for(int i = 0; i < sizeof(countries); i++)
+        for(int i = 0; i < 8; i++)
         {
             if(countries[i]->getName() == enemy->getName()) // Find enemy country's index in countries[] attribute
+            {
                 enemyIndex = i;
+                break;
+            }    
         }
 
-        while((choice == "y" || choice == "Y") && userAllyCount <= 4) // At most 4 allies
-        {
-            std::string output = "Please select a country: ";
-            int allyIndex = countryIndex.getSelectionIndex(output);
-
-            if(allyIndex != enemyIndex)
-            {
-                this->allyRegistry.addRecord(countries[humanIndex],countries[allyIndex]);
+        //We should probably change this to a do while loop
+        while(true) // At most 4 allies (break statement at the end to end while loop)
+        { 
+            //allow human to select country
+            if(choice == "y" || choice == "Y")
+            { 
+                bool invalidChoice = true;
+                std::string output = "Please select a country: ";
+                int allyIndex;
+                while(invalidChoice)
+                {  
+                    allyIndex = countryIndex.getSelectionIndex(output);
+                    if(allyIndex != enemyIndex)
+                    {
+                        this->allyRegistry.addRecord(countries[humanIndex],countries[allyIndex]);
+                        userAllyCount++;
+                        invalidChoice = false;
+                    }
+                    else
+                    {
+                        std::cout << "This is the enemy country!" << std::endl;
+                    }
+                }
+                int economy = countries[humanIndex]->getEconomy(); // our country's economy
+                countries[humanIndex]->setEconomy(economy - (economy * 0.15)); // Cost is 15% of economy
             }
-            else
-            {
-                std::cout << "This is the enemy country!" << std::endl;
-            }
+                
+            auto userAllies = this->allyRegistry.getRecords(countries[humanIndex]);
+            auto enemyAllies = this->allyRegistry.getRecords(enemy);
+            // Initially battleRegistry = {(ourCountry, enemyCountry)} or {(enemyCountry,ourCountry)}
 
-            int economy = countries[humanIndex]->getEconomy(); // our country's economy
-            countries[humanIndex]->setEconomy(economy - (economy * 0.15)); // Cost is 15% of economy
-
-            std::cout << "Would you like to make allies? [y/n] :";
-            std::cin >> choice;
-            userAllyCount++;
-        }
-
-        auto userAllies = this->allyRegistry.getRecords(countries[humanIndex]);
-        // Initially battleRegistry = {(ourCountry, enemyCountry)} or {(enemyCountry,ourCountry)}
-
-        int enemyAllyLimit = randomNumGenerator(1, 6 - userAllyCount); // Use 6 to exclude ourCountry and enemyCountry
-        int enemyAllyCount = 0;
-
-        while(enemyAllyCount <= enemyAllyLimit)
-        {
-            int randomIndex = randomNumGenerator(1, 8); // randomize ally country index
-            for(auto userAlly : userAllies)
-            {
-                if(!userAlly.has(countries[humanIndex]) && enemyIndex != randomIndex) // If not an ally of ourCountry we can make it an ally of the enemy && if not the enemy country itself
+            //allow ai to select country
+            if(enemyAllyCount <= enemyAllyLimit)
+            {// a better way to do this is just to create a list selection prompt of all the applicable countries choices and randomise that
+               while(true)
                 {
-                    this->allyRegistry.addRecord(countries[enemyIndex],countries[randomIndex]);
-                    enemyAllyCount++;
-                } // else loop again untill enemyAllyLimit reached
+                    int randomIndex = randomNumGenerator(1, 8); // randomize ally country index
+                    bool cond1 = false;
+                    bool cond2 = false;
+                    for(auto userAlly : userAllies){ //does userAlly have the country? 
+                        if(userAlly.has(countries[randomIndex])){
+                            cond1 = true;
+                            break;
+                        }
+                    }
+                    for(auto enemyAlly : enemyAllies){ //does enemyAllyies have the country?
+                        if(enemyAlly.has(countries[randomIndex])){
+                            cond2 = true;
+                            break;
+                        }
+                    }
+                    if(!cond1 && !cond2) // If not an ally of ourCountry we can make it an ally of the enemy && if not the enemy country itself(or it's allies)
+                    {
+                        this->allyRegistry.addRecord(enemy,countries[randomIndex]);
+                        int economy = countries[humanIndex]->getEconomy(); // our country's economy
+                        countries[humanIndex]->setEconomy(economy - (economy * 0.15)); // Cost is 15% of economy
+                        enemyAllyCount++;
+                        break;
+                    } // else loop again to find a suitable enemy ally
+                }
+            }  
+            if(userAllyCount <4)  
+                std::cout << "Would you like to make more allies? [y/n] :";
+            std::cin >> choice;
+            if((userAllyCount == 4 || (choice == "n" || choice == "N")) && enemyAllyCount == enemyAllyLimit){
+                break;
+            }
+            if((userAllyCount + enemyAllyCount)>= 6){
+                break;
             }
         }
     }
     else // Only AI counrties
     {
-        std::vector<UnorderedPair<Country*>> userAllies = this->allyRegistry.getRecords(countries[humanIndex]);
-        std::vector<UnorderedPair<Country*>> userBattles = this->battleRegistry.getRecords(countries[humanIndex]);
-
+        // std::cout<<"human index: "<<humanIndex<<std::endl;
+        std::vector<UnorderedPair<Country*>> userAllies = this->allyRegistry.getRecords(countries[mainAiIndex]);
+        std::vector<UnorderedPair<Country*>> userBattles = this->battleRegistry.getRecords(countries[mainAiIndex]);
+        std::cout<<"do we even get here?"<<std::endl;
         // Initially battleRegistry = {(ourCountry, enemyCountry)} or {(enemyCountry,ourCountry)}
-        Country *enemy = userBattles[0].getOther(countries[humanIndex]); // Only one item in battleRegistry so use index 0
+        Country *enemy = userBattles[0].getOther(countries[mainAiIndex]); // Only one item in battleRegistry so use index 0
         int enemyIndex = 0;
-        for(int i = 0; i < sizeof(countries); i++)
+        for(int i = 0; i < 8; i++)
         {
             if(countries[i]->getName() == enemy->getName()) // Find enemy country's index in countries[] attribute
+            {
                 enemyIndex = i;
+                break;
+            }      
         }
 
         // The AI user
