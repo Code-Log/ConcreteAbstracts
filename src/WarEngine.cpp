@@ -102,8 +102,13 @@ void WarEngine::phase1(bool human)
         for(auto c : this->countries){
             cOptions.append(c->getName());
         }
-        index = cOptions.getSelectionIndex(std::string(countries[humanIndex]->getName())+"! Who do you want to declare war against"+"!?");
-      
+        while(index == humanIndex){
+            index = cOptions.getSelectionIndex(std::string(countries[humanIndex]->getName())+"! Who do you want to declare war against"+"!?");
+            if(index == humanIndex){
+                std::cout<<"You can't declare war on yourself!"<<std::endl;
+            }
+        }
+        
 
         ListSelectionPrompt dispute = {"Land", "Vengence", "Veganism", "Nationalism"};
         ans = dispute.getSelectionIndex(std::string("Why do you want to declare war on ")+countries[index]->getName() + "!?");
@@ -255,7 +260,7 @@ void WarEngine::setAllies(bool human)
         int userAllyCount = 0;
         int enemyAllyCount = 0;
         int enemyAllyLimit = randomNumGenerator(1, 6 - userAllyCount); // Use 6 to exclude ourCountry and enemyCountry
-
+        std::cout<<"en:"<<enemyAllyLimit<<std::endl;
         //find enemy
         std::vector<UnorderedPair<Country*>> userBattles = this->battleRegistry.getRecords(countries[humanIndex]);
         Country *enemy = userBattles[0].getOther(countries[humanIndex]); // Only one item in battleRegistry so use index 0
@@ -371,8 +376,8 @@ void WarEngine::setAllies(bool human)
     else // Only AI counrties
     {
         // std::cout<<"human index: "<<humanIndex<<std::endl;
-        std::vector<UnorderedPair<Country*>> userAllies = this->allyRegistry.getRecords(countries[mainAiIndex]);
-        std::vector<UnorderedPair<Country*>> userBattles = this->battleRegistry.getRecords(countries[mainAiIndex]);
+        auto userAllies = this->allyRegistry.getRecords(countries[mainAiIndex]);
+        auto userBattles = this->battleRegistry.getRecords(countries[mainAiIndex]);
         std::cout<<"do we even get here?"<<std::endl;
         // Initially battleRegistry = {(ourCountry, enemyCountry)} or {(enemyCountry,ourCountry)}
         Country *enemy = userBattles[0].getOther(countries[mainAiIndex]); // Only one item in battleRegistry so use index 0
