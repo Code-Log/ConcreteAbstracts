@@ -12,6 +12,7 @@ int main() {
     //         std::cout<<c->getName()<<std::endl;
     // }
     // WarEngine::getInstanceWarEngine().selectPoliticalRegime(false);
-    WarEngine::getInstanceWarEngine().prePhase1(true);
+    WarEngine::getInstanceWarEngine().prePhase1(false);
+    WarEngine::getInstanceWarEngine().phase1(false);
     return 0;
 }

@@ -86,29 +86,30 @@ void WarEngine::prePhase1(bool human)
 
 void WarEngine::phase1(bool human)
 {
+    std::string reasonsForWar[] = {"Land", "Vengence", "Veganism", "Nationalism"};
     int index;
     int ans;
-    int warInit; //the country starting the war. 
+    int warInit = human ? humanIndex : randomNumGenerator(0,4); //the country starting the war. 
+    std::cout<<countries[warInit]->getName()<<" is feeling restless and wishes to declare war on a country"<<std::endl;
     if(human){
+        
         warInit = humanIndex;
         ListSelectionPrompt cOptions;
         for(auto c : this->countries){
             cOptions.append(c->getName());
         }
-        index = cOptions.getSelectionIndex("Who do you want to declare war on?");
-        
+        index = cOptions.getSelectionIndex(std::string(countries[humanIndex]->getName())+"! Who do you want to declare war against"+"!?");
+      
 
         ListSelectionPrompt dispute = {"Land", "Vengence", "Veganism", "Nationalism"};
-        ans = dispute.getSelectionIndex("What is the motive for your war?");
-
-        
+        ans = dispute.getSelectionIndex(std::string("Why do you want to declare war on ")+countries[index]->getName() + "!?");
     }
     else{// only AI
         index = randomNumGenerator(0,8);
         ans = randomNumGenerator(0,4);
-        warInit = randomNumGenerator(0,4);
+        // warInit = randomNumGenerator(0,4);
     }
-
+    std::cout<<countries[warInit]->getName()<<" has declared war on "<<countries[index]->getName()<<" over "<<reasonsForWar[ans]<<"!"<<std::endl;
     battleRegistry.addRecord(countries[humanIndex],countries[index]);
     switch (ans)
     {
