@@ -422,7 +422,7 @@ void WarEngine::setAllies()
             bool flag1 = false;
             bool flag2 = false;
             bool flag3 = false;
-            if(randomIndex == enemyIndex){//can't ally with yourself.
+            if(countries[randomIndex]->getName() == countries[eInd]->getName()){//can't ally with yourself.
                 flag3 = true;
             }
             for(auto userAlly : userAllies){ //does userAlly have the country? 
