@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <util/enums.h>
 #include <bits/stdc++.h>
+#include <util/colours.h>
 
 void WarEngine::run(bool human)
 {
