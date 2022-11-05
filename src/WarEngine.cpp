@@ -7,12 +7,16 @@
 #include <bits/stdc++.h>
 #include <util/colours.h>
 
+void WarEngine::setHuman(bool human){
+    this->human = human;
+}
 void WarEngine::run(bool human)
 {
-    prePhase1(human);
-    phase1(human);
-    phase2(human);
-    phase3(human);
+    this->human = human;
+    prePhase1();
+    phase1();
+    phase2();
+    phase3();
     printWarReport();
 }
 
@@ -79,18 +83,18 @@ WarEngine::~WarEngine()
 
 
 
-void WarEngine::prePhase1(bool human)
+void WarEngine::prePhase1()
 {
-    selectCountry(human);
+    selectCountry();
     initCountryAttributes();
-    selectPoliticalRegime(human);
+    selectPoliticalRegime();
 }
 void WarEngine::initCountryAttributes(){
     for(auto c : countries){
         c->setEconomy(1000);
     }
 }
-void WarEngine::phase1(bool human)
+void WarEngine::phase1()
 {
     std::string reasonsForWar[] = {"Land", "Vengence", "Veganism", "Nationalism"};
     int index;
@@ -145,17 +149,17 @@ void WarEngine::phase1(bool human)
 
 
 
-void WarEngine::phase2(bool human)
+void WarEngine::phase2()
 {
-    setAllies(human);
+    setAllies();
     partitionRecruits();
-    buyAndDistributeWeapons(human);
+    buyAndDistributeWeapons();
     setWarTheatres();
     destributeRecruiteToWarTheatres();
     // setTraps();
 }
 
-void WarEngine::phase3(bool human)
+void WarEngine::phase3()
 {
     
 }
@@ -171,12 +175,12 @@ void WarEngine::EngineSimulation(){
     }
 }
 
-void WarEngine::selectCountry(bool humanCountry)
+void WarEngine::selectCountry()
 {
     std::string countryNames [] = {"South Africa", "United States", "Germany", "Russia", "China", "Asgard", "Westeros", "Australia"};
     ListSelectionPrompt countryIndex = {"South Africa", "United States", "Germany", "Russia", "China", "Asgard", "Westeros", "Australia"};
     
-    if(humanCountry) // If human present
+    if(human) // If human present
     {
         std::string output = "Please select a country: ";
         int userCountry = countryIndex.getSelectionIndex(output);
@@ -203,7 +207,7 @@ void WarEngine::selectCountry(bool humanCountry)
 void WarEngine::destributeRecruiteToWarTheatres(){
 
 }
-void WarEngine::selectPoliticalRegime(bool human)
+void WarEngine::selectPoliticalRegime()
 {
     for(auto c : countries){
         if(c != countries[humanIndex] && c != nullptr){
@@ -249,7 +253,7 @@ void WarEngine::selectPoliticalRegime(bool human)
     }
 }
 
-void WarEngine::setAllies(bool human)
+void WarEngine::setAllies()
 {
     ListSelectionPrompt countryIndex = {"South Africa", "United States", "Germany", "Russia", "China", "Asgard", "Westeros", "Australia"};
     Country *enemy;
@@ -625,7 +629,7 @@ void WarEngine::partitionRecruits()
     }
 }
 
-void WarEngine::buyAndDistributeWeapons(bool humanCountry)
+void WarEngine::buyAndDistributeWeapons()
 {
     for(int i = 0; i < 8; i++)
     {
@@ -633,7 +637,7 @@ void WarEngine::buyAndDistributeWeapons(bool humanCountry)
 
 
         
-        if(humanCountry && i == 0)
+        if(human && i == 0)
         {
             bool desireToPurchaseMore = true;
             while(desireToPurchaseMore){

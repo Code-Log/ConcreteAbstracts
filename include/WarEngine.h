@@ -9,7 +9,7 @@ private:
     BattleRegistry battleRegistry;
     int test;//for testing purposes
     bool disputeActive;
-    
+    bool human;
     int humanIndex = -1; //-1 means only AI countries.
     //Otherwise this is the index of the human operated country in the countries array
     int mainAiIndex = -1; // The leading role AI's index. 
@@ -19,6 +19,7 @@ protected:
     ~WarEngine();
 public:
     Country* countries[8];
+    void setHuman(bool Human);
     /**
      * @brief calls prePhase1(), phase1(), phase2(),phase3(), printWarReport()
      *
@@ -47,43 +48,43 @@ public:
      * @brief This function calls the following functions: selectCountry() and selectPolicalRegime();
      *
      */
-    void prePhase1(bool human);
+    void prePhase1();
 
     /**
      * @brief
      *
      */
-    void phase1(bool human);
+    void phase1();
 
     /**
      * @brief
      *
      */
-    void phase2(bool human);
+    void phase2();
 
     /**
      * @brief
      *
      */
-    void phase3(bool human);
+    void phase3();
 
     /**
      * @brief Allows a user to select country. Note no 2 users should have the same country
      *
      */
-    void selectCountry(bool humanCountry);
+    void selectCountry();
 
     /**
      * @brief
      *
      */
-    void selectPoliticalRegime(bool human);
+    void selectPoliticalRegime();
 
     /**
      * @brief Set the Allies object
      *
      */
-    void setAllies(bool human);
+    void setAllies();
 
     /**
      * @brief
@@ -95,7 +96,7 @@ public:
      * @brief
      *
      */
-    void buyAndDistributeWeapons(bool humanCountry);
+    void buyAndDistributeWeapons();
 
     /**
      * @brief It was decided that the wartheatres would be decided randomly. The function gives each country 4 opportunities to pick a warfront. Since they pick randomly they could pick an existing warfront and their request denied. At the end of the function each country has a minimum of 1 and max of 4 war theatres
