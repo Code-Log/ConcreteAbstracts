@@ -104,7 +104,7 @@ add_executable(simulator
         include/RecruitIterator.h include/Iterator.h src/RecruitIterator.cpp
         include/Recruits.h include/util/ListSelectionPrompt.h src/ListSelectionPrompt.cpp 
                 include/util/enums.h
-
+                include/util/colours.h
         )
         
 file(GLOB CPP_FILES src/*.cpp)
