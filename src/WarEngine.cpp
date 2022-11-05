@@ -271,30 +271,54 @@ void WarEngine::setAllies(bool human)
                 break;
             }    
         }
-
+        auto userAllies = this->allyRegistry.getRecords(countries[humanIndex]);
+        auto enemyAllies = this->allyRegistry.getRecords(enemy);
         //We should probably change this to a do while loop
         while(true) // At most 4 allies (break statement at the end to end while loop)
         { 
+            //find allies and enemies
+            userAllies = this->allyRegistry.getRecords(countries[humanIndex]);
+            enemyAllies = this->allyRegistry.getRecords(enemy);
             //allow human to select country
             if(choice == "y" || choice == "Y")
             { 
                 bool invalidChoice = true;
-                std::string output = "Please select a country: ";
+                // std::string output = ;
                 int allyIndex;
                 while(invalidChoice)
                 {  
-                    allyIndex = countryIndex.getSelectionIndex(output);
-                    if(allyIndex != enemyIndex)
+                    bool flag3 = false;
+                    allyIndex = countryIndex.getSelectionIndex("Please select a country: ");
+                    if(allyIndex == humanIndex){
+                        std::cout<<"you can't ally with yourself!"<<std::endl;
+                        flag3 = true;
+                    }
+                    bool flag1 = false;
+                    bool flag2 = false;
+                    for(auto userAlly : userAllies){ //does userAlly have the country? 
+                        if(userAlly.has(countries[allyIndex])){
+                            std::cout <<countries[allyIndex]->getName()<< " is already your ally!" << std::endl;
+                            flag1 = true;
+                        }
+                    }
+                    for(auto enemyAlly : enemyAllies){ //does enemyAllyies have the country?
+                        if(enemyAlly.has(countries[allyIndex])){
+                            std::cout <<countries[allyIndex]->getName()<< " is an enemy country!" << std::endl;
+                            flag2 = true;
+                        }
+                    }
+                    if(!(flag1 || flag2 || flag3))
                     {
-                        this->allyRegistry.addRecord(countries[humanIndex],countries[allyIndex]);
-                        userAllyCount++;
                         invalidChoice = false;
                     }
-                    else
-                    {
-                        std::cout << "This is the enemy country!" << std::endl;
-                    }
+                    // else
+                    // {
+                    //     std::cout << "This is the enemy country!" << std::endl;
+                    // }
                 }
+                std::cout<<countries[humanIndex]->getName()<<" has allied itself with "<<countries[allyIndex]->getName()<<std::endl;
+                this->allyRegistry.addRecord(countries[humanIndex],countries[allyIndex]);
+                userAllyCount++;
                 int economy = countries[humanIndex]->getEconomy(); // our country's economy
                 countries[humanIndex]->setEconomy(economy - (economy * 0.15)); // Cost is 15% of economy
             }
@@ -309,23 +333,24 @@ void WarEngine::setAllies(bool human)
                while(true)
                 {
                     int randomIndex = randomNumGenerator(1, 8); // randomize ally country index
-                    bool cond1 = false;
-                    bool cond2 = false;
+                    bool flag1 = false;
+                    bool flag2 = false;
                     for(auto userAlly : userAllies){ //does userAlly have the country? 
                         if(userAlly.has(countries[randomIndex])){
-                            cond1 = true;
+                            flag1 = true;
                             break;
                         }
                     }
                     for(auto enemyAlly : enemyAllies){ //does enemyAllyies have the country?
                         if(enemyAlly.has(countries[randomIndex])){
-                            cond2 = true;
+                            flag2 = true;
                             break;
                         }
                     }
-                    if(!cond1 && !cond2) // If not an ally of ourCountry we can make it an ally of the enemy && if not the enemy country itself(or it's allies)
+                    if(!flag1 && !flag2) // If not an ally of ourCountry we can make it an ally of the enemy && if not the enemy country itself(or it's allies)
                     {
                         this->allyRegistry.addRecord(enemy,countries[randomIndex]);
+                        std::cout<<enemy->getName()<<" has allied itself with "<<countries[randomIndex]->getName()<<std::endl;
                         int economy = countries[humanIndex]->getEconomy(); // our country's economy
                         countries[humanIndex]->setEconomy(economy - (economy * 0.15)); // Cost is 15% of economy
                         enemyAllyCount++;
@@ -337,9 +362,11 @@ void WarEngine::setAllies(bool human)
                 std::cout << "Would you like to make more allies? [y/n] :";
             std::cin >> choice;
             if((userAllyCount == 4 || (choice == "n" || choice == "N")) && enemyAllyCount == enemyAllyLimit){
+                std::cout<<"Ally selection has closed"<<std::endl;
                 break;
             }
             if((userAllyCount + enemyAllyCount)>= 6){
+                std::cout<<"Ally selection has closed"<<std::endl;
                 break;
             }
         }
