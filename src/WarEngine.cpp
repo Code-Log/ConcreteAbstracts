@@ -178,17 +178,14 @@ void WarEngine::selectCountry(bool humanCountry)
 
        for (int i = 0; i < 8; i++)
         {
-            if(countries[i] == NULL){
-                // if (countries[i]->getName() != countryNames[userCountry])
-                // {
-                    countries[i] = new Country(countryNames[i]);
-                // }
+            if(countries[i] == NULL)
+            {
+                countries[i] = new Country(countryNames[i]);
             }      
         }   
     }
     else  // All countries are AI
     {
-        this->humanIndex = -1;
         for (int i = 0; i < 8; i++)
         {
             countries[i] = new Country(countryNames[i]);
