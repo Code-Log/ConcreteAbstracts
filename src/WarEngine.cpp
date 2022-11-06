@@ -151,8 +151,8 @@ void WarEngine::phase1()
 
 void WarEngine::phase2()
 {
-    setAllies();
-    partitionRecruits();
+    setAllies(); //working
+    partitionRecruits(); //working
     buyAndDistributeWeapons();
     setWarTheatres();
     destributeRecruiteToWarTheatres();
@@ -275,7 +275,7 @@ void WarEngine::setAllies()
         std::cin >> choice;
         int userAllyCount = 0;
         int enemyAllyCount = 0;
-        int enemyAllyLimit = randomNumGenerator(1, 6 - userAllyCount); // Use 6 to exclude ourCountry and enemyCountry
+        int enemyAllyLimit = randomNumGenerator(1, 4); 
         std::cout<<colours::BLUE_UNDERLINED<<"COUNTRIES:"<<colours::RESET<<std::endl;
         //find enemy
         std::vector<UnorderedPair<Country*>> userBattles = this->battleRegistry.getRecords(countries[humanIndex]);
@@ -349,18 +349,17 @@ void WarEngine::setAllies()
                 int economy = countries[humanIndex]->getEconomy(); // our country's economy
                 countries[humanIndex]->setEconomy(economy - (economy * 0.15)); // Cost is 15% of economy
             }
-            else
-            {
-                break;
-            }   
-            auto userAllies = this->allyRegistry.getRecords(countries[humanIndex]);
-            auto enemyAllies = this->allyRegistry.getRecords(enemy);
+        
+            
             // Initially battleRegistry = {(ourCountry, enemyCountry)} or {(enemyCountry,ourCountry)}
 
             //allow ai to select country
-            if(enemyAllyCount <= enemyAllyLimit)
-            {// a better way to do this is just to create a list selection prompt of all the applicable countries choices and randomise that
-               while(true)
+            else if(enemyAllyCount <= enemyAllyLimit)
+            {
+                auto userAllies = this->allyRegistry.getRecords(countries[humanIndex]);
+                auto enemyAllies = this->allyRegistry.getRecords(enemy);
+                // a better way to do this is just to create a list selection prompt of all the applicable countries choices and randomise that
+                while(true)
                 {
                     int randomIndex = randomNumGenerator(0, 7); // randomize ally country index
                     bool flag1 = false;
@@ -375,7 +374,7 @@ void WarEngine::setAllies()
                             break;
                         }
                     }
-                    for(auto enemyAlly : enemyAllies){ //does enemyAllyies have the country?
+                    for(auto enemyAlly : enemyAllies){ //does enemyAllies have the country?
                         if(enemyAlly.has(countries[randomIndex])){
                             flag2 = true;
                             break;
@@ -392,14 +391,24 @@ void WarEngine::setAllies()
                     } // else loop again to find a suitable enemy ally
                 }
             }  
-            if(userAllyCount <4)  
+            
+           
+            // if( && enemyAllyCount == enemyAllyLimit){
+                
+            // }
+            if(userAllyCount <4){
                 std::cout << "Would you like to make more allies? [y/n] :";
-            std::cin >> choice;
-            if((userAllyCount == 4 || (choice == "n" || choice == "N")) && enemyAllyCount == enemyAllyLimit){
+                std::cin >> choice;
+            }    
+            // if(choice == "n" || choice == "N"){
+            //     std::cout<<"Ally selection has closed"<<std::endl;
+            //     break;
+            // }
+            if((userAllyCount + enemyAllyCount)>= 6){
                 std::cout<<"Ally selection has closed"<<std::endl;
                 break;
             }
-            if((userAllyCount + enemyAllyCount)>= 6){
+            if((choice == "n" || choice == "N") && enemyAllyCount == enemyAllyLimit ){
                 std::cout<<"Ally selection has closed"<<std::endl;
                 break;
             }
@@ -505,9 +514,18 @@ void WarEngine::setAllies()
         this->battleRegistry.addRecord(enemy,a.getOther(countries[warInit]));
     }
 }
-
+template <class T>
+bool contains(const std::vector<T> &vec, const T &value)
+{
+    return std::find(vec.begin(), vec.end(), value) != vec.end();
+}
 void WarEngine::partitionRecruits()
 { 
+    std::vector<std::string> chosenNames; //names that have already been chosen. (we don't want to chose a name that someone else already has)
+    std::vector<std::string> randomNames = {"A Team", "All Stars","Amigos","Avengers","Bannermen","Best of the Best","Bosses","Champions","Crew","Dominators",
+                                            "Elite","Force","Goal Diggers","Heatwave","Hot Shots","Hustle","Icons","Justice League","Legends","Lightning",
+                                            "Maniacs","Masters","Monarchy","Naturals","Ninjas","Outliers","Peak Performers","Power","Rebels","Revolution",
+                                            "Ringmasters","Rule Breakers","Shakedown","Squad","Titans","Tribe","United","Vikings","Warriors","Wolf Pack","Dream Team"};
     std::cout<<"_______________________________________________________________________"<<std::endl;
     std::cout<<colours::BLUE_UNDERLINED<<"SET UP POPULATION"<<colours::RESET<<std::endl;
     std::cout<<colours::BLUE<<"The Population consists of People which forms part of a State Pattern"<<colours::RESET<<std::endl;
@@ -515,6 +533,9 @@ void WarEngine::partitionRecruits()
     std::cout<<colours::BLUE<<"-Recruits\n-Citizens\n-Refugee"<<colours::RESET<<std::endl;
 
     int index = 0;
+
+    
+    
 
     for(Country* country : countries) // Partition population for each country
     {
@@ -535,6 +556,17 @@ void WarEngine::partitionRecruits()
 
             // Recruits
             country->setRecruits(std::vector<Recruits*> {new Soldier(), new Pilot(), new Marine(), new Guardian(), new Medic()});
+
+            //just giving recruits names
+            for(auto r : country->getRecruits())
+            {
+                std::string name = "";
+                do{
+                    name = randomNames[randomNumGenerator(0,randomNames.size()-1)];
+                }while(contains(chosenNames, name));
+                r->setName(name);
+                r->setCountry(country);//giving these recruits thier country
+            }
 
             // Initialize all recruit type sizes to 0
             for(int i = 0; i < 5; i++)
@@ -587,6 +619,13 @@ void WarEngine::partitionRecruits()
                         totalRecruitsSize += size;
                         country->getRecruits()[typeSelected]->setGroupSize(size);
                         country->setEconomy(country->getEconomy() - recruitsPrice); // setEconomy(currentEconomy - (groupSize * price))
+                        
+                        //just setting the name of the recruit
+                        std::string name;
+                        std::cout << "Give your recruits a name:";
+                        std::cin >>name;
+                        country->getRecruits()[typeSelected]->setName(name);
+                        country->getRecruits()[typeSelected]->setCountry(country);//giving these recruits thier country
 
                         std::cout << "Do you wish to get More recruits? [y/n] :";
                         std::cin >> choice;
@@ -623,6 +662,18 @@ void WarEngine::partitionRecruits()
             int size = 0;
             int totalRecruitsLimit = country->getPopulation() - country->getRefugees()->getGroupSize();
 
+            //just giving recruits names
+            for(auto r : country->getRecruits())
+            {
+                std::string name = "";
+                do{
+                    name = randomNames[randomNumGenerator(0,randomNames.size()-1)];
+                }while(contains(chosenNames, name));
+                r->setName(name);
+                r->setCountry(country);//giving these recruits thier country
+            }
+
+
             const int s = 100, m=150, p = 200, g=300, med=150; //prices of each recruit type
             std::vector<int> prices{s, p, m, g, med};
 
@@ -641,6 +692,7 @@ void WarEngine::partitionRecruits()
             country->getCitizens()->setGroupSize(country->getPopulation() - totalRecruitsSize - country->getRefugees()->getGroupSize());
             country->setNotEnlisted(country->getPopulation() - totalRecruitsSize); // Not enlisted people will be equal to population - recruits
 
+            std::cout<<country<<std::endl;
             // --- Summary Output ---
             std::cout<<"======================\n"
             <<colours::WHITE_BOLD<<country->getName()<<colours::RESET<<" Summary"
@@ -662,21 +714,30 @@ void WarEngine::partitionRecruits()
 
 void WarEngine::buyAndDistributeWeapons()
 {
+    std::cout<<colours::BLUE_UNDERLINED<<"Buy And Transport Weapons"<<colours::RESET<<std::endl;
+    std::cout<<colours::BLUE<<"Countries are allowed to buy weapons which are then destributed/transported to their various recruits."<<colours::RESET<<std::endl;
+    std::cout<<colours::BLUE<<"Countries use  an  interface(facade) to  buy a weapon which  transports(strategy) a weapon from the "<<colours::RESET<<std::endl;
+    std::cout<<colours::BLUE<<"factory(factory) to their recruits"<<colours::RESET<<std::endl;
+    //Countries use an interface (facade) to buy a weapon which transports(strategy)  
     for(int i = 0; i < 8; i++)
     {
         ArmoryFacade armoryFacade = countries[i]->getArmoryFacade();
-
-
-        
-        if(human && i == 0)
+  
+        if(human && i == humanIndex)
         {
             bool desireToPurchaseMore = true;
-            while(desireToPurchaseMore){
-                ListSelectionPrompt selectRecruitsGroup = {"Group 1", "Group 2", "Group 3", "Group 4"};
-                auto userResponse= selectRecruitsGroup.getSelectionIndex("Please select a recruit group to buy weapons for (a/b/c/d): ");
+            while(desireToPurchaseMore)
+            {
+                ListSelectionPrompt selectRecruitsGroup;
+                for(auto r : countries[i]->getRecruits())
+                {
+                    selectRecruitsGroup.append(r->getName());
+                }
+                auto userResponse= selectRecruitsGroup.getSelectionIndex("Please select a recruit group to buy weapons for: ");
 
                 ListSelectionPrompt selectWeapon = {"Nuclear Weapon", "Explosive Weapon", "Melee Weapon", "Ranged Weapon"};
                 auto choice =  selectWeapon.getSelectionIndex("What kind of weapon do you wish to produce?\n") ;// Refactored from WeaponTransport
+
 
 
                 armoryFacade.purchaseWeapon(countries[i]->getRecruits()[userResponse], choice);
@@ -685,18 +746,14 @@ void WarEngine::buyAndDistributeWeapons()
                 int desireChoice = desire.getSelectionIndex("Do you wish to purchase more weapons?");
                 if (desireChoice == 1)
                     desireToPurchaseMore = false;
-            }
-            
+            }     
         } else {
             for(auto recruit : countries[i]->getRecruits())
             {
                 armoryFacade.purchaseWeapon(recruit, randomNumGenerator(0,3));
             }
         }
-
     }
-
-
 }
 
 void WarEngine::setWarTheatres()
@@ -850,6 +907,8 @@ void WarEngine::sendRecruitAndAttack(Country* c)
 
 void WarEngine::sendRecruit(Country* c)
 {
+    //using the state design pattern to change the state(recruit) at a war theatre
+
     int cost = 50; //we could change this later on.
     ListSelectionPrompt prompt1;
     for(auto r : c->getRecruits()){

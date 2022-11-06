@@ -52,18 +52,18 @@ void Recruits::addVessel(VesselWeapon* vesselWeapon)
 
 Recruits::~Recruits()
 {
-    for (AttackWeapon* weapon : armory)
+    for (auto weapon : armory)
     {
         delete weapon;
     }
-    armory.clear();
-    delete country;
+    // armory.clear();
+    // delete country;
 
-    for (VesselWeapon* vessel : vehicles)
+    for (auto vessel : vehicles)
     {
         delete vessel;
     }
-    vehicles.clear();
+    // vehicles.clear();
 }
 
 std::string Recruits::getMilitaryType()

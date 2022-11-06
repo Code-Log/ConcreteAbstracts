@@ -46,8 +46,11 @@ int ListSelectionPrompt::getSelectionIndex(const std::string& prompt) const
     do {
         std::cout << prompt;
         std::cin >> selection;
-        if (selection <= 0 || selection > maxVal)
+        if (selection <= 0 || selection > maxVal){
             std::cout << "Invalid selection!" << std::endl;
+            std::cin.clear(); // clears cin error flags
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignores any invalid input entered
+        }       
     } while (selection <= 0 || selection > maxVal);
 
     return selection - 1;
