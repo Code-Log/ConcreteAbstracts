@@ -91,7 +91,7 @@ void WarEngine::prePhase1()
 }
 void WarEngine::initCountryAttributes(){
     for(auto c : countries){
-        c->setEconomy(1000);
+        c->setEconomy(5000);
     }
 }
 void WarEngine::phase1()
@@ -515,9 +515,10 @@ void WarEngine::partitionRecruits()
     std::cout<<colours::BLUE<<"-Recruits\n-Citizens\n-Refugee"<<colours::RESET<<std::endl;
 
     int index = 0;
+
     for(Country* country : countries) // Partition population for each country
     {
-        if(index == humanIndex)
+        if(index == humanIndex && mainAiIndex == -1)
         {
             std::random_device rd;
             std::mt19937 gen(rd());
@@ -552,21 +553,22 @@ void WarEngine::partitionRecruits()
             std::string choice = "y";
             while(choice == "y" || choice == "Y" && country->getEconomy() > 0) // At most 4 allies
             {
-                std::string summary = "\n======================\n" 
-                + country->getName() + " Summary"
-                + "\nEconomy: " + std::to_string(country->getEconomy())
-                + "\nTotal Population: " + std::to_string(country->getPopulation())
-                + "\nRecruits: " + std::to_string(totalRecruitsSize)
-                + "\n- Soldiers: " + std::to_string(country->getRecruits()[0]->getGroupSize())
-                + "\n- Pilots: " + std::to_string(country->getRecruits()[1]->getGroupSize())
-                + "\n- Marines: " + std::to_string(country->getRecruits()[2]->getGroupSize())
-                + "\n- Guardians: " + std::to_string(country->getRecruits()[3]->getGroupSize())
-                + "\n- Medics: " + std::to_string(country->getRecruits()[4]->getGroupSize())
-                + "\nCitizens: " + std::to_string(country->getCitizens()->getGroupSize())
-                + "\nRefugees: " + std::to_string(country->getRefugees()->getGroupSize())
-                + "\n======================\n"
-                + "Select the type of recruit you wish to have:";
+                // --- Summary Output ---
+                std::cout<<"======================\n"
+                <<colours::WHITE_BOLD<<country->getName()<<colours::RESET<<" Summary"
+                <<colours::YELLOW<<"\nEconomy: "<<colours::RESET<<std::to_string(country->getEconomy())
+                <<colours::CYAN<<"\nTotal Population: "<<colours::RESET<<std::to_string(country->getPopulation())
+                <<colours::BLUE<<"\nRecruits: "<<colours::RESET<<std::to_string(totalRecruitsSize)
+                <<"\n- Soldiers: "<<colours::RESET<<std::to_string(country->getRecruits()[0]->getGroupSize())
+                <<"\n- Pilots: "<<colours::RESET<<std::to_string(country->getRecruits()[1]->getGroupSize())
+                <<"\n- Marines: "<<colours::RESET<<std::to_string(country->getRecruits()[2]->getGroupSize())
+                <<"\n- Guardians: "<<colours::RESET<<std::to_string(country->getRecruits()[3]->getGroupSize())
+                <<"\n- Medics: "<<colours::RESET<<std::to_string(country->getRecruits()[4]->getGroupSize())
+                <<colours::GREEN<<"\nCitizens: "<<colours::RESET<<std::to_string(country->getCitizens()->getGroupSize())
+                <<colours::PURPLE<<"\nRefugees: "<<colours::RESET<<std::to_string(country->getRefugees()->getGroupSize())<<std::endl;
+                std::string summary ="Select the type of recruit you wish to have:";
                 std::cout << summary << std::endl;
+                // --- Summary Output ---
 
                 int typeSelected = prompt.getSelectionIndex("Please select an option from 1 to 5: ");
                 int size = 0;
@@ -598,8 +600,6 @@ void WarEngine::partitionRecruits()
                 // Citizens 
                 country->getCitizens()->setGroupSize(country->getPopulation() - totalRecruitsSize - country->getRefugees()->getGroupSize());
             }
-
-               
             country->setNotEnlisted(country->getPopulation() - totalRecruitsSize); // Not enlisted people will be equal to population - recruits
         }
         else
@@ -641,9 +641,22 @@ void WarEngine::partitionRecruits()
             country->getCitizens()->setGroupSize(country->getPopulation() - totalRecruitsSize - country->getRefugees()->getGroupSize());
             country->setNotEnlisted(country->getPopulation() - totalRecruitsSize); // Not enlisted people will be equal to population - recruits
 
-            // Can copy and paste summary for testing here to output AI countries
+            // --- Summary Output ---
+            std::cout<<"======================\n"
+            <<colours::WHITE_BOLD<<country->getName()<<colours::RESET<<" Summary"
+            <<colours::YELLOW<<"\nEconomy: "<<colours::RESET<<std::to_string(country->getEconomy())
+            <<colours::CYAN<<"\nTotal Population: "<<colours::RESET<<std::to_string(country->getPopulation())
+            <<colours::BLUE<<"\nRecruits: "<<colours::RESET<<std::to_string(totalRecruitsSize)
+            <<"\n- Soldiers: "<<colours::RESET<<std::to_string(country->getRecruits()[0]->getGroupSize())
+            <<"\n- Pilots: "<<colours::RESET<<std::to_string(country->getRecruits()[1]->getGroupSize())
+            <<"\n- Marines: "<<colours::RESET<<std::to_string(country->getRecruits()[2]->getGroupSize())
+            <<"\n- Guardians: "<<colours::RESET<<std::to_string(country->getRecruits()[3]->getGroupSize())
+            <<"\n- Medics: "<<colours::RESET<<std::to_string(country->getRecruits()[4]->getGroupSize())
+            <<colours::GREEN<<"\nCitizens: "<<colours::RESET<<std::to_string(country->getCitizens()->getGroupSize())
+            <<colours::PURPLE<<"\nRefugees: "<<colours::RESET<<std::to_string(country->getRefugees()->getGroupSize())<<std::endl;
+            // --- Summary Output ---
         }
-    index++;
+    index++;  
     }
 }
 
