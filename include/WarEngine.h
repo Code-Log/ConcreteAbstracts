@@ -1,6 +1,9 @@
 #include<BattleRegistry.h>
 #include<AllyRegistry.h>
 #include<Country.h>
+#include<RecruiterContext.h>
+#include<CountryIterator.h>
+#include<Iterator.h>
 #include<vector>
 class WarEngine //Meyers Implementation
 {
@@ -190,6 +193,13 @@ public:
      * @return BattleRegistry
      */
     BattleRegistry getBattleRegistry();
+    
+    /**
+     * @brief 
+     * 
+     * @return int 
+     */
+    Iterator* createCountryIterator(Country** countryList);
 
     /**
      * @brief Generate a random number in range

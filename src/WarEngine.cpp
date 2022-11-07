@@ -168,7 +168,7 @@ void WarEngine::phase3()//warLoop
 {
     std::cout<<"__________________________________________________________________"<<std::endl;
     std::cout<<colours::BLUE_UNDERLINED<<"PHASE 3 WARLOOP"<<colours::RESET<<std::endl;
-    std::cout<<colours::BLUE<<"Uses the itterator design pattern to itterate through "
+    std::cout<<colours::BLUE<<"Uses the Iterator design pattern to iterate through "
                             <<"each country giving them a turn to make a decision."<<colours::RESET<<std::endl;
     warLoop(); 
 
@@ -176,11 +176,16 @@ void WarEngine::phase3()//warLoop
 void WarEngine::warLoop () {
     
     while (disputeActive) {
-	    for(auto c : countries){
-            makeDecision(c); 
+        Iterator* countryIt = createCountryIterator(countries);
+        while(countryIt->hasNext())
+        {
+            makeDecision(countryIt->current()); 
         }
 	    printEngineReport();  
     }
+
+
+
 }
 
 void WarEngine::selectCountry()
@@ -230,6 +235,7 @@ void WarEngine::selectCountry()
         for (int i = 0; i < 8; i++)
             countries[i]->setName(countryNames[i]);
     }
+
     std::cout<<"_______________________________________________________________________"<<std::endl;
 }
 
@@ -1172,7 +1178,15 @@ void WarEngine::printWarReport()
 
 WarEngine::WarEngine()
 {
+
 }
+
+Iterator* WarEngine::createCountryIterator(Country** countryList)
+{
+
+    return new CountryIterator(countryList);
+}
+
 
 int WarEngine::randomNumGenerator(int min, int max)
 {
