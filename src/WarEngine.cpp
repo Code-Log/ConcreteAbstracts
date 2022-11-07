@@ -417,6 +417,10 @@ void WarEngine::setAllies()
                     if (!(flag1 || flag2 || flag3))
                         invalidChoice = false;
                 }
+                else
+                {
+                    break;
+                }
 
                 std::cout << colours::CYAN << countries[humanIndex]->getName() << colours::RESET
                     << " has allied itself with " << countries[allyIndex]->getName() << std::endl;
