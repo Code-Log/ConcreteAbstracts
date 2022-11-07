@@ -269,12 +269,20 @@ void WarEngine::destributeRecruiteToWarTheatres()
                 // remove(availableWarTheatres,availableWarTheatres[out2]);
             }while(availableRecruits.size() > 0 && availableWarTheatres.size() > 0);
         }
-        else{
-            int out1 = randomNumGenerator(0,availableRecruits.size()-1);
-            int out2 = randomNumGenerator(0,availableWarTheatres.size()-1);
-            ((BattleGround*)availableWarTheatres[out2])->getDefenders()->setState(availableRecruits[out1]);
+        else
+        {
+            while(availableRecruits.size() > 0 && availableWarTheatres.size() > 0)
+            {
+                int out1 = 0;
+                int out2 = 0;
+                if(availableRecruits.size()>0)
+                    out1= randomNumGenerator(0,availableRecruits.size()-1);
+                if(availableRecruits.size()>0)
+                    out2= randomNumGenerator(0,availableWarTheatres.size()-1);
+                ((BattleGround*)availableWarTheatres[out2])->getDefenders()->setState(availableRecruits[out1]);
                 availableRecruits.erase(availableRecruits.begin() + out1);
                 availableWarTheatres.erase(availableWarTheatres.begin() + out2);
+            }
         }
         i++;
     }

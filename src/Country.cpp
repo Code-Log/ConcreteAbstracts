@@ -583,9 +583,9 @@ Country::~Country()
         delete w;
     }
     // wwarTheatres.clear();
-    for(auto r : recruits){
-        delete r;
-    }
+    // for(auto r : recruits){
+    //     delete r;
+    // }
     // recruits.clear();
  
     // for(int x=0; x<4; x++)
