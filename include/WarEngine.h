@@ -8,7 +8,7 @@ private:
     AllyRegistry allyRegistry;
     BattleRegistry battleRegistry;
     int test;//for testing purposes
-    bool disputeActive;
+    bool disputeActive = true;
     bool human;
     int humanIndex = -1; //-1 means only AI countries.
     //Otherwise this is the index of the human operated country in the countries array

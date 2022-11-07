@@ -13,6 +13,7 @@ void WarEngine::setHuman(bool human){
 void WarEngine::run(bool human)
 {
     this->human = human;
+    // this->disputeActive = true;
     prePhase1();
     phase1();
     phase2();
@@ -85,14 +86,20 @@ WarEngine::~WarEngine()
 
 void WarEngine::prePhase1()
 {
-    selectCountry();
     initCountryAttributes();
+    selectCountry();
     selectPoliticalRegime();
 }
 void WarEngine::initCountryAttributes(){
-    for(auto c : countries){
-        c->setEconomy(5000);
+    //spawing countries 
+    Country *prototype = new Country("Prototype");
+    prototype->setEconomy(5000);
+    prototype->setPopulation(0);
+    prototype->setPower(5000*0);
+    for(int i = 0; i<8;i++){
+        countries[i] = prototype->cloneCountry();
     }
+    delete prototype;
 }
 void WarEngine::phase1()
 {
@@ -159,9 +166,10 @@ void WarEngine::phase2()
     // setTraps();
 }
 
-void WarEngine::phase3()
+void WarEngine::phase3()//warLoop
 {
-    
+    warLoop(); 
+    //why have 1 function when you can have 2? XD
 }
 void WarEngine::warLoop () {
     while (disputeActive) {
@@ -187,14 +195,14 @@ void WarEngine::selectCountry()
         std::cout<<colours::BLUE<<"Countries makes use of the Prototype Pattern"<<colours::RESET<<std::endl;
         std::string output = "Please select a country: ";
         int userCountry = countryIndex.getSelectionIndex(output);
-        countries[userCountry] = new Country(countryNames[userCountry]);
+        countries[userCountry]->setName(countryNames[userCountry]);
         this->humanIndex = userCountry; // there is a human country at index [userCountry]
 
        for (int i = 0; i < 8; i++)
         {
             if(countries[i] == NULL)
             {
-                countries[i] = new Country(countryNames[i]);
+                countries[userCountry]->setName(countryNames[i]);
             }      
         }   
     }
@@ -202,7 +210,7 @@ void WarEngine::selectCountry()
     {
         for (int i = 0; i < 8; i++)
         {
-            countries[i] = new Country(countryNames[i]);
+            countries[i]->setName(countryNames[i]);
         }
     }
     std::cout<<"_______________________________________________________________________"<<std::endl;

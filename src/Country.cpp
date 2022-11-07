@@ -63,7 +63,9 @@ const std::string& Country::getName() const
 {
     return countryName;
 }
-
+void Country::setName(std::string name){
+    this->countryName = name;
+}
 int Country::getPower() const
 {
     return power;

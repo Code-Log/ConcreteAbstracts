@@ -73,6 +73,12 @@ public:
      */
     const std::string& getName() const;
 
+    /**
+     * @brief Set the Name object
+     * 
+     */
+    void setName(std::string name);
+
       /**
      * @brief Get the NotEnlisted object
      *

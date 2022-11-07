@@ -19,6 +19,8 @@ int main() {
     WarEngine::getInstanceWarEngine().setAllies();
     WarEngine::getInstanceWarEngine().partitionRecruits();
     WarEngine::getInstanceWarEngine().buyAndDistributeWeapons();
+    WarEngine::getInstanceWarEngine().setWarTheatres();
+    WarEngine::getInstanceWarEngine().phase3();
     // WarEngine::getInstanceWarEngine().setAllies().buyAndDistributeWeapons();
 
 
