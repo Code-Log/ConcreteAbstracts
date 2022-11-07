@@ -179,10 +179,14 @@ void WarEngine::warLoop () {
         Iterator* countryIt = createCountryIterator(countries);
         while(countryIt->hasNext())
         {   
-            std::cout<<colours::BLUE_BRIGHT<<countryIt->current()<<"'s turn"<<std::endl;
+            std::cout<<colours::BLUE_BRIGHT<<countryIt->current()->getName()<<"'s turn"<<colours::RESET<<std::endl;
             makeDecision(countryIt->current()); 
         }
-	    printEngineReport();  
+        // for(auto c : countries){
+        //     std::cout<<colours::BLUE_BRIGHT<<c->getName()<<"'s turn"<<colours::RESET<<std::endl;
+        //     makeDecision(c);
+        // }
+	    // printEngineReport();  
     }
 }
 
@@ -530,7 +534,7 @@ void WarEngine::setAllies()
             }      
         }
 
-        //we will be swapping the values these temp variable to simulate turn based vhoosing. 
+        //we will be swapping the values these temp variable to simulate turn based choosing. 
         int warInit = mainAiIndex; //the one who initialised the war
         int eInd = enemyIndex;
         int count = 0;
@@ -974,7 +978,7 @@ void WarEngine::makeDecision(Country* c)
     ListSelectionPrompt prompt = {
         "Increase Allies", "Send Recruit and Attack",
         "Send Recruit", "Buy Weapons and allocate to Recruits",
-        "Buy and set Traps", "Surrender"
+        "Surrender"
     };
 
     int index = prompt.getSelectionIndex("Please select an action: ");
@@ -983,16 +987,16 @@ void WarEngine::makeDecision(Country* c)
         case 0:
             increaseAllies(c);
             break;
-        case 2:
+        case 1:
             sendRecruitAndAttack(c);
             break;
-        case 3:
+        case 2:
             sendRecruit(c);
             break;
-        case 4:
+        case 3:
             buyWeaponsAndAllocateToRecruits(c);
             break;
-        case 6:
+        case 4:
             surrender(c);
             break;
         default:
@@ -1002,7 +1006,7 @@ void WarEngine::makeDecision(Country* c)
 
 void WarEngine::buyWeaponsAndAllocateToRecruits(Country* c)
 { 
-    std::cout<<colours::PURPLE_BRIGHT<<c->getName()<<" wants to buy weapons and sem them off to his recruits!"<<colours::RESET<<std::endl;
+    std::cout<<colours::PURPLE_BRIGHT<<c->getName()<<" wants to buy weapons and send them off to his recruits!"<<colours::RESET<<std::endl;
     auto* armoryFacade = c->getArmoryFacade();
   
     if(c == countries[humanIndex])
@@ -1029,7 +1033,7 @@ void WarEngine::buyWeaponsAndAllocateToRecruits(Country* c)
 
 void WarEngine::increaseAllies(Country* c)
 {
-    std::vector<Country*> eligible(8);
+    std::vector<Country*> eligible;
     for (auto country : countries)
         eligible.push_back(country);
 
@@ -1043,13 +1047,13 @@ void WarEngine::increaseAllies(Country* c)
         }
     }
 
-    for (auto pair : battleRegistry.getRecords(c))
-    {
-        auto other = pair.getOther(c);
-        auto it = std::find(std::begin(eligible), std::end(eligible), other);
-        if (it != std::end(eligible))
-            eligible.erase(it);
-    }
+    // for (auto pair : battleRegistry.getRecords(c))
+    // {
+    //     auto other = pair.getOther(c);
+    //     auto it = std::find(std::begin(eligible), std::end(eligible), other);
+    //     if (it != std::end(eligible))
+    //         eligible.erase(it);
+    // }
 
     for (auto country : eligible)
     {

@@ -167,35 +167,35 @@ int testTransport()
 {
     int result = 0;
 
-    auto* recruits = new Recruits();
-    auto* newZealand = new Country("New Zealand");
-    auto* southAfrica = new Country("South Africa");
-    southAfrica->setEconomy(1000);
+    // auto* recruits = new Recruits();
+    // auto* newZealand = new Country("New Zealand");
+    // auto* southAfrica = new Country("South Africa");
+    // southAfrica->setEconomy(1000);
 
-    recruits->setCountry(southAfrica); 
-    BattleRegistry ar = BattleRegistry();
-    ar.addRecord(newZealand,southAfrica);
-    WarEngine::getInstanceWarEngine().setBattleRegistry(ar);
+    // recruits->setCountry(southAfrica); 
+    // BattleRegistry ar = BattleRegistry();
+    // ar.addRecord(newZealand,southAfrica);
+    // WarEngine::getInstanceWarEngine().setBattleRegistry(ar);
 
-    auto* suppliesTransport = new SuppliesTransport;
-    auto* weaponTransport = new WeaponTransport;
-    auto* attackVessel = new AttackVessel;
+    // auto* suppliesTransport = new SuppliesTransport;
+    // auto* weaponTransport = new WeaponTransport;
+    // auto* attackVessel = new AttackVessel;
 
-    auto* context = new TransportContext(suppliesTransport);
-    context->purchase(recruits, 0);
+    // auto* context = new TransportContext(suppliesTransport);
+    // context->purchase(recruits, 0);
 
-    context->setStrategy(weaponTransport);
-    context->purchase(recruits, 0);
+    // context->setStrategy(weaponTransport);
+    // context->purchase(recruits, 0);
 
-    // context->setStrategy(attackVessel);
-    // context->purchase(recruits);
+    // // context->setStrategy(attackVessel);
+    // // context->purchase(recruits);
 
-    delete context;
-    delete suppliesTransport;
-    delete weaponTransport;
-    delete attackVessel;
+    // delete context;
+    // delete suppliesTransport;
+    // delete weaponTransport;
+    // delete attackVessel;
 
-    return result;
+    // return result;
 }
 
 int testArmoryFacade()
