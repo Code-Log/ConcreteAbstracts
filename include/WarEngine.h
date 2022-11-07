@@ -14,6 +14,7 @@ private:
     //Otherwise this is the index of the human operated country in the countries array
     int mainAiIndex = -1; // The leading role AI's index. 
     std::vector<std::string> warLog;
+    std::string engineLog;
 protected:
     WarEngine();
     ~WarEngine();
@@ -115,10 +116,16 @@ public:
      * @brief
      *
      */
-    void setTraps();
+    void setTraps(); // Deprecated
+
+    /**!
+     * @brief Extension of the printEngineReport() function.
+     * @brief Add a line to the report
+     */
+    void addToEngineReport(std::string line);
 
     /**
-     * @brief
+     * @brief print the full engine Report
      *
      */
     void printEngineReport();
