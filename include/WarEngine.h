@@ -196,11 +196,6 @@ public:
      */
     int randomNumGenerator(int min, int max);
 
-    /**
-     * @brief initialises countries attributes to their initial values
-     * 
-     */
-    void initCountryAttributes();
 
     void warLoop();
     void EngineSimulation();
