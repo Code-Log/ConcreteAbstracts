@@ -884,9 +884,14 @@ void WarEngine::setTraps()
     
 }
 
+void WarEngine::addToEngineReport(std::string line)
+{
+    engineLog += line + '\n';
+}
+
 void WarEngine::printEngineReport()
 {
-    
+    std::cout << engineLog << std::endl;
 }
 
 void WarEngine::makeDecision(Country* c)
@@ -1076,3 +1081,5 @@ int WarEngine::randomNumGenerator(int min, int max)
     std::uniform_int_distribution<> dist(min, max);
     return dist(gen);
 }
+
+
