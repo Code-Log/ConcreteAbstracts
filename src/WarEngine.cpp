@@ -417,10 +417,7 @@ void WarEngine::setAllies()
                     if (!(flag1 || flag2 || flag3))
                         invalidChoice = false;
                 }
-                else
-                {
-                    break;
-                }
+
 
                 std::cout << colours::CYAN << countries[humanIndex]->getName() << colours::RESET
                     << " has allied itself with " << countries[allyIndex]->getName() << std::endl;
@@ -484,7 +481,11 @@ void WarEngine::setAllies()
                     } // else loop again to find a suitable enemy ally
                 }
             }  
-
+            else
+            {
+                break;
+            }
+            
             if (userAllyCount < 4)
             {
                 std::cout << "Would you like to make more allies? [y/n] :";
