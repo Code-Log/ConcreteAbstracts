@@ -77,9 +77,9 @@ WarEngine& WarEngine::getInstanceWarEngine()
  */
 WarEngine::~WarEngine()
 {
-    // for(int i = 0;i<8;i++){
-    //     delete countries[i];
-    // }
+    for(int i = 0;i<8;i++){
+        delete countries[i];
+    }
 }
 
 
@@ -154,19 +154,23 @@ void WarEngine::phase2()
 
 void WarEngine::phase3()//warLoop
 {
+    std::cout<<"__________________________________________________________________"<<std::endl;
+    std::cout<<colours::BLUE_UNDERLINED<<"PHASE 3 WARLOOP"<<colours::RESET<<std::endl;
+    std::cout<<colours::BLUE<<"Uses the itterator design pattern to itterate through "
+                            <<"each country giving them a turn to make a decision."<<colours::RESET<<std::endl;
     warLoop(); 
-    //why have 1 function when you can have 2? XD
+
 }
 void WarEngine::warLoop () {
     while (disputeActive) {
-	    EngineSimulation();
+	    for(auto c : countries){
+            makeDecision(c); 
+        }
 	    printEngineReport();  
     }
 }
 void WarEngine::EngineSimulation(){
-    for(auto c : countries){
-        makeDecision(c); //engine strategically 
-    }
+    
 }
 
 void WarEngine::selectCountry()
@@ -222,7 +226,8 @@ void WarEngine::selectCountry()
     std::cout<<"_______________________________________________________________________"<<std::endl;
 }
 
-void WarEngine::destributeRecruiteToWarTheatres(){
+void WarEngine::destributeRecruiteToWarTheatres()
+{
 
 }
 void WarEngine::selectPoliticalRegime()
@@ -848,7 +853,7 @@ void WarEngine::setWarTheatres()
 
 void WarEngine::setTraps()
 {
-    
+    //no longer using this.
 }
 
 void WarEngine::printEngineReport()
@@ -879,9 +884,6 @@ void WarEngine::makeDecision(Country* c)
         case 4:
             buyWeaponsAndAllocateToRecruits(c);
             break;
-        case 5:
-            buyAndSetTraps(c);
-            break;
         case 6:
             surrender(c);
             break;
@@ -891,8 +893,30 @@ void WarEngine::makeDecision(Country* c)
 }
 
 void WarEngine::buyWeaponsAndAllocateToRecruits(Country* c)
-{
+{ 
+    std::cout<<colours::PURPLE_BRIGHT<<c->getName()<<" wants to buy weapons and sem them off to his recruits!"<<colours::RESET<<std::endl;
+    auto* armoryFacade = c->getArmoryFacade();
+  
+    if(c == countries[humanIndex])
+    {
+        ListSelectionPrompt selectRecruitsGroup;
+        for(auto r : c->getRecruits())
+        {
+            selectRecruitsGroup.append(r->getName());
+        }
+        auto userResponse= selectRecruitsGroup.getSelectionIndex("Please select a recruit group to buy weapons for: ");
 
+        ListSelectionPrompt selectWeapon = {"Nuclear Weapon", "Explosive Weapon", "Melee Weapon", "Ranged Weapon"};
+        auto choice =  selectWeapon.getSelectionIndex("What kind of weapon do you wish to produce?\n") ;// Refactored from WeaponTransport
+
+        armoryFacade->purchaseWeapon(c->getRecruits()[userResponse], choice);           
+    } else {
+        int size = c->getRecruits().size();
+        int index = randomNumGenerator(0, size-1);
+        int choice = randomNumGenerator(0,3);
+        armoryFacade->purchaseWeapon(c->getRecruits()[index], choice);    
+    }
+    armoryFacade = nullptr; 
 }
 
 void WarEngine::increaseAllies(Country* c)
@@ -957,6 +981,18 @@ void WarEngine::increaseAllies(Country* c)
 void WarEngine::sendRecruitAndAttack(Country* c)
 {
     
+    int cost = 50; //we could change this later on.
+    ListSelectionPrompt prompt1;
+    for(auto r : c->getRecruits()){
+        prompt1.append(r->getName());
+    }
+    int out1 = prompt1.getSelectionIndex("Which recruits do you wish to send out?");
+    ListSelectionPrompt prompt2;
+    for(auto w : c->getWarTheatres()){
+        prompt2.append(w->getLocation());
+    }
+    int out2 = prompt2.getSelectionIndex("Which war theatre do you wish to send your recruits?");
+    ((BattleGround*)c->getWarTheatres()[out2])->geRecruitContext()->setState(c->getRecruits()[out1]);
 }
 
 void WarEngine::sendRecruit(Country* c)
