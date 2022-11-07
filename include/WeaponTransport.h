@@ -38,6 +38,8 @@ public:
      */
     void purchase(Recruits *recruits, int purchaseType) override;
 
+    ~WeaponTransport() = default;
+
 protected:
 
 private:

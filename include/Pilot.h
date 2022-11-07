@@ -21,6 +21,7 @@ public:
      * 
      */
     Pilot();
+    ~Pilot() = default;
 
 protected:
 

@@ -26,6 +26,7 @@ add_executable(simulator
                 src/Soldier.cpp
                 include/TransportContext.h
                 include/Transport.h
+                src/Transport.cpp
                 src/TransportContext.cpp
                 include/WeaponTransport.h
                 src/WeaponTransport.cpp

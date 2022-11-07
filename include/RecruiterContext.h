@@ -41,6 +41,8 @@ public:
      */
     Recruits* getState(); //for testing purposes
 
+    ~RecruiterContext();
+
 protected:
 
 private:

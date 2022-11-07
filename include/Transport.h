@@ -22,6 +22,7 @@ public:
      * @param recruits 
      */
     virtual void purchase(Recruits *recruits, int purchaseType) = 0;
+    virtual ~Transport();
 
 protected:
 

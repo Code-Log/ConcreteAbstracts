@@ -14,3 +14,7 @@ void TransportContext::setStrategy(Transport* newStrategy)
 {
     strategy = newStrategy;
 }
+
+TransportContext::~TransportContext(){
+    delete strategy;
+}

@@ -244,7 +244,7 @@ public:
      *
      * @return
      */
-    const ArmoryFacade &getArmoryFacade() const;
+    ArmoryFacade* getArmoryFacade() const;
 
     const std::vector<Recruits *> &getRecruits() const;
 
@@ -307,7 +307,7 @@ private:
     std::vector<Recruits*> recruits;
     Citizens* citizens;
     Refugee* refugees;
-    ArmoryFacade armoryFacade;
+    ArmoryFacade *armoryFacade;
 
 };
 

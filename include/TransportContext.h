@@ -40,6 +40,8 @@ public:
      */
     void setStrategy(Transport* newStrategy);
 
+    ~TransportContext();
+
 protected:
 
 private:

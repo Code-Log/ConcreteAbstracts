@@ -76,9 +76,9 @@ WarEngine& WarEngine::getInstanceWarEngine()
  */
 WarEngine::~WarEngine()
 {
-    for(int i = 0;i<8;i++){
-        delete countries[i];
-    }
+    // for(int i = 0;i<8;i++){
+    //     delete countries[i];
+    // }
 }
 
 
@@ -514,11 +514,13 @@ void WarEngine::setAllies()
         this->battleRegistry.addRecord(enemy,a.getOther(countries[warInit]));
     }
 }
+
 template <class T>
 bool contains(const std::vector<T> &vec, const T &value)
 {
     return std::find(vec.begin(), vec.end(), value) != vec.end();
 }
+
 void WarEngine::partitionRecruits()
 { 
     std::vector<std::string> chosenNames; //names that have already been chosen. (we don't want to chose a name that someone else already has)
@@ -721,7 +723,7 @@ void WarEngine::buyAndDistributeWeapons()
     //Countries use an interface (facade) to buy a weapon which transports(strategy)  
     for(int i = 0; i < 8; i++)
     {
-        ArmoryFacade armoryFacade = countries[i]->getArmoryFacade();
+        auto* armoryFacade = countries[i]->getArmoryFacade();
   
         if(human && i == humanIndex)
         {
@@ -740,7 +742,7 @@ void WarEngine::buyAndDistributeWeapons()
 
 
 
-                armoryFacade.purchaseWeapon(countries[i]->getRecruits()[userResponse], choice);
+                armoryFacade->purchaseWeapon(countries[i]->getRecruits()[userResponse], choice);
 
                 ListSelectionPrompt desire = {"yes", "no"};
                 int desireChoice = desire.getSelectionIndex("Do you wish to purchase more weapons?");
@@ -750,9 +752,11 @@ void WarEngine::buyAndDistributeWeapons()
         } else {
             for(auto recruit : countries[i]->getRecruits())
             {
-                armoryFacade.purchaseWeapon(recruit, randomNumGenerator(0,3));
+                armoryFacade->purchaseWeapon(recruit, randomNumGenerator(0,3));
             }
         }
+        armoryFacade = nullptr;
+
     }
 }
 

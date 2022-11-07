@@ -52,17 +52,17 @@ void Recruits::addVessel(VesselWeapon* vesselWeapon)
 
 Recruits::~Recruits()
 {
-    for (auto weapon : armory)
-    {
-        delete weapon;
-    }
+    // for (auto weapon : armory)
+    // {
+    //     delete weapon;
+    // }
     // armory.clear();
     // delete country;
 
-    for (auto vessel : vehicles)
-    {
-        delete vessel;
-    }
+    // for (auto vessel : vehicles)
+    // {
+    //     delete vessel;
+    // }
     // vehicles.clear();
 }
 

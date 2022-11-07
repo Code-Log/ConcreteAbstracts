@@ -4,7 +4,7 @@
 Country::Country(std::string countryName)
     : countryName(std::move(countryName))
 {
-
+    armoryFacade = new ArmoryFacade();
     //The below code will be modified and moved to WarEngine.cpp
 
     // Set up PRNG
@@ -517,6 +517,7 @@ void Country::removeFront(BattleGround* battleGround)
         if(*it == battleGround)
             break;
     }
+    delete armoryFacade;
 
     wwarTheatres.erase(it);
   
@@ -578,11 +579,11 @@ Country::~Country()
     for(auto w : wwarTheatres){
         delete w;
     }
-    wwarTheatres.clear();
+    // wwarTheatres.clear();
     for(auto r : recruits){
         delete r;
     }
-    recruits.clear();
+    // recruits.clear();
  
     // for(int x=0; x<4; x++)
     // {
@@ -599,7 +600,7 @@ Country::~Country()
     // }
 }
 
-const ArmoryFacade &Country::getArmoryFacade() const {
+ArmoryFacade* Country::getArmoryFacade() const{
     return armoryFacade;
 }
 

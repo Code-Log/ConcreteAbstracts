@@ -20,6 +20,7 @@ public:
      * 
      */
     Medic();
+    ~Medic() = default;
 
 protected:
 
