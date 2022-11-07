@@ -168,18 +168,23 @@ void WarEngine::phase3()//warLoop
 {
     std::cout<<"__________________________________________________________________"<<std::endl;
     std::cout<<colours::BLUE_UNDERLINED<<"PHASE 3 WARLOOP"<<colours::RESET<<std::endl;
-    std::cout<<colours::BLUE<<"Uses the itterator design pattern to itterate through "
+    std::cout<<colours::BLUE<<"Uses the Iterator design pattern to iterate through "
                             <<"each country giving them a turn to make a decision."<<colours::RESET<<std::endl;
     warLoop(); 
 
 }
 void WarEngine::warLoop () {
     while (disputeActive) {
-	    for(auto c : countries){
-            makeDecision(c); 
+        Iterator* countryIt = createCountryIterator(countries);
+        while(countryIt->hasNext())
+        {
+            makeDecision(countryIt->current()); 
         }
 	    printEngineReport();  
     }
+
+
+
 }
 
 void WarEngine::selectCountry()
@@ -230,14 +235,6 @@ void WarEngine::selectCountry()
             countries[i]->setName(countryNames[i]);
     }
 
-    Iterator* it = createCountryIterator(countries);
-
-    while(it->hasNext())
-    {
-        std::string name = it->current()->getName();
-        std::cout<<name<<std::endl;
-        it->next();
-    }
     std::cout<<"_______________________________________________________________________"<<std::endl;
 }
 
