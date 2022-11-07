@@ -783,8 +783,6 @@ void WarEngine::partitionRecruits()
             // Not enlisted people will be equal to population - recruits
             country->setNotEnlisted(country->getPopulation() - totalRecruitsSize);
 
-            std::cout<<country<<std::endl;
-
             // --- Summary Output ---
             std::cout<<"======================\n"
                 << colours::WHITE_BOLD << country->getName() << colours::RESET << " Summary"
