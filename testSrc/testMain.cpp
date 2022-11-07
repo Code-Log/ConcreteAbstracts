@@ -195,7 +195,7 @@ int testTransport()
     // delete weaponTransport;
     // delete attackVessel;
 
-    // return result;
+    return result;
 }
 
 int testArmoryFacade()
