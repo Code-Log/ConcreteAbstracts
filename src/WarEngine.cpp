@@ -174,6 +174,7 @@ void WarEngine::phase3()//warLoop
 
 }
 void WarEngine::warLoop () {
+    
     while (disputeActive) {
 	    for(auto c : countries){
             makeDecision(c); 
@@ -234,10 +235,28 @@ void WarEngine::selectCountry()
 
 void WarEngine::destributeRecruiteToWarTheatres()
 {
-std::cout << colours::BLUE_UNDERLINED << "Destribute Recruite To War Theatres" << colours::RESET << std::endl;
-    std::cout << colours::BLUE << "" <<
-        colours::RESET<<std::endl;
+    std::cout << colours::BLUE_UNDERLINED << "Destribute Recruite To War Theatres" << colours::RESET << std::endl;
+    std::cout << colours::BLUE << "" <<colours::RESET<<std::endl;
 
+    //using the state design pattern to change the state(recruit) at a war theatre
+    for(auto c : countries){
+        int cost = 50; //we could change this later on.
+        std::vector<Country*> countriesRecruits = c->getRecruits();
+        do{
+            
+            ListSelectionPrompt prompt1;
+            for (auto r : c->getRecruits())
+                prompt1.append(r->getName());
+            int out1 = prompt1.getSelectionIndex("Which recruits do you wish to send out?");
+
+            ListSelectionPrompt prompt2;
+            for (auto w : c->getWarTheatres())
+                prompt2.append(w->getLocation());
+            int out2 = prompt2.getSelectionIndex("Which war theatre do you wish to send your recruits?");
+
+            ((BattleGround*)c->getWarTheatres()[out2])->getDefenders()->setState(c->getRecruits()[out1]);
+        }while(countriesRecruits.size() != nullptr);
+    }
 }
 void WarEngine::selectPoliticalRegime()
 {
