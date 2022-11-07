@@ -174,7 +174,7 @@ void WarEngine::selectCountry()
     std::string countryNames [] = {"South Africa", "United States", "Germany", "Russia", "China", "Asgard", "Westeros", "Australia"};
     ListSelectionPrompt countryIndex = {"South Africa", "United States", "Germany", "Russia", "China", "Asgard", "Westeros", "Australia"};
     //spawing countries 
-    Country *prototype = new Country("Prototype");
+    auto *prototype = new Country("Prototype");
     prototype->setEconomy(5000);
     prototype->setPopulation(0);
     prototype->setPower(5000*0);
@@ -818,7 +818,7 @@ void WarEngine::setWarTheatres()
         if(human && i == humanIndex)
         {
             int j = 0;
-            for(auto t : theatreTypes)
+            for(auto & t : theatreTypes)
             {       
                 std::string confirm;
                 std::cout << "Would you like to form a battleground "<<prepositions[j]<<" "<<t<<"[y/n]";
@@ -1017,7 +1017,7 @@ void WarEngine::conquers(Country* conqueror,Country* conquered){
 
 void WarEngine::printWarReport()
 {
-    for(auto r : warLog){
+    for(auto & r : warLog){
         std::cout<<r<<std::endl;
     }
 }

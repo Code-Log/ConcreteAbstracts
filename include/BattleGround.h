@@ -58,14 +58,13 @@ public:
      */
     int penalty(Recruits* recruits) override = 0; //added
 
-    std::string getName();
-    void setName(std::string name);
+    
     RecruiterContext* geRecruitContext();
 
 protected:
 
 private:
-    std::string name;
+
     RecruiterContext* recruitContext;
     
 };

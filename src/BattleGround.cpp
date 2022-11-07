@@ -24,12 +24,7 @@ void BattleGround::add(WarTheatre* trap)
 {
     //nothing to add
 }
-std::string BattleGround::getName(){
-    return name;
-}
-void BattleGround::setName(std::string name){
-    this->name = name;
-}
+
 RecruiterContext* BattleGround::geRecruitContext(){
     return recruitContext;
 }

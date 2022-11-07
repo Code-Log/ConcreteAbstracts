@@ -64,7 +64,7 @@ const std::string& Country::getName() const
     return countryName;
 }
 void Country::setName(std::string name){
-    this->countryName = name;
+    this->countryName = std::move(name);
 }
 int Country::getPower() const
 {
@@ -402,9 +402,9 @@ void Country::addWarFront(/*const std::string& location*/BattleGround* battleGro
 
 std::string Country:: allWarFronts()
 {
-    std::string out = "";
-    for(auto c : wwarTheatres){
-        out += c->getLocation() + "\n";
+    std::string out;
+    for(auto w : wwarTheatres){
+        out += w->getName() + "\n";
     }
     
 
@@ -513,15 +513,16 @@ void Country::removeFront(BattleGround* battleGround)
 {
     if(battleGround != nullptr)
         return;
-    std::vector<WarTheatre*>::iterator it = wwarTheatres.begin();
-  
-    for (it; it != wwarTheatres.end(); ++it){
-        if(*it == battleGround)
+ 
+    for (auto it = wwarTheatres.begin(); it != wwarTheatres.end(); ++it){
+        if(*it == battleGround){
+            wwarTheatres.erase(it);
             break;
+        }       
     }
     delete armoryFacade;
 
-    wwarTheatres.erase(it);
+  
   
     // Printing the Vector
    
@@ -573,7 +574,7 @@ std::vector<Recruits*> Country::getRecruits(){
 }
 
 void Country::setRecruits(std::vector<Recruits*> recruits){
-    this->recruits = recruits;
+    this->recruits = std::move(recruits);
 }
 
 Country::~Country()

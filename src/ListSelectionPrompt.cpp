@@ -55,7 +55,7 @@ int ListSelectionPrompt::getSelectionIndex(const std::string& prompt) const
 
     return selection - 1;
 }
-void ListSelectionPrompt::append(std::string a)
+void ListSelectionPrompt::append(const std::string& a)
 {
     options.emplace_back(a);
 }

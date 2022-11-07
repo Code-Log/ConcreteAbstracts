@@ -92,7 +92,7 @@ void Recruits::setWeaponDamage(int weaponDamage)
 }
 void Recruits::setName(std::string name)
 {
-    this->name = name;
+    this->name = std::move(name);
 }
 std::string Recruits::getName(){
     return name;
