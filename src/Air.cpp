@@ -3,7 +3,7 @@
 
 Air::Air() : BattleGround("Air")
 {
-    std::cout<<"The Skies Shall Rain Death"<<std::endl;
+    // std::cout<<"The Skies Shall Rain Death"<<std::endl;
     setDamage(0);
 }
 

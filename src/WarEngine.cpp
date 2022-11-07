@@ -923,7 +923,7 @@ void WarEngine::setWarTheatres()
             while (oppotunity>0)
             {
                 if (randomNumGenerator(0,1) == 1)
-                    addWarFront(randomNumGenerator(0,3),c);             
+                    addWarFront(randomNumGenerator(1,3),c);             
                 oppotunity--;
             }
             oppotunity = 4;
