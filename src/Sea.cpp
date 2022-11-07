@@ -4,7 +4,7 @@
 
 Sea::Sea() : BattleGround("Sea")
 {
-    std::cout<<"Do The Tides Command This Ship?"<<std::endl;
+   // std::cout<<"Do The Tides Command This Ship?"<<std::endl;
     setDamage(0);
 }
 

@@ -10,6 +10,7 @@
  */
 #ifndef CONCRETEABSTRACTS_TRANSPORT_H
 #define CONCRETEABSTRACTS_TRANSPORT_H
+#include <util/colours.h>
 
 class Recruits;
 
