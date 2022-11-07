@@ -19,3 +19,7 @@ Recruits* RecruiterContext::getState()
 {
     return state;
 }
+
+RecruiterContext::~RecruiterContext(){
+    delete state;
+}

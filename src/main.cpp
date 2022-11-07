@@ -17,7 +17,13 @@ int main() {
     WarEngine::getInstanceWarEngine().prePhase1();
     WarEngine::getInstanceWarEngine().phase1();
     WarEngine::getInstanceWarEngine().setAllies();
-   // WarEngine::getInstanceWarEngine().partitionRecruits();
+    WarEngine::getInstanceWarEngine().partitionRecruits();
+    WarEngine::getInstanceWarEngine().buyAndDistributeWeapons();
+    WarEngine::getInstanceWarEngine().destributeRecruiteToWarTheatres();
+    // WarEngine::getInstanceWarEngine().setWarTheatres();
+    // WarEngine::getInstanceWarEngine().phase3();
+    // WarEngine::getInstanceWarEngine().setAllies().buyAndDistributeWeapons();
+
 
     return 0;
 }

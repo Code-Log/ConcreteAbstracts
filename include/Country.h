@@ -73,6 +73,12 @@ public:
      */
     const std::string& getName() const;
 
+    /**
+     * @brief Set the Name object
+     * 
+     */
+    void setName(std::string name);
+
       /**
      * @brief Get the NotEnlisted object
      *
@@ -244,7 +250,7 @@ public:
      *
      * @return
      */
-    const ArmoryFacade &getArmoryFacade() const;
+    ArmoryFacade* getArmoryFacade() const;
 
     const std::vector<Recruits *> &getRecruits() const;
 
@@ -307,7 +313,7 @@ private:
     std::vector<Recruits*> recruits;
     Citizens* citizens;
     Refugee* refugees;
-    ArmoryFacade armoryFacade;
+    ArmoryFacade *armoryFacade;
 
 };
 

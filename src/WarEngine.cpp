@@ -4,7 +4,6 @@
 #include <algorithm>
 #include <unordered_map>
 #include <util/enums.h>
-#include <bits/stdc++.h>
 #include <util/colours.h>
 
 void WarEngine::setHuman(bool human){
@@ -13,6 +12,7 @@ void WarEngine::setHuman(bool human){
 void WarEngine::run(bool human)
 {
     this->human = human;
+    // this->disputeActive = true;
     prePhase1();
     phase1();
     phase2();
@@ -70,6 +70,7 @@ WarEngine& WarEngine::getInstanceWarEngine()
     static WarEngine onlyInstance_;
     return onlyInstance_;
 }
+
 /**
  * @brief Destroy the War Engine:: War Engine object
  * 
@@ -81,133 +82,152 @@ WarEngine::~WarEngine()
     }
 }
 
-
-
 void WarEngine::prePhase1()
 {
     selectCountry();
-    initCountryAttributes();
     selectPoliticalRegime();
 }
-void WarEngine::initCountryAttributes(){
-    for(auto c : countries){
-        c->setEconomy(5000);
-    }
-}
+
 void WarEngine::phase1()
 {
     std::string reasonsForWar[] = {"Land", "Vengence", "Veganism", "Nationalism"};
     int index;
     int ans;
     int warInit = human ? humanIndex : randomNumGenerator(0,4); //the country starting the war. 
-    std::cout<<colours::CYAN<<countries[warInit]->getName()<<colours::RESET<<" is feeling restless and wishes to "<<colours::RED<<"declare war "<<colours::RESET<<"on a country"<<std::endl;
-    if(human){
+    std::cout << colours::CYAN << countries[warInit]->getName() << colours::RESET << " is feeling restless and wishes to "
+        << colours::RED << "declare war " << colours::RESET << "on a country" << std::endl;
+    if(human)
+    {
         
         warInit = humanIndex;
         ListSelectionPrompt cOptions;
-        for(auto c : this->countries){
+        for (auto c : this->countries)
             cOptions.append(c->getName());
-        }
-        while(index == humanIndex){
-            index = cOptions.getSelectionIndex(std::string(countries[humanIndex]->getName())+"! Who do you want to declare war against"+"!?");
-            if(index == humanIndex){
+
+        while (index == humanIndex)
+        {
+            index = cOptions.getSelectionIndex(
+                    std::string(countries[humanIndex]->getName()) + "! Who do you want to declare war against"+"!?");
+
+            if (index == humanIndex)
                 std::cout<<"You can't declare war on yourself!"<<std::endl;
-            }
         }
-        
 
         ListSelectionPrompt dispute = {"Land", "Vengence", "Veganism", "Nationalism"};
-        ans = dispute.getSelectionIndex(std::string("Why do you want to declare war on ")+countries[index]->getName() + "!?");
+        ans = dispute.getSelectionIndex(
+                std::string("Why do you want to declare war on ") + countries[index]->getName() + "!?");
     }
-    else{// only AI
+    else // only AI
+    {
         index = randomNumGenerator(0,7);
         ans = randomNumGenerator(0,3);
         mainAiIndex = warInit;
         // warInit = randomNumGenerator(0,4);
     }
-    std::cout<<colours::CYAN<<countries[warInit]->getName()<<colours::RESET<<" has declared war on "<<colours::RED<<countries[index]->getName()<<colours::RESET<< " over "<<reasonsForWar[ans]<<"!"<<std::endl;
+
+    std::cout << colours::CYAN << countries[warInit]->getName() << colours::RESET << " has declared war on "
+        << colours::RED << countries[index]->getName() << colours::RESET << " over " << reasonsForWar[ans]
+        << "!" << std::endl;
+
     battleRegistry.addRecord(countries[warInit],countries[index]);
     switch (ans)
     {
         case 0:
-            std::cout<<"The is a reason why Empires are great. Rome wasn't built on two blocks and colonisers don't settle for a few square metres. LAND!!! We want it, you've got it but not for long!"<<std::endl;
+            std::cout << "The is a reason why Empires are great. " <<
+                         "Rome wasn't built on two blocks and colonisers don't settle for a few square metres. " <<
+                         "LAND!!! We want it, you've got it but not for long!" << std::endl;
             break;
         case 1:
-            std::cout<<"No, we not crying over spilt milk. We're merely moping up the mess with the decapitated heads of enemies. Nothing to worry about."<<std::endl;
+            std::cout << "No, we not crying over spilt milk. " <<
+                         "We're merely moping up the mess with the decapitated heads of enemies. " <<
+                         "Nothing to worry about." << std::endl;
             break;
         case 2:
-            std::cout<<"If two vegans argue is it still called beef. Meat is good. Meat is tasty. But not everyone thinks so and we are willing to go cannibal to keep them from our steaks. Steak knives vs chopsticks. It's WAR!!"<<std::endl;
+            std::cout << "If two vegans argue is it still called beef. " <<
+                         "Meat is good. Meat is tasty. But not everyone thinks so and we are willing to go cannibal to keep them from our steaks. " <<
+                         "Steak knives vs chopsticks. It's WAR!!" << std::endl;
             break;
         case 3:
-            std::cout<<"? any ideas on nationalism?"<<std::endl;
+            std::cout << "? any ideas on nationalism?" << std::endl;
             break;
         default:
             break;
     }  
 }
 
-
-
-
 void WarEngine::phase2()
 {
-    setAllies();
-    partitionRecruits();
-    buyAndDistributeWeapons();
-    setWarTheatres();
+    setAllies(); //working
+    partitionRecruits(); //working
+    buyAndDistributeWeapons(); //working
+    setWarTheatres(); //working
     destributeRecruiteToWarTheatres();
-    // setTraps();
 }
 
-void WarEngine::phase3()
+void WarEngine::phase3()//warLoop
 {
-    
+    std::cout<<"__________________________________________________________________"<<std::endl;
+    std::cout<<colours::BLUE_UNDERLINED<<"PHASE 3 WARLOOP"<<colours::RESET<<std::endl;
+    std::cout<<colours::BLUE<<"Uses the itterator design pattern to itterate through "
+                            <<"each country giving them a turn to make a decision."<<colours::RESET<<std::endl;
+    warLoop(); 
+
 }
 void WarEngine::warLoop () {
     while (disputeActive) {
-	    EngineSimulation();
+	    for(auto c : countries){
+            makeDecision(c); 
+        }
 	    printEngineReport();  
-    }
-}
-void WarEngine::EngineSimulation(){
-    for(auto c : countries){
-        makeDecision(c); //engine strategically 
     }
 }
 
 void WarEngine::selectCountry()
 {
-    std::cout<<colours::BLUE_UNDERLINED<<"COUNTRY SELECTION"<<colours::RESET<<std::endl;
-    std::cout<<colours::BLUE<<"Making allies stores it in the Registry which uses a Template Method Pattern"<<colours::RESET<<std::endl;
-    std::string countryNames[] = {"South Africa", "United States", "Germany", "Russia", "China", "Asgard", "Westeros", "Australia"};
-    
+    std::string countryNames [] = {
+            "South Africa", "United States", "Germany",
+            "Russia", "China", "Asgard", "Westeros", "Australia"
+    };
 
-    ListSelectionPrompt countryIndex = {"South Africa", "United States", "Germany", "Russia", "China", "Asgard", "Westeros", "Australia"};
-    
-    if(human) // If human present
+    ListSelectionPrompt countryIndex = {
+            "South Africa", "United States", "Germany",
+            "Russia", "China", "Asgard", "Westeros", "Australia"
+    };
+
+    //spawing countries 
+    auto *prototype = new Country("Prototype");
+    prototype->setEconomy(5000);
+    prototype->setPopulation(0);
+    prototype->setPower(5000*0);
+
+    for (int i = 0; i < 8; i++)
+        countries[i] = prototype->cloneCountry();
+
+    delete prototype;
+    if (human) // If human present
     {        
-        std::cout<<"__________________________________________________________________"<<std::endl;
-        std::cout<<colours::BLUE_UNDERLINED<<"COUNTRIES"<<colours::RESET<<std::endl;
-        std::cout<<colours::BLUE<<"Countries makes use of the Prototype Pattern"<<colours::RESET<<std::endl;
+        std::cout << "__________________________________________________________________" << std::endl;
+        std::cout << colours::BLUE_UNDERLINED << "COUNTRIES" << colours::RESET << std::endl;
+        std::cout << colours::BLUE<<"Countries makes use of the Prototype Pattern" << colours::RESET << std::endl;
         std::string output = "Please select a country: ";
+
         int userCountry = countryIndex.getSelectionIndex(output);
-        countries[userCountry] = new Country(countryNames[userCountry]);
+        countries[userCountry]->setName(countryNames[userCountry]);
         this->humanIndex = userCountry; // there is a human country at index [userCountry]
 
-       for (int i = 0; i < 8; i++)
+        int i =0;
+        for (auto c : countries)
         {
-            if(countries[i] == NULL)
-            {
-                countries[i] = new Country(countryNames[i]);
-            }      
-        }   
+            if(c != countries[userCountry])
+                c->setName(countryNames[i]);
+
+            i++;    
+        }
     }
     else  // All countries are AI
     {
         for (int i = 0; i < 8; i++)
-        {
-            countries[i] = new Country(countryNames[i]);
-        }
+            countries[i]->setName(countryNames[i]);
     }
 
     Iterator* it = createCountryIterator(countries);
@@ -221,26 +241,35 @@ void WarEngine::selectCountry()
     std::cout<<"_______________________________________________________________________"<<std::endl;
 }
 
-void WarEngine::destributeRecruiteToWarTheatres(){
+void WarEngine::destributeRecruiteToWarTheatres()
+{
+std::cout << colours::BLUE_UNDERLINED << "Destribute Recruite To War Theatres" << colours::RESET << std::endl;
+    std::cout << colours::BLUE << "" <<
+        colours::RESET<<std::endl;
 
 }
 void WarEngine::selectPoliticalRegime()
 {
     std::cout<<colours::BLUE_UNDERLINED<<"REGIMES"<<colours::RESET<<std::endl;
-    for(auto c : countries){
-        if(c != countries[humanIndex] && c != nullptr){
+    for (auto c : countries)
+    {
+        if (c != countries[humanIndex] && c != nullptr)
+        {
             int choice = randomNumGenerator(0,1);
-            if(choice == 0){
+            if(choice == 0)
+            {
                 std::cout<<c->getName()<<" is a "<<colours::GREEN<< "capitalist country!"<<colours::RESET<<std::endl;
                 c->setPoliticalRegime(enums::Capitalism);
             }       
-            else {
+            else
+            {
                 std::cout<<c->getName()<<" is a "<<colours::RED<< "socialist country!"<<colours::RESET<<std::endl;
                 c->setPoliticalRegime(enums::socialism);
             }       
         }
     }
-    if(!human)
+
+    if (!human)
         return;
 
     ListSelectionPrompt regime = { "Capitalism", "Socialism"};
@@ -249,170 +278,192 @@ void WarEngine::selectPoliticalRegime()
     prompt += countries[humanIndex]->getName();
     prompt += " a capatalist nation or socialist society: ";
     auto ans = regime.getSelectionIndex(prompt);
-    // std::cout<<ans<<std::endl;
-    if(ans==0)
-    {
-        countries[humanIndex]->setPoliticalRegime(enums::Capitalism); 
-        // int economy = countries[humanIndex]->getEconomy();
-        // economy = economy*1.2;
-        // countries[humanIndex]->setEconomy(economy);
 
+    if (ans==0)
+    {
+        countries[humanIndex]->setPoliticalRegime(enums::Capitalism);
         std::cout<<countries[humanIndex]->getName()<<"'s economy has risen by 20%. Cheers to the free market!"<<std::endl<<std::endl;
     }
     else
     {
         countries[humanIndex]->setPoliticalRegime(enums::socialism); //population size is now set in partionRecruits
-        // int people = countries[humanIndex]->getNotEnlisted();
-        // people = people*1.2;
-        // countries[humanIndex]->setNotEnlisted(people);
-        
-
-        std::cout<<countries[humanIndex]->getName()<<"'s man power has risen by 20%. A nation is as powerful as it's people!!!"<<std::endl<<std::endl;
+        std::cout << countries[humanIndex]->getName() <<
+            "'s man power has risen by 20%. A nation is as powerful as it's people!!!" << std::endl << std::endl;
     }
-    std::cout<<"_______________________________________________________________________"<<std::endl;
+    std::cout << "_______________________________________________________________________" << std::endl;
 }
 
 void WarEngine::setAllies()
 {
-    std::cout<<"_______________________________________________________________________"<<std::endl;
-    std::cout<<colours::BLUE_UNDERLINED<<"ALLIES"<<colours::RESET<<std::endl;
-    std::cout<<colours::BLUE<<"Making allies stores it in the Registry which uses a Template Method Pattern"<<colours::RESET<<std::endl;
+    std::cout << "_______________________________________________________________________" << std::endl;
+    std::cout << colours::BLUE_UNDERLINED << "ALLIES" << colours::RESET << std::endl;
+    std::cout << colours::BLUE << "Making allies stores it in the Registry which uses a Template Method Pattern" <<
+        colours::RESET<<std::endl;
 
-    ListSelectionPrompt countryIndex = {"South Africa", "United States", "Germany", "Russia", "China", "Asgard", "Westeros", "Australia"};
+    ListSelectionPrompt countryIndex = {
+            "South Africa", "United States", "Germany",
+            "Russia", "China", "Asgard", "Westeros", "Australia"
+    };
+
     Country *enemy;
-    if(human)
+    if (human)
     {
         // Make allies?
         std::string choice;
         std::cout << "Would you like to make allies? [y/n] :";
         std::cin >> choice;
+
         int userAllyCount = 0;
         int enemyAllyCount = 0;
-        int enemyAllyLimit = randomNumGenerator(1, 6 - userAllyCount); // Use 6 to exclude ourCountry and enemyCountry
+        int enemyAllyLimit = randomNumGenerator(1, 4);
         std::cout<<colours::BLUE_UNDERLINED<<"COUNTRIES:"<<colours::RESET<<std::endl;
+
         //find enemy
         std::vector<UnorderedPair<Country*>> userBattles = this->battleRegistry.getRecords(countries[humanIndex]);
         enemy = userBattles[0].getOther(countries[humanIndex]); // Only one item in battleRegistry so use index 0
         int enemyIndex = 0;
-        for(int i = 0; i < 8; i++)
+        for (int i = 0; i < 8; i++)
         {
-            if(countries[i]->getName() == enemy->getName()) // Find enemy country's index in countries[] attribute
+            if (countries[i]->getName() == enemy->getName()) // Find enemy country's index in countries[] attribute
             {
                 enemyIndex = i;
                 break;
             }    
         }
+
         auto userAllies = this->allyRegistry.getRecords(countries[humanIndex]);
         auto enemyAllies = this->allyRegistry.getRecords(enemy);
+
         //We should probably change this to a do while loop
-        while(true) // At most 4 allies (break statement at the end to end while loop)
+        while (true) // At most 4 allies (break statement at the end to end while loop)
         { 
             //find allies and enemies
             userAllies = this->allyRegistry.getRecords(countries[humanIndex]);
             enemyAllies = this->allyRegistry.getRecords(enemy);
+
             //allow human to select country
-            if(choice == "y" || choice == "Y")
+            if (choice == "y" || choice == "Y")
             { 
                 bool invalidChoice = true;
-                // std::string output = ;
                 int allyIndex;
-                while(invalidChoice)
+                while (invalidChoice)
                 {  
                     bool flag3 = false;
                     allyIndex = countryIndex.getSelectionIndex("Please select a country: ");
-                    if(allyIndex == humanIndex){
+                    if(allyIndex == humanIndex)
+                    {
                         std::cout<<"you can't ally with yourself!"<<std::endl;
                         flag3 = true;
                     }
                     bool flag1 = false;
                     bool flag2 = false;
-                    for(auto userAlly : userAllies){ //does userAlly have the country? 
-                        if(userAlly.has(countries[allyIndex])){
+                    for (auto userAlly : userAllies) //does userAlly have the country?
+                    {
+                        if (userAlly.has(countries[allyIndex]))
+                        {
                             std::cout <<countries[allyIndex]->getName()<< " is already your ally!" << std::endl;
                             flag1 = true;
                         }
                     }
-                    if(allyIndex == enemyIndex)
+
+                    if (allyIndex == enemyIndex)
                     {
-                        std::cout <<countries[allyIndex]->getName()<< " is an enemy country!" << std::endl;
+                        std::cout << countries[allyIndex]->getName() << " is an enemy country!" << std::endl;
                         flag2 = true;
                     }
                     else
                     {
-                        for(auto enemyAlly : enemyAllies){ //does enemyAllyies have the country?
-                            if(enemyAlly.has(countries[allyIndex])){
-                                std::cout <<countries[allyIndex]->getName()<< " is an enemy country!" << std::endl;
+                        for (auto enemyAlly : enemyAllies) //does enemyAllyies have the country?
+                        {
+                            if (enemyAlly.has(countries[allyIndex]))
+                            {
+                                std::cout << countries[allyIndex]->getName() << " is an enemy country!" << std::endl;
                                 flag2 = true;
                             }
                         }
                     }
 
-                    if(!(flag1 || flag2 || flag3))
-                    {
+                    if (!(flag1 || flag2 || flag3))
                         invalidChoice = false;
-                    }
-                    // else
-                    // {
-                    //     std::cout << "This is the enemy country!" << std::endl;
-                    // }
                 }
-                std::cout<<colours::CYAN<<countries[humanIndex]->getName()<<colours::RESET<<" has allied itself with "<<countries[allyIndex]->getName()<<std::endl;
+
+                std::cout << colours::CYAN << countries[humanIndex]->getName() << colours::RESET
+                    << " has allied itself with " << countries[allyIndex]->getName() << std::endl;
+
                 this->allyRegistry.addRecord(countries[humanIndex],countries[allyIndex]);
                 userAllyCount++;
                 int economy = countries[humanIndex]->getEconomy(); // our country's economy
-                countries[humanIndex]->setEconomy(economy - (economy * 0.15)); // Cost is 15% of economy
+                countries[humanIndex]->setEconomy(int(economy - (economy * 0.15))); // Cost is 15% of economy
             }
-            else
-            {
-                break;
-            }   
-            auto userAllies = this->allyRegistry.getRecords(countries[humanIndex]);
-            auto enemyAllies = this->allyRegistry.getRecords(enemy);
+
             // Initially battleRegistry = {(ourCountry, enemyCountry)} or {(enemyCountry,ourCountry)}
 
             //allow ai to select country
-            if(enemyAllyCount <= enemyAllyLimit)
-            {// a better way to do this is just to create a list selection prompt of all the applicable countries choices and randomise that
-               while(true)
+            else if (enemyAllyCount <= enemyAllyLimit)
+            {
+                auto userAllies = this->allyRegistry.getRecords(countries[humanIndex]);
+                auto enemyAllies = this->allyRegistry.getRecords(enemy);
+                // a better way to do this is just to create a list selection prompt of all the applicable countries choices and randomise that
+                while (true)
                 {
                     int randomIndex = randomNumGenerator(0, 7); // randomize ally country index
                     bool flag1 = false;
                     bool flag2 = false;
                     bool flag3 = false;
-                    if(randomIndex == enemyIndex){
+                    if (randomIndex == enemyIndex)
+                    {
                         flag3 = true;
                     }
-                    for(auto userAlly : userAllies){ //does userAlly have the country? 
-                        if(userAlly.has(countries[randomIndex])){
+
+                    for (auto userAlly : userAllies) //does userAlly have the country?
+                    {
+                        if (userAlly.has(countries[randomIndex]))
+                        {
                             flag1 = true;
                             break;
                         }
                     }
-                    for(auto enemyAlly : enemyAllies){ //does enemyAllyies have the country?
-                        if(enemyAlly.has(countries[randomIndex])){
+
+                    for (auto enemyAlly : enemyAllies) //does enemyAllies have the country?
+                    {
+                        if (enemyAlly.has(countries[randomIndex]))
+                        {
                             flag2 = true;
                             break;
                         }
                     }
-                    if(!(flag1 || flag2 || flag3)) // If not an ally of ourCountry we can make it an ally of the enemy && if not the enemy country itself(or it's allies)
+
+                    // If not an ally of ourCountry we can make it an
+                    // ally of the enemy && if not the enemy country itself(or it's allies)
+                    if (!(flag1 || flag2 || flag3))
                     {
                         this->allyRegistry.addRecord(enemy,countries[randomIndex]);
-                        std::cout<<colours::RED<<enemy->getName()<<colours::RESET<<" has allied itself with "<<countries[randomIndex]->getName()<<std::endl;
+
+                        std::cout << colours::RED << enemy->getName() << colours::RESET << " has allied itself with "
+                            << countries[randomIndex]->getName() << std::endl;
+
                         int economy = countries[randomIndex]->getEconomy(); // our country's economy
-                        countries[randomIndex]->setEconomy(economy - (economy * 0.15)); // Cost is 15% of economy
+                        countries[randomIndex]->setEconomy(int(economy - (economy * 0.15))); // Cost is 15% of economy
                         enemyAllyCount++;
                         break;
                     } // else loop again to find a suitable enemy ally
                 }
             }  
-            if(userAllyCount <4)  
+
+            if (userAllyCount < 4)
+            {
                 std::cout << "Would you like to make more allies? [y/n] :";
-            std::cin >> choice;
-            if((userAllyCount == 4 || (choice == "n" || choice == "N")) && enemyAllyCount == enemyAllyLimit){
+                std::cin >> choice;
+            }
+
+            if ((userAllyCount + enemyAllyCount)>= 6)
+            {
                 std::cout<<"Ally selection has closed"<<std::endl;
                 break;
             }
-            if((userAllyCount + enemyAllyCount)>= 6){
+
+            if ((choice == "n" || choice == "N") && enemyAllyCount == enemyAllyLimit )
+            {
                 std::cout<<"Ally selection has closed"<<std::endl;
                 break;
             }
@@ -427,9 +478,9 @@ void WarEngine::setAllies()
         enemy = userBattles[0].getOther(countries[mainAiIndex]); // Only one item in battleRegistry so use index 0
         
         int enemyIndex = 0;
-        for(int i = 0; i < 8; i++)
+        for (int i = 0; i < 8; i++)
         {
-            if(countries[i]->getName() == enemy->getName()) // Find enemy country's index in countries[] attribute
+            if (countries[i]->getName() == enemy->getName()) // Find enemy country's index in countries[] attribute
             {
                 enemyIndex = i;
                 break;
@@ -439,8 +490,9 @@ void WarEngine::setAllies()
         //we will be swapping the values these temp variable to simulate turn based vhoosing. 
         int warInit = mainAiIndex; //the one who initialised the war
         int eInd = enemyIndex;
-        int count = 0;    
-        while(true)
+        int count = 0;
+
+        while (true)
         {
             userAllies = this->allyRegistry.getRecords(countries[warInit]);
             enemyAllies = this->allyRegistry.getRecords(countries[eInd]);
@@ -448,90 +500,89 @@ void WarEngine::setAllies()
             bool flag1 = false;
             bool flag2 = false;
             bool flag3 = false;
-            if(countries[randomIndex]->getName() == countries[eInd]->getName()){//can't ally with yourself.
+
+            if (countries[randomIndex]->getName() == countries[eInd]->getName()) //can't ally with yourself.
                 flag3 = true;
-            }
-            for(auto userAlly : userAllies){ //does userAlly have the country? 
-                if(userAlly.has(countries[randomIndex])){
+
+            for (auto userAlly : userAllies) //does userAlly have the country?
+            {
+                if (userAlly.has(countries[randomIndex]))
+                {
                     flag1 = true;
                     break;
                 }
             }
-            for(auto enemyAlly : enemyAllies){ //does enemyAllies have the country?
-                if(enemyAlly.has(countries[randomIndex])){
+
+            for (auto enemyAlly : enemyAllies) //does enemyAllies have the country?
+            {
+                if (enemyAlly.has(countries[randomIndex]))
+                {
                     flag2 = true;
                     break;
                 }
             }
-            if(!(flag1 || flag2 || flag3)) // If not an ally of ourCountry we can make it an ally of the enemy && if not the enemy country itself(or it's allies)
+
+            // If not an ally of ourCountry we can make it
+            // an ally of the enemy && if not the enemy country itself(or it's allies)
+            if (!(flag1 || flag2 || flag3))
             {
                 this->allyRegistry.addRecord(countries[eInd],countries[randomIndex]);
-                std::cout<<countries[eInd]->getName()<<" has allied itself with "<<countries[randomIndex]->getName()<<std::endl;
+
+                std::cout << countries[eInd]->getName() << " has allied itself with "
+                    << countries[randomIndex]->getName() << std::endl;
+
                 int economy = countries[randomIndex]->getEconomy(); // our country's economy
-                countries[randomIndex]->setEconomy(economy - (economy * 0.15)); // Cost is 15% of economy
+                countries[randomIndex]->setEconomy(int(economy - (economy * 0.15))); // Cost is 15% of economy
                 count++;
                 std::swap(warInit,eInd);//let the enemy choose too
-                if(count == 6)
+
+                if (count == 6)
                     break;
             }    
         }
-        // The AI user
-        // int userAllyLimit = randomNumGenerator(1, 4); // Use 6 to exclude ourCountry and enemyCountry
-        // int userAllyCount = 0;
-        // int randomIndex  = 0;
-        // int AIUserIndex = randomNumGenerator(1, 8);
-        // while(userAllyCount <= userAllyLimit)
-        // {
-        //     randomIndex = randomNumGenerator(1, 8); // randomize ally country index
-        //     if(AIUserIndex != randomIndex && AIUserIndex != enemyIndex)
-        //     {
-        //         this->allyRegistry.addRecord(countries[AIUserIndex],countries[randomIndex]);
-        //         userAllyCount++;
-        //     }
-        // }
+    }
 
-        // int enemyAllyLimit = randomNumGenerator(1, 6 - userAllyCount); // Use 6 to exclude ourCountry and enemyCountry
-        // int enemyAllyCount = 0;
-        // while(enemyAllyCount <= enemyAllyLimit)
-        // {
-        //     randomIndex = randomNumGenerator(1, 8); // randomize ally country index
-            
-        //     for(auto userAlly : userAllies)
-        //     {
-        //         if(!userAlly.has(countries[humanIndex]) && enemyIndex != randomIndex) // If not an ally of ourCountry we can make it an all of the enemy
-        //         {
-        //             this->allyRegistry.addRecord(countries[enemyIndex],countries[randomIndex]);
-        //             enemyAllyCount++;
-        //         } // else loop again untill enemyAllyLimit reached
-        //     }
-        // }
-    }  
     //the allies of my enemy are my enemies  
     int warInit = human ? humanIndex : mainAiIndex; //who initialised the war?
-    for(auto r :  this->allyRegistry.getRecords(enemy))
-    {
+    for (auto r :  this->allyRegistry.getRecords(enemy))
         this->battleRegistry.addRecord(countries[warInit],r.getOther(enemy));
-    }
+
     //enemy is the enemy of my allies
-    for(auto a : this->allyRegistry.getRecords(countries[warInit]))
-    {
+    for (auto a : this->allyRegistry.getRecords(countries[warInit]))
         this->battleRegistry.addRecord(enemy,a.getOther(countries[warInit]));
-    }
+}
+
+template <class T>
+bool contains(const std::vector<T> &vec, const T &value)
+{
+    return std::find(vec.begin(), vec.end(), value) != vec.end();
 }
 
 void WarEngine::partitionRecruits()
 { 
-    std::cout<<"_______________________________________________________________________"<<std::endl;
-    std::cout<<colours::BLUE_UNDERLINED<<"SET UP POPULATION"<<colours::RESET<<std::endl;
-    std::cout<<colours::BLUE<<"The Population consists of People which forms part of a State Pattern"<<colours::RESET<<std::endl;
-    std::cout<<colours::BLUE<<"People can be swapped out by their respective types:"<<colours::RESET<<std::endl;
-    std::cout<<colours::BLUE<<"-Recruits\n-Citizens\n-Refugee"<<colours::RESET<<std::endl;
+    std::vector<std::string> chosenNames; //names that have already been chosen. (we don't want to chose a name that someone else already has)
+    std::vector<std::string> randomNames = {
+            "A Team", "All Stars", "Amigos", "Avengers", "Bannermen", "Best of the Best", "Bosses", "Champions",
+            "Crew", "Dominators", "Elite","Force", "Goal Diggers", "Heatwave", "Hot Shots", "Hustle", "Icons",
+            "Justice League", "Legends", "Lightning", "Maniacs", "Masters", "Monarchy", "Naturals", "Ninjas",
+            "Outliers", "Peak Performers", "Power", "Rebels", "Revolution", "Ringmasters", "Rule Breakers", "Shakedown",
+            "Squad", "Titans", "Tribe", "United", "Vikings", "Warriors", "Wolf Pack", "Dream Team"
+    };
+
+    std::cout << "_______________________________________________________________________" << std::endl;
+    std::cout << colours::BLUE_UNDERLINED << "SET UP POPULATION" << colours::RESET << std::endl;
+
+    std::cout << colours::BLUE << "The Population consists of People which forms part of a State Pattern"
+        << colours::RESET << std::endl;
+
+    std::cout << colours::BLUE << "People can be swapped out by their respective types:" << colours::RESET << std::endl;
+    std::cout << colours::BLUE << "-Recruits\n-Citizens\n-Refugee" << colours::RESET << std::endl;
 
     int index = 0;
 
-    for(Country* country : countries) // Partition population for each country
+    for (Country* country : countries) // Partition population for each country
     {
-        if(index == humanIndex && mainAiIndex == -1)
+        if (index == humanIndex && mainAiIndex == -1)
         {
             std::random_device rd;
             std::mt19937 gen(rd());
@@ -544,41 +595,53 @@ void WarEngine::partitionRecruits()
 
             // Refugees
             country->setRefugees(new Refugee());
-            country->getRefugees()->setGroupSize(country->getPopulation() * 0.1); // Initially 10% refugees at start
+            country->getRefugees()->setGroupSize(int(country->getPopulation() * 0.1)); // Initially 10% refugees at start
 
             // Recruits
             country->setRecruits(std::vector<Recruits*> {new Soldier(), new Pilot(), new Marine(), new Guardian(), new Medic()});
 
+            //just giving recruits names
+            for (auto r : country->getRecruits())
+            {
+                std::string name;
+
+                do {
+                    name = randomNames[randomNumGenerator(0,int(randomNames.size()-1))];
+                } while(contains(chosenNames, name));
+
+                r->setName(name);
+                r->setCountry(country);//giving these recruits thier country
+            }
+
             // Initialize all recruit type sizes to 0
             for(int i = 0; i < 5; i++)
-            {
-                country->getRecruits()[i]->setGroupSize(0); 
-            }
+                country->getRecruits()[i]->setGroupSize(0);
 
             int totalRecruitsLimit = country->getPopulation() - country->getRefugees()->getGroupSize();
             const int s = 100, m=150, p = 200, g=300, med=150; //prices of each recruit type
-            std::vector<int> prices{s, p, m, g, med};
+            std::vector<int> prices = { s, p, m, g, med };
 
-            ListSelectionPrompt prompt = {"Soldier", "Pilot", "Marine", "Guardian", "Medic"};
-            std::vector<std::string> types = {"Soldiers", "Pilots", "Marines", "Guardians", "Medics"};
+            ListSelectionPrompt prompt = { "Soldier", "Pilot", "Marine", "Guardian", "Medic" };
+            std::vector<std::string> types = { "Soldiers", "Pilots", "Marines", "Guardians", "Medics" };
             int totalRecruitsSize = 0;
 
             std::string choice = "y";
-            while(choice == "y" || choice == "Y" && country->getEconomy() > 0) // At most 4 allies
+            while (choice == "y" || choice == "Y" && country->getEconomy() > 0) // At most 4 allies
             {
                 // --- Summary Output ---
                 std::cout<<"======================\n"
-                <<colours::WHITE_BOLD<<country->getName()<<colours::RESET<<" Summary"
-                <<colours::YELLOW<<"\nEconomy: "<<colours::RESET<<std::to_string(country->getEconomy())
-                <<colours::CYAN<<"\nTotal Population: "<<colours::RESET<<std::to_string(country->getPopulation())
-                <<colours::BLUE<<"\nRecruits: "<<colours::RESET<<std::to_string(totalRecruitsSize)
-                <<"\n- Soldiers: "<<colours::RESET<<std::to_string(country->getRecruits()[0]->getGroupSize())
-                <<"\n- Pilots: "<<colours::RESET<<std::to_string(country->getRecruits()[1]->getGroupSize())
-                <<"\n- Marines: "<<colours::RESET<<std::to_string(country->getRecruits()[2]->getGroupSize())
-                <<"\n- Guardians: "<<colours::RESET<<std::to_string(country->getRecruits()[3]->getGroupSize())
-                <<"\n- Medics: "<<colours::RESET<<std::to_string(country->getRecruits()[4]->getGroupSize())
-                <<colours::GREEN<<"\nCitizens: "<<colours::RESET<<std::to_string(country->getCitizens()->getGroupSize())
-                <<colours::PURPLE<<"\nRefugees: "<<colours::RESET<<std::to_string(country->getRefugees()->getGroupSize())<<std::endl;
+                    << colours::WHITE_BOLD << country->getName() << colours::RESET << " Summary"
+                    << colours::YELLOW << "\nEconomy: " << colours::RESET << std::to_string(country->getEconomy())
+                    << colours::CYAN << "\nTotal Population: " << colours::RESET << std::to_string(country->getPopulation())
+                    << colours::BLUE << "\nRecruits: " << colours::RESET<<std::to_string(totalRecruitsSize)
+                    << "\n- Soldiers: " << colours::RESET << std::to_string(country->getRecruits()[0]->getGroupSize())
+                    << "\n- Pilots: " << colours::RESET << std::to_string(country->getRecruits()[1]->getGroupSize())
+                    << "\n- Marines: " << colours::RESET << std::to_string(country->getRecruits()[2]->getGroupSize())
+                    << "\n- Guardians: " << colours::RESET << std::to_string(country->getRecruits()[3]->getGroupSize())
+                    << "\n- Medics: " << colours::RESET << std::to_string(country->getRecruits()[4]->getGroupSize())
+                    << colours::GREEN << "\nCitizens: " << colours::RESET << std::to_string(country->getCitizens()->getGroupSize())
+                    << colours::PURPLE << "\nRefugees: " << colours::RESET << std::to_string(country->getRefugees()->getGroupSize())<<std::endl;
+
                 std::string summary ="Select the type of recruit you wish to have:";
                 std::cout << summary << std::endl;
                 // --- Summary Output ---
@@ -592,14 +655,21 @@ void WarEngine::partitionRecruits()
                 int recruitsPrice = size * prices[typeSelected];
                 std::cout << "Purchase " << size << " " << types[typeSelected] << " with a price of " << recruitsPrice <<" ?[y/n]";
                 std::cin >> confirm;
-                if(confirm == "y" || confirm == "Y") 
+                if (confirm == "y" || confirm == "Y")
                 {
                 // Check if country has enough money and bought recruits don't exceed the recruit limit
-                    if(recruitsPrice <= country->getEconomy() && totalRecruitsSize < totalRecruitsLimit)
+                    if (recruitsPrice <= country->getEconomy() && totalRecruitsSize < totalRecruitsLimit)
                     {
                         totalRecruitsSize += size;
                         country->getRecruits()[typeSelected]->setGroupSize(size);
                         country->setEconomy(country->getEconomy() - recruitsPrice); // setEconomy(currentEconomy - (groupSize * price))
+                        
+                        //just setting the name of the recruit
+                        std::string name;
+                        std::cout << "Give your recruits a name:";
+                        std::cin >>name;
+                        country->getRecruits()[typeSelected]->setName(name);
+                        country->getRecruits()[typeSelected]->setCountry(country);//giving these recruits thier country
 
                         std::cout << "Do you wish to get More recruits? [y/n] :";
                         std::cin >> choice;
@@ -628,7 +698,7 @@ void WarEngine::partitionRecruits()
 
             // Refugees
             country->setRefugees(new Refugee());
-            country->getRefugees()->setGroupSize(country->getPopulation() * 0.1); // Initially 10% refugees at start
+            country->getRefugees()->setGroupSize(int(country->getPopulation() * 0.1)); // Initially 10% refugees at start
             
             // Recruits
             country->setRecruits(std::vector<Recruits*> {new Soldier(), new Pilot(), new Marine(), new Guardian(), new Medic()});
@@ -636,37 +706,61 @@ void WarEngine::partitionRecruits()
             int size = 0;
             int totalRecruitsLimit = country->getPopulation() - country->getRefugees()->getGroupSize();
 
+            //just giving recruits names
+            for (auto r : country->getRecruits())
+            {
+                std::string name;
+                do{
+                    name = randomNames[randomNumGenerator(0,int(randomNames.size()-1))];
+                }while(contains(chosenNames, name));
+                r->setName(name);
+                r->setCountry(country);//giving these recruits thier country
+            }
+
+
             const int s = 100, m=150, p = 200, g=300, med=150; //prices of each recruit type
             std::vector<int> prices{s, p, m, g, med};
 
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 size = randomNumGenerator(1,5);
                 int recruitsPrice = size * prices[i];
-                if(recruitsPrice <= country->getEconomy()*0.8 && totalRecruitsSize < totalRecruitsLimit) // Economy shouldn't get to 0, recruitsPrice <= country->getEconomy()*0.8 to ensure recruitsPrice isn't exactly equal to economy
+
+                // Economy shouldn't get to 0, recruitsPrice <= country->getEconomy()*0.8 to
+                // ensure recruitsPrice isn't exactly equal to economy
+                if (recruitsPrice <= country->getEconomy()*0.8 && totalRecruitsSize < totalRecruitsLimit)
                 {
                     totalRecruitsSize += size;
                     country->getRecruits()[i]->setGroupSize(size);
-                    country->setEconomy(country->getEconomy() - recruitsPrice); // setEconomy(currentEconomy - (groupSize * price))
+
+                    // setEconomy(currentEconomy - (groupSize * price))
+                    country->setEconomy(country->getEconomy() - recruitsPrice);
                 }
             }
+
             // Citizens
-            country->getCitizens()->setGroupSize(country->getPopulation() - totalRecruitsSize - country->getRefugees()->getGroupSize());
-            country->setNotEnlisted(country->getPopulation() - totalRecruitsSize); // Not enlisted people will be equal to population - recruits
+            country->getCitizens()->setGroupSize(
+                    country->getPopulation() - totalRecruitsSize - country->getRefugees()->getGroupSize()
+            );
+
+            // Not enlisted people will be equal to population - recruits
+            country->setNotEnlisted(country->getPopulation() - totalRecruitsSize);
+
+            std::cout<<country<<std::endl;
 
             // --- Summary Output ---
             std::cout<<"======================\n"
-            <<colours::WHITE_BOLD<<country->getName()<<colours::RESET<<" Summary"
-            <<colours::YELLOW<<"\nEconomy: "<<colours::RESET<<std::to_string(country->getEconomy())
-            <<colours::CYAN<<"\nTotal Population: "<<colours::RESET<<std::to_string(country->getPopulation())
-            <<colours::BLUE<<"\nRecruits: "<<colours::RESET<<std::to_string(totalRecruitsSize)
-            <<"\n- Soldiers: "<<colours::RESET<<std::to_string(country->getRecruits()[0]->getGroupSize())
-            <<"\n- Pilots: "<<colours::RESET<<std::to_string(country->getRecruits()[1]->getGroupSize())
-            <<"\n- Marines: "<<colours::RESET<<std::to_string(country->getRecruits()[2]->getGroupSize())
-            <<"\n- Guardians: "<<colours::RESET<<std::to_string(country->getRecruits()[3]->getGroupSize())
-            <<"\n- Medics: "<<colours::RESET<<std::to_string(country->getRecruits()[4]->getGroupSize())
-            <<colours::GREEN<<"\nCitizens: "<<colours::RESET<<std::to_string(country->getCitizens()->getGroupSize())
-            <<colours::PURPLE<<"\nRefugees: "<<colours::RESET<<std::to_string(country->getRefugees()->getGroupSize())<<std::endl;
+                << colours::WHITE_BOLD << country->getName() << colours::RESET << " Summary"
+                << colours::YELLOW << "\nEconomy: " << colours::RESET << std::to_string(country->getEconomy())
+                << colours::CYAN << "\nTotal Population: " << colours::RESET << std::to_string(country->getPopulation())
+                << colours::BLUE << "\nRecruits: " << colours::RESET << std::to_string(totalRecruitsSize)
+                << "\n- Soldiers: " << colours::RESET << std::to_string(country->getRecruits()[0]->getGroupSize())
+                << "\n- Pilots: " << colours::RESET << std::to_string(country->getRecruits()[1]->getGroupSize())
+                << "\n- Marines: " << colours::RESET << std::to_string(country->getRecruits()[2]->getGroupSize())
+                << "\n- Guardians: " << colours::RESET << std::to_string(country->getRecruits()[3]->getGroupSize())
+                << "\n- Medics: " << colours::RESET << std::to_string(country->getRecruits()[4]->getGroupSize())
+                << colours::GREEN << "\nCitizens: " << colours::RESET << std::to_string(country->getCitizens()->getGroupSize())
+                << colours::PURPLE << "\nRefugees: " << colours::RESET << std::to_string(country->getRefugees()->getGroupSize()) << std::endl;
             // --- Summary Output ---
         }
     index++;  
@@ -675,87 +769,161 @@ void WarEngine::partitionRecruits()
 
 void WarEngine::buyAndDistributeWeapons()
 {
-    for(int i = 0; i < 8; i++)
+    std::cout << colours::BLUE_UNDERLINED << "Buy And Transport Weapons" << colours::RESET << std::endl;
+
+    std::cout << colours::BLUE << "Countries are allowed to buy weapons which are then destributed/transported to their various recruits."
+        << colours::RESET << std::endl;
+
+    std::cout << colours::BLUE << "Countries use  an  interface(facade) to  buy a weapon which  transports(strategy) a weapon from the "
+        << colours::RESET << std::endl;
+
+    std::cout << colours::BLUE << "factory(factory) to their recruits" << colours::RESET<<std::endl;
+
+    //Countries use an interface (facade) to buy a weapon which transports(strategy)
+    for (int i = 0; i < 8; i++)
     {
-        ArmoryFacade armoryFacade = countries[i]->getArmoryFacade();
-
-
-        
-        if(human && i == 0)
+        auto* armoryFacade = countries[i]->getArmoryFacade();
+  
+        if (human && i == humanIndex)
         {
             bool desireToPurchaseMore = true;
-            while(desireToPurchaseMore){
-                ListSelectionPrompt selectRecruitsGroup = {"Group 1", "Group 2", "Group 3", "Group 4"};
-                auto userResponse= selectRecruitsGroup.getSelectionIndex("Please select a recruit group to buy weapons for (a/b/c/d): ");
+            while (desireToPurchaseMore)
+            {
+                ListSelectionPrompt selectRecruitsGroup;
+                for(auto r : countries[i]->getRecruits())
+                    selectRecruitsGroup.append(r->getName());
+
+                auto userResponse= selectRecruitsGroup.getSelectionIndex("Please select a recruit group to buy weapons for: ");
 
                 ListSelectionPrompt selectWeapon = {"Nuclear Weapon", "Explosive Weapon", "Melee Weapon", "Ranged Weapon"};
-                auto choice =  selectWeapon.getSelectionIndex("What kind of weapon do you wish to produce?\n") ;// Refactored from WeaponTransport
 
+                // Refactored from WeaponTransport
+                auto choice =  selectWeapon.getSelectionIndex("What kind of weapon do you wish to produce?\n");
 
-                armoryFacade.purchaseWeapon(countries[i]->getRecruits()[userResponse], choice);
+                armoryFacade->purchaseWeapon(countries[i]->getRecruits()[userResponse], choice);
 
-                ListSelectionPrompt desire = {"yes", "no"};
-                int desireChoice = desire.getSelectionIndex("Do you wish to purchase more weapons?");
-                if (desireChoice == 1)
+                std::string inputYN;
+                std::cout<<"Do you wish to purchase more weapons?[y/n]";
+                std::cin >>inputYN;
+                if (inputYN == "N" || inputYN == "n")
                     desireToPurchaseMore = false;
-            }
-            
-        } else {
-            for(auto recruit : countries[i]->getRecruits())
-            {
-                armoryFacade.purchaseWeapon(recruit, randomNumGenerator(0,3));
-            }
+            }     
+        }
+        else
+        {
+            for (auto recruit : countries[i]->getRecruits())
+                armoryFacade->purchaseWeapon(recruit, randomNumGenerator(0,3));
         }
 
+        armoryFacade = nullptr;
     }
+}
 
-
+void addWarFront(int index, Country* c)
+{
+    BattleGround* bt;
+    switch(index)
+    {
+        case 0:
+            bt = new Land();
+            bt->setName(std::string(c->getName())+"n "+" Land");
+            c->addWarFront(bt);
+            break;
+        case 1:
+            bt = new Sea();
+            bt->setName(std::string(c->getName())+"n "+" Sea");
+            c->addWarFront(bt);
+            break;
+        case 2:
+            bt = new Air();
+            bt->setName(std::string(c->getName())+"n "+" Air");
+            c->addWarFront(bt);
+            break;
+        case 3:
+            bt = new Space();
+            bt->setName(std::string(c->getName())+"n "+" Space");
+            c->addWarFront(bt);
+            break;
+        default:
+            std::cout<<"warFront does not exist"<<std::endl;
+    }
 }
 
 void WarEngine::setWarTheatres()
 {
-    std::string theatreTypes[] = {"Land", "Sea", "Air", "Space"};
+    std::cout << colours::BLUE_UNDERLINED << "SET WAR THEATRES && TRAPS" << colours::RESET << std::endl;
 
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dist(0, 3);
+    std::cout << colours::BLUE << "Countries set up their war theatres and traps appear"
+        << colours::RESET << std::endl;
 
-    int oppotunity=4;
+    std::string theatreTypes[] = { "Land", "Sea", "Air", "Space" };
+    std::string prepositions[] = { "on", "on", "in the", "in" };
+
+    int oppotunity = 4;
     int random;
 
-    for(int x=0; x<8; x++)
+    int i = 0;
+    for (auto c : countries)
     {
-        while(oppotunity>0)
+        if (human && i == humanIndex)
         {
-            random= dist(gen);
-            switch(random){
-                case 0:
-                    countries[x]->addWarFront(new Land());
-                    break;
-                case 1:
-                    countries[x]->addWarFront(new Sea());
-                case 2:
-                    countries[x]->addWarFront(new Air());
-                case 3:
-                    countries[x]->addWarFront(new Space());
-            }
-            oppotunity--;
-        }
-        oppotunity=4;
+            int j = 0;
+            for (auto & t : theatreTypes)
+            {       
+                std::string confirm;
+                std::cout << "Would you like to form a battleground " << prepositions[j] << " " << t << "[y/n]";
+                std::cin >> confirm;
+                if (confirm == "y" || confirm == "Y")
+                    addWarFront(j,c);
 
-        std::cout<<countries[x]->getName()<<" war fronts: "<<std::endl;
-        std::cout<<countries[x]->allWarFronts()<<std::endl<<std::endl;
+                j++;
+            }
+        }
+        else
+        {
+            while (oppotunity>0)
+            {
+                if (randomNumGenerator(0,1) == 1)
+                    addWarFront(randomNumGenerator(0,3),c);             
+                oppotunity--;
+            }
+            oppotunity = 4;
+        }
+        std::cout << c->getName() << " war fronts: " << std::endl;
+        std::cout << c->allWarFronts() << std::endl << std::endl;
+        i++;
     }
+
+    setTraps();
 }
 
 void WarEngine::setTraps()
 {
-    
+    std::cout<<"bandits come through the night and sneakily set up traps in various warzones"<<std::endl;
+    for(auto c : countries)
+    {
+        for(auto w : c->getWarTheatres())
+        {
+            if(w->getLocation() == "Land")
+                w->add(new Land());
+            if(w->getLocation() == "Air")
+                w->add(new Air());
+            if(w->getLocation() == "Sea")
+                w->add(new Sea());
+            if(w->getLocation() == "Space")
+                w->add(new Sea());
+        }
+    }
+}
+
+void WarEngine::addToEngineReport(std::string line)
+{
+    engineLog += line + '\n';
 }
 
 void WarEngine::printEngineReport()
 {
-    
+    std::cout << engineLog << std::endl;
 }
 
 void WarEngine::makeDecision(Country* c)
@@ -781,9 +949,6 @@ void WarEngine::makeDecision(Country* c)
         case 4:
             buyWeaponsAndAllocateToRecruits(c);
             break;
-        case 5:
-            buyAndSetTraps(c);
-            break;
         case 6:
             surrender(c);
             break;
@@ -793,8 +958,30 @@ void WarEngine::makeDecision(Country* c)
 }
 
 void WarEngine::buyWeaponsAndAllocateToRecruits(Country* c)
-{
+{ 
+    std::cout<<colours::PURPLE_BRIGHT<<c->getName()<<" wants to buy weapons and sem them off to his recruits!"<<colours::RESET<<std::endl;
+    auto* armoryFacade = c->getArmoryFacade();
+  
+    if(c == countries[humanIndex])
+    {
+        ListSelectionPrompt selectRecruitsGroup;
+        for(auto r : c->getRecruits())
+        {
+            selectRecruitsGroup.append(r->getName());
+        }
+        auto userResponse= selectRecruitsGroup.getSelectionIndex("Please select a recruit group to buy weapons for: ");
 
+        ListSelectionPrompt selectWeapon = {"Nuclear Weapon", "Explosive Weapon", "Melee Weapon", "Ranged Weapon"};
+        auto choice =  selectWeapon.getSelectionIndex("What kind of weapon do you wish to produce?\n") ;// Refactored from WeaponTransport
+
+        armoryFacade->purchaseWeapon(c->getRecruits()[userResponse], choice);           
+    } else {
+        int size = c->getRecruits().size();
+        int index = randomNumGenerator(0, size-1);
+        int choice = randomNumGenerator(0,3);
+        armoryFacade->purchaseWeapon(c->getRecruits()[index], choice);    
+    }
+    armoryFacade = nullptr; 
 }
 
 void WarEngine::increaseAllies(Country* c)
@@ -818,9 +1005,7 @@ void WarEngine::increaseAllies(Country* c)
         auto other = pair.getOther(c);
         auto it = std::find(std::begin(eligible), std::end(eligible), other);
         if (it != std::end(eligible))
-        {
             eligible.erase(it);
-        }
     }
 
     for (auto country : eligible)
@@ -858,39 +1043,68 @@ void WarEngine::increaseAllies(Country* c)
 
 void WarEngine::sendRecruitAndAttack(Country* c)
 {
-    
-}
-
-void WarEngine::sendRecruit(Country* c)
-{
     int cost = 50; //we could change this later on.
-    ListSelectionPrompt prompt1;
-    for(auto r : c->getRecruits()){
-        prompt1.append(r->getName());
+    std::vector<Country*> enemies;
+    for(auto r : battleRegistry.getRecords(c)) //find the enemies
+    {
+        enemies.emplace_back(r.getOther(c));
     }
+
+    std::vector<WarTheatre*> warTheatres;
+    
+    for(auto e : enemies){ //get all enemy war theatres
+        for(auto w : e->getWarTheatres())
+        {
+            warTheatres.emplace_back(w);
+        }
+    }
+
+    ListSelectionPrompt prompt1;
+    for (auto r : c->getRecruits())
+        prompt1.append(r->getName());
     int out1 = prompt1.getSelectionIndex("Which recruits do you wish to send out?");
+
     ListSelectionPrompt prompt2;
     for(auto w : c->getWarTheatres()){
         prompt2.append(w->getLocation());
     }
     int out2 = prompt2.getSelectionIndex("Which war theatre do you wish to send your recruits?");
-    ((BattleGround*)c->getWarTheatres()[out2])->geRecruitContext()->setState(c->getRecruits()[out1]);
+
+    ((BattleGround*)warTheatres[out2])->getAttackers()->setState(c->getRecruits()[out1]);
 }
 
-void WarEngine::buyAndSetTraps(Country* c)
+void WarEngine::sendRecruit(Country* c)
 {
-    
+    //using the state design pattern to change the state(recruit) at a war theatre
+
+    int cost = 50; //we could change this later on.
+    ListSelectionPrompt prompt1;
+    for (auto r : c->getRecruits())
+        prompt1.append(r->getName());
+    int out1 = prompt1.getSelectionIndex("Which recruits do you wish to send out?");
+
+    ListSelectionPrompt prompt2;
+    for (auto w : c->getWarTheatres())
+        prompt2.append(w->getLocation());
+    int out2 = prompt2.getSelectionIndex("Which war theatre do you wish to send your recruits?");
+
+    ((BattleGround*)c->getWarTheatres()[out2])->getDefenders()->setState(c->getRecruits()[out1]);
 }
+
+
 
 void WarEngine::surrender(Country* c)
 {
     ListSelectionPrompt prompt;
     std::vector<UnorderedPair<Country*>> records = battleRegistry.getRecords(c);
     std::vector<Country*> enemies;
-    for(auto r : records){
+
+    for (auto r : records)
+    {
         enemies.emplace_back(r.getOther(c));
         prompt.append(r.getOther(c)->getName());
     }
+
     int index = prompt.getSelectionIndex("Which country do you wish to surrender to?");
     conquers(enemies[index],c);
 }
@@ -902,30 +1116,38 @@ void WarEngine::conquers(Country* conqueror,Country* conquered){
     conquered->setPower(0);
     conqueror->setPopulation(conqueror->getPopulation()+conquered->getPopulation());
     conquered->setPopulation(0);
-    conqueror->getRecruits().insert(conqueror->getRecruits().end(), conquered->getRecruits().begin(), conquered->getRecruits().end());
+    conqueror->getRecruits().insert(
+            conqueror->getRecruits().end(),
+            conquered->getRecruits().begin(),
+            conquered->getRecruits().end()
+    );
+
     for(auto r : conquered->getRecruits()){
         r->setCountry(conqueror);
     }
-    conquered->getRecruits().clear();
+
     int populationSize;
-    conqueror->getCitizens()->setGroupSize(conqueror->getCitizens()->getGroupSize() + conquered->getCitizens()->getGroupSize());
+    conquered->getRecruits().clear();
+    conqueror->getCitizens()->setGroupSize(conqueror->getCitizens()->getGroupSize()
+        + conquered->getCitizens()->getGroupSize());
+
     conquered->getCitizens()->setGroupSize(0);
-    conqueror->getRefugees()->setGroupSize(conqueror->getRefugees()->getGroupSize() + conquered->getRefugees()->getGroupSize());
+    conqueror->getRefugees()->setGroupSize(conqueror->getRefugees()->getGroupSize()
+        + conquered->getRefugees()->getGroupSize());
+
     conquered->getRefugees()->setGroupSize(0);
-    // WarTheatre** warTheatres;
 }
 
 void WarEngine::printWarReport()
 {
-    for(auto r : warLog){
-        std::cout<<r<<std::endl;
-    }
+    for (auto& entry : warLog)
+        std::cout << entry << std::endl;
 }
 
 
 WarEngine::WarEngine()
 {
-    
+
 }
 
 Iterator* WarEngine::createCountryIterator(Country** countryList)
@@ -934,16 +1156,13 @@ Iterator* WarEngine::createCountryIterator(Country** countryList)
     return new CountryIterator(countryList);
 }
 
+
 int WarEngine::randomNumGenerator(int min, int max)
 {
-  std::random_device rd;
-  std::mt19937 gen(rd());
-  std::uniform_int_distribution<> dist(min, max);
-  return dist(gen);
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dist(min, max);
+    return dist(gen);
 }
 
-// std::vector<std::string> WarEngine::warLog()
-// {
-//     // TODO: Implement WarEngine::warLog()
-//     return {};
-// }
+

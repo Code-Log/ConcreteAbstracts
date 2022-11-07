@@ -11,12 +11,13 @@ private:
     AllyRegistry allyRegistry;
     BattleRegistry battleRegistry;
     int test;//for testing purposes
-    bool disputeActive;
+    bool disputeActive = true;
     bool human;
     int humanIndex = -1; //-1 means only AI countries.
     //Otherwise this is the index of the human operated country in the countries array
     int mainAiIndex = -1; // The leading role AI's index. 
     std::vector<std::string> warLog;
+    std::string engineLog;
 protected:
     WarEngine();
     ~WarEngine();
@@ -118,10 +119,16 @@ public:
      * @brief
      *
      */
-    void setTraps();
+    void setTraps(); // Deprecated
+
+    /**!
+     * @brief Extension of the printEngineReport() function.
+     * @brief Add a line to the report
+     */
+    void addToEngineReport(std::string line);
 
     /**
-     * @brief
+     * @brief print the full engine Report
      *
      */
     void printEngineReport();
@@ -153,14 +160,9 @@ public:
     void buyWeaponsAndAllocateToRecruits(Country* c);
 
     /**
-     * @brief
-     *
-     */
-    void buyAndSetTraps(Country* c);
-
-    /**
-     * @brief
-     *
+     * @brief Country c resigns and surrenders to enemy country
+     * 
+     * @param c 
      */
     void surrender(Country* c);
 
@@ -205,15 +207,9 @@ public:
      * @return int
      */
     int randomNumGenerator(int min, int max);
-
-    /**
-     * @brief initialises countries attributes to their initial values
-     * 
-     */
-    void initCountryAttributes();
+    // void addToEngineReport(std::string line);
 
     void warLoop();
-    void EngineSimulation();
 
     void setTest(int data); //for testing purposes.
     int getTest() const;//for testing purposes.
