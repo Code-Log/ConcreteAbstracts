@@ -79,6 +79,6 @@ void WeaponTransport::purchase(Recruits *recruits, int purchaseType)
     // int randomCountryIndex = dist(gen);
     // std::cout<<countries[randomCountryIndex].first->getName();
     // std::cout<<"Transporting"<<weaponName<<"weapon to enemy country: "<<countries[randomCountryIndex].getOther(recruits->getCountry())->getName()<<std::endl;
-    std::cout<<"Transporting "<<weaponName<<" weapon to "<<recruits->getName()<<" from their country: "<<recruits->getCountry()->getName()<<std::endl;
+    std::cout<<colours::YELLOW<<"Transporting "<<colours::RESET<<weaponName<<" weapon to "<<colours::BLUE<<recruits->getName()<<colours::RESET<<" from their country: "<<colours::CYAN<<recruits->getCountry()->getName()<<colours::RESET<<std::endl;
     recruits->addWeapon(weapon);
 }

@@ -404,7 +404,7 @@ std::string Country:: allWarFronts()
 {
     std::string out;
     for(auto w : wwarTheatres){
-        out += w->getName() + "\n";
+        out += "- " + w->getName() + "\n";
     }
     
 

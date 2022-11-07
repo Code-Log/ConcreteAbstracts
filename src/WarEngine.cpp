@@ -241,7 +241,8 @@ void WarEngine::selectCountry()
 
 void WarEngine::destributeRecruiteToWarTheatres()
 {
-    std::cout << colours::BLUE_UNDERLINED << "Destribute Recruite To War Theatres" << colours::RESET << std::endl;
+    std::cout << "_______________________________________________________________________" << std::endl;
+    std::cout << colours::BLUE_UNDERLINED << "Distribute Recruits To War Theatres" << colours::RESET << std::endl;
     std::cout << colours::BLUE << "Using the state design pattern to set recruits at a battleground" <<colours::RESET<<std::endl;
 
     int i = 0;
@@ -485,7 +486,7 @@ void WarEngine::setAllies()
             {
                 break;
             }
-            
+
             if (userAllyCount < 4)
             {
                 std::cout << "Would you like to make more allies? [y/n] :";
@@ -805,6 +806,7 @@ void WarEngine::partitionRecruits()
 
 void WarEngine::buyAndDistributeWeapons()
 {
+    std::cout << "_______________________________________________________________________" << std::endl;
     std::cout << colours::BLUE_UNDERLINED << "Buy And Transport Weapons" << colours::RESET << std::endl;
 
     std::cout << colours::BLUE << "Countries are allowed to buy weapons which are then destributed/transported to their various recruits."
@@ -813,7 +815,7 @@ void WarEngine::buyAndDistributeWeapons()
     std::cout << colours::BLUE << "Countries use  an  interface(facade) to  buy a weapon which  transports(strategy) a weapon from the "
         << colours::RESET << std::endl;
 
-    std::cout << colours::BLUE << "factory(factory) to their recruits" << colours::RESET<<std::endl;
+    std::cout << colours::BLUE << "factory(factory) to their recruits\n" << colours::RESET<<std::endl;
 
     //Countries use an interface (facade) to buy a weapon which transports(strategy)
     for (int i = 0; i < 8; i++)
@@ -862,22 +864,22 @@ void addWarFront(int index, Country* c)
     {
         case 0:
             bt = new Land();
-            bt->setName(std::string(c->getName())+"n "+" Land");
+            bt->setName("Land");
             c->addWarFront(bt);
             break;
         case 1:
             bt = new Sea();
-            bt->setName(std::string(c->getName())+"n "+" Sea");
+            bt->setName("Sea");
             c->addWarFront(bt);
             break;
         case 2:
             bt = new Air();
-            bt->setName(std::string(c->getName())+"n "+" Air");
+            bt->setName("Air");
             c->addWarFront(bt);
             break;
         case 3:
             bt = new Space();
-            bt->setName(std::string(c->getName())+"n "+" Space");
+            bt->setName("Space");
             c->addWarFront(bt);
             break;
         default:
@@ -887,10 +889,11 @@ void addWarFront(int index, Country* c)
 
 void WarEngine::setWarTheatres()
 {
+    std::cout << "_______________________________________________________________________" << std::endl;
     std::cout << colours::BLUE_UNDERLINED << "SET WAR THEATRES && TRAPS" << colours::RESET << std::endl;
 
     std::cout << colours::BLUE << "Countries set up their war theatres and traps appear"
-        << colours::RESET << std::endl;
+        << colours::RESET << std::endl << std::endl;
 
     std::string theatreTypes[] = { "Land", "Sea", "Air", "Space" };
     std::string prepositions[] = { "on", "on", "in the", "in" };
@@ -925,11 +928,11 @@ void WarEngine::setWarTheatres()
             }
             oppotunity = 4;
         }
-        std::cout << c->getName() << " war fronts: " << std::endl;
-        std::cout << c->allWarFronts() << std::endl << std::endl;
+        std::cout << colours::CYAN << c->getName() << colours::RESET << colours::RED << " war fronts: " << colours::RESET << std::endl;
+        std::cout << c->allWarFronts();
         i++;
+        std::cout << colours::RED_UNDERLINED << "                " << colours::RESET << std::endl;
     }
-
     setTraps();
 }
 
