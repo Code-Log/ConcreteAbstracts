@@ -157,14 +157,9 @@ public:
     void buyWeaponsAndAllocateToRecruits(Country* c);
 
     /**
-     * @brief
-     *
-     */
-    void buyAndSetTraps(Country* c);
-
-    /**
-     * @brief
-     *
+     * @brief Country c resigns and surrenders to enemy country
+     * 
+     * @param c 
      */
     void surrender(Country* c);
 
@@ -202,10 +197,9 @@ public:
      * @return int
      */
     int randomNumGenerator(int min, int max);
-
+    // void addToEngineReport(std::string line);
 
     void warLoop();
-    void EngineSimulation();
 
     void setTest(int data); //for testing purposes.
     int getTest() const;//for testing purposes.

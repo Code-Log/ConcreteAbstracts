@@ -1,13 +1,16 @@
 #include <BattleGround.h>
 
+
 BattleGround::BattleGround(std::string location)
     : WarTheatre(std::move(location))
 {
-    recruitContext = new RecruiterContext();
+    attackers = new RecruiterContext();
+    defenders = new RecruiterContext();
 }
 
 BattleGround::~BattleGround(){
-    delete recruitContext;
+    delete attackers;
+    delete defenders;
 }
 
 int BattleGround::damageTotal()
@@ -25,6 +28,19 @@ void BattleGround::add(WarTheatre* trap)
     //nothing to add
 }
 
-RecruiterContext* BattleGround::geRecruitContext(){
-    return recruitContext;
+RecruiterContext* BattleGround::getDefenders()
+{
+    return defenders;
+}
+void BattleGround::setDefenders(RecruiterContext* defenders)
+{
+
+}
+RecruiterContext* BattleGround::getAttackers()
+{
+    return attackers;
+}
+void BattleGround::setAttackers(RecruiterContext* attackers)
+{
+
 }

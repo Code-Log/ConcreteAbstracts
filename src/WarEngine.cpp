@@ -162,7 +162,6 @@ void WarEngine::phase2()
     buyAndDistributeWeapons(); //working
     setWarTheatres(); //working
     destributeRecruiteToWarTheatres();
-    // setTraps();
 }
 
 void WarEngine::phase3()//warLoop
@@ -181,9 +180,6 @@ void WarEngine::warLoop () {
         }
 	    printEngineReport();  
     }
-}
-void WarEngine::EngineSimulation(){
-    
 }
 
 void WarEngine::selectCountry()
@@ -238,6 +234,9 @@ void WarEngine::selectCountry()
 
 void WarEngine::destributeRecruiteToWarTheatres()
 {
+std::cout << colours::BLUE_UNDERLINED << "Destribute Recruite To War Theatres" << colours::RESET << std::endl;
+    std::cout << colours::BLUE << "" <<
+        colours::RESET<<std::endl;
 
 }
 void WarEngine::selectPoliticalRegime()
@@ -843,6 +842,11 @@ void addWarFront(int index, Country* c)
 
 void WarEngine::setWarTheatres()
 {
+    std::cout << colours::BLUE_UNDERLINED << "SET WAR THEATRES && TRAPS" << colours::RESET << std::endl;
+
+    std::cout << colours::BLUE << "Countries set up their war theatres and traps appear"
+        << colours::RESET << std::endl;
+
     std::string theatreTypes[] = { "Land", "Sea", "Air", "Space" };
     std::string prepositions[] = { "on", "on", "in the", "in" };
 
@@ -880,11 +884,27 @@ void WarEngine::setWarTheatres()
         std::cout << c->allWarFronts() << std::endl << std::endl;
         i++;
     }
+
+    setTraps();
 }
 
 void WarEngine::setTraps()
 {
-    //no longer using this.
+    std::cout<<"bandits come through the night and sneakily set up traps in various warzones"<<std::endl;
+    for(auto c : countries)
+    {
+        for(auto w : c->getWarTheatres())
+        {
+            if(w->getLocation() == "Land")
+                w->add(new Land());
+            if(w->getLocation() == "Air")
+                w->add(new Air());
+            if(w->getLocation() == "Sea")
+                w->add(new Sea());
+            if(w->getLocation() == "Space")
+                w->add(new Sea());
+        }
+    }
 }
 
 void WarEngine::addToEngineReport(std::string line)
@@ -1014,19 +1034,34 @@ void WarEngine::increaseAllies(Country* c)
 
 void WarEngine::sendRecruitAndAttack(Country* c)
 {
-    
     int cost = 50; //we could change this later on.
-    ListSelectionPrompt prompt1;
-    for(auto r : c->getRecruits()){
-        prompt1.append(r->getName());
+    std::vector<Country*> enemies;
+    for(auto r : battleRegistry.getRecords(c)) //find the enemies
+    {
+        enemies.emplace_back(r.getOther(c));
     }
+
+    std::vector<WarTheatre*> warTheatres;
+    
+    for(auto e : enemies){ //get all enemy war theatres
+        for(auto w : e->getWarTheatres())
+        {
+            warTheatres.emplace_back(w);
+        }
+    }
+
+    ListSelectionPrompt prompt1;
+    for (auto r : c->getRecruits())
+        prompt1.append(r->getName());
     int out1 = prompt1.getSelectionIndex("Which recruits do you wish to send out?");
+
     ListSelectionPrompt prompt2;
     for(auto w : c->getWarTheatres()){
         prompt2.append(w->getLocation());
     }
     int out2 = prompt2.getSelectionIndex("Which war theatre do you wish to send your recruits?");
-    ((BattleGround*)c->getWarTheatres()[out2])->geRecruitContext()->setState(c->getRecruits()[out1]);
+
+    ((BattleGround*)warTheatres[out2])->getAttackers()->setState(c->getRecruits()[out1]);
 }
 
 void WarEngine::sendRecruit(Country* c)
@@ -1037,20 +1072,17 @@ void WarEngine::sendRecruit(Country* c)
     ListSelectionPrompt prompt1;
     for (auto r : c->getRecruits())
         prompt1.append(r->getName());
-
     int out1 = prompt1.getSelectionIndex("Which recruits do you wish to send out?");
+
     ListSelectionPrompt prompt2;
     for (auto w : c->getWarTheatres())
         prompt2.append(w->getLocation());
-
     int out2 = prompt2.getSelectionIndex("Which war theatre do you wish to send your recruits?");
-    ((BattleGround*)c->getWarTheatres()[out2])->geRecruitContext()->setState(c->getRecruits()[out1]);
+
+    ((BattleGround*)c->getWarTheatres()[out2])->getDefenders()->setState(c->getRecruits()[out1]);
 }
 
-void WarEngine::buyAndSetTraps(Country* c)
-{
-    
-}
+
 
 void WarEngine::surrender(Country* c)
 {

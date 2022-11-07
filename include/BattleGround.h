@@ -59,13 +59,17 @@ public:
     int penalty(Recruits* recruits) override = 0; //added
 
     
-    RecruiterContext* geRecruitContext();
+    RecruiterContext* getDefenders();
+    void setDefenders(RecruiterContext* defenders);
+    RecruiterContext* getAttackers();
+    void setAttackers(RecruiterContext* attackers);
+    
 
 protected:
 
 private:
-
-    RecruiterContext* recruitContext;
+    RecruiterContext* defenders;
+    RecruiterContext* attackers;
     
 };
 

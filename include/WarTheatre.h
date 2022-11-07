@@ -13,6 +13,7 @@
 
 #include <string>
 #include "Recruits.h"
+#include "RecruiterContext.h"
 
 class WarTheatre
 {
