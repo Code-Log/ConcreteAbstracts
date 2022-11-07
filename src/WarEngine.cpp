@@ -177,7 +177,11 @@ void WarEngine::EngineSimulation(){
 
 void WarEngine::selectCountry()
 {
-    std::string countryNames [] = {"South Africa", "United States", "Germany", "Russia", "China", "Asgard", "Westeros", "Australia"};
+    std::cout<<colours::BLUE_UNDERLINED<<"COUNTRY SELECTION"<<colours::RESET<<std::endl;
+    std::cout<<colours::BLUE<<"Making allies stores it in the Registry which uses a Template Method Pattern"<<colours::RESET<<std::endl;
+    std::string countryNames[] = {"South Africa", "United States", "Germany", "Russia", "China", "Asgard", "Westeros", "Australia"};
+    
+
     ListSelectionPrompt countryIndex = {"South Africa", "United States", "Germany", "Russia", "China", "Asgard", "Westeros", "Australia"};
     
     if(human) // If human present
@@ -204,6 +208,15 @@ void WarEngine::selectCountry()
         {
             countries[i] = new Country(countryNames[i]);
         }
+    }
+
+    Iterator* it = createCountryIterator(countries);
+
+    while(it->hasNext())
+    {
+        std::string name = it->current()->getName();
+        std::cout<<name<<std::endl;
+        it->next();
     }
     std::cout<<"_______________________________________________________________________"<<std::endl;
 }
@@ -913,6 +926,12 @@ void WarEngine::printWarReport()
 WarEngine::WarEngine()
 {
     
+}
+
+Iterator* WarEngine::createCountryIterator(Country** countryList)
+{
+
+    return new CountryIterator(countryList);
 }
 
 int WarEngine::randomNumGenerator(int min, int max)

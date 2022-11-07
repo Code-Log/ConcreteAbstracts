@@ -101,7 +101,7 @@ add_executable(simulator
                 src/Tanks.cpp
                 src/VesselWeaponCreator.cpp
                 src/WarEngine.cpp
-        include/RecruitIterator.h include/Iterator.h src/RecruitIterator.cpp
+        include/CountryIterator.h include/Iterator.h src/CountryIterator.cpp
         include/Recruits.h include/util/ListSelectionPrompt.h src/ListSelectionPrompt.cpp 
                 include/util/enums.h
                 include/util/colours.h
