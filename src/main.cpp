@@ -13,14 +13,15 @@ int main() {
     //         std::cout<<c->getName()<<std::endl;
     // }
     // WarEngine::getInstanceWarEngine().selectPoliticalRegime(false);
-    WarEngine::getInstanceWarEngine().setHuman(true);
+    WarEngine::getInstanceWarEngine().setHuman(false);
     WarEngine::getInstanceWarEngine().prePhase1();
     WarEngine::getInstanceWarEngine().phase1();
     WarEngine::getInstanceWarEngine().setAllies();
     WarEngine::getInstanceWarEngine().partitionRecruits();
     WarEngine::getInstanceWarEngine().buyAndDistributeWeapons();
+    WarEngine::getInstanceWarEngine().setWarTheatres();
     WarEngine::getInstanceWarEngine().destributeRecruiteToWarTheatres();
-    // WarEngine::getInstanceWarEngine().setWarTheatres();
+    
     // WarEngine::getInstanceWarEngine().phase3();
     // WarEngine::getInstanceWarEngine().setAllies().buyAndDistributeWeapons();
 

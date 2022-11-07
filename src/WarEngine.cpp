@@ -236,26 +236,41 @@ void WarEngine::selectCountry()
 void WarEngine::destributeRecruiteToWarTheatres()
 {
     std::cout << colours::BLUE_UNDERLINED << "Destribute Recruite To War Theatres" << colours::RESET << std::endl;
-    std::cout << colours::BLUE << "" <<colours::RESET<<std::endl;
+    std::cout << colours::BLUE << "Using the state design pattern to set recruits at a battleground" <<colours::RESET<<std::endl;
 
-    //using the state design pattern to change the state(recruit) at a war theatre
+    int i = 0;
     for(auto c : countries){
         int cost = 50; //we could change this later on.
-        std::vector<Country*> countriesRecruits = c->getRecruits();
-        do{
-            
-            ListSelectionPrompt prompt1;
-            for (auto r : c->getRecruits())
-                prompt1.append(r->getName());
-            int out1 = prompt1.getSelectionIndex("Which recruits do you wish to send out?");
+        std::vector<Recruits*> availableRecruits = c->getRecruits();
+        std::vector<WarTheatre*> availableWarTheatres = c->getWarTheatres();
+        if(i == humanIndex)
+        {
+            do{
+                ListSelectionPrompt prompt1;
+                for (auto r : availableRecruits)
+                    prompt1.append(r->getName());
+                int out1 = prompt1.getSelectionIndex("Which recruits do you wish to send out?");
 
-            ListSelectionPrompt prompt2;
-            for (auto w : c->getWarTheatres())
-                prompt2.append(w->getLocation());
-            int out2 = prompt2.getSelectionIndex("Which war theatre do you wish to send your recruits?");
+                ListSelectionPrompt prompt2;
+                for (auto w : availableWarTheatres)
+                    prompt2.append(w->getName());
+                int out2 = prompt2.getSelectionIndex("Which war theatre do you wish to send your recruits?");
 
-            ((BattleGround*)c->getWarTheatres()[out2])->getDefenders()->setState(c->getRecruits()[out1]);
-        }while(countriesRecruits.size() != nullptr);
+                ((BattleGround*)availableWarTheatres[out2])->getDefenders()->setState(availableRecruits[out1]);
+                availableRecruits.erase(availableRecruits.begin() + out1);
+                availableWarTheatres.erase(availableWarTheatres.begin() + out2);
+                // remove(availableRecruits,availableRecruits[out1]);
+                // remove(availableWarTheatres,availableWarTheatres[out2]);
+            }while(availableRecruits.size() > 0 && availableWarTheatres.size() > 0);
+        }
+        else{
+            int out1 = randomNumGenerator(0,availableRecruits.size()-1);
+            int out2 = randomNumGenerator(0,availableWarTheatres.size()-1);
+            ((BattleGround*)availableWarTheatres[out2])->getDefenders()->setState(availableRecruits[out1]);
+                availableRecruits.erase(availableRecruits.begin() + out1);
+                availableWarTheatres.erase(availableWarTheatres.begin() + out2);
+        }
+        i++;
     }
 }
 void WarEngine::selectPoliticalRegime()
