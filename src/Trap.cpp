@@ -17,6 +17,7 @@ WarTheatre* Trap::getTrap()
 Trap::~Trap()
 {
     delete trap;
+    trap = nullptr;
 }
 
 void Trap::add(WarTheatre* trap)

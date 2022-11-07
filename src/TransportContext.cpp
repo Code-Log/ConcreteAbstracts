@@ -17,4 +17,5 @@ void TransportContext::setStrategy(Transport* newStrategy)
 
 TransportContext::~TransportContext(){
     delete strategy;
+    strategy = nullptr;
 }

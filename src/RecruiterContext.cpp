@@ -22,4 +22,5 @@ Recruits* RecruiterContext::getState()
 
 RecruiterContext::~RecruiterContext(){
     delete state;
+    state = nullptr;
 }

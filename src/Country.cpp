@@ -520,7 +520,7 @@ void Country::removeFront(BattleGround* battleGround)
             break;
         }       
     }
-    delete armoryFacade;
+ 
 
   
   
@@ -579,14 +579,26 @@ void Country::setRecruits(std::vector<Recruits*> recruits){
 
 Country::~Country()
 {
-    for(auto w : wwarTheatres){
-        delete w;
+    for(auto w : wwarTheatres)
+    {
+        if(w != nullptr)
+        {
+            delete w;
+            w = nullptr;
+        }        
     }
-    // wwarTheatres.clear();
-    // for(auto r : recruits){
-    //     delete r;
-    // }
-    // recruits.clear();
+    wwarTheatres.clear();
+    for(auto r : recruits)
+    {
+        if(r != nullptr)
+        {
+            delete r;
+            r = nullptr;
+        }      
+    }
+    // delete armoryFacade;
+    // armoryFacade = nullptr;
+    recruits.clear();
  
     // for(int x=0; x<4; x++)
     // {

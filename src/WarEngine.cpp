@@ -79,6 +79,7 @@ WarEngine::~WarEngine()
 {
     for(int i = 0;i<8;i++){
         delete countries[i];
+        countries[i] = nullptr;
     }
 }
 
@@ -173,19 +174,16 @@ void WarEngine::phase3()//warLoop
     warLoop(); 
 
 }
-void WarEngine::warLoop () {
-    
+void WarEngine::warLoop () { 
     while (disputeActive) {
         Iterator* countryIt = createCountryIterator(countries);
         while(countryIt->hasNext())
-        {
+        {   
+            std::cout<<colours::BLUE_BRIGHT<<countryIt->current()<<"'s turn"<<std::endl;
             makeDecision(countryIt->current()); 
         }
 	    printEngineReport();  
     }
-
-
-
 }
 
 void WarEngine::selectCountry()
@@ -208,8 +206,8 @@ void WarEngine::selectCountry()
 
     for (int i = 0; i < 8; i++)
         countries[i] = prototype->cloneCountry();
-
     delete prototype;
+    prototype = nullptr;
     if (human) // If human present
     {        
         std::cout << "__________________________________________________________________" << std::endl;

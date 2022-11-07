@@ -10,7 +10,9 @@ BattleGround::BattleGround(std::string location)
 
 BattleGround::~BattleGround(){
     delete attackers;
+    attackers = nullptr;
     delete defenders;
+    defenders = nullptr;
 }
 
 int BattleGround::damageTotal()
