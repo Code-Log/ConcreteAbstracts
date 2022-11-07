@@ -20,6 +20,7 @@ public:
      * 
      */
     Soldier();
+    ~Soldier() = default;
 
 protected:
 

@@ -13,6 +13,7 @@
 
 #include <string>
 #include "Recruits.h"
+#include "RecruiterContext.h"
 
 class WarTheatre
 {
@@ -79,12 +80,14 @@ public:
      * @return int
      */
     virtual int penalty(Recruits* recruits) = 0;
-
+    std::string getName();
+    void setName(std::string name);
 protected:
-
+    std::string name;
 private:
     int damage;
-    std::string location;
+    std::string location; //the type Land Air, Sea,Space
+    // enum location {Land,Air,Sea,Space}
 };
 
 #endif

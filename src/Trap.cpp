@@ -17,6 +17,7 @@ WarTheatre* Trap::getTrap()
 Trap::~Trap()
 {
     delete trap;
+    trap = nullptr;
 }
 
 void Trap::add(WarTheatre* trap)
@@ -98,4 +99,8 @@ int Trap::getLifespan() const {
 
 void Trap::setLifespan(int lifespan) {
     Trap::lifespan = lifespan;
+}
+
+enums::TrapType Trap::getType(){
+    return type;
 }

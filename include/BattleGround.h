@@ -12,6 +12,7 @@
 #define BATTLEGROUNDS_H
 
 #include <WarTheatre.h>
+#include <RecruiterContext.h>
 
 class BattleGround: public WarTheatre
 {
@@ -57,9 +58,19 @@ public:
      */
     int penalty(Recruits* recruits) override = 0; //added
 
+    
+    RecruiterContext* getDefenders();
+    void setDefenders(RecruiterContext* defenders);
+    RecruiterContext* getAttackers();
+    void setAttackers(RecruiterContext* attackers);
+    
+
 protected:
 
 private:
+    RecruiterContext* defenders;
+    RecruiterContext* attackers;
+    
 };
 
 

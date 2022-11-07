@@ -33,7 +33,8 @@ public:
      * 
      * @param recruits 
      */
-    void purchase(Recruits* recruits) override ;
+    void purchase(Recruits *recruits, int purchaseType) override ;
+    ~AttackVessel() = default;
 
 protected:
 

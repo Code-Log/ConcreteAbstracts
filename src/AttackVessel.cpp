@@ -10,7 +10,7 @@ AttackVessel::AttackVessel()
     factory[3] = new SpacecraftCreator();
 }
 
-void AttackVessel::purchase(Recruits* recruits)
+void AttackVessel::purchase(Recruits *recruits, int purchaseType)
 {
 
    std::string question =  std::string("What kind of Vessel do you wish to produce?\n")

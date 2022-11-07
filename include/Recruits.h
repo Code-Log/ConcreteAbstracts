@@ -102,7 +102,8 @@ public:
      *
      */
     void setMilitaryType(std::string type);
-
+    void setName(std::string name);
+    std::string getName();
 protected:
 
 private:
@@ -112,6 +113,7 @@ private:
     std::vector<AttackWeapon*> armory;
     std::vector<VesselWeapon*> vehicles;
     Country* country;
+    std::string name;
 };
 
 

@@ -26,6 +26,7 @@ add_executable(simulator
                 src/Soldier.cpp
                 include/TransportContext.h
                 include/Transport.h
+                src/Transport.cpp
                 src/TransportContext.cpp
                 include/WeaponTransport.h
                 src/WeaponTransport.cpp
@@ -101,8 +102,11 @@ add_executable(simulator
                 src/Tanks.cpp
                 src/VesselWeaponCreator.cpp
                 src/WarEngine.cpp
-        include/RecruitIterator.h include/Iterator.h src/RecruitIterator.cpp
-        include/Recruits.h include/util/ListSelectionPrompt.h src/ListSelectionPrompt.cpp)
+        include/CountryIterator.h include/Iterator.h src/CountryIterator.cpp
+        include/Recruits.h include/util/ListSelectionPrompt.h src/ListSelectionPrompt.cpp 
+                include/util/enums.h
+                include/util/colours.h
+        )
         
 file(GLOB CPP_FILES src/*.cpp)
 list(FILTER CPP_FILES EXCLUDE REGEX src/main.cpp)

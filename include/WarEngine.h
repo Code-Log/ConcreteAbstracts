@@ -1,168 +1,215 @@
 #include<BattleRegistry.h>
 #include<AllyRegistry.h>
 #include<Country.h>
+#include<RecruiterContext.h>
+#include<CountryIterator.h>
+#include<Iterator.h>
+#include<vector>
 class WarEngine //Meyers Implementation
 {
 private:
     AllyRegistry allyRegistry;
     BattleRegistry battleRegistry;
     int test;//for testing purposes
-    bool disputeActive;
+    bool disputeActive = true;
+    bool human;
+    int humanIndex = -1; //-1 means only AI countries.
+    //Otherwise this is the index of the human operated country in the countries array
+    int mainAiIndex = -1; // The leading role AI's index. 
+    std::vector<std::string> warLog;
+    std::string engineLog;
 protected:
     WarEngine();
     ~WarEngine();
 public:
+    Country* countries[8];
+    void setHuman(bool Human);
     /**
      * @brief calls prePhase1(), phase1(), phase2(),phase3(), printWarReport()
-     * 
+     *
      */
-    void run();
+    void run(bool human);
 
     /**
      * @brief stops the engine
-     * 
+     *
      */
     void stopEngine();
 
     /**
      * @brief For real mode. Creates 8 AI countries/users and calls run().
-     * 
+     *
      */
     void runEngine();
 
     /**
      * @brief For design mode. Creates 7 AI countries/users and 1 human user and calls run().
-     * 
+     *
      */
     void runGUIEngine();
 
     /**
      * @brief This function calls the following functions: selectCountry() and selectPolicalRegime();
-     * 
+     *
      */
     void prePhase1();
 
     /**
-     * @brief 
-     * 
+     * @brief
+     *
      */
     void phase1();
 
     /**
-     * @brief 
-     * 
+     * @brief
+     *
      */
     void phase2();
 
     /**
-     * @brief 
-     * 
+     * @brief
+     *
      */
     void phase3();
 
     /**
      * @brief Allows a user to select country. Note no 2 users should have the same country
-     * 
+     *
      */
     void selectCountry();
 
     /**
-     * @brief 
-     * 
+     * @brief
+     *
      */
     void selectPoliticalRegime();
 
     /**
      * @brief Set the Allies object
-     * 
+     *
      */
     void setAllies();
 
     /**
-     * @brief 
-     * 
+     * @brief
+     *
      */
-    void partitionRecruite();
+    void partitionRecruits();
 
     /**
-     * @brief 
-     * 
+     * @brief
+     *
      */
-    void buyAndDestributeWeapons();
+    void buyAndDistributeWeapons();
 
     /**
-     * @brief 
-     * 
+     * @brief It was decided that the wartheatres would be decided randomly. The function gives each country 4 opportunities to pick a warfront. Since they pick randomly they could pick an existing warfront and their request denied. At the end of the function each country has a minimum of 1 and max of 4 war theatres
+     *
      */
     void setWarTheatres();
 
-    /**
-     * @brief 
-     * 
-     */
-    void setTraps();
 
     /**
      * @brief 
      * 
+     */
+    void destributeRecruiteToWarTheatres();
+
+    /**
+     * @brief
+     *
+     */
+    void setTraps(); // Deprecated
+
+    /**!
+     * @brief Extension of the printEngineReport() function.
+     * @brief Add a line to the report
+     */
+    void addToEngineReport(std::string line);
+
+    /**
+     * @brief print the full engine Report
+     *
      */
     void printEngineReport();
 
     /**
-     * @brief 
-     * 
+     * @brief
+     *
      */
     void makeDecision(Country* c);
 
     /**
-     * @brief 
-     * 
+     * @brief
+     *
      */
-    void increaseAllies();
+    void increaseAllies(Country* c);
 
     /**
-     * @brief 
-     * 
+     * @brief
+     *
      */
-    void sendRecruitAndAttack();
+    void sendRecruitAndAttack(Country* c);
 
     /**
-     * @brief 
-     * 
+     * @brief
+     *
      */
-    void sendRecruit();
+    void sendRecruit(Country* c);
+
+    void buyWeaponsAndAllocateToRecruits(Country* c);
 
     /**
-     * @brief 
+     * @brief Country c resigns and surrenders to enemy country
      * 
+     * @param c 
      */
-    void buyAndSetTraps();
+    void surrender(Country* c);
 
     /**
-     * @brief 
+     * @brief One country conquers the other. All resorces are transfered to the conquering country. 
      * 
+     * @param conqueror 
+     * @param conquered 
      */
-    void surrender();
+    void conquers(Country* conqueror,Country* conquered);
 
     /**
-     * @brief 
-     * 
+     * @brief
+     *
      */
-    void PrintWarReport();
-    
+    void printWarReport();
+
     /**
      * @brief Get the Ally Registry object
-     * 
-     * @return AllyRegistry 
+     *
+     * @return AllyRegistry
      */
     AllyRegistry getAllyRegistry();
 
     /**
      * @brief Get the Battle Registry object
-     * 
-     * @return BattleRegistry 
+     *
+     * @return BattleRegistry
      */
     BattleRegistry getBattleRegistry();
+    
+    /**
+     * @brief 
+     * 
+     * @return int 
+     */
+    Iterator* createCountryIterator(Country** countryList);
+
+    /**
+     * @brief Generate a random number in range
+     *
+     * @return int
+     */
+    int randomNumGenerator(int min, int max);
+    // void addToEngineReport(std::string line);
+
+    void warLoop();
 
     void setTest(int data); //for testing purposes.
     int getTest() const;//for testing purposes.

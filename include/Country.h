@@ -5,7 +5,7 @@
  * @version 0.1
  * @date 2022-10-24
  * 
- * @copyright Copyright (c) 2022
+ * @copyright Copyright (c) 2022WarTheatre
  * 
  */
 #ifndef COUNTRY_H
@@ -73,6 +73,12 @@ public:
      */
     const std::string& getName() const;
 
+    /**
+     * @brief Set the Name object
+     * 
+     */
+    void setName(std::string name);
+
       /**
      * @brief Get the NotEnlisted object
      *
@@ -86,8 +92,15 @@ public:
      * @param Amount
      */
     void setNotEnlisted(int Amount);
-    
-       /**
+
+    /**
+     * @brief Set the Population object
+     * 
+     * @param population 
+     */
+    void setPopulation(int population);
+
+    /**
      * @brief Get the Population object
      *
      * @return int
@@ -151,12 +164,12 @@ public:
      * @param squadSize
      */
     void recruitPilots(int squadSize);
-     /**
-     * @brief gets the index of the wartheatre type. Land =0, Sea=1, Air=2, Space =3
-     * @param Type
-     * @return int
-     */
-    int getIndex(const std::string& Type);
+    //  /**
+    //  * @brief gets the index of the wartheatre type. Land =0, Sea=1, Air=2, Space =3
+    //  * @param Type
+    //  * @return int
+    //  */
+    // int getIndex(const std::string& Type);
 
     /**
      * @brief Updates the population size by counting the survivers.
@@ -170,16 +183,19 @@ public:
      */
     void updatePower();
 
-     /**
-     * @brief Adds warTheatre. If the warTheatre type already exists does nothing. ?Only add if relevent recruits exist?
-     * @param location
+    /**
+     * @brief Get the War Fronts object
+     * 
+     * @return WarTheatre* 
      */
-    void addWarFront(const std::string& location);
-      /**
-     * @brief returns specified wartheatre if it exists
-     * @param Type
+    std::vector<WarTheatre*> getWarTheatres();
+
+    /**
+     * @brief assign warTheatre to this country. 
+     * 
+     * @param battleGround 
      */
-    WarTheatre* getWarFront(const std::string& Type);
+    void addWarFront(BattleGround* battleGround);
 
      /**
      * @brief Adds traps to avalable wartheatres. ? Restricts the what kinds of traps can be added to a wartheatre.
@@ -187,26 +203,96 @@ public:
      * @param TrapName 
      * 
      */
-    void setTrap(const std::string& battleGround, const std::string& TrapName );
+    void setTrap(BattleGround *battleGround, /*const std::string& Trap*/ Trap *trap);
      /**
      * @brief removes wartheatre
-     * @param Location
+     * @param battleGround
      * 
      */
-    void removeFront(const std::string& Location);
+    void removeFront(BattleGround* battleGround);
 
     /**
-     * @brief retrieves total damage from all or individual warfronts. parameter Land, Sea, Air, Space, All. Calls damageTotal so will decrease trap lifespan
-     * @param totalOf
-     * @return int
+     * @brief retrieves total damage from all or individual warfronts. parameter battleGround. If null, gives a total of all battleGrounds. Calls damageTotal so will decrease trap lifespan
+     * 
+     * @param battleGround 
+     * @return int 
      */
-    int warFrontDanger(const std::string& totalOf);
+    int warFrontDanger(BattleGround* battleGround);
+
+     /**
+     * @brief returns a string of all wartheatres
+     * @return string
+     */
+    std::string allWarFronts();
+
+    /**
+     * @brief Get the Recruits object
+     * 
+     * @return std::vector<Recruits*> 
+     */
+    std::vector<Recruits*> getRecruits();
+
+    /**
+     * @brief Set the Recruits object
+     * 
+     * @return std::vector<Recruits*> 
+     */
+    void setRecruits(std::vector<Recruits*> recruits);
 
     /**
      * @brief Destroy the Country object
      * 
      */
     ~Country();
+
+    /**!
+     * @brief Get an instance of the ArmoryFacade for the country being worked on.
+     *
+     * @return
+     */
+    ArmoryFacade* getArmoryFacade() const;
+
+    const std::vector<Recruits *> &getRecruits() const;
+
+    const Recruits* getRecruit(int i) const;
+
+    /**
+     * @brief Get the Refugee object
+     * 
+     * @return Refugee* 
+     */
+    Refugee* getRefugees();
+
+    /**
+     * @brief Set the Refugee object
+     * 
+     * @return Refugee* 
+     */
+    void setRefugees(Refugee* refugees);
+
+    /**
+     * @brief Get the Citizens object
+     * 
+     * @return Citizens* 
+     */
+    Citizens* getCitizens();
+
+    /**
+     * @brief Set the Citizens object
+     * 
+     * @return Citizens* 
+     */
+    void setCitizens(Citizens* citizens);
+
+    /**
+     * @brief
+     *
+     * @return Returns the economic class of the Country.
+     */
+    EconomicClass getEconomicClass() const;
+
+    enums::PoliticalRegime getPoliticalRegime();
+    void setPoliticalRegime(enums::PoliticalRegime pr);
 
 protected:
 
@@ -216,16 +302,19 @@ private:
     int populationSize;
     int economy;
     int notEnlisted;
+    enums::PoliticalRegime politicalRegime;
     EconomicClass economicClass;
     // bool Marines;
     // bool Guardians;
     // bool Pilots;
     // bool Soldiers;
+    std::vector<WarTheatre*> wwarTheatres;
     WarTheatre** warTheatres;
     std::vector<Recruits*> recruits;
     Citizens* citizens;
     Refugee* refugees;
-    ArmoryFacade armoryFacade;
+    ArmoryFacade *armoryFacade;
+
 };
 
 #endif

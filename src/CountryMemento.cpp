@@ -8,4 +8,5 @@ CountryMemento::CountryMemento(Country* state)
 CountryMemento::~CountryMemento()
 {
     delete state;
+    state = nullptr;
 }

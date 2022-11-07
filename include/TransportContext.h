@@ -31,7 +31,7 @@ public:
      * 
      * @param recruits 
      */
-    void purchase(Recruits* recruits);
+    void purchase(Recruits *recruits, int numSelection);
 
     /**
      * @brief Set the Strategy object
@@ -39,6 +39,8 @@ public:
      * @param newStrategy 
      */
     void setStrategy(Transport* newStrategy);
+
+    ~TransportContext();
 
 protected:
 

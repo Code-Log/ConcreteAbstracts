@@ -29,3 +29,10 @@ std::string WarTheatre::getLocation()
 {
     return location;
 }
+
+std::string WarTheatre::getName(){
+    return name;
+}
+void WarTheatre::setName(std::string name){
+    this->name = std::move(name);
+}

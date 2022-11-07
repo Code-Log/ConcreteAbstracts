@@ -11,6 +11,8 @@
 #ifndef CONCRETEABSTRACTS_ITERATOR_H
 #define CONCRETEABSTRACTS_ITERATOR_H
 
+#include <Country.h>
+
 class Iterator
 {
 public:
@@ -19,6 +21,12 @@ public:
      * 
      */
     virtual void next() = 0;
+
+    /**
+     * @brief 
+     * 
+     */
+    virtual Country* current() = 0;
 
     /**
      * @brief 

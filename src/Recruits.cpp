@@ -52,18 +52,18 @@ void Recruits::addVessel(VesselWeapon* vesselWeapon)
 
 Recruits::~Recruits()
 {
-    for (AttackWeapon* weapon : armory)
-    {
-        delete weapon;
-    }
-    armory.clear();
-    delete country;
+    // for (auto weapon : armory)
+    // {
+    //     delete weapon;
+    // }
+    // armory.clear();
+    // delete country;
 
-    for (VesselWeapon* vessel : vehicles)
-    {
-        delete vessel;
-    }
-    vehicles.clear();
+    // for (auto vessel : vehicles)
+    // {
+    //     delete vessel;
+    // }
+    // vehicles.clear();
 }
 
 std::string Recruits::getMilitaryType()
@@ -81,10 +81,19 @@ void Recruits::handle()
 
 }
 
-int Recruits::getWeaponDamage() const {
+int Recruits::getWeaponDamage() const 
+{
     return weaponDamage;
 }
 
-void Recruits::setWeaponDamage(int weaponDamage) {
+void Recruits::setWeaponDamage(int weaponDamage) 
+{
     Recruits::weaponDamage = weaponDamage;
+}
+void Recruits::setName(std::string name)
+{
+    this->name = std::move(name);
+}
+std::string Recruits::getName(){
+    return name;
 }

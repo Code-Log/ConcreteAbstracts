@@ -10,6 +10,7 @@
  */
 #ifndef CONCRETEABSTRACTS_TRANSPORT_H
 #define CONCRETEABSTRACTS_TRANSPORT_H
+#include <util/colours.h>
 
 class Recruits;
 
@@ -21,7 +22,8 @@ public:
      * 
      * @param recruits 
      */
-    virtual void purchase(Recruits* recruits) = 0;
+    virtual void purchase(Recruits *recruits, int purchaseType) = 0;
+    virtual ~Transport();
 
 protected:
 
