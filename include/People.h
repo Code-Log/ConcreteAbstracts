@@ -11,11 +11,9 @@
 #ifndef CONCRETEABSTRACTS_PEOPLE_H
 #define CONCRETEABSTRACTS_PEOPLE_H
 
-
+class Country;
 class People
 {
-private:
-    int groupSize;
 public:
     /**
      * @brief To get the current size of a given population
@@ -38,10 +36,30 @@ public:
     People();
 
     /**
+     * @brief Get the Country object
+     *
+     * @return Country*
+     */
+    Country* getCountry();
+
+    /**
+     * @brief Set the Country object
+     * 
+     * @param country 
+     */
+    void setCountry(Country* country);
+
+    /**
      * @brief Destroy the People object
      * 
      */
     virtual ~People();
+
+protected:
+
+private:
+    int groupSize;
+    Country* country;
 };
 
 

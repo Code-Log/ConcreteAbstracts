@@ -13,6 +13,7 @@
 #include <SuppliesTransport.h>
 #include <WeaponTransport.h>
 #include <AttackVessel.h>
+#include<CountryMemento.h>
 #include <TransportContext.h>
 #include <ArmoryFacade.h>
 #include <WarEngine.h>
@@ -168,8 +169,8 @@ int testTransport()
     int result = 0;
 
     auto* recruits = new Recruits();
-    Country* newZealand = new Country("New Zealand");
-    Country* southAfrica = new Country("South Africa");
+    auto* newZealand = new Country("New Zealand");
+    auto* southAfrica = new Country("South Africa");
     southAfrica->setEconomy(1000);
 
     recruits->setCountry(southAfrica); 
@@ -243,7 +244,7 @@ int testTheatreCountryPeopleCombo()
     }
 
     Germany->recruitPilots(341); 
-    if(!(Germany->getWarFront("Air") == nullptr))
+    if(Germany->getWarFront("Air") != nullptr)
     {
         result = -1;
     }
@@ -252,7 +253,7 @@ int testTheatreCountryPeopleCombo()
 
     Germany->addWarFront("Air");
     Germany->removeFront("Air");
-    if(!(Germany->getWarFront("Air") == nullptr))
+    if(Germany->getWarFront("Air") != nullptr)
     {
         result = -1;
     }
@@ -265,8 +266,9 @@ int testTheatreCountryPeopleCombo()
     int testing = Germany->warFrontDanger("Land");
 
     Germany->setTrap("Land", "Barricades");
+  
 
-    if(testing > Germany->warFrontDanger("Land"))
+    if(testing == Germany->warFrontDanger("Land"))
     {
         result = -1;
     }
@@ -289,6 +291,11 @@ int testWarEngine(){
         return -1;
     }
 }
+
+int testMemento()
+{
+    return 0;
+}
 // Write your testing functions like this
 //int myTest()
 //{
@@ -309,6 +316,9 @@ int main(int argc, const char** argv)
         return testTheatreCountryPeopleCombo();
     if (std::strcmp(argv[1], "testWarEngine") == 0)
         return testWarEngine();
+
+    if(std::strcmp(argv[1], "testMemento")==0)
+        return testMemento();
 
 
 //    To add a new test

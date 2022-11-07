@@ -14,8 +14,6 @@
 
 class AttackWeaponCreator {
 
-protected:
-	int price;
 
 public:
 	/**
@@ -31,28 +29,30 @@ public:
 	 */
 	AttackWeapon* produce();
 
-protected:
-	/**
-	 * @brief 
-	 * 
-	 * @return AttackWeapon* 
-	 */
-	virtual AttackWeapon* produceAttackWeapon() = 0;
-
-public:
 	virtual ~AttackWeaponCreator() = default;
 	/**
 	 * @brief Get the Price object
 	 * 
 	 * @return int 
 	 */
-	int getPrice();
+	int getPrice() const;
 	/**
 	 * @brief Set the Price attribute
 	 * 
 	 * @param price 
 	 */
 	void setPrice(int price);
+
+protected:
+    int price;
+
+    /**
+	 * @brief
+	 *
+	 * @return AttackWeapon*
+	 */
+    virtual AttackWeapon* produceAttackWeapon() = 0;
+
 };
 
 #endif

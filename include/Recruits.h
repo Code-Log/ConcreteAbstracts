@@ -22,15 +22,19 @@ class Country;
 
 class Recruits: public People
 {
-private:
-    bool isEnlisted; //removed as no longer working with individiuals?
-    std::string militaryType;
-    int weaponDamage;
-    std::vector<AttackWeapon*> armory;
-    std::vector<VesselWeapon*> vehicles;
-    Country* country;
-
 public:
+    /**
+     *
+     * @return
+     */
+    int getWeaponDamage() const;
+
+    /**!
+     *
+     * @param weaponDamage
+     */
+    void setWeaponDamage(int weaponDamage);\
+
     /**
      * @brief Construct a new Recruits object
      * 
@@ -72,19 +76,6 @@ public:
      */
     ~Recruits() override;
 
-    /**
-     * @brief Get the Country object
-     *
-     * @return Country*
-     */
-    Country* getCountry();
-
-    /**
-     * @brief Set the Country object
-     * 
-     * @param country 
-     */
-    void setCountry(Country* country);
 
     /**
      * @brief Returns militaryType
@@ -98,6 +89,26 @@ public:
      *
      */
     void setMilitaryType(std::string type);
+
+    /**
+     * @brief 
+     * 
+     * @param enemy 
+     */
+    void weaponLoss(Recruits* enemy);
+
+    int getDefense(const std::string& type);
+
+    bool amoryEmpty();
+
+protected:
+
+private:
+    bool isEnlisted; //removed as no longer working with individiuals?
+    std::string militaryType;
+    int weaponDamage;
+    std::vector<AttackWeapon*> armory;
+    std::vector<VesselWeapon*> vehicles;
 };
 
 

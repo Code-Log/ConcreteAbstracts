@@ -14,8 +14,6 @@
 #include <AttackWeapon.h>
 
 class NuclearWeapons : public AttackWeapon {
-
-
 public:
 	/**
 	 * @brief Get the Damage object
@@ -50,6 +48,10 @@ public:
      * 
      */
 	~NuclearWeapons() override = default;
+
+protected:
+
+private:
 };
 
 #endif

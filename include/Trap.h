@@ -15,12 +15,31 @@
 
 class Trap : public WarTheatre
 {
-private:
-    WarTheatre* trap;
-    bool active;
-    int lifespan;
-
 public:
+    /**!
+     *
+     * @param trap
+     */
+    void setTrap(WarTheatre *trap);
+
+    /**!
+     *
+     * @return
+     */
+    bool isActive() const;
+
+    /**!
+     *
+     * @return
+     */
+    int getLifespan() const;
+
+    /**!
+     *
+     * @param lifespan
+     */
+    void setLifespan(int lifespan);
+
     /**
      * @brief Construct a new Trap object
      * 
@@ -69,7 +88,7 @@ public:
      */
     void alterLifespan(int decrease);
 
-    WarTheatre* getTrap();
+    WarTheatre* getTrap() override;
 
     /**
      * @brief 
@@ -78,6 +97,13 @@ public:
      * @return int 
      */
     int penalty(Recruits* recruits) override;
+
+protected:
+
+private:
+    WarTheatre* trap;
+    bool active;
+    int lifespan;
 };
 
 

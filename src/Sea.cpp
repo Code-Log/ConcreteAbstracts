@@ -14,6 +14,7 @@ int Sea::penalty(Recruits* recruits)
 {
     int size = recruits->getGroupSize();
     int casualties = ( size * seaSickness())/100;
+    std::cout<<"##### "<<recruits->getCountry()->getName()<<" lost "<<casualties<<" men to Sea Sickness #####"<<std::endl;
 
     recruits->setGroupSize(size - casualties);
     return casualties;

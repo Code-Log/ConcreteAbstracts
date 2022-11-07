@@ -27,6 +27,10 @@ public:
      * 
      */
     ~Trenches() override;
+
+protected:
+
+private:
 };
 
 #endif

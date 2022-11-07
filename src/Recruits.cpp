@@ -28,8 +28,19 @@ void Recruits::fireWeapon(Recruits* enemyRecruits)
         }
     }
 
-    enemyRecruits->setGroupSize(armory[0]->getDamage());
+    std::cout<<"+++++"<<this->getCountry()->getName()<<" recruits firing at "<<enemyRecruits->getCountry()->getName()<<" men+++++"<<std::endl;
+    enemyRecruits->setGroupSize(enemyRecruits->getGroupSize()- armory[0]->getDamage());
     armory[0]->setDurability(armory[0]->getDurability() - 5);
+}
+
+bool Recruits::amoryEmpty()
+{
+    if(armory.empty())
+    {
+        return true;
+    }
+
+    return false;
 }
 
 void Recruits::addWeapon(AttackWeapon* attackWeapon)
@@ -37,13 +48,40 @@ void Recruits::addWeapon(AttackWeapon* attackWeapon)
     armory.push_back(attackWeapon);
 }
 
-Country* Recruits::getCountry()
+void Recruits::weaponLoss(Recruits* enemy)
 {
-    return country;
+    AttackWeapon* weapon;
+    for(int x=0; x<armory.size(); x++)
+    {
+        weapon = armory.back();
+        armory.pop_back();
+        enemy->addWeapon(weapon);
+    }
+
+    VesselWeapon* vess ;
+    for(int x=0; x<vehicles.size(); x++)
+    {
+        vess = vehicles.back();
+        vehicles.pop_back();
+        enemy->addVessel(vess);
+    }
 }
-void Recruits::setCountry(Country* country){
-    this->country = country;
+
+int Recruits::getDefense(const std::string& type)
+{
+    int count=0;
+    for(int x=0; x< vehicles.size(); x++)
+    {
+        if(vehicles[x]->getName() == type)
+        {
+            count+= vehicles[x]->getDamage();
+            vehicles[x]->setDurability(vehicles[x]->getDurability() - 10);
+        }
+    }
+
+    return count;
 }
+
 
 void Recruits::addVessel(VesselWeapon* vesselWeapon)
 {
@@ -57,7 +95,7 @@ Recruits::~Recruits()
         delete weapon;
     }
     armory.clear();
-    delete country;
+    //delete country;
 
     for (VesselWeapon* vessel : vehicles)
     {
@@ -73,10 +111,18 @@ std::string Recruits::getMilitaryType()
 
 void Recruits::setMilitaryType(std::string type)
 {
-    this->militaryType = std::move(type);
+    this->militaryType = type;
 }
 
 void Recruits::handle()
 {
 
+}
+
+int Recruits::getWeaponDamage() const {
+    return weaponDamage;
+}
+
+void Recruits::setWeaponDamage(int weaponDamage) {
+    Recruits::weaponDamage = weaponDamage;
 }

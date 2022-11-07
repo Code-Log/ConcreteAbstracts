@@ -15,8 +15,6 @@
 #include <MeleeWeapons.h>
 
 class MeleeWeaponCreator : public AttackWeaponCreator {
-
-
 public:
 	/**
 	 * @brief Construct a new Melee Weapon Creator object
@@ -30,6 +28,10 @@ public:
 	 * @return AttackWeapon* 
 	 */
 	AttackWeapon* produceAttackWeapon() override;
+
+protected:
+
+private:
 };
 
 #endif

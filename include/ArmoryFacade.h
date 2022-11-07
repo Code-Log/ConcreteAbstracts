@@ -15,6 +15,7 @@
 #include <WeaponTransport.h>
 #include <SuppliesTransport.h>
 #include <AttackVessel.h>
+#include <iostream>
 
 class Recruits;
 class RecruiterContext;
@@ -61,6 +62,78 @@ public:
      * @return false 
      */
     bool purchaseSupplies(Recruits* recruits);
+
+    /**!
+     *
+     * @return
+     */
+    TransportContext *getTransportContext() const;
+
+    /**!
+     *
+     * @param transportContext
+     */
+    void setTransportContext(TransportContext *transportContext);
+
+    /**!
+     *
+     * @return
+     */
+    RecruiterContext *getRecruiterContext() const;
+
+    /**!
+     *
+     * @param recruiterContext
+     */
+    void setRecruiterContext(RecruiterContext *recruiterContext);
+
+    /**
+     * @brief 
+     * 
+     * @param recruits 
+     * @return true 
+     * @return false 
+     */
+    bool purchaseWeaponInput(Recruits *recruits);
+
+    /**!
+     *
+     * @return
+     */
+    AttackVessel *getAttackVessel() const;
+
+    /**!
+     *
+     * @param attackVessel
+     */
+    void setAttackVessel(AttackVessel *attackVessel);
+
+    /**!
+     *
+     * @return
+     */
+    SuppliesTransport *getSuppliesTransport() const;
+
+    /**!
+     *
+     * @param suppliesTransport
+     */
+    void setSuppliesTransport(SuppliesTransport *suppliesTransport);
+
+    /**!
+     *
+     * @return
+     */
+    WeaponTransport *getWeaponTransport() const;
+
+    /**!
+     *
+     * @param weaponTransport
+     */
+    void setWeaponTransport(WeaponTransport *weaponTransport);
+
+protected:
+
 private:
     TransportContext* transportContext;
     RecruiterContext* recruiterContext;

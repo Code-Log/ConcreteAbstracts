@@ -15,8 +15,6 @@
 #include <Spacecraft.h>
 
 class SpacecraftCreator : public VesselWeaponCreator {
-
-
 public:
 	/**
 	 * @brief Construct a new Spacecraft Creator object
@@ -32,6 +30,10 @@ public:
 	VesselWeapon* produceVesselWeapon() override;
 
 	~SpacecraftCreator() override = default;
+
+protected:
+
+private:
 };
 
 #endif

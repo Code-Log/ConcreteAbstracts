@@ -1,10 +1,6 @@
-// #include <AttackVessel.h>
-// #include <Country.h>
 #include <BattleRegistry.h>
 #include <vector>
-// #include <VesselWeapon.h>
 #include <string>
-#include <WarEngine.h>
 
 AttackVessel::AttackVessel()
 {
@@ -78,4 +74,9 @@ void AttackVessel::purchase(Recruits* recruits)
    // std::cout<<"Transporting "<<vesselName<<" vessel to enemy country: "<<countries[randomCountryIndex].getOther(recruits->getCountry())->getName()<<std::endl;
 
    // recruits->addVessel(vessel);
+}
+
+void AttackVessel::purchaseInput(Recruits* recruits)
+{
+
 }

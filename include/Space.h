@@ -11,7 +11,8 @@
 #ifndef SPACE_H
 #define SPACE_H
 
-#include "BattleGround.h"
+#include <BattleGround.h>
+#include <Country.h>
 
 class Space : public BattleGround
 {
@@ -42,6 +43,10 @@ public:
      * @return int 
      */
     int SpaceAdaptationSyndrome();
+
+protected:
+
+private:
 };
 
 #endif

@@ -12,7 +12,7 @@ int Ships::getDefense()
 
 std::string Ships::getName()
 {
-	return "Ship(s)";
+	return "Ship";
 }
 
 int Ships::getDurability() {

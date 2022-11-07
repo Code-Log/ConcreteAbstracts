@@ -14,9 +14,9 @@
 #include <string>
 #include <vector>
 #include <Marine.h>
+#include <Pilot.h>
 #include <Soldier.h>
 #include <Guardian.h>
-#include <Pilot.h>
 #include <Medic.h>
 #include <WarTheatre.h>
 #include <Sea.h>
@@ -31,9 +31,13 @@
 #include <Citizens.h>
 #include <Refugee.h>
 #include <ArmoryFacade.h>
+#include<CountryMemento.h>
+#include<Iterator.h>
+#include<RecruitIterator.h>
+
 
 class Recruits;
-
+class CountryMemento;
 enum EconomicClass
 {
     FIRST_WORLD = 1,
@@ -67,6 +71,21 @@ public:
     Country* cloneCountry();
 
     /**
+     * @brief Create a Memento object
+     * 
+     * @param country 
+     * @return CountryMemento* 
+     */
+    CountryMemento* createMemento(Country* country);
+
+    /**
+     * @brief 
+     * 
+     * @param mem 
+     */
+    void reinstateMemento(CountryMemento* mem);
+
+    /**
      * @brief Get the Name object
      * 
      * @return const std::string& 
@@ -79,50 +98,50 @@ public:
      * @return int
      */
     int getNotEnlisted() const;
-
+    
      /**
-     * @brief Set the NotEnlisted object
+     * @brief Setter for the NotEnlisted object
      *
      * @param Amount
      */
-     void setNotEnlisted(int Amount);
+    void setNotEnlisted(int Amount);
 
-
-
+    std::vector<Refugee*> getRefugees();
+    
        /**
      * @brief Get the Population object
      *
-     * @return int
+     * @return double
      */
-    int getPopulation() const;
+    double getPopulation() const;
 
     /**
      * @brief Get the Power object
      * 
-     * @return int 
+     * @return double 
      */
-    int getPower() const;
+    double getPower() const;
 
     /**
      * @brief Set the Power object
      * 
      * @param power 
      */
-    void setPower(int power);
+    void setPower(double power);
 
     /**
      * @brief Get the Economy object
      * 
      * @return int 
      */
-    int getEconomy() const;
+    double getEconomy() const;
 
     /**
      * @brief Set the Economy object
      * 
      * @param economy 
      */
-    void setEconomy(int economy);
+    void setEconomy(double economy);
      /**
      * @brief Recruits Soldiers
      *
@@ -153,12 +172,35 @@ public:
      * @param squadSize
      */
     void recruitPilots(int squadSize);
+    /**
+     * @brief Get the Recruits object
+     * 
+     * @return std::vector<Recruits*> 
+     */
+    std::vector<Recruits*> getRecruits();
+
+    /**
+     * @brief 
+     * 
+     * @param Type 
+     * @return Recruits* 
+     */
+    Recruits* searchAndRetrieve(std::string Type);
      /**
      * @brief gets the index of the wartheatre type. Land =0, Sea=1, Air=2, Space =3
      * @param Type
      * @return int
      */
     int getIndex(const std::string& Type);
+
+    /**
+     * @brief Create a Recruit Iterator object
+     * 
+     * @param rec 
+     * @return Iterator* 
+     *
+    */
+    RecruitIterator* createRecruitIterator( std::vector<Recruits*> rec);
 
     /**
      * @brief Updates the population size by counting the survivers.
@@ -183,6 +225,12 @@ public:
      */
     WarTheatre* getWarFront(const std::string& Type);
 
+      /**
+     * @brief returns specified wartheatre if it exists
+     * 
+     */
+    WarTheatre** getWarFront();
+
      /**
      * @brief Adds traps to avalable wartheatres. ? Restricts the what kinds of traps can be added to a wartheatre.
      * @param battleGround
@@ -204,17 +252,58 @@ public:
      */
     int warFrontDanger(const std::string& totalOf);
 
+     /**
+     * @brief returns a string of all wartheatres
+     * @return string
+     */
+    std::string allWarFronts();
+
+    /**
+     * @brief 
+     * 
+     * @param ally 
+     * @param amount 
+     */
+    void addRefugee(Country* ally, int amount);
+
+    /**
+     * @brief Set the Citizens object
+     * 
+     * @param amount 
+     */
+    void setCitizens(int amount);
+
+    /**
+     * @brief Get the Citizens object
+     * 
+     * @return int 
+     */
+    int getCitizens();
+
+    /**
+     * @brief Get the Index War Front object
+     * 
+     * @param i 
+     * @return WarTheatre* 
+     */
+    WarTheatre* getIndexWarFront(int i);
+
+
+
     /**
      * @brief Destroy the Country object
      * 
      */
     ~Country();
+
+protected:
+
 private:
     std::string countryName;
-    int power;
-    int populationSize;
-    int economy;
-    int notEnlisted;
+    double power;
+    double populationSize;
+    double economy;
+    int notEnlisted; 
     EconomicClass economicClass;
     // bool Marines;
     // bool Guardians;
@@ -223,7 +312,7 @@ private:
     WarTheatre** warTheatres;
     std::vector<Recruits*> recruits;
     Citizens* citizens;
-    Refugee* refugees;
+    std::vector<Refugee*> refugees;
     ArmoryFacade armoryFacade;
 };
 

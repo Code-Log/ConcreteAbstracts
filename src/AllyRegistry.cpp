@@ -14,6 +14,8 @@ void AllyRegistry::addRecord(Country* country1, Country* country2)
             return;
     }
     allies.push_back(newEntry);
+
+    std::cout<<country1->getName()<<" + "<<country2->getName()<<std::endl;
 }
 
 std::vector<UnorderedPair<Country*>> AllyRegistry::getRecords(Country* country)

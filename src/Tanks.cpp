@@ -12,7 +12,7 @@ int Tanks::getDefense()
 
 std::string Tanks::getName()
 {
-	return "Tank(s)";
+	return "Tank";
 }
 
 int Tanks::getDurability() {

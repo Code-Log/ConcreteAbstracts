@@ -14,6 +14,9 @@ int Air::penalty(Recruits* recruits)
     int size = recruits->getGroupSize();
     int casualties = ( size * gForce())/100;
 
+    std::cout<<"##### "<<recruits->getCountry()->getName()<<" lost "<<casualties<<" men to G-Force effects on their bodies #####"<<std::endl;
+   
+
     recruits->setGroupSize(size - casualties);
     return casualties;
 }

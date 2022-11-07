@@ -18,8 +18,6 @@
 
 class TransportContext
 {
-private:
-    Transport* strategy;
 public:
     /**
      * @brief Construct a new Transport Context object
@@ -36,11 +34,23 @@ public:
     void purchase(Recruits* recruits);
 
     /**
+     * @brief 
+     * 
+     * @param recruits 
+     */
+    void purchaseInput(Recruits* recruits);
+
+    /**
      * @brief Set the Strategy object
      * 
      * @param newStrategy 
      */
     void setStrategy(Transport* newStrategy);
+
+protected:
+
+private:
+    Transport* strategy;
 };
 
 #endif //CONCRETEABSTRACTS_TRANSPORTCONTEXT_H

@@ -11,12 +11,11 @@
 #ifndef SEA_H
 #define SEA_H
 
-#include "BattleGround.h"
+#include <BattleGround.h>
+#include <Country.h>
 
 class Sea : public BattleGround
 {
-private:
-    /* data */
 public:
     /**
      * @brief Construct a new Sea object
@@ -44,6 +43,10 @@ public:
      * @return int 
      */
     int seaSickness();
+
+protected:
+
+private:
 };
 
 

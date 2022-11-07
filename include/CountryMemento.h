@@ -17,6 +17,15 @@ class Country;
 
 class CountryMemento
 {
+public:
+    /**
+     * @brief Destroy the Country Memento object
+     * 
+     */
+    ~CountryMemento();
+
+protected:
+
 private:
     Country* state;
 
@@ -25,13 +34,7 @@ private:
      *
      * @param state
      */
-     explicit CountryMemento(Country* state);
-public:
-    /**
-     * @brief Destroy the Country Memento object
-     * 
-     */
-    ~CountryMemento();
+    explicit CountryMemento(Country* state);
     friend class Country;
 };
 

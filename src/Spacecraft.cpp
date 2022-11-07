@@ -12,7 +12,7 @@ int Spacecraft::getDefense()
 
 std::string Spacecraft::getName()
 {
-	return "Spacecraft(s)";
+	return "Spacecraft";
 }
 
 int Spacecraft::getDurability() {

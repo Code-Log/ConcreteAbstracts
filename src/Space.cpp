@@ -16,6 +16,7 @@ int Space::penalty(Recruits* recruits)
     int casualties = ( size * SpaceAdaptationSyndrome())/100;
 
     recruits->setGroupSize(size - casualties);
+    std::cout<<"##### "<<recruits->getCountry()->getName()<<" lost "<<casualties<<" men to Space Adaptation Syndrome #####"<<std::endl;
     return casualties;
 }
 

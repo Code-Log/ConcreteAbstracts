@@ -3,3 +3,4 @@ Pilot::Pilot(/* args */)
 {
     this->setMilitaryType("Pilot");
 }
+ 

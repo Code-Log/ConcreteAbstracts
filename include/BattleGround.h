@@ -48,7 +48,7 @@ public:
      * 
      * @return int 
      */
-    WarTheatre* getTrap();
+    WarTheatre* getTrap() override;
     /**
      * @brief The casualties gained from environmental extremities (function could evolve to have other factors)
      * 
@@ -56,6 +56,10 @@ public:
      * @return int 
      */
     int penalty(Recruits* recruits) override = 0; //added
+
+protected:
+
+private:
 };
 
 

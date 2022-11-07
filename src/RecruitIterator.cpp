@@ -2,16 +2,29 @@
 
 bool RecruitIterator::hasNext()
 {
-    /// \todo
-    return false;
+   if(current == end)
+   {
+        return true;
+   }
+   else
+   {
+        return false;
+   }
 }
 
 void RecruitIterator::next()
 {
-    /// \todo
+    current++;
 }
 
-RecruitIterator::RecruitIterator()
+RecruitIterator::RecruitIterator(std::vector<Recruits*> rec)
 {
-    /// \todo
+    head = rec.begin();
+    end = rec.end();
+    current = rec.begin();
+}
+
+std::vector<Recruits*>::iterator RecruitIterator::getCurrent()
+{
+    return current;
 }

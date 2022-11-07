@@ -15,8 +15,6 @@
 #include <Jets.h>
 
 class JetCreator : public VesselWeaponCreator {
-
-
 public:
 	/**
 	 * @brief Construct a new Jet Creator object
@@ -32,6 +30,10 @@ public:
 	VesselWeapon* produceVesselWeapon() override; // VESSEL WEAPON ASK AMBER ?
 
 	~JetCreator() override = default;
+
+protected:
+
+private:
 };
 
 #endif

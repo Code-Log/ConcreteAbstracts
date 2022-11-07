@@ -15,8 +15,6 @@
 #include <RangedWeapons.h>
 
 class RangedWeaponCreator : public AttackWeaponCreator {
-
-
 public:
 	/**
 	 * @brief Construct a new Ranged Weapon Creator object
@@ -30,6 +28,10 @@ public:
 	 * @return AttackWeapon* 
 	 */
 	AttackWeapon* produceAttackWeapon() override;
+
+protected:
+
+private:
 };
 
 #endif

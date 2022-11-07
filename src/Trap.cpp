@@ -21,7 +21,7 @@ Trap::~Trap()
 
 void Trap::add(WarTheatre* trap)
 {
-    std::cout<<"Setting trap"<<std::endl;
+   
     if(this->trap == nullptr)
     {
         this->trap = trap;
@@ -55,6 +55,7 @@ int Trap::damageTotal()
     }
     else
     {
+        
         int damage = getDamage();
         this->alterLifespan(damage);
         
@@ -82,4 +83,20 @@ int Trap::penalty(Recruits* recruits)
     {
         return (0 + trap->penalty(recruits));
     }
+}
+
+void Trap::setTrap(WarTheatre *trap) {
+    Trap::trap = trap;
+}
+
+bool Trap::isActive() const {
+    return active;
+}
+
+int Trap::getLifespan() const {
+    return lifespan;
+}
+
+void Trap::setLifespan(int lifespan) {
+    Trap::lifespan = lifespan;
 }

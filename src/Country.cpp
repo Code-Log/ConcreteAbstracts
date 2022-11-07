@@ -1,4 +1,5 @@
 #include <Country.h>
+
 #include <random>
 
 Country::Country(std::string countryName)
@@ -11,286 +12,380 @@ Country::Country(std::string countryName)
 
     this->populationSize = dist(gen);
     this->citizens = new Citizens();
-    int cit = (int)(populationSize*0.7);
+    int cit = (int)(populationSize * 0.7);
     this->citizens->setGroupSize(cit);
     this->notEnlisted = populationSize - cit;
-    
+
     dist = std::uniform_int_distribution<>(1, 3);
     this->economicClass = static_cast<EconomicClass>(dist(gen));
 
     std::uniform_int_distribution<> classDist;
     switch (economicClass)
     {
-        case FIRST_WORLD:
-            classDist = std::uniform_int_distribution<>(1e4, 5e4);
-            break;
-        case SECOND_WORLD:
-            classDist = std::uniform_int_distribution<>(5e3, 1e4);
-            break;
-        case THIRD_WORLD:
-            classDist = std::uniform_int_distribution<>(1e3, 5e3);
-            break;
+    case FIRST_WORLD:
+        classDist = std::uniform_int_distribution<>(1e4, 5e4);
+        break;
+    case SECOND_WORLD:
+        classDist = std::uniform_int_distribution<>(5e3, 1e4);
+        break;
+    case THIRD_WORLD:
+        classDist = std::uniform_int_distribution<>(1e3, 5e3);
+        break;
     }
     economy = classDist(gen);
     this->power = populationSize * economy;
+
+    recruits.clear();
 
     // Marines= false;
     // Guardians= false;
     // Pilots= false;
     // Soldiers = false;
 
-    warTheatres = new WarTheatre*[4];
+    warTheatres = new WarTheatre *[4];
     warTheatres[0] = nullptr;
     warTheatres[1] = nullptr;
     warTheatres[2] = nullptr;
     warTheatres[3] = nullptr;
 }
 
-Country* Country::cloneCountry()
+Country *Country::cloneCountry()
 {
-    auto* result = new Country(countryName);
+    auto *result = new Country(countryName);
     result->economy = economy;
     result->power = power;
     result->populationSize = populationSize;
+    result->citizens = new Citizens();                      // added this
+    citizens->setGroupSize(this->citizens->getGroupSize()); // added this
+    result->notEnlisted = this->notEnlisted;                // added
 
     return result;
 }
 
-const std::string& Country::getName() const
+CountryMemento *Country::createMemento(Country *country)
+{
+    CountryMemento *mem = new CountryMemento(country->cloneCountry());
+    std::cout << "Recording " << country->getName() << " into world database..." << std::endl;
+    return mem;
+}
+
+void Country::reinstateMemento(CountryMemento *mem)
+{
+    if(mem== nullptr)
+    {
+        return;
+    }
+    Country *mems = mem->state;
+    this->countryName = mems->countryName;
+    this->economy = mems->economy;
+    this->power = mems->power;
+    this->populationSize = mems->populationSize;
+    this->citizens->setGroupSize(mems->citizens->getGroupSize()); // added this
+    this->notEnlisted = mems->notEnlisted;                        // added
+}
+
+const std::string &Country::getName() const
 {
     return countryName;
 }
 
-int Country::getPower() const
+double Country::getPower() const
 {
     return power;
 }
 
-void Country::setPower(int power)
+void Country::setPower(double power)
 {
     Country::power = power;
 }
 
-int Country::getEconomy() const
+double Country::getEconomy() const
 {
     return economy;
 }
 
-void Country::setEconomy(int economy)
+void Country::setEconomy(double economy)
 {
     Country::economy = economy;
 }
 
 void Country::recruitMarines(int squadSize)
 {
-    if(notEnlisted< squadSize)
+    if (notEnlisted < squadSize)
     {
-        std::cout<<"Not enough man power"<<std::endl;
+        std::cout << "Not enough man power" << std::endl;
         return;
     }
 
     bool found = false;
     auto it = recruits.begin();
 
-    for(;it< recruits.end(); it++)
+    for (; it < recruits.end(); it++)
     {
-        if((*it)->getMilitaryType()=="Marine")
+        if ((*it)->getMilitaryType() == "Marine")
         {
-            found=true;
+            found = true;
             break;
         }
     }
 
-    if(found)
+    if (found)
     {
-        (*it)->setGroupSize((*it)->getGroupSize()+ squadSize);
+        (*it)->setGroupSize((*it)->getGroupSize() + squadSize);
         this->notEnlisted = this->notEnlisted - squadSize;
-
     }
     else
     {
+    
         Recruits *Navy = new Marine();
+        Navy->setCountry(this);
         Navy->setGroupSize(squadSize);
         Navy->setMilitaryType("Marine");
         this->notEnlisted = this->notEnlisted - squadSize;
         recruits.push_back(Navy);
     }
+
+    std::cout << squadSize << " Marines ready for battle!" << std::endl;
 }
 
 void Country::recruitSoldiers(int squadSize)
 {
-    if(notEnlisted< squadSize)
+    if (notEnlisted < squadSize)
     {
-        std::cout<<"Not enough man power"<<std::endl;
+        std::cout << "Not enough man power" << std::endl;
         return;
     }
 
     bool found = false;
     auto it = recruits.begin();
 
-    for(; it< recruits.end(); it++)
+    for (; it < recruits.end(); it++)
     {
-        if((*it)->getMilitaryType()=="Soldier")
+        if ((*it)->getMilitaryType() == "Soldier")
         {
-            found=true;
+            found = true;
             break;
         }
     }
 
-    if(found)
+    if (found)
     {
-        (*it)->setGroupSize((*it)->getGroupSize()+ squadSize);
+        (*it)->setGroupSize((*it)->getGroupSize() + squadSize);
         this->notEnlisted = this->notEnlisted - squadSize;
-
     }
     else
     {
+
         Recruits *Army = new Soldier();
+        Army->setCountry(this);
         Army->setGroupSize(squadSize);
         Army->setMilitaryType("Soldier");
         this->notEnlisted = this->notEnlisted - squadSize;
         recruits.push_back(Army);
     }
+
+    std::cout << squadSize << " Soldiers ready for battle!" << std::endl;
 }
 
 void Country::recruitMedics(int squadSize)
 {
-    if(notEnlisted< squadSize)
+    if (notEnlisted < squadSize)
     {
-        std::cout<<"Not enough man power"<<std::endl;
+        std::cout << "Not enough man power" << std::endl;
         return;
     }
 
     bool found = false;
     auto it = recruits.begin();
 
-    for(; it< recruits.end(); it++)
+    for (; it < recruits.end(); it++)
     {
-        if((*it)->getMilitaryType()=="Medic")
+        if ((*it)->getMilitaryType() == "Medic")
         {
-            found=true;
+            found = true;
             break;
         }
     }
 
-    if(found)
+    if (found) 
     {
-        (*it)->setGroupSize((*it)->getGroupSize()+ squadSize);
+        (*it)->setGroupSize((*it)->getGroupSize() + squadSize);
         this->notEnlisted = this->notEnlisted - squadSize;
-
     }
     else
     {
         Recruits *Med = new Medic();
+        Med->setCountry(this);
         Med->setGroupSize(squadSize);
         Med->setMilitaryType("Medic");
         this->notEnlisted = this->notEnlisted - squadSize;
         recruits.push_back(Med);
     }
+
+    std::cout << squadSize << " Medics ready for battle!" << std::endl;
 }
 
-void Country::recruitGuardians(int squadSize)
+void Country::recruitPilots(int squadSize)
 {
-    if(notEnlisted< squadSize)
+    if (notEnlisted < squadSize)
     {
-        std::cout<<"Not enough man power"<<std::endl;
+        std::cout << "Not enough man power" << std::endl;
         return;
     }
 
     bool found = false;
     auto it = recruits.begin();
 
-    for(; it< recruits.end(); it++)
+    for (; it < recruits.end(); it++)
     {
-        if((*it)->getMilitaryType()=="Guardian")
+        if ((*it)->getMilitaryType() == "Pilot")
         {
-            found=true;
+            found = true;
             break;
         }
     }
 
-    if(found)
+    if (found)
     {
-        (*it)->setGroupSize((*it)->getGroupSize()+ squadSize);
+        (*it)->setGroupSize((*it)->getGroupSize() + squadSize);
         this->notEnlisted = this->notEnlisted - squadSize;
-
     }
     else
     {
-        Recruits *Guard = new Marine();
+        Recruits *pilot = new Pilot();
+        pilot->setCountry(this);
+        pilot->setGroupSize(squadSize);
+        pilot->setMilitaryType("Pilot");
+        this->notEnlisted = this->notEnlisted - squadSize;
+        recruits.push_back(pilot);
+    }
+
+    std::cout << squadSize << " Pilots ready for battle!" << std::endl;
+}
+
+void Country::recruitGuardians(int squadSize)
+{
+    if (notEnlisted < squadSize)
+    {
+        std::cout << "Not enough man power" << std::endl;
+        return;
+    }
+
+    bool found = false;
+    auto it = recruits.begin();
+
+    for (; it < recruits.end(); it++)
+    {
+        if ((*it)->getMilitaryType() == "Guardian")
+        {
+            found = true;
+            break;
+        }
+    }
+
+    if (found)
+    {
+        (*it)->setGroupSize((*it)->getGroupSize() + squadSize);
+        this->notEnlisted = this->notEnlisted - squadSize;
+    }
+    else
+    {
+
+        Recruits *Guard = new Guardian();
+        Guard->setCountry(this);
         Guard->setGroupSize(squadSize);
         Guard->setMilitaryType("Marine");
         this->notEnlisted = this->notEnlisted - squadSize;
         recruits.push_back(Guard);
     }
+
+    std::cout << squadSize << " Guardians ready for battle!" << std::endl;
 }
 
-void Country::recruitPilots(int squadSize)
+void Country::setCitizens(int amount)
 {
-    if(notEnlisted< squadSize)
-    {
-        std::cout<<"Not enough man power"<<std::endl;
-        return;
-    }
+    citizens->setGroupSize(amount);
+}
 
-    bool found = false;
-    auto it = recruits.begin();
+int Country::getCitizens()
+{
+   return citizens->getGroupSize();
+}
 
-    for(; it< recruits.end(); it++)
-    {
-        if((*it)->getMilitaryType()=="Pilot")
-        {
-            found=true;
-            break;
-        }
-    }
+RecruitIterator *Country::createRecruitIterator(std::vector<Recruits *> rec)
+{
+    RecruitIterator *it = new RecruitIterator(rec);
+    return it;
+}
 
-    if(found)
-    {
-        (*it)->setGroupSize((*it)->getGroupSize()+ squadSize);
-        this->notEnlisted = this->notEnlisted - squadSize;
-
-    }
-    else
-    {
-        Recruits *Pilot = new Marine();
-        Pilot->setGroupSize(squadSize);
-        Pilot->setMilitaryType("Pilot");
-        this->notEnlisted = this->notEnlisted - squadSize;
-        recruits.push_back(Pilot);
-    }
+WarTheatre** Country::getWarFront()
+{
+    return warTheatres;
 }
 
 void Country::updatePopulationSize()
 {
-    int count=0;
+    int count = 0;
 
-    count+= citizens->getGroupSize();
+    count += citizens->getGroupSize();
 
-    if(refugees != nullptr)
+    if (!(refugees.empty()))
     {
-        count += refugees->getGroupSize();
+        for(int x=0; x< refugees.size(); x++)
+        {
+            count += refugees[x]->getGroupSize();
+            economy -= refugees[x]->getGroupSize();
+        }
+        
     }
-    
+
     count += notEnlisted;
 
     auto it = recruits.begin();
+    int am=0;
 
     for(; it< recruits.end(); it++)
     {
-        count += (*it)->getGroupSize();
+        am= (*it)->getGroupSize();
+
+        if(am>0)
+        {
+            count += am; 
+        }
+   
     }
+    //std::cout<<count<<" <-<-<-<-"<<std::endl;
 
     this->populationSize = count;
-
 }
 
+std::vector<Recruits*> Country::getRecruits()
+{
+    return recruits;
+}
+
+std::vector<Refugee*> Country::getRefugees()
+{
+    return refugees;
+}
+Recruits* Country::searchAndRetrieve(std::string Type)
+{
+    for(int x=0; x< recruits.size(); x++)
+    {
+        if(recruits[x]->getMilitaryType()== Type && recruits[x]->getGroupSize()>0)
+        {
+            return recruits[x];
+        }
+    }
+
+    return nullptr;
+}
 void Country::updatePower()
 {
-    this->power = this->populationSize*economy;
+    this->power = this->populationSize * economy;
 }
 
-int Country::getPopulation() const
+double Country::getPopulation() const
 {
     return populationSize;
 }
@@ -305,14 +400,14 @@ void Country::setNotEnlisted(int Amount)
     this->notEnlisted = Amount;
 }
 
-WarTheatre* Country::getWarFront(const std::string& Type)
-{ 
+WarTheatre *Country::getWarFront(const std::string &Type)
+{
     int index = getIndex(Type);
-    WarTheatre* front = warTheatres[index];
-    
-    if(front != nullptr)
+    WarTheatre *front = warTheatres[index];
+
+    if (front != nullptr)
     {
-        while(front->getLocation()== "Trap")
+        while (front->getLocation() == "Trap")
         {
             front = front->getTrap();
         }
@@ -321,139 +416,175 @@ WarTheatre* Country::getWarFront(const std::string& Type)
     return front;
 }
 
-void Country::addWarFront(const std::string& location)
+void Country::addWarFront(const std::string &location)
 {
-    WarTheatre* check = getWarFront(location);
+    WarTheatre *check = getWarFront(location);
 
-    if(check == nullptr)
+    if (check == nullptr)
     {
         WarTheatre *warFront;
 
-        if(location == "Land")
+        if (location == "Land")
         {
             warFront = new Land();
             warTheatres[0] = warFront;
         }
-        else if(location == "Sea")
+        else if (location == "Sea")
         {
             warFront = new Sea();
             warTheatres[1] = warFront;
         }
-        else if(location == "Air")
+        else if (location == "Air")
         {
             warFront = new Air();
             warTheatres[2] = warFront;
         }
-        else{
+        else
+        {
             warFront = new Space();
             warTheatres[3] = warFront;
         }
     }
 }
 
-int Country::getIndex(const std::string& Type)
+int Country::getIndex(const std::string &Type)
 {
-    int i=-1;
-    if(Type=="Land")
+    int i = -1;
+    if (Type == "Land")
     {
-        i=0;
+        i = 0;
     }
-    else if(Type=="Sea")
+    else if (Type == "Sea")
     {
-        i=1;
+        i = 1;
     }
-    else if(Type=="Air")
+    else if (Type == "Air")
     {
-        i=2;
+        i = 2;
     }
     else
     {
-        i=3;
+        i = 3;
     }
 
     return i;
 }
 
-void Country::setTrap(const std::string& battleGround, const std::string& Trap)
+std::string Country::allWarFronts()
 {
-    WarTheatre* check = getWarFront(battleGround);
-    if(check == nullptr)
+    std::string out = "";
+
+    if (warTheatres[0] != nullptr)
     {
+        out += "Land\n";
+    }
+    if (warTheatres[1] != nullptr)
+    {
+        out += "Sea\n";
+    }
+    if (warTheatres[2] != nullptr)
+    {
+        out += "Air\n";
+    }
+    if (warTheatres[3] != nullptr)
+    {
+        out += "Space\n";
+    }
+    return out;
+}
+
+void Country::setTrap(const std::string &battleGround, const std::string &Trap)
+{
+    
+    WarTheatre *check = getWarFront(battleGround);
+    if (check == nullptr)
+    {
+        //std::cout<<"WarFront not set"<<std::endl;
         return;
     }
+    
+    WarTheatre *Temp;
 
-    WarTheatre* Temp;
-
-    if(Trap == "SpaceMagnets")
+    if (Trap == "SpaceMagnets")
     {
-        if(battleGround!= "Space")
+        if (battleGround != "Space" || getEconomy()<400)
         {
+            //std::cout<<"Trap failed"<<std::endl;
             return;
         }
-        
-        Temp = new SpaceMagnets();  
+
+        setEconomy(getEconomy()-400);
+        Temp = new SpaceMagnets();
     }
-
-    if(Trap == "Mines")
+    
+    if (Trap == "Mines")
     {
-        if(battleGround == "Air")
+        if (battleGround == "Air" || getEconomy()<300)
         {
+            //std::cout<<"Trap failed"<<std::endl;
             return;
         }
 
+        setEconomy(getEconomy()-300);
         Temp = new Mines();
     }
-
-    if(Trap == "Barricades")
+    
+    if (Trap == "Barricades")
     {
-        if(battleGround == "Air")
+        if (battleGround == "Air" || getEconomy()<200)
         {
+            //std::cout<<"Trap failed"<<std::endl;
             return;
         }
 
+        setEconomy(getEconomy()-200);
         Temp = new Barricades();
     }
-
-    if(Trap == "Trenches")
+    
+    if (Trap == "Trenches")
     {
-        if(battleGround!= "Land")
+        if (battleGround != "Land" || getEconomy()<100)
         {
+            //std::cout<<"Trap failed"<<std::endl;
             return;
         }
 
+        setEconomy(getEconomy()-100);
         Temp = new Trenches();
-
     }
 
     int index = getIndex(battleGround);
     Temp->add(warTheatres[index]);
-    warTheatres[index]= Temp;
+    warTheatres[index] = Temp;
 
+   
 }
 
-void Country::removeFront(const std::string& Location)
+WarTheatre* Country::getIndexWarFront(int i)
+{
+    return warTheatres[i];
+}
+void Country::removeFront(const std::string &Location)
 {
     int index = getIndex(Location);
 
-    if(warTheatres[index]!= nullptr)
+    if (warTheatres[index] != nullptr)
     {
         delete warTheatres[index];
     }
 
-    warTheatres[index]= nullptr;
-
+    warTheatres[index] = nullptr;
 }
 
-int Country:: warFrontDanger(const std::string& totalOf)
+int Country::warFrontDanger(const std::string &totalOf)
 {
-    int total =0;
-    if(totalOf=="All")
+    int total = 0;
+    if (totalOf == "All")
     {
-        
 
-        for(int x=0; x<4; x++)
+        for (int x = 0; x < 4; x++)
         {
-            if(warTheatres[x] != nullptr)
+            if (warTheatres[x] != nullptr)
             {
                 total += warTheatres[x]->damageTotal();
             }
@@ -463,28 +594,34 @@ int Country:: warFrontDanger(const std::string& totalOf)
     {
         int index = getIndex(totalOf);
 
-        if(warTheatres[index] != nullptr)
+        if (warTheatres[index] != nullptr)
         {
             total = warTheatres[index]->damageTotal();
         }
-
     }
 
     return total;
 }
+void Country::addRefugee(Country* ally, int amount)
+{
+    auto refugee = new Refugee();
+    refugee->setGroupSize(amount);
+    refugee->setCountry(ally);
+    refugees.push_back(refugee);
 
+}
 Country::~Country()
 {
-    for(int x=0; x<4; x++)
+    for (int x = 0; x < 4; x++)
     {
         delete warTheatres[x];
     }
 
-    delete [] warTheatres;
+    delete[] warTheatres;
 
-    while(!recruits.empty())
+    while (!recruits.empty())
     {
-        Recruits* r = recruits.back();
+        Recruits *r = recruits.back();
         recruits.pop_back();
         delete r;
     }

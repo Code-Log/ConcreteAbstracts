@@ -18,9 +18,6 @@
 
 class BattleRegistry : public Registry
 {
-private:
-    std::vector<UnorderedPair<Country*>> battles;
-
 public:
     /**
      * @brief Construct a new Battle Registry object
@@ -49,6 +46,12 @@ public:
      * @return std::vector<UnorderedPair<Country*>> 
      */
     std::vector<UnorderedPair<Country*>> getRecords(Country* country) override;
+
+protected:
+
+private:
+    std::vector<UnorderedPair<Country*>> battles;
+
 };
 
 #endif //CONCRETEABSTRACTS_BATTLEREGISTRY_H

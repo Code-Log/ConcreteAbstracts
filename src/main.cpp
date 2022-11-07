@@ -3,19 +3,17 @@
 #include "Country.h"
 //#include "WarTheatre.h"
 #include <string>
-#include <WarPedal.h>
+#include <WarPadel.h>
 
 using namespace std;
 
 int main() {
     
 
-    WarPedal& war = WarPedal::getInstanceWarPedal();
+    WarPadel& war = WarPadel::getInstanceWarPadel();
  
 
     war.startPedaling();
-
- 
 
     
 

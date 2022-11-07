@@ -9,7 +9,7 @@ VesselWeapon* VesselWeaponCreator::produce()
 {
 	return produceVesselWeapon();
 }
-int VesselWeaponCreator::getPrice()
+int VesselWeaponCreator::getPrice() const
 {
 	return price;
 }

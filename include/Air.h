@@ -12,11 +12,10 @@
 #define AIR_H
 
 #include <BattleGround.h>
+#include <Country.h>
 
 class Air : public BattleGround
 {
-private:
-    
 public:
     /**
      * @brief Construct a new Air object
@@ -44,7 +43,11 @@ public:
      * @return int 
      */
     int gForce();
+protected:
+
+private:
 };
+
 
 
 #endif

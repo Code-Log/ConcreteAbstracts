@@ -22,6 +22,17 @@ public:
      * @param recruits 
      */
     virtual void purchase(Recruits* recruits) = 0;
+    
+    /**
+     * @brief 
+     * 
+     * @param recruits 
+     */
+    virtual void purchaseInput(Recruits* recruits)=0;
+
+protected:
+
+private:
 };
 
 #endif //CONCRETEABSTRACTS_TRANSPORT_H

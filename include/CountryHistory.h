@@ -18,9 +18,6 @@
 
 class CountryHistory
 {
-private:
-    std::vector<CountryMemento*> history;
-
 public:
     /**
      * @brief Construct a new Country History object
@@ -41,6 +38,12 @@ public:
      * @return CountryMemento* 
      */
     CountryMemento* removeCommit();
+
+protected:
+
+private:
+    std::vector<CountryMemento*> history;
+
 };
 
 #endif //CONCRETEABSTRACTS_COUNTRYHISTORY_H

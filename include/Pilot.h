@@ -11,18 +11,21 @@
 #ifndef CONCRETEABSTRACTS_PILOT_H
 #define CONCRETEABSTRACTS_PILOT_H
 
+class Country;
 #include <Recruits.h>
 class Pilot : public Recruits
 {
-private:
-    /* data */
+
 public:
     /**
      * @brief Construct a new Pilot object
      * 
      */
     Pilot();
-    // ~Pilot();
+
+protected:
+
+private:
 };
 
 #endif // CONCRETEABSTRACTS_PILOT_H

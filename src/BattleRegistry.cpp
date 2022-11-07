@@ -8,6 +8,7 @@ BattleRegistry::BattleRegistry()
 void BattleRegistry::addRecord(Country* country1, Country* country2)
 {
     battles.emplace_back(country1, country2);
+    std::cout<<country1->getName()<<" VS "<<country2->getName()<<std::endl;
 }
 
 std::vector<UnorderedPair<Country*>> BattleRegistry::getRecords(Country* country)

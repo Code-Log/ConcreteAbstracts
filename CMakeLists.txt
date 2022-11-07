@@ -83,6 +83,8 @@ add_executable(simulator
                 include/VesselWeaponCreator.h
                 include/WarEngine.h
                 src/AttackWeaponCreator.cpp
+                include/WarPadel.h
+                src/WarPadel.cpp
                 src/ExplosiveWeaponCreator.cpp
                 src/ExplosiveWeapons.cpp
                 src/JetCreator.cpp
@@ -101,12 +103,8 @@ add_executable(simulator
                 src/Tanks.cpp
                 src/VesselWeaponCreator.cpp
                 src/WarEngine.cpp
-                include/RecruitIterator.h 
-                include/Iterator.h 
-                src/RecruitIterator.cpp
-                include/Recruits.h
-                include/WarPedal.h
-                src/WarPedal.cpp)
+        include/RecruitIterator.h include/Iterator.h src/RecruitIterator.cpp
+        include/Recruits.h include/util/ListSelectionPrompt.h src/ListSelectionPrompt.cpp)
         
 file(GLOB CPP_FILES src/*.cpp)
 list(FILTER CPP_FILES EXCLUDE REGEX src/main.cpp)
@@ -120,6 +118,7 @@ add_test(testRegistry testExec testRegistry)
 add_test(testTransport testExec testTransport)
 add_test(testTheatreCountryPeopleCombo testExec testTheatreCountryPeopleCombo)
 add_test(testWarEngine testExec testWarEngine)
+add_test(testMemento testExec testMemento)
 
 
 target_include_directories(simulator PUBLIC include)

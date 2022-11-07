@@ -12,7 +12,7 @@ int Jets::getDefense()
 
 std::string Jets::getName()
 {
-	return "Jet(s)";
+	return "Jet";
 }
 
 int Jets::getDurability()

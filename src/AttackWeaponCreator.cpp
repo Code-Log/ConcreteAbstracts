@@ -9,10 +9,13 @@ AttackWeapon* AttackWeaponCreator::produce()
 {
   	return produceAttackWeapon();
 }
-int AttackWeaponCreator::getPrice(){
+
+int AttackWeaponCreator::getPrice() const
+{
     return price;
 }
 
-void AttackWeaponCreator::setPrice(int price){
+void AttackWeaponCreator::setPrice(int price)
+{
     this->price = price;
 }
