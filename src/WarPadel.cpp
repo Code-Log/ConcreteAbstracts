@@ -2,6 +2,7 @@
 #include <WarPadel.h>
 #include <random>
 #include <util/ListSelectionPrompt.h>
+#include <util/colours.h>
 #include <sstream>
 
 std::string countryData(Country *);
@@ -11,12 +12,13 @@ void WarPadel::startPedaling()
 {
     Phase1();
     Phase2();
+    std::cout<<colours::RED_BOLD<<"--Phase 3--"<<colours::RESET<<std::endl;
     Phase3();
 }
 
 void WarPadel::Phase1()
 {
-    std::cout << "--PHASE 1--" << std::endl;
+    std::cout <<colours::RED_BOLD<< "--PHASE 1--" <<colours::RESET<< std::endl;
     // make countries
     countries = new Country *[8];
     for (int x = 0; x < 8; x++)
@@ -37,7 +39,7 @@ void WarPadel::Phase1()
     std::cout << "Power Levels Before War:" << std::endl;
     std::cout << countryRanks() << std::endl;
 
-    std::cout << "************Saving country state with MEMENTO PATTERN. Deep copies with PROTOTYPE********************" << std::endl;
+    std::cout <<colours::PURPLE_BRIGHT<< "************Saving country state with MEMENTO PATTERN. Deep copies with PROTOTYPE********************" <<colours::RESET<< std::endl;
     std::cout << "Continue..." << std::endl;
     std::string a;
     std::cin >> a;
@@ -56,7 +58,7 @@ void WarPadel::Phase1()
 
 void WarPadel::Phase2()
 {
-    std::cout << "--PHASE 2--" << std::endl;
+    std::cout << colours::RED_BOLD<<"--PHASE 2--" <<colours::RESET<< std::endl;
     std::cout << std::endl;
 
     WarPrep(1,4);
@@ -68,8 +70,8 @@ void WarPadel::Phase2()
 
     update();
 
-    std::cout << "!!!!!!!!*The ammo has been bought, bunkers been built. The time for talk is over and the bloody part of war has begun. Let's make history and fight for our buds. TASTEbuds, that is*!!!!" << std::endl
-              << std::endl;
+    std::cout<< colours::BLUE_BOLD<< "!!!!!!!!*The ammo has been bought, bunkers been built. The time for talk is over and the bloody part of war has begun. Let's make history and fight for our buds. TASTEbuds, that is*!!!!" << std::endl
+              << colours::RESET<<std::endl;
 }
 
 void WarPadel::Phase3()
@@ -91,13 +93,12 @@ void WarPadel::Phase3()
     countryRanks();
 
     std::cout << "*****************************************************************************" << std::endl;
-    std::cout << "************ REST OF MEMENTO DESIGN PATTERN. Retrieving data from the CARETAKER ********************" << std::endl;
+    std::cout <<colours::PURPLE_BRIGHT<<  "************ REST OF MEMENTO DESIGN PATTERN. Retrieving data from the CARETAKER ********************" <<colours::RESET<< std::endl;
     std::cout << "Continue..." << std::endl;
     std::string a;
     std::cin >> a;
     history();
-    std::cout << "Don't forget to ask if uml stays the same if not upgrade diagrams to at least match uml. Also implement winner and GUI, doxygen and format code it's not changed. also video" << std::endl;
-
+    
 }
 
 void WarPadel::history()
@@ -114,7 +115,7 @@ void WarPadel::history()
     {
         counter=-1;
     }
-    std::cout<<"---------WAR HISTORY--------"<<std::endl;
+    std::cout<<colours::BLUE_BOLD<< "---------WAR HISTORY--------"<<colours::REST<<std::endl;
     Country* tempC = new Country("");
     int war = historyChapters*8;
     while(index>0)
@@ -160,7 +161,7 @@ void WarPadel::history()
 
 void WarPadel::Negotiations()
 {
-    std::cout << "This is no longer a YOU problem. The world is noticing an asking you war mongers questions. Does seafood count as meat? Do vegans ride horses or do the horses ride them?\n They are joining the show. WHo do you pick?" << std::endl
+    std::cout <<colours::BLUE_BOLD<<  "This is no longer a YOU problem. The world is noticing an asking you war mongers questions. Does seafood count as meat? Do vegans ride horses or do the horses ride them?\n They are joining the show. WHo do you pick?" << std::endl
               << std::endl;
 
     std::string a = countries[4]->getName();
@@ -186,13 +187,13 @@ void WarPadel::Negotiations()
 
     int index = prompt.getSelectionIndex("Who will you pamper to: ");
 
-    std::cout << std::endl;
+    std::cout << colours::RESET<<std::endl;
 
     switch (index)
     {
     case 0:
 
-        std::cout << "Brave choice. Just spend a bit more on supplies to Make sure your new ally recruits NEVER GET HUNGRY" << std::endl;
+        std::cout <<colours::BLUE_BOLD<<  "Brave choice. Just spend a bit more on supplies to Make sure your new ally recruits NEVER GET HUNGRY" << colours::RESET<<std::endl;
 
         countries[0]->setEconomy(countries[0]->getEconomy() * 0.90);
         std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << countries[0]->getName() << "'s economy has dropped by 10%. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl
@@ -204,7 +205,7 @@ void WarPadel::Negotiations()
         break;
     case 1:
 
-        std::cout << "The new allies gave you a loan!!!! What's that? Fine print? High interest rates, you don't say." << std::endl;
+        std::cout <<colours::BLUE_BOLD<<  "The new allies gave you a loan!!!! What's that? Fine print? High interest rates, you don't say." << colours::RESET<<std::endl;
 
         countries[0]->setEconomy(countries[0]->getEconomy() * 1.40);
         std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << countries[0]->getName() << "'s economy has risen by 40%. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl
@@ -216,7 +217,7 @@ void WarPadel::Negotiations()
         break;
     case 2:
 
-        std::cout << "While the new allies debate whether wool is anti-vegan or not here is their army for you to use" << std::endl;
+        std::cout << colours::BLUE_BOLD<< "While the new allies debate whether wool is anti-vegan or not here is their army for you to use" << colours::RESET<<std::endl;
 
         countries[0]->setNotEnlisted(countries[0]->getNotEnlisted() * 1.30);
         std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << countries[0]->getName() << "'s man power has risen by 30%. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl
@@ -228,7 +229,7 @@ void WarPadel::Negotiations()
         break;
     case 3:
 
-        std::cout << "Maybe, better an ally than enemy, you thought. Your people, however don't like this alliance." << std::endl;
+        std::cout <<colours::BLUE_BOLD<<  "Maybe, better an ally than enemy, you thought. Your people, however don't like this alliance." << colours::RESET<<std::endl;
 
         countries[0]->setNotEnlisted(countries[0]->getNotEnlisted() * 0.95);
         std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << countries[0]->getName() << "'s man power has dropped by 5%. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl
@@ -242,7 +243,7 @@ void WarPadel::Negotiations()
         break;
     }
 
-    std::cout << "A war is amongst the diplomats. The battlefield is just their way of ROCK PAPER SCISSORS. But what fun is treaties and debates. Let luck handle the rest and return to the field." << std::endl;
+    std::cout <<colours::BLUE_BOLD<<  "A war is amongst the diplomats. The battlefield is just their way of ROCK PAPER SCISSORS. But what fun is treaties and debates. Let luck handle the rest and return to the field." <<colours::RESET<< std::endl;
 
     index += 4;
     int left = randomNumGenerator(4, 7);
@@ -495,7 +496,7 @@ void WarPadel::WarPrep(int start, int end)
             setWarTheatres(countries[x]);
     }
 
-    std::cout << "************Setting traps using DECORATOR DESIGN PATTERN********************" << std::endl;
+    std::cout <<colours::PURPLE_BRIGHT<<  "************Setting traps using DECORATOR DESIGN PATTERN********************" <<colours::RESET<< std::endl;
     std::cout << "Continue..." << std::endl;
     std::string a;
     std::cin >> a;
@@ -504,8 +505,8 @@ void WarPadel::WarPrep(int start, int end)
         if(!(CountryHasFallen(countries[x])))
             setTraps(countries[x]);
     }
-    std::cout << "*****************************************************************************" << std::endl;
-    std::cout << "************ Getting recruits. Use of STATE DESIGN PATTERN: soldier, marine, pilot, guardian, medic********************" << std::endl;
+    std::cout << "**********************************************************************************************************************" << std::endl;
+    std::cout <<colours::PURPLE_BRIGHT<<  "************ Getting recruits. Use of STATE DESIGN PATTERN: soldier, marine, pilot, guardian, medic********************" <<colours::RESET<< std::endl;
     std::cout << "Continue..." << std::endl;
     std::cin >> a;
 
@@ -515,9 +516,9 @@ void WarPadel::WarPrep(int start, int end)
             setMilitary(countries[x]);
     }
 
-    std::cout << "*****************************************************************************" << std::endl;
+    std::cout << "************************************************************************************************************************************************************************" << std::endl;
 
-    std::cout << "************FACADE DESIGN PATTERN COMBO - weapons from ABSTRACT FACTORY transported using STRATEGY PATTERN transport. Distributed to STATE PATTERN recruits by FACADE********************" << std::endl;
+    std::cout <<colours::PURPLE_BRIGHT<<  "**FACADE DESIGN PATTERN COMBO - weapons from  FACTORY PATTERn transported using STRATEGY PATTERN transport. Distributed to STATE PATTERN recruits by FACADE**" <<colours::RESET<< std::endl;
     std::cout << "Continue..." << std::endl;
     std::cin >> a;
 
@@ -531,10 +532,10 @@ void WarPadel::WarPrep(int start, int end)
 }
 void WarPadel::Dispute()
 {
-    std::cout << "If two vegans argue is it still called beef? Meat is good. Meat is tasty. But not everyone thinks so and " << countries[0]->getName() << " is willing to go cannibal to keep " << countries[1]->getName() << " from their rare steaks. Steak knives vs chopsticks. It's WAR!!!!!!!!!!" << std::endl
-              << std::endl;
+    std::cout <<colours::BLUE_BOLD<<  "If two vegans argue is it still called beef? Meat is good. Meat is tasty. But not everyone thinks so and " << countries[0]->getName() << " is willing to go cannibal to keep " << countries[1]->getName() << " from their rare steaks. Steak knives vs chopsticks. It's WAR!!!!!!!!!!" << std::endl
+              <<colours::RESET<< std::endl;
 
-    std::cout << "************************From now will be utilising the TEMPLATE DESIGN PATTERN to bond either enemies or friends********************" << std::endl;
+    std::cout <<colours::PURPLE_BRIGHT<<  "************************From now will be utilising the TEMPLATE DESIGN PATTERN to bond either enemies or friends********************" <<colours::RESET<< std::endl;
     std::cout << "Continue..." << std::endl;
     std::string a;
     std::cin >> a;
@@ -544,15 +545,15 @@ void WarPadel::Dispute()
     battleRegistry->addRecord(countries[0], countries[1]);
     std::cout << std::endl;
 
-    std::cout << countries[2]->getName() << " can smell the beef between you two. They are more of a tofu people but can't live without milk and cookies." << std::endl;
+    std::cout <<colours::BLUE_BOLD<<  countries[2]->getName() << " can smell the beef between you two. They are more of a tofu people but can't live without milk and cookies." << std::endl;
 
     ListSelectionPrompt dispute1 = {"yes", "no"};
     std::string prompt = "Do you want to join forces with ";
     prompt += countries[2]->getName();
-    prompt += " and roast some ass? It will cost you some cash. They don't come cheap.";
+    prompt += " and roast some buttocks? It will cost you some cash. They don't come cheap.";
     auto ans = dispute1.getSelection(prompt);
 
-    std::cout << std::endl;
+    std::cout <<colours::RESET<< std::endl;
     if (ans == "yes")
     {
         countries[0]->setEconomy(countries[0]->getEconomy() * 0.80);
@@ -563,13 +564,13 @@ void WarPadel::Dispute()
     }
     else
     {
-        std::cout << "Rejection is hard to digest. You've made an enemy" << std::endl;
+        std::cout << colours::BLUE_BOLD<< "Rejection is hard to digest. You've made an enemy" <<colours::RESET<< std::endl;
         battleRegistry->addRecord(countries[0], countries[2]);
         allyRegistry->addRecord(countries[1], countries[2]);
     }
     std::cout << std::endl;
 
-    std::cout << countries[3]->getName() << " overheard you sharpening your butcher knives. They need some  help with their issues. It will only cost a few million people. If you agree they promise to help with your war on vegetables" << std::endl;
+    std::cout << colours::BLUE_BOLD<< countries[3]->getName() << " overheard you sharpening your butcher knives. They need some  help with their issues. It will only cost a few million people. If you agree they promise to help with your war on vegetables" << std::endl;
 
     ListSelectionPrompt dispute2 = {"yes", "no"};
     prompt = "Do you want to take a risk and help ";
@@ -577,7 +578,7 @@ void WarPadel::Dispute()
     prompt += ". Keep in mind something called karma.";
     auto ans2 = dispute1.getSelection(prompt);
 
-    std::cout << std::endl;
+    std::cout << colours::RESET<< std::endl;
     if (ans2 == "yes")
     {
         countries[0]->setNotEnlisted(countries[0]->getNotEnlisted() * 0.85);
@@ -588,9 +589,9 @@ void WarPadel::Dispute()
     }
     else
     {
-        std::cout << "Looks like the vegans could help " << countries[3]->getName() << ". Ah oh!" << std::endl;
+        std::cout << colours::BLUE_BOLD<< "Looks like the vegans could help " << countries[3]->getName() << ". Ah oh!" <<colours::RESET<< std::endl;
         allyRegistry->addRecord(countries[1], countries[3]);
-        std::cout << "So obviously the enemy of my friend is my enemy" << std::endl;
+        std::cout <<colours::BLUE_BOLD<<  "So obviously the enemy of my friend is my enemy" << colours::RESET<<std::endl;
         battleRegistry->addRecord(countries[0], countries[3]);
     }
 
@@ -690,7 +691,7 @@ void WarPadel::unsavedUpdate()
 void WarPadel::update()
 {
     historyChapters++;
-    std::cout << "****** UPDATING COUNTRY DATA. Use of ITERATOR DESIGN PATTERN to traverse through recruits*******" << std::endl;
+    std::cout << colours::PURPLE_BRIGHT<< "****** UPDATING COUNTRY DATA. Use of ITERATOR DESIGN PATTERN to traverse through recruits*******" <<colours::RESET<< std::endl;
     std::cout << "Continue..." << std::endl;
     std::string a;
     std::cin >> a;
@@ -835,7 +836,7 @@ void WarPadel::setWarTheatres(Country *country)
 
 void WarPadel::setTraps(Country *country)
 {
-    std::cout << country->getName() << " is:" << std::endl;
+    std::cout <<colours::BLUE_BOLD<< country->getName() << " is:" << colours::RESET<<std::endl;
     int amount = randomNumGenerator(10, 30);
     std::string location[] = {"Land", "Sea", "Air", "Space"};
     std::string type[] = {"Trenches", "Barricades", "SpaceMagnets", "Mines"};
@@ -857,7 +858,7 @@ void WarPadel::setMilitary(Country *country)
     int groupsize;
     int oppotunity = randomNumGenerator(10, 20);
 
-    std::cout << country->getName() << " Empowering Army.." << std::endl;
+    std::cout << colours::BLUE_BOLD<< country->getName() << " Empowering Army.." << colours::RESET<<std::endl;
 
     while (oppotunity > 0)
     {
@@ -892,7 +893,7 @@ void WarPadel::setMilitary(Country *country)
 
 void WarPadel::purchaseWeapons(Country *country)
 {
-    std::cout << country->getName() << " is purchasing..." << std::endl;
+    std::cout <<colours::BLUE_BOLD<<  country->getName() << " is purchasing..." <<colours::RESET<< std::endl;
     capatalists = new ArmoryFacade();
     std::vector<Recruits *> recruit = country->getRecruits();
 
