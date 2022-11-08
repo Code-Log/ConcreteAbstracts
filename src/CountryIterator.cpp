@@ -21,7 +21,7 @@ Country* CountryIterator::current()
 
 CountryIterator::CountryIterator(Country** countryList)
 {
-     for(int i = 0; i < sizeof(countryList); i++)
+     for(int i = 0; i < 8; i++)
      {
          this->countryList[i] = countryList[i]; 
      }

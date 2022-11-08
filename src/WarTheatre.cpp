@@ -36,3 +36,19 @@ std::string WarTheatre::getName(){
 void WarTheatre::setName(std::string name){
     this->name = std::move(name);
 }
+RecruiterContext* WarTheatre::getAttackers()
+{
+    return attackers;
+}
+void WarTheatre::setAttackers(Recruits* attackers)
+{
+    this->attackers->setState(attackers);
+}
+RecruiterContext* WarTheatre::getDefenders()
+{
+    return defenders;
+}
+void WarTheatre::setDefenders(Recruits* defenders)
+{
+    this->defenders->setState(defenders);
+}
