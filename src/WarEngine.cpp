@@ -1241,6 +1241,7 @@ void WarEngine::surrender(Country* c)
     } 
     else{
         int max = c->getWarTheatres().size() <=0 ? 0 : enemies.size()-1;
+        if(max <= 0) max = 1;
         index = randomNumGenerator(0,max);
     }  
     std::cout<<" to "<<enemies[index]->getName()<<colours::RESET<<std::endl;
