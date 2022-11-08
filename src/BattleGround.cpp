@@ -30,19 +30,3 @@ void BattleGround::add(WarTheatre* trap)
     //nothing to add
 }
 
-RecruiterContext* BattleGround::getDefenders()
-{
-    return defenders;
-}
-void BattleGround::setDefenders(RecruiterContext* defenders)
-{
-
-}
-RecruiterContext* BattleGround::getAttackers()
-{
-    return attackers;
-}
-void BattleGround::setAttackers(RecruiterContext* attackers)
-{
-
-}

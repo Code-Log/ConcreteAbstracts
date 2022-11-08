@@ -80,13 +80,50 @@ public:
      * @return int
      */
     virtual int penalty(Recruits* recruits) = 0;
+    /**
+     * @brief Get the Name object
+     * 
+     * @return std::string 
+     */
     std::string getName();
+    /**
+     * @brief Set the Name object
+     * 
+     * @param name 
+     */
     void setName(std::string name);
+    /**
+     * @brief Get the Defenders object
+     * 
+     * @return RecruiterContext* 
+     */
+    RecruiterContext* getDefenders();
+    /**
+     * @brief Set the Defenders object
+     * 
+     * @param defenders 
+     */
+    void setDefenders(Recruits* defenders);
+    /**
+     * @brief Get the Attackers object
+     * 
+     * @return RecruiterContext* 
+     */
+    RecruiterContext* getAttackers();
+    /**
+     * @brief Set the Attackers object
+     * 
+     * @param attackers 
+     */
+    void setAttackers(Recruits* attackers);
 protected:
     std::string name;
+    RecruiterContext* defenders;
+    RecruiterContext* attackers;
 private:
     int damage;
     std::string location; //the type Land Air, Sea,Space
+
     // enum location {Land,Air,Sea,Space}
 };
 

@@ -592,7 +592,7 @@ Country::~Country()
     {
         if(r != nullptr)
         {
-            delete r;
+//            delete r;
             r = nullptr;
         }      
     }

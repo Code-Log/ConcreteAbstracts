@@ -4,22 +4,13 @@
 #include <util/colours.h>
 
 int main() {
-    // WarEngine::getInstanceWarEngine().selectCountry(false);
-    // for(auto c : WarEngine::getInstanceWarEngine().countries){
-    //     if(c == nullptr){
-    //         std::cout<<"mhhh"<<std::endl;
-    //     }
-    //     else
-    //         std::cout<<c->getName()<<std::endl;
-    // }
-    // WarEngine::getInstanceWarEngine().selectPoliticalRegime(false);
-    WarEngine::getInstanceWarEngine().setHuman(false);
-    WarEngine::getInstanceWarEngine().prePhase1();
-    WarEngine::getInstanceWarEngine().phase1();
-    WarEngine::getInstanceWarEngine().phase2();
-    WarEngine::getInstanceWarEngine().phase3();
-    // WarEngine::getInstanceWarEngine().setAllies().buyAndDistributeWeapons();
-
-
+    ListSelectionPrompt prompt = {"Real", "Design"};
+    int selection = prompt.getSelectionIndex("Select in which mode you wish to run the simulation");
+    if(selection == 0){
+        WarEngine::getInstanceWarEngine().run(false);
+    }
+    else{
+       WarEngine::getInstanceWarEngine().run(true); 
+    }
     return 0;
 }
