@@ -34,15 +34,15 @@ RecruiterContext* BattleGround::getDefenders()
 {
     return defenders;
 }
-void BattleGround::setDefenders(RecruiterContext* defenders)
+void BattleGround::setDefenders(Recruits* defenders)
 {
-
+    this->defenders->setState(defenders);
 }
 RecruiterContext* BattleGround::getAttackers()
 {
     return attackers;
 }
-void BattleGround::setAttackers(RecruiterContext* attackers)
+void BattleGround::setAttackers(Recruits* attackers)
 {
-
+    this->attackers->setState(attackers);
 }

@@ -14,6 +14,7 @@ struct ListSelectionPrompt
     std::string getSelection(const std::string& prompt) const;
     int getSelectionIndex(const std::string& prompt) const;
     void append(const std::string& a);
+    int getSize();
 };
 
 #endif //CONCRETEABSTRACTS_LISTSELECTIONPROMPT_H

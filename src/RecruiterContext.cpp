@@ -2,7 +2,7 @@
 
 RecruiterContext::RecruiterContext(/* args */)
 {
-    
+    this->state = nullptr;
 }
 
 void RecruiterContext::request()

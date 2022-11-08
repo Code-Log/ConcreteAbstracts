@@ -60,9 +60,9 @@ public:
 
     
     RecruiterContext* getDefenders();
-    void setDefenders(RecruiterContext* defenders);
+    void setDefenders(Recruits* defenders);
     RecruiterContext* getAttackers();
-    void setAttackers(RecruiterContext* attackers);
+    void setAttackers(Recruits* attackers);
     
 
 protected:

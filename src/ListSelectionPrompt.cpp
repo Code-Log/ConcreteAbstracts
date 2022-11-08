@@ -59,3 +59,8 @@ void ListSelectionPrompt::append(const std::string& a)
 {
     options.emplace_back(a);
 }
+
+int ListSelectionPrompt::getSize()
+{
+    return options.size();
+}
