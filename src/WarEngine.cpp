@@ -1196,29 +1196,29 @@ void WarEngine::sendRecruit(Country* c)
     std::cout<<colours::PURPLE_BRIGHT<<c->getName()<<" wants to send recruits!"<<colours::RESET<<std::endl;
     //using the state design pattern to change the state(recruit) at a war theatre
 
-//     int cost = 50; //we could change this later on.
-//     int out1, out2;
-//     if(human){
-//         ListSelectionPrompt prompt1;
-//         for (auto r : c->getRecruits())
-//             prompt1.append(r->getName());
-//         out1 = prompt1.getSelectionIndex("Which recruits do you wish to send out?");
+    int cost = 50; //we could change this later on.
+    int out1, out2;
+    if(human){
+        ListSelectionPrompt prompt1;
+        for (auto r : c->getRecruits())
+            prompt1.append(r->getName());
+        out1 = prompt1.getSelectionIndex("Which recruits do you wish to send out?");
 
-//         ListSelectionPrompt prompt2;
-//         for (auto w : c->getWarTheatres())
-//             prompt2.append(w->getLocation());
-//         if(prompt2.getSize() <= 0)
-//         out2 = prompt2.getSelectionIndex("Which war theatre do you wish to send your recruits?");
-//     }
-//     else{
-//         int max1 = c->getRecruits().size() <=0 ? 0 : c->getRecruits().size()-1;
-//         int max2 = c->getWarTheatres().size() <=0 ? 0 : c->getWarTheatres().size()-1;
-//         out1 = randomNumGenerator(0,max1);
-//         out2 = randomNumGenerator(0,max2);
-//     }
-//     std::cout<<out2<<std::endl;
-//     c->getWarTheatres()[out2]->getDefenders()->setState(c->getRecruits()[out1]);
-//     std::cout<<colours::GREEN_BRIGHT<<c->getName()<<" sent their recruits to "<<c->getWarTheatres()[out2]->getName();
+        ListSelectionPrompt prompt2;
+        for (auto w : c->getWarTheatres())
+            prompt2.append(w->getLocation());
+        if(prompt2.getSize() <= 0)
+        out2 = prompt2.getSelectionIndex("Which war theatre do you wish to send your recruits?");
+    }
+    else{
+        int max1 = c->getRecruits().size() <=0 ? 0 : c->getRecruits().size()-1;
+        int max2 = c->getWarTheatres().size() <=0 ? 0 : c->getWarTheatres().size()-1;
+        out1 = randomNumGenerator(0,max1);
+        out2 = randomNumGenerator(0,max2);
+    }
+    std::cout<<out2<<std::endl;
+    c->getWarTheatres()[out2]->getDefenders()->setState(c->getRecruits()[out1]);
+    std::cout<<colours::GREEN_BRIGHT<<c->getName()<<" sent their recruits to "<<c->getWarTheatres()[out2]->getName();
 }
 
 
@@ -1226,26 +1226,26 @@ void WarEngine::sendRecruit(Country* c)
 void WarEngine::surrender(Country* c)
 {
     std::cout<<colours::CYAN_BRIGHT<<c->getName()<<"Surenders";
-    // ListSelectionPrompt prompt;
-    // std::vector<UnorderedPair<Country*>> records = battleRegistry.getRecords(c);
-    // std::vector<Country*> enemies;
+    ListSelectionPrompt prompt;
+    std::vector<UnorderedPair<Country*>> records = battleRegistry.getRecords(c);
+    std::vector<Country*> enemies;
 
-    // for (auto r : records)
-    // {
-    //     enemies.emplace_back(r.getOther(c));
-    //     prompt.append(r.getOther(c)->getName());
-    // }
-    // int index;
-    // if(human){
-    //     index = prompt.getSelectionIndex("Which country do you wish to surrender to?");
-    // } 
-    // else{
-    //     int max = c->getWarTheatres().size() <=0 ? 0 : enemies.size()-1;
-    //     index = randomNumGenerator(0,max);
-    // }  
-    // std::cout<<" to "<<enemies[index]->getName()<<colours::RESET<<std::endl;
-    // conquers(enemies[index],c);
-    // c= nullptr;
+    for (auto r : records)
+    {
+        enemies.emplace_back(r.getOther(c));
+        prompt.append(r.getOther(c)->getName());
+    }
+    int index;
+    if(human){
+        index = prompt.getSelectionIndex("Which country do you wish to surrender to?");
+    } 
+    else{
+        int max = c->getWarTheatres().size() <=0 ? 0 : enemies.size()-1;
+        index = randomNumGenerator(0,max);
+    }  
+    std::cout<<" to "<<enemies[index]->getName()<<colours::RESET<<std::endl;
+    conquers(enemies[index],c);
+    c= nullptr;
 }
 
 void WarEngine::conquers(Country* conqueror,Country* conquered){
