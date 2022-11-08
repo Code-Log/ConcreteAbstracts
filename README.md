@@ -13,7 +13,7 @@ COS 214 Project
 
  1. Try running `./build.sh`. If you get a permission denied error, first run `chmod +x build.sh`
  2. Change directory into the `build` directory and run `make`. This will compile the project and 
-create an executable in the `build` directory. You can also run it with `make run`
+create an executable in the `build` directory. You can also run it with `make run` otherwise `./simulator`
 
 ### Option 2 (If option 1 doesn't work)
 
